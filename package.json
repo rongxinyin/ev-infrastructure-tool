@@ -1,5 +1,5 @@
 {
-  "name": "dr-estimation-tool",
+  "name": "ev-infrastructure-tool",
   "version": "1.0.0",
   "scripts": {
     "format": "prettier ./ --write",

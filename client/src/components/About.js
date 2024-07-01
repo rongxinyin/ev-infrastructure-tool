@@ -66,7 +66,7 @@ export default function About() {
               The source code for DFAT can be found on{" "}
               <a
                 style={{ color: "#2196f3" }} // Inline styling
-                href="https://github.com/rongxinyin/DR-Estimation-Tool"
+                href="https://github.com/rongxinyin/ev-infrastructure-tool"
               >
                 GitHub
               </a>
