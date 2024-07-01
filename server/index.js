@@ -4,10 +4,6 @@ import express from "express";
 import mongoose from "mongoose";
 import morgan from "morgan";
 
-import analyticsRoutes from "./routes/analytics.js";
-import stateRoutes from "./routes/states.js";
-import benchmarkingRoutes from "./routes/benchmarking.js";
-
 // app
 const app = express();
 
@@ -16,11 +12,6 @@ app.use(morgan("dev"));
 app.use(cors({ origin: true, credentials: true }));
 app.use(express.json());
 dotenv.config();
-
-//routes
-app.use("/analytics", analyticsRoutes);
-app.use("/states", stateRoutes);
-app.use("/benchmarking", benchmarkingRoutes);
 
 //connect
 mongoose.connect(process.env.CONNECTION_URL);

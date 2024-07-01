@@ -1,5 +1,4 @@
 import { Box, Grid, Paper, Typography, styled } from "@mui/material";
-import graphic from "./images/windmills_grid.jpg";
 
 // visualization. will delete later
 const Item = styled(Paper)(({ theme }) => ({
@@ -20,11 +19,10 @@ export default function About() {
               About
             </Typography>
             <Typography variant="h6" color="common.white" sx={{}}>
-              Demand Flexibility Assessment Tool (DFAT) is a web-based tool to
-              assess the building demand flexibility of small and medium sized
-              buildings enabling customers to estimate their demand flexibility
-              easily and determine how to reduce their electricity usage in
-              response to on-peak expensive electricity prices.
+              Electrical Vehicle Infrastructure Tool (EVIT) is an
+              open-source web-based tool web-based tool for planning optimal
+              electric vehicle charging stations for both fleet and personally
+              owned vehicles in the context of transportation electrification.
             </Typography>
           </Grid>
 
@@ -37,24 +35,18 @@ export default function About() {
             </Typography>
             <ul>
               <Typography variant="h6" color="common.white">
-                - Michael Leong
+                - 
               </Typography>
               <Typography variant="h6" color="common.white" sx={{}}>
-                - Medha Mahanta
+                - 
               </Typography>
               <Typography variant="h6" color="common.white" sx={{}}>
-                - Clara Yin
-              </Typography>
-              <Typography variant="h6" color="common.white" sx={{}}>
-                - TJ Garcia
-              </Typography>
-              <Typography variant="h6" color="common.white" sx={{}}>
-                - Zach Tan
+                - 
               </Typography>
             </ul>
             <Typography variant="h6" color="common.white" sx={{}}>
-              And thank you to mentors Rongxin Yin and Anand Krishnan for
-              leading this project in the 2023 Experiences in Research program.
+              And thank you to mentors Rongxin Yin and Michael Leong for
+              leading this project in the 2024 Experiences in Research program.
             </Typography>
           </Grid>
 
@@ -63,7 +55,7 @@ export default function About() {
               Source Code
             </Typography>
             <Typography variant="h6" color="common.white" sx={{}}>
-              The source code for DFAT can be found on{" "}
+              The source code for EVIT can be found on{" "}
               <a
                 style={{ color: "#2196f3" }} // Inline styling
                 href="https://github.com/rongxinyin/ev-infrastructure-tool"
@@ -74,8 +66,7 @@ export default function About() {
             </Typography>
 
             <Typography variant="h6" color="common.white" sx={{}}>
-              Paper citation: DFAT: A Web-Based Demand Flexibility Assessment
-              Toolkit for Building-to-Grid Integration.{" "}
+              Paper citation: TBD.{" "}
               <a
                 href="https://doi.org/10.1016/j.buildenv.2023.110663"
                 target="_blank"

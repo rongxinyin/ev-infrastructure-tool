@@ -9,9 +9,6 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import residentialIcon from "./images/residential.png";
-import commercialIcon from "./images/commercial.png";
-import benchmarkIcon from "./images/benchmarking.png";
 
 // Visualization
 const Item = styled(Paper)(({ theme }) => ({
@@ -41,7 +38,7 @@ export default function Home() {
               marginTop: 10,
             }}
           >
-            Welcome to the Demand Flexibility Assessment Tool (DFAT)
+            Welcome to the Electrical Vehicle Infrastructure Tool (EVIT)!
           </Typography>
         </Grid>
 
@@ -55,89 +52,11 @@ export default function Home() {
               textAlign: "center",
             }}
           >
-            DFAT is an open-source web-based tool that estimates the demand
-            flexibility potential of common control strategies in residential
-            and commercial buildings. DFAT is designed to help building owners &
-            operators understand the potential of demand flexibility in their
-            buildings and to help utilities and grid operators understand the
-            potential of demand flexibility in their service territories.
+            EVIT is an open-source web-based tool web-based tool for planning
+            optimal electric vehicle charging stations for both fleet and
+            personally owned vehicles in the context of transportation
+            electrification.
           </Typography>
-        </Grid>
-
-        <Grid
-          item
-          xs={12}
-          align="center"
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            gap: "1rem",
-            flexDirection: isMobile ? "column" : "row",
-          }} /* Stack buttons vertically on mobile */
-        >
-          {/* Button Components */}
-          {/* Residential Button */}
-          <Button
-            variant="contained"
-            color="secondary"
-            onClick={() => navigate("/residential")}
-            sx={{
-              width: "350px",
-              height: "120px",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-            }}
-          >
-            <img
-              src={residentialIcon}
-              alt="Residential Icon"
-              style={{ maxWidth: "80%", maxHeight: "60%" }}
-            />
-            Residential
-          </Button>
-
-          {/* Commercial Button */}
-          <Button
-            variant="contained"
-            color="secondary"
-            onClick={() => navigate("/basic")}
-            sx={{
-              width: "350px",
-              height: "120px",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-            }}
-          >
-            <img
-              src={commercialIcon}
-              alt="Commercial Icon"
-              style={{ maxWidth: "80%", maxHeight: "60%" }}
-            />
-            Commercial
-          </Button>
-
-          {/* Benchmarking Button */}
-          <Button
-            variant="contained"
-            color="secondary"
-            onClick={() => navigate("/benchmarking")}
-            sx={{
-              width: "350px",
-              height: "120px",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-            }}
-          >
-            <img
-              src={benchmarkIcon}
-              alt="Benchmarking Icon"
-              style={{ maxWidth: "80%", maxHeight: "60%" }}
-            />
-            Benchmarking
-          </Button>
         </Grid>
 
         <Grid
@@ -183,8 +102,7 @@ export default function Home() {
             color="white.main"
             sx={{ fontSize: "1.2rem" }}
           >
-            DFAT: A Web-Based Demand Flexibility Assessment Toolkit for
-            Building-to-Grid Integration.{" "}
+            TBD. {" "}
             <a
               href="https://doi.org/10.1016/j.buildenv.2023.110663"
               target="_blank"

@@ -3,14 +3,9 @@ import { Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import About from "./components/About.js";
-import Advanced from "./components/Advanced.js";
-import Basic from "./components/Basic.js";
 import FAQ from "./components/FAQ.js";
 import Home from "./components/Home.js";
 import NotFound from "./components/NotFound.js";
-import Benchmarking from "./components/Benchmarking.js";
-import BenchmarkingData from "./components/BenchmarkingData.js";
-
 import AppBar from "./components/SiteAppBar.js";
 
 const theme = createTheme({
@@ -55,15 +50,8 @@ export default function App() {
         <Suspense>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/basic" element={<Basic />} />
-            <Route path="/advanced" element={<Advanced />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/about" element={<About />} />
-            <Route path="/benchmarking" element={<Benchmarking />} />
-            <Route
-              path="/benchmarking/:site_id"
-              element={<BenchmarkingData />}
-            />
             <Route path="/*" element={<NotFound />} />
           </Routes>
         </Suspense>
