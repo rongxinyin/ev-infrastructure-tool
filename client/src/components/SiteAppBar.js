@@ -35,7 +35,7 @@ export default function SiteAppBar(props) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        Demand Flexibility Assessment Tool
+        Electrical Vehicle Infrastructure Tool
       </Typography>
       <Divider />
       <List>
