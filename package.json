@@ -1,0 +1,17 @@
+{
+  "name": "dr-estimation-tool",
+  "version": "1.0.0",
+  "scripts": {
+    "format": "prettier ./ --write",
+    "format-check": "prettier ./ --check"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.14.0",
+    "axios": "^1.4.0",
+    "chart.js": "^4.3.0",
+    "prettier": "^2.8.8",
+    "react-chartjs-2": "^5.2.0"
+  }
+}
