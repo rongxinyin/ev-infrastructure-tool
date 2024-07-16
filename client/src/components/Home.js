@@ -19,6 +19,10 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
+const buttonSX = { 
+  marginTop: 1 
+};
+
 export default function Home() {
   let navigate = useNavigate(); // Navigate to different pages
   const theme = useTheme();
@@ -41,7 +45,37 @@ export default function Home() {
           </Typography>
         </Grid>
 
-        <Grid item xs={12} align="center">
+        {/* buttons for subpage navigation */}
+        <Grid item xs={3} align="center" spacing={0}>
+          <Button
+            to="/buildinginfo"
+            variant="contained"
+            sx={buttonSX}
+            fullWidth
+          >
+            Building Info
+          </Button>
+
+          <Button
+            to="/employeeinfo"
+            variant="contained"
+            sx={buttonSX}
+            fullWidth
+          >
+            Employee Info
+          </Button>
+
+          <Button to="/simulation" variant="contained" sx={buttonSX} fullWidth>
+            Simulation
+          </Button>
+
+          <Button to="/results" variant="contained" sx={buttonSX} fullWidth>
+            Results
+          </Button>
+        </Grid>
+
+        <Grid item xs={9}>
+          {/* define custom subpage components */}
         </Grid>
 
         <Grid
@@ -57,16 +91,10 @@ export default function Home() {
               : "1.2rem" /* Adjust font size for mobile */,
           }}
         >
-          <Typography
-            variant="body2"
-            sx={{ fontSize: "1.2rem" }}
-          >
+          <Typography variant="body2" sx={{ fontSize: "1.2rem" }}>
             Paper Citations:
           </Typography>
-          <Typography
-            variant="body2"
-            sx={{ fontSize: "1.2rem" }}
-          >
+          <Typography variant="body2" sx={{ fontSize: "1.2rem" }}>
             Yin, R., J. Liu, M.A. Piette, J. Xie, M. Pritoni, A. Casillas, L.
             Yu, P. Schwartz, Comparing simulated demand flexibility against
             actual performance in commercial office buildings, Building and
@@ -80,10 +108,7 @@ export default function Home() {
               https://doi.org/10.1016/j.buildenv.2023.110663
             </a>
           </Typography>
-          <Typography
-            variant="body2"
-            sx={{ fontSize: "1.2rem" }}
-          >
+          <Typography variant="body2" sx={{ fontSize: "1.2rem" }}>
             TBD.{" "}
             <a
               href="https://doi.org/10.1016/j.buildenv.2023.110663"

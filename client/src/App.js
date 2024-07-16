@@ -32,7 +32,7 @@ const theme = createTheme({
       main: "#FFFFFF", // white
     },
     lightgray: {
-      main: "#b1b3b3" // light gray
+      main: "#b1b3b3", // light gray
     },
   },
   typography: {
