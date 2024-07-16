@@ -7,6 +7,10 @@ import FAQ from "./components/FAQ.js";
 import Home from "./components/Home.js";
 import NotFound from "./components/NotFound.js";
 import AppBar from "./components/SiteAppBar.js";
+import Results from "./components/Results.js";
+import BuildingInfo from "./components/BuildingInfo.js";
+import Simulation from "./components/Simulation.js";
+import EmployeeInfo from "./components/EmployeeInfo.js";
 
 const theme = createTheme({
   typography: {
@@ -53,6 +57,11 @@ export default function App() {
             <Route path="/faq" element={<FAQ />} />
             <Route path="/about" element={<About />} />
             <Route path="/*" element={<NotFound />} />
+            <Route path="/results" element={<Results />} />
+            <Route path="/buildinginfo" element={<BuildingInfo />} />
+            <Route path="/simulation" element={<Simulation />} />
+            <Route path="/employeeinfo" element={<EmployeeInfo />} />
+            
           </Routes>
         </Suspense>
       </BrowserRouter>
