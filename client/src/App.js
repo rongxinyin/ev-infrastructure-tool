@@ -61,7 +61,6 @@ export default function App() {
             <Route path="/results" element={<Results />} />
             <Route path="/buildinginfo" element={<BuildingInfo />} />
             <Route path="/employeeinfo" element={<EmployeeInfo />} />
-            
           </Routes>
         </Suspense>
       </BrowserRouter>

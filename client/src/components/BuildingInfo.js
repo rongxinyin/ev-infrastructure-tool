@@ -1,30 +1,41 @@
-import React, { useState } from 'react';
-import { Grid, TextField, Button, Typography, Box, Checkbox, FormControlLabel, Radio, RadioGroup } from '@mui/material';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import {
+  Grid,
+  TextField,
+  Button,
+  Typography,
+  Box,
+  Checkbox,
+  FormControlLabel,
+  Radio,
+  RadioGroup,
+} from "@mui/material";
+import { Link } from "react-router-dom";
 
 const App = () => {
   const [buildingInfo, setBuildingInfo] = useState({
-    name: '',
-    buildingType: '',
-    addressType: 'zipCode',
-    zipCode: '',
-    city: '',
-    state: '',
-    fullAddress: '',
+    name: "",
+    buildingType: "",
+    addressType: "zipCode",
+    zipCode: "",
+    city: "",
+    state: "",
+    fullAddress: "",
   });
 
   const [distributedEnergySource, setDistributedEnergySource] = useState({
     onsiteDER: false,
-    desType: '',
-    capacity: '',
+    desType: "",
+    capacity: "",
   });
 
-  const [electricVehicleChargingStations, setElectricVehicleChargingStations] = useState({
-    level: '',
-    portType: '',
-    maxChargingPerPort: '',
-    number: '',
-  });
+  const [electricVehicleChargingStations, setElectricVehicleChargingStations] =
+    useState({
+      level: "",
+      portType: "",
+      maxChargingPerPort: "",
+      number: "",
+    });
 
   const handleBuildingInfoChange = (event) => {
     const { name, value } = event.target;
@@ -38,32 +49,53 @@ const App = () => {
 
   const handleElectricVehicleChargingStationsChange = (event) => {
     const { name, value } = event.target;
-    setElectricVehicleChargingStations({ ...electricVehicleChargingStations, [name]: value });
+    setElectricVehicleChargingStations({
+      ...electricVehicleChargingStations,
+      [name]: value,
+    });
   };
-
-
 
   return (
     <Grid container spacing={2} style={{ marginTop: 100 }}>
       <Grid item xs={3}>
         <Grid container spacing={2}>
           <Grid item xs={12}>
-            <Button component={Link} to="/buildinginfo" variant="contained" fullWidth>
+            <Button
+              component={Link}
+              to="/buildinginfo"
+              variant="contained"
+              fullWidth
+            >
               BUILDINGINFO
             </Button>
           </Grid>
           <Grid item xs={12}>
-            <Button component={Link} to="/employeeinfo" variant="contained" fullWidth>
+            <Button
+              component={Link}
+              to="/employeeinfo"
+              variant="contained"
+              fullWidth
+            >
               EMPLOYEE INFO
             </Button>
           </Grid>
           <Grid item xs={12}>
-            <Button component={Link} to="/simulation" variant="contained" fullWidth>
+            <Button
+              component={Link}
+              to="/simulation"
+              variant="contained"
+              fullWidth
+            >
               SIMULATION
             </Button>
           </Grid>
           <Grid item xs={12}>
-            <Button component={Link} to="/results" variant="contained" fullWidth>
+            <Button
+              component={Link}
+              to="/results"
+              variant="contained"
+              fullWidth
+            >
               RESULTS
             </Button>
           </Grid>
@@ -99,11 +131,23 @@ const App = () => {
             <Typography variant="h6" gutterBottom>
               Address
             </Typography>
-            <RadioGroup name="addressType" value={buildingInfo.addressType} onChange={handleBuildingInfoChange}>
-              <FormControlLabel value="zipCode" control={<Radio />} label="Zip Code" />
-              <FormControlLabel value="fullAddress" control={<Radio />} label="Full Address" />
+            <RadioGroup
+              name="addressType"
+              value={buildingInfo.addressType}
+              onChange={handleBuildingInfoChange}
+            >
+              <FormControlLabel
+                value="zipCode"
+                control={<Radio />}
+                label="Zip Code"
+              />
+              <FormControlLabel
+                value="fullAddress"
+                control={<Radio />}
+                label="Full Address"
+              />
             </RadioGroup>
-            {buildingInfo.addressType === 'zipCode' ? (
+            {buildingInfo.addressType === "zipCode" ? (
               <Grid container spacing={2}>
                 <Grid item xs={4}>
                   <TextField
