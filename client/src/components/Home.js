@@ -25,40 +25,23 @@ export default function Home() {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm")); // Check if the device is mobile
 
   return (
-    <Box bgcolor={"primary.main"} p={isMobile ? 1 : 2}>
+    <Box bgcolor={"primary.white"} p={isMobile ? 1 : 2}>
       {" "}
       {/* Adjust padding for mobile */}
-      <Grid container spacing={2} padding={isMobile ? 2 : 10} md={12} xs={12}>
+      <Grid container spacing={1} padding={isMobile ? 5 : 5} md={12} xs={12}>
         <Grid item xs={12} align="center">
           <Typography
             variant="h4"
-            color="white.main"
             sx={{
               fontWeight: "bold",
-              marginTop: 10,
+              marginTop: 0,
             }}
           >
-            Welcome to the Electrical Vehicle Infrastructure Tool (EVIT)!
+            Electrical Vehicle Infrastructure Tool (EVIT)
           </Typography>
         </Grid>
 
         <Grid item xs={12} align="center">
-          <Typography
-            variant="h6"
-            color="white.main"
-            sx={{
-              m: 1,
-              marginTop: 1,
-              textAlign: "center",
-            }}
-          >
-            EVIT is an open-source web-based tool web-based tool for planning
-            optimal electric vehicle charging stations for both fleet and
-            personally owned vehicles in the context of transportation
-            electrification. It provides the ability to estimate the
-            requirements for charging infrastructure and the related electrical
-            demands.
-          </Typography>
         </Grid>
 
         <Grid
@@ -68,7 +51,7 @@ export default function Home() {
           sx={{
             marginTop: 5,
             width: "100%",
-            backgroundColor: "primary.main",
+            backgroundColor: "primary.white",
             fontSize: isMobile
               ? "0.8rem"
               : "1.2rem" /* Adjust font size for mobile */,
@@ -76,14 +59,12 @@ export default function Home() {
         >
           <Typography
             variant="body2"
-            color="white.main"
             sx={{ fontSize: "1.2rem" }}
           >
             Paper Citations:
           </Typography>
           <Typography
             variant="body2"
-            color="white.main"
             sx={{ fontSize: "1.2rem" }}
           >
             Yin, R., J. Liu, M.A. Piette, J. Xie, M. Pritoni, A. Casillas, L.
@@ -101,7 +82,6 @@ export default function Home() {
           </Typography>
           <Typography
             variant="body2"
-            color="white.main"
             sx={{ fontSize: "1.2rem" }}
           >
             TBD.{" "}

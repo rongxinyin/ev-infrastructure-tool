@@ -22,7 +22,7 @@ import { useNavigate } from "react-router-dom";
 import { ReactComponent as Logo } from "./images/lbnlgridintegrationgroup.svg";
 
 const drawerWidth = 240;
-const navItems = ["FAQ", "About", "Result"];
+const navItems = ["FAQ", "About"];
 
 export default function SiteAppBar(props) {
   const { window } = props;
@@ -70,7 +70,7 @@ export default function SiteAppBar(props) {
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
+            sx={{ mr: 2, display: { sm: "none" }}}
           >
             <MenuIcon />
             {/* <MenuIcon /> */}
@@ -94,12 +94,6 @@ export default function SiteAppBar(props) {
               onClick={() => navigate(`/about`)}
             >
               About
-            </Button>
-            <Button
-              sx={{ color: "primary" }}
-              onClick={() => navigate(`/Results`)}
-            >
-              Results
             </Button>
           </Box>
         </Toolbar>
