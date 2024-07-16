@@ -4,6 +4,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import About from "./components/About.js";
 import FAQ from "./components/FAQ.js";
+import Simulation from "./components/Simulation.js";
+import Results from "./components/Results.js";
 import Home from "./components/Home.js";
 import NotFound from "./components/NotFound.js";
 import AppBar from "./components/SiteAppBar.js";
@@ -55,6 +57,8 @@ export default function App() {
             <Route path="/faq" element={<FAQ />} />
             <Route path="/about" element={<About />} />
             <Route path="/*" element={<NotFound />} />
+            <Route path="/simulation" element={<Simulation />} />
+            <Route path="/results" element={<Results />} />
             <Route path="/buildinginfo" element={<BuildingInfo />} />
             <Route path="/employeeinfo" element={<EmployeeInfo />} />
             
