@@ -9,6 +9,8 @@ import Results from "./components/Results.js";
 import Home from "./components/Home.js";
 import NotFound from "./components/NotFound.js";
 import AppBar from "./components/SiteAppBar.js";
+import BuildingInfo from "./components/BuildingInfo.js";
+import EmployeeInfo from "./components/EmployeeInfo.js";
 
 const theme = createTheme({
   typography: {
@@ -57,6 +59,9 @@ export default function App() {
             <Route path="/*" element={<NotFound />} />
             <Route path="/simulation" element={<Simulation />} />
             <Route path="/results" element={<Results />} />
+            <Route path="/buildinginfo" element={<BuildingInfo />} />
+            <Route path="/employeeinfo" element={<EmployeeInfo />} />
+            
           </Routes>
         </Suspense>
       </BrowserRouter>
