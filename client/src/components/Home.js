@@ -9,6 +9,7 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import BuildingInfo from "./BuildingInfo.js";
 
 // Visualization
 const Item = styled(Paper)(({ theme }) => ({
@@ -19,8 +20,8 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-const buttonSX = { 
-  marginTop: 1 
+const buttonSX = {
+  marginTop: 1,
 };
 
 export default function Home() {
@@ -76,6 +77,7 @@ export default function Home() {
 
         <Grid item xs={9}>
           {/* define custom subpage components */}
+          <BuildingInfo />
         </Grid>
 
         <Grid
