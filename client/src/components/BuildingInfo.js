@@ -71,38 +71,25 @@ export default function BuildingInfo() {
         Building/Site Info
       </Typography>
       <Grid container spacing={1}>
-        {/* <Grid item xs={12}>
-          <Typography variant="h6" gutterBottom >
-            Building Information
-          </Typography>
-        </Grid> */}
-        <Grid item xs={1} sx={{ marginLeft: -1 }}>
-          <Typography variant="h6" align="center">
-            Name
-          </Typography>
-        </Grid>
-        <Grid item xs={11}>
+        <Grid item xs={6}>
           <TextField
             fullWidth
             name="name"
+            label="Name"
             value={buildingInfo.name}
             onChange={handleBuildingInfoChange}
-            size="small"
+            // size="small"
             sx={textFieldSX}
           />
         </Grid>
-        <Grid item xs={1} sx={{ marginLeft: -1 }}>
-          <Typography variant="h6" align="center">
-            Type
-          </Typography>
-        </Grid>
-        <Grid item xs={11}>
+        <Grid item xs={6}>
           <TextField
             fullWidth
+            label="Type"
             name="buildingType"
             value={buildingInfo.buildingType}
             onChange={handleBuildingInfoChange}
-            size="small"
+            // size="big"
           />
         </Grid>
         {/* <Grid item xs={12}>
@@ -139,6 +126,7 @@ export default function BuildingInfo() {
                   onChange={handleBuildingInfoChange}
                   sx={{ marginTop: 1 }}
                   type="number"
+                  label="Zip Code"
                 />
               </Grid>
             </Grid>
@@ -150,6 +138,7 @@ export default function BuildingInfo() {
                 value={buildingInfo.fullAddress}
                 onChange={handleBuildingInfoChange}
                 sx={{ marginTop: 1 }}
+                label="Full Address"
               />
             </Grid>
           )}
@@ -215,6 +204,7 @@ export default function BuildingInfo() {
               <TextField
                 label="Max Charging per Port"
                 fullWidth
+                type="number"
                 name="maxChargingPerPort"
                 value={electricVehicleChargingStations.maxChargingPerPort}
                 onChange={handleElectricVehicleChargingStationsChange}
@@ -225,6 +215,7 @@ export default function BuildingInfo() {
                 label="Number"
                 fullWidth
                 name="number"
+                type="number"
                 value={electricVehicleChargingStations.number}
                 onChange={handleElectricVehicleChargingStationsChange}
               />
