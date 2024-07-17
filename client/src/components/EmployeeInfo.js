@@ -377,4 +377,4 @@ export default function EmployeeInfo() {
       </Grid>
     </Container>
   );
-};
+}

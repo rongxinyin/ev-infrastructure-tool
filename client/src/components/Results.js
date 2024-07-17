@@ -21,7 +21,6 @@ export default function Simulation() {
       }}
     >
       <Grid container spacing={0}>
-
         <Grid item xs={12}>
           <Typography variant="h4" color="white.main" sx={{ marginTop: 8 }}>
             RESULTS

@@ -7,12 +7,13 @@ import {
   styled,
   useTheme,
   useMediaQuery,
+  ButtonGroup,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import BuildingInfo from "./BuildingInfo.js";
 import EmployeeInfo from "./EmployeeInfo.js";
-import Simulation from "./Simulation.js"
-import Results from "./Results.js"
+import Simulation from "./Simulation.js";
+import Results from "./Results.js";
 
 // Visualization
 const Item = styled(Paper)(({ theme }) => ({
@@ -24,7 +25,8 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const buttonSX = {
-  marginTop: 1,
+  marginBottom: 1,
+  height: 80,
 };
 
 export default function Home() {
@@ -50,35 +52,41 @@ export default function Home() {
         </Grid>
 
         {/* buttons for subpage navigation */}
-        <Grid item xs={3} align="center" spacing={0}>
-          <Button
-            to="/buildinginfo"
-            variant="contained"
-            sx={buttonSX}
-            fullWidth
-          >
-            Building Info
-          </Button>
+        <Grid item xs={2} align="center" spacing={0}>
 
-          <Button
-            to="/employeeinfo"
-            variant="contained"
-            sx={buttonSX}
-            fullWidth
-          >
-            Employee Info
-          </Button>
+            <Button
+              to="/buildinginfo"
+              variant="contained"
+              sx={buttonSX}
+              fullWidth
+            >
+              Building/Site Info
+            </Button>
 
-          <Button to="/simulation" variant="contained" sx={buttonSX} fullWidth>
-            Simulation
-          </Button>
+            <Button
+              to="/employeeinfo"
+              variant="contained"
+              sx={buttonSX}
+              fullWidth
+            >
+              Employee Info
+            </Button>
 
-          <Button to="/results" variant="contained" sx={buttonSX} fullWidth>
-            Results
-          </Button>
+            <Button
+              to="/simulation"
+              variant="contained"
+              sx={buttonSX}
+              fullWidth
+            >
+              Simulation
+            </Button>
+
+            <Button to="/results" variant="contained" sx={buttonSX} fullWidth>
+              Results
+            </Button>
         </Grid>
 
-        <Grid item xs={9}>
+        <Grid item xs={10}>
           {/* define custom subpage components */}
           {/* <BuildingInfo /> */}
           {/* <EmployeeInfo /> */}
