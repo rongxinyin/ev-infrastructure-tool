@@ -25,6 +25,11 @@ import {
   Link,
 } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
+import { DemoContainer } from "@mui/x-date-pickers/internals/demo/index.js";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs/index.js";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider/index.js";
+import { TimePicker } from "@mui/x-date-pickers/TimePicker/index.js";
+import dayjs from "dayjs";
 
 export default function EmployeeInfo() {
   const [employees, setEmployees] = useState([]);
@@ -33,8 +38,8 @@ export default function EmployeeInfo() {
     commuteMode: "",
     zipcode: "",
     onsiteBldg: "",
-    leaveToWorkTime: "",
-    returnHomeTime: "",
+    leaveToWorkTime: null,
+    returnHomeTime: null,
   });
   const [selectedFile, setSelectedFile] = useState(null);
 
@@ -42,6 +47,13 @@ export default function EmployeeInfo() {
     setEmployeeData({
       ...employeeData,
       [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleTimeChange = (newValue, field) => {
+    setEmployeeData({
+      ...employeeData,
+      [field]: newValue,
     });
   };
 
@@ -55,8 +67,8 @@ export default function EmployeeInfo() {
       commuteMode: "",
       zipcode: "",
       onsiteBldg: "",
-      leaveToWorkTime: "",
-      returnHomeTime: "",
+      leaveToWorkTime: null,
+      returnHomeTime: null,
     });
   };
 
@@ -98,7 +110,7 @@ export default function EmployeeInfo() {
           Employee Info
         </Typography>
       </Grid>
-      <Grid container spacing={2} style={{ marginTop: 2 }}>
+      <Grid container spacing={0} style={{}}>
         <Grid item xs={12} md={12}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
@@ -126,6 +138,7 @@ export default function EmployeeInfo() {
                     label="Zipcode"
                     fullWidth
                     name="zipcode"
+                    type="number"
                     value={employeeData.zipcode}
                     onChange={handleChange}
                   />
@@ -140,22 +153,34 @@ export default function EmployeeInfo() {
                   />
                 </Grid>
                 <Grid item xs={3}>
-                  <TextField
-                    label="Leave to Work Time"
-                    fullWidth
-                    name="leaveToWorkTime"
-                    value={employeeData.leaveToWorkTime}
-                    onChange={handleChange}
-                  />
+                  <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <DemoContainer components={["TimePicker"]}>
+                      <TimePicker
+                        label="Leave to work time"
+                        fullWidth
+                        value={employeeData.leaveToWorkTime}
+                        name="leaveToWorkTime"
+                        onChange={(newValue) =>
+                          handleTimeChange(newValue, "leaveToWorkTime")
+                        }
+                      />
+                    </DemoContainer>
+                  </LocalizationProvider>
                 </Grid>
                 <Grid item xs={3}>
-                  <TextField
-                    label="Return Home Time"
-                    fullWidth
-                    name="returnHomeTime"
-                    value={employeeData.returnHomeTime}
-                    onChange={handleChange}
-                  />
+                  <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <DemoContainer components={["TimePicker"]}>
+                      <TimePicker
+                        label="Return home time"
+                        fullWidth
+                        value={employeeData.returnHomeTime}
+                        name="returnHomeTime"
+                        onChange={(newValue) =>
+                          handleTimeChange(newValue, "returnHomeTime")
+                        }
+                      />
+                    </DemoContainer>
+                  </LocalizationProvider>
                 </Grid>
               </Grid>
             </Grid>
@@ -212,8 +237,16 @@ export default function EmployeeInfo() {
                         <TableCell>{employee.commuteMode}</TableCell>
                         <TableCell>{employee.zipcode}</TableCell>
                         <TableCell>{employee.onsiteBldg}</TableCell>
-                        <TableCell>{employee.leaveToWorkTime}</TableCell>
-                        <TableCell>{employee.returnHomeTime}</TableCell>
+                        <TableCell>
+                          {employee.leaveToWorkTime.format(
+                            "MM/DD/YYYY HH:mm:ss"
+                          )}
+                        </TableCell>
+                        <TableCell>
+                          {employee.returnHomeTime.format(
+                            "MM/DD/YYYY HH:mm:ss"
+                          )}
+                        </TableCell>
                       </TableRow>
                     ))}
                   </TableBody>
@@ -224,7 +257,7 @@ export default function EmployeeInfo() {
         </Grid>
       </Grid>
       <Grid container spacing={2}>
-        <Grid container spacing={2} style={{ marginTop: 100 }}>
+        <Grid container spacing={2} style={{ marginTop: 50 }}>
           <Grid item xs={3}>
             <Typography variant="h6" align="center" gutterBottom>
               Traveling 0-10 Miles
@@ -263,7 +296,7 @@ export default function EmployeeInfo() {
           </Grid>
           <Grid item xs={3}>
             <Typography variant="h6" align="center" gutterBottom>
-              Avg Trip Duration(Minutes)
+              Avg Trip Duration (Minutes)
             </Typography>
             <Slider
               valueLabelDisplay="auto"
@@ -313,7 +346,7 @@ export default function EmployeeInfo() {
           </Grid>
           <Grid item xs={3}>
             <Typography variant="h6" align="center" gutterBottom>
-              Avg Trip Duration(Minutes)
+              Avg Trip Duration (Minutes)
             </Typography>
             <Slider
               valueLabelDisplay="auto"

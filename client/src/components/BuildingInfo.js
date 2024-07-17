@@ -54,7 +54,6 @@ export default function BuildingInfo() {
     });
   };
 
-
   const handleElectricVehicleChargingStationsChange = (event) => {
     const { name, value } = event.target;
     setElectricVehicleChargingStations({
@@ -115,10 +114,10 @@ export default function BuildingInfo() {
             />
           </RadioGroup>
         </Grid>
-        <Grid item xs={10} sx={{marginLeft: -1}}>
+        <Grid item xs={10} sx={{ marginLeft: -1 }}>
           {buildingInfo.addressType === "zipCode" ? (
             <Grid container spacing={0}>
-              <Grid item xs={3} >
+              <Grid item xs={3}>
                 <TextField
                   fullWidth
                   name="zipCode"
