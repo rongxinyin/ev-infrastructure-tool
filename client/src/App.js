@@ -2,15 +2,11 @@ import { ThemeProvider, createTheme } from "@mui/material";
 import { Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import About from "./components/About.js";
-import FAQ from "./components/FAQ.js";
-import Simulation from "./components/Simulation.js";
-import Results from "./components/Results.js";
-import Home from "./components/Home.js";
-import NotFound from "./components/NotFound.js";
+import About from "./pages/About.js";
+import FAQ from "./pages/FAQ.js";
+import Home from "./pages/Home.js";
+import NotFound from "./pages/NotFound.js";
 import AppBar from "./components/SiteAppBar.js";
-import BuildingInfo from "./components/BuildingInfo.js";
-import EmployeeInfo from "./components/EmployeeInfo.js";
 
 const theme = createTheme({
   typography: {
@@ -60,10 +56,6 @@ export default function App() {
             <Route path="/faq" element={<FAQ />} />
             <Route path="/about" element={<About />} />
             <Route path="/*" element={<NotFound />} />
-            <Route path="/simulation" element={<Simulation />} />
-            <Route path="/results" element={<Results />} />
-            <Route path="/buildinginfo" element={<BuildingInfo />} />
-            <Route path="/employeeinfo" element={<EmployeeInfo />} />
           </Routes>
         </Suspense>
       </BrowserRouter>

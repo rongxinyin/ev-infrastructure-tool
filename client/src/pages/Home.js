@@ -10,10 +10,10 @@ import {
   ButtonGroup,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import BuildingInfo from "./BuildingInfo.js";
-import EmployeeInfo from "./EmployeeInfo.js";
-import Simulation from "./Simulation.js";
-import Results from "./Results.js";
+import BuildingInfo from "../components/BuildingInfo.js";
+import EmployeeInfo from "../components/EmployeeInfo.js";
+import Simulation from "../components/Simulation.js";
+import Results from "../components/Results.js";
 import React, { useState } from "react";
 
 // Visualization

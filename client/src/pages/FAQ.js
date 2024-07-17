@@ -1,6 +1,6 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
 import React, { useState } from "react";
-import InfoListComponent from "./InfoListComponent.js";
+import InfoListComponent from "../components/InfoListComponent.js";
 
 const data = [
   {
