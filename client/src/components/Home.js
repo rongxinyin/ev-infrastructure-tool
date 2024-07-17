@@ -34,6 +34,38 @@ export default function Home() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm")); // Check if the device is mobile
 
+  let pageState = "employeeInfo";
+
+  const switchPagesButton = (state) => {
+    switch (state) {
+      case "buildingInfo":
+        pageState = "buildingInfo";
+        break;
+      case "employeeInfo":
+        pageState = "employeeInfo";
+        break;
+      case "simulation":
+        pageState = "simulation";
+        break;
+      case "results":
+        pageState = "results";
+        break;
+    }
+  };
+
+  const navigatePages = (state) => {
+    switch (state) {
+      case "buildingInfo":
+        return <BuildingInfo />;
+      case "employeeInfo":
+        return <EmployeeInfo />;
+      case "simulation":
+        return <Simulation />;
+      case "results":
+        return <Results />;
+    }
+  };
+
   return (
     <Box bgcolor={"primary.white"} p={isMobile ? 1 : 2}>
       {" "}
@@ -53,44 +85,57 @@ export default function Home() {
 
         {/* buttons for subpage navigation */}
         <Grid item xs={2} align="center" spacing={0}>
+          <Button
+            variant="contained"
+            sx={buttonSX}
+            fullWidth
+            onClick={() => switchPagesButton("buildingInfo")}
+          >
+            Building/Site Info
+          </Button>
 
-            <Button
-              to="/buildinginfo"
-              variant="contained"
-              sx={buttonSX}
-              fullWidth
-            >
-              Building/Site Info
-            </Button>
+          <Button
+            variant="contained"
+            sx={buttonSX}
+            fullWidth
+            onClick={() => switchPagesButton("employeeInfo")}
+          >
+            Employee Info
+          </Button>
 
-            <Button
-              to="/employeeinfo"
-              variant="contained"
-              sx={buttonSX}
-              fullWidth
-            >
-              Employee Info
-            </Button>
+          <Button
+            variant="contained"
+            sx={buttonSX}
+            fullWidth
+            onClick={() => switchPagesButton("simulation")}
+          >
+            Simulation
+          </Button>
 
-            <Button
-              to="/simulation"
-              variant="contained"
-              sx={buttonSX}
-              fullWidth
-            >
-              Simulation
-            </Button>
-
-            <Button to="/results" variant="contained" sx={buttonSX} fullWidth>
-              Results
-            </Button>
+          <Button
+            to="/results"
+            variant="contained"
+            sx={buttonSX}
+            fullWidth
+            onClick={() => switchPagesButton("results")}
+          >
+            Results
+          </Button>
         </Grid>
 
         <Grid item xs={10}>
-          {/* define custom subpage components */}
-          {/* <BuildingInfo /> */}
-          {/* <EmployeeInfo /> */}
-          <Simulation />
+          {() => {
+            switch (pageState) {
+              case "buildingInfo":
+                return <BuildingInfo />;
+              case "employeeInfo":
+                return <EmployeeInfo />;
+              case "simulation":
+                return <Simulation />;
+              case "results":
+                return <Results />;
+            }
+          }}
         </Grid>
 
         <Grid
