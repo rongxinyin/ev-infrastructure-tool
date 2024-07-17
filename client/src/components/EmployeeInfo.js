@@ -1,380 +1,230 @@
-import React, { useState } from "react";
-import {
-  Box,
-  Button,
-  Container,
-  Grid,
-  TextField,
-  Typography,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-  Select,
-  MenuItem,
-  InputLabel,
-  FormControl,
-  Fab,
-  TableContainer,
-  Paper,
-  IconButton,
-  Tooltip,
-  Slider,
-  Checkbox,
-  Link,
-} from "@mui/material";
-import { Link as RouterLink } from "react-router-dom";
+import React, { useState } from 'react';
+import { 
+  Box, 
+  Button, 
+  Checkbox, 
+  FormControlLabel, 
+  Grid, 
+  TextField, 
+  Table, 
+  TableBody, 
+  TableCell, 
+  TableContainer, 
+  TableHead, 
+  TableRow, 
+  Typography, 
+  IconButton, 
+  Input,
+  Paper
+} from '@mui/material';
 
-export default function EmployeeInfo() {
+function EmployeeInfo() {
+  const [employeeId, setEmployeeId] = useState('');
+  const [commuteMode, setCommuteMode] = useState('');
+  const [zipCode, setZipCode] = useState('');
+  const [onsiteBldg, setOnsiteBldg] = useState('');
+  const [leaveToWorkTime, setLeaveToWorkTime] = useState('');
+  const [returnHomeTime, setReturnHomeTime] = useState('');
+  const [homeCharging, setHomeCharging] = useState(false);
+  const [chargerLevel, setChargerLevel] = useState('');
   const [employees, setEmployees] = useState([]);
-  const [employeeData, setEmployeeData] = useState({
-    employeeId: "",
-    commuteMode: "",
-    zipcode: "",
-    onsiteBldg: "",
-    leaveToWorkTime: "",
-    returnHomeTime: "",
-  });
-  const [selectedFile, setSelectedFile] = useState(null);
-
-  const handleChange = (e) => {
-    setEmployeeData({
-      ...employeeData,
-      [e.target.name]: e.target.value,
-    });
-  };
+  const [showJson, setShowJson] = useState(false);
+  const [file, setFile] = useState(null);
 
   const handleAddRow = () => {
-    setEmployees([
-      ...employees,
-      { ...employeeData, id: Math.random().toString(36).substring(2, 15) },
-    ]);
-    setEmployeeData({
-      employeeId: "",
-      commuteMode: "",
-      zipcode: "",
-      onsiteBldg: "",
-      leaveToWorkTime: "",
-      returnHomeTime: "",
-    });
+    const newRow = {
+      employeeId,
+      commuteMode,
+      zipCode,
+      onsiteBldg,
+      leaveToWorkTime,
+      returnHomeTime,
+      homeCharging,
+      chargerLevel,
+    };
+    setEmployees([...employees, newRow]);
+    setEmployeeId('');
+    setCommuteMode('');
+    setZipCode('');
+    setOnsiteBldg('');
+    setLeaveToWorkTime('');
+    setReturnHomeTime('');
+    setHomeCharging(false);
+    setChargerLevel('');
   };
 
-  const handleDeleteLastRow = () => {
-    setEmployees(employees.slice(0, -1));
+  const handleDeleteRow = (index) => {
+    setEmployees(employees.filter((_, i) => i!== index));
   };
 
-  const handleFileChange = (e) => {
-    setSelectedFile(e.target.files[0]);
-  };
-
-  const handleUploadFile = () => {
-    if (selectedFile) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        const csvData = reader.result;
-        const rows = csvData.split("\n");
-        const employeesFromCsv = rows.map((row) => {
-          const columns = row.split(",");
-          return {
-            employeeId: columns[0],
-            commuteMode: columns[1],
-            zipcode: columns[2],
-            onsiteBldg: columns[3],
-            leaveToWorkTime: columns[4],
-            returnHomeTime: columns[5],
-          };
-        });
-        setEmployees(employeesFromCsv);
-      };
-      reader.readAsText(selectedFile);
-    }
+  const handleFileChange = (event) => {
+    setFile(event.target.files[0]);
   };
 
   return (
-    <Container maxWidth="lg">
-      <Grid item xs={12} style={{ marginTop: 0 }}>
-        <Typography variant="h4" align="center" gutterBottom>
-          EMPLOYEE INFO
-        </Typography>
-      </Grid>
-      <Grid container spacing={2} style={{ marginTop: 2 }}>
-        <Grid item xs={12} md={12}>
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <Grid container spacing={1}>
-                <Grid item xs={3}>
-                  <TextField
-                    label="Employee ID"
-                    fullWidth
-                    name="employeeId"
-                    value={employeeData.employeeId}
-                    onChange={handleChange}
-                  />
-                </Grid>
-                <Grid item xs={3}>
-                  <TextField
-                    label="Commute Mode"
-                    fullWidth
-                    name="commuteMode"
-                    value={employeeData.commuteMode}
-                    onChange={handleChange}
-                  />
-                </Grid>
-                <Grid item xs={3}>
-                  <TextField
-                    label="Zipcode"
-                    fullWidth
-                    name="zipcode"
-                    value={employeeData.zipcode}
-                    onChange={handleChange}
-                  />
-                </Grid>
-                <Grid item xs={3}>
-                  <TextField
-                    label="Onsite Bldg"
-                    fullWidth
-                    name="onsiteBldg"
-                    value={employeeData.onsiteBldg}
-                    onChange={handleChange}
-                  />
-                </Grid>
-                <Grid item xs={3}>
-                  <TextField
-                    label="Leave to Work Time"
-                    fullWidth
-                    name="leaveToWorkTime"
-                    value={employeeData.leaveToWorkTime}
-                    onChange={handleChange}
-                  />
-                </Grid>
-                <Grid item xs={3}>
-                  <TextField
-                    label="Return Home Time"
-                    fullWidth
-                    name="returnHomeTime"
-                    value={employeeData.returnHomeTime}
-                    onChange={handleChange}
-                  />
-                </Grid>
-              </Grid>
+    <Box sx={{ maxWidth: 1200, mx: 'auto', p: 2 }}>
+      <Grid>
+        <Typography variant='h1'>Employee INFO </Typography>
+        <Grid container spacing={2}>
+          <Grid item xs={3}>
+            <TextField
+              label="Employee ID"
+              value={employeeId}
+              onChange={(e) => setEmployeeId(e.target.value)}
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={3}>
+            <TextField
+              label="Commute Mode"
+              value={commuteMode}
+              onChange={(e) => setCommuteMode(e.target.value)}
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={3}>
+            <TextField
+              label="Zip Code"
+              value={zipCode}
+              onChange={(e) => setZipCode(e.target.value)}
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={3}>
+            <TextField
+              label="Onsite Bldg"
+              value={onsiteBldg}
+              onChange={(e) => setOnsiteBldg(e.target.value)}
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={3}>
+            <TextField
+              label="Leave to Work Time"
+              value={leaveToWorkTime}
+              onChange={(e) => setLeaveToWorkTime(e.target.value)}
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={3}>
+            <TextField
+              label="Return Home Time"
+              value={returnHomeTime}
+              onChange={(e) => setReturnHomeTime(e.target.value)}
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={3}>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={homeCharging}
+                  onChange={(e) => setHomeCharging(e.target.checked)}
+                />
+              }
+              label="Home Charging"
+            />
+          </Grid>
+          <Grid item xs={3}>
+            <TextField
+              label="Charger Level"
+              value={chargerLevel}
+              onChange={(e) => setChargerLevel(e.target.value)}
+              fullWidth
+            />
+          </Grid>
+        </Grid>
+        
+        <Box sx={{ mt: 10 }}>
+          <Grid item xs={12}>
+            <Grid container justifyContent="flex-end">
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={handleAddRow}
+              >
+                Add Row
+              </Button>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={() => handleDeleteRow(employees.length - 1)}
+                sx={{ ml: 2 }}
+              >
+                Delete Row
+              </Button>
+              <Input
+                type="file"
+                accept=".csv"
+                onChange={handleFileChange}
+                style={{ display: "none" }}
+              />
+              <IconButton component="span" sx={{ ml: 2 }}>
+                <i className="fas fa-upload" />
+              </IconButton>
+              <Button
+                variant="contained"
+                color="primary"
+                component="label"
+                sx={{ ml: 2 }}
+              >
+                Upload File
+                <Input
+                  type="file"
+                  accept=".csv"
+                  onChange={handleFileChange}
+                  style={{ display: "none" }}
+                />
+              </Button>
             </Grid>
-            <Grid item xs={12}>
-              <Grid container justifyContent="flex-end">
-                <Tooltip title="Add Row">
-                  <Fab color="primary" aria-label="add" onClick={handleAddRow}>
-                    +
-                  </Fab>
-                </Tooltip>
-                <Tooltip title="Delete Last Row">
-                  <Fab
-                    color="secondary"
-                    aria-label="delete"
-                    onClick={handleDeleteLastRow}
-                  >
-                    -
-                  </Fab>
-                </Tooltip>
-                <Tooltip title="Upload File">
-                  <Fab color="default" aria-label="upload">
-                    <label>
-                      <input
-                        type="file"
-                        accept=".csv"
-                        onChange={handleFileChange}
-                        style={{ display: "none" }}
-                      />
-                      <IconButton component="span">
-                        <i className="fas fa-upload" />
+          </Grid>
+          
+          <TableContainer component={Paper} sx={{ mt: 2 }}>
+            <Table aria-label="simple table">
+              <TableHead>
+                <TableRow>
+                  <TableCell>Employee ID</TableCell>
+                  <TableCell>Commute Mode</TableCell>
+                  <TableCell>Zipcode</TableCell>
+                  <TableCell>Onsite Bldg</TableCell>
+                  <TableCell>Leave to Work Time</TableCell>
+                  <TableCell>Return Home Time</TableCell>
+                  <TableCell>Home Charging</TableCell>
+                  <TableCell>Charger Level</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {employees.map((employee, index) => (
+                  <TableRow key={index}>
+                    <TableCell>{employee.employeeId}</TableCell>
+                    <TableCell>{employee.commuteMode}</TableCell>
+                    <TableCell>{employee.zipCode}</TableCell>
+                    <TableCell>{employee.onsiteBldg}</TableCell>
+                    <TableCell>{employee.leaveToWorkTime}</TableCell>
+                    <TableCell>{employee.returnHomeTime}</TableCell>
+                    <TableCell>{employee.homeCharging? "True" : "False"}</TableCell>
+                    <TableCell>{employee.chargerLevel}</TableCell>
+                    <TableCell>
+                      <IconButton onClick={() => handleDeleteRow(index)}>
+                        <i className="fas fa-trash" />
                       </IconButton>
-                    </label>
-                  </Fab>
-                </Tooltip>
-              </Grid>
-            </Grid>
-            <Grid item xs={12}>
-              <TableContainer component={Paper}>
-                <Table>
-                  <TableHead>
-                    <TableRow>
-                      <TableCell>Employee ID</TableCell>
-                      <TableCell>Commute Mode</TableCell>
-                      <TableCell>Zipcode</TableCell>
-                      <TableCell>Onsite Bldg</TableCell>
-                      <TableCell>Leave to Work Time</TableCell>
-                      <TableCell>Return Home Time</TableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {employees.map((employee) => (
-                      <TableRow key={employee.id}>
-                        <TableCell>{employee.employeeId}</TableCell>
-                        <TableCell>{employee.commuteMode}</TableCell>
-                        <TableCell>{employee.zipcode}</TableCell>
-                        <TableCell>{employee.onsiteBldg}</TableCell>
-                        <TableCell>{employee.leaveToWorkTime}</TableCell>
-                        <TableCell>{employee.returnHomeTime}</TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </TableContainer>
-            </Grid>
-          </Grid>
-        </Grid>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+          
+          {showJson && (
+            <Box sx={{ mt: 2 }}>
+              <Typography>json-output:</Typography>
+              <Typography>{JSON.stringify(employees, null, 2)}</Typography>
+            </Box>
+          )}
+        </Box>
       </Grid>
-      <Grid container spacing={2}>
-        <Grid container spacing={2} style={{ marginTop: 100 }}>
-          <Grid item xs={3}>
-            <Typography variant="h6" align="center" gutterBottom>
-              Traveling 0-10 Miles
-            </Typography>
-            <Slider
-              valueLabelDisplay="auto"
-              aria-label="0-10 Miles"
-              defaultValue={0}
-              min={1}
-              max={1000}
-            />
-          </Grid>
-          <Grid item xs={3}>
-            <Typography variant="h6" align="center" gutterBottom>
-              % with Home Charger
-            </Typography>
-            <Slider
-              valueLabelDisplay="auto"
-              aria-label="0-10 Miles"
-              defaultValue={0}
-              min={0}
-              max={100}
-            />
-          </Grid>
-          <Grid item xs={3}>
-            <Typography variant="h6" align="center" gutterBottom>
-              Trips Per Week
-            </Typography>
-            <Slider
-              valueLabelDisplay="auto"
-              aria-label="0-10 Miles"
-              defaultValue={0}
-              min={1}
-              max={200}
-            />
-          </Grid>
-          <Grid item xs={3}>
-            <Typography variant="h6" align="center" gutterBottom>
-              Avg Trip Duration(Minutes)
-            </Typography>
-            <Slider
-              valueLabelDisplay="auto"
-              aria-label="0-10 Miles"
-              defaultValue={0}
-              min={1}
-              max={120}
-            />
-          </Grid>
-        </Grid>
-        <Grid container spacing={2}>
-          <Grid item xs={3}>
-            <Typography variant="h6" align="center" gutterBottom>
-              Traveling 10-40 Miles
-            </Typography>
-            <Slider
-              valueLabelDisplay="auto"
-              aria-label="10-40 Miles"
-              defaultValue={10}
-              min={1}
-              max={1000}
-            />
-          </Grid>
-          <Grid item xs={3}>
-            <Typography variant="h6" align="center" gutterBottom>
-              % with Home Charger
-            </Typography>
-            <Slider
-              valueLabelDisplay="auto"
-              aria-label="10-40 Miles"
-              defaultValue={10}
-              min={0}
-              max={100}
-            />
-          </Grid>
-          <Grid item xs={3}>
-            <Typography variant="h6" align="center" gutterBottom>
-              Trips Per Week
-            </Typography>
-            <Slider
-              valueLabelDisplay="auto"
-              aria-label="10-40 Miles"
-              defaultValue={10}
-              min={1}
-              max={200}
-            />
-          </Grid>
-          <Grid item xs={3}>
-            <Typography variant="h6" align="center" gutterBottom>
-              Avg Trip Duration(Minutes)
-            </Typography>
-            <Slider
-              valueLabelDisplay="auto"
-              aria-label="10-40 Miles"
-              defaultValue={10}
-              min={1}
-              max={120}
-            />
-          </Grid>
-        </Grid>
-        <Grid container spacing={2}>
-          <Grid item xs={3}>
-            <Typography variant="h6" align="center" gutterBottom>
-              Traveling 40-100 Miles
-            </Typography>
-            <Slider
-              valueLabelDisplay="auto"
-              aria-label="40-100 Miles"
-              defaultValue={40}
-              min={1}
-              max={1000}
-            />
-          </Grid>
-          <Grid item xs={3}>
-            <Typography variant="h6" align="center" gutterBottom>
-              % with Home Charger
-            </Typography>
-            <Slider
-              valueLabelDisplay="auto"
-              aria-label="40-100 Miles"
-              defaultValue={40}
-              min={0}
-              max={100}
-            />
-          </Grid>
-          <Grid item xs={3}>
-            <Typography variant="h6" align="center" gutterBottom>
-              Trips Per Week
-            </Typography>
-            <Slider
-              valueLabelDisplay="auto"
-              aria-label="40-100 Miles"
-              defaultValue={40}
-              min={1}
-              max={200}
-            />
-          </Grid>
-          <Grid item xs={3}>
-            <Typography variant="h6" align="center" gutterBottom>
-              Avg Trip Duration (Minutes)
-            </Typography>
-            <Slider
-              valueLabelDisplay="auto"
-              aria-label="40-100 Miles"
-              defaultValue={40}
-              min={1}
-              max={120}
-            />
-          </Grid>
-        </Grid>
-      </Grid>
-    </Container>
+    </Box>
   );
 }
+
+export default EmployeeInfo;
