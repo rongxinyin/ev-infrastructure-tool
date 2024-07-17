@@ -80,6 +80,10 @@ export default function EmployeeInfo() {
     setSelectedFile(e.target.files[0]);
   };
 
+  const isValidDate = (date) => {
+    return date != null;
+  };
+
   const handleUploadFile = () => {
     if (selectedFile) {
       const reader = new FileReader();
@@ -240,14 +244,18 @@ export default function EmployeeInfo() {
                         <TableCell>{employee.zipcode}</TableCell>
                         <TableCell>{employee.onsiteBldg}</TableCell>
                         <TableCell>
-                          {employee.leaveToWorkTime.format(
-                            "MM/DD/YYYY HH:mm:ss"
-                          )}
+                          {isValidDate(employee.leaveToWorkTime)
+                            ? employee.leaveToWorkTime.format(
+                                "MM/DD/YYYY HH:mm:ss"
+                              )
+                            : ""}
                         </TableCell>
                         <TableCell>
-                          {employee.returnHomeTime.format(
-                            "MM/DD/YYYY HH:mm:ss"
-                          )}
+                          {isValidDate(employee.returnHomeTime)
+                            ? employee.returnHomeTime.format(
+                                "MM/DD/YYYY HH:mm:ss"
+                              )
+                            : ""}
                         </TableCell>
                       </TableRow>
                     ))}
