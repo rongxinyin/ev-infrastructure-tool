@@ -2,10 +2,10 @@ import { ThemeProvider, createTheme } from "@mui/material";
 import { Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import About from "./components/About.js";
-import FAQ from "./components/FAQ.js";
-import Home from "./components/Home.js";
-import NotFound from "./components/NotFound.js";
+import About from "./pages/About.js";
+import FAQ from "./pages/FAQ.js";
+import Home from "./pages/Home.js";
+import NotFound from "./pages/NotFound.js";
 import AppBar from "./components/SiteAppBar.js";
 
 const theme = createTheme({
@@ -26,6 +26,9 @@ const theme = createTheme({
     },
     white: {
       main: "#FFFFFF", // white
+    },
+    lightgray: {
+      main: "#b1b3b3", // light gray
     },
   },
   typography: {
