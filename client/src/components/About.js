@@ -33,7 +33,7 @@ export default function About() {
               Thanks and Credits
             </Typography>
             <Typography variant="h6" color="common.white" sx={{}}>
-              Main Developers:
+              Developers:
             </Typography>
             <ul>
               <Typography variant="h6" color="common.white">

@@ -14,6 +14,8 @@ import BuildingInfo from "./BuildingInfo.js";
 import EmployeeInfo from "./EmployeeInfo.js";
 import Simulation from "./Simulation.js";
 import Results from "./Results.js";
+import React, { useState } from "react";
+
 
 // Visualization
 const Item = styled(Paper)(({ theme }) => ({
@@ -34,40 +36,44 @@ export default function Home() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm")); // Check if the device is mobile
 
-  let pageState = "employeeInfo";
+  const [showBuildingInfo, setShowBuildingInfo] = useState(true);
+  const [showEmployeeInfo, setShowEmployeeInfo] = useState(false);
+  const [showSimulation, setShowSimulation] = useState(false);
+  const [showResults, setShowResults] = useState(false);
+
 
   const switchPagesButton = (state) => {
     switch (state) {
       case "buildingInfo":
-        pageState = "buildingInfo";
+        setShowBuildingInfo(true);
+        setShowEmployeeInfo(false);
+        setShowSimulation(false);
+        setShowResults(false);
         break;
       case "employeeInfo":
-        pageState = "employeeInfo";
+        setShowBuildingInfo(false);
+        setShowEmployeeInfo(true);
+        setShowSimulation(false);
+        setShowResults(false);
         break;
       case "simulation":
-        pageState = "simulation";
+        setShowBuildingInfo(false);
+        setShowEmployeeInfo(false);
+        setShowSimulation(true);
+        setShowResults(false);
         break;
       case "results":
-        pageState = "results";
+        setShowBuildingInfo(false);
+        setShowEmployeeInfo(false);
+        setShowSimulation(false);
+        setShowResults(true);
         break;
     }
   };
 
-  const navigatePages = (state) => {
-    switch (state) {
-      case "buildingInfo":
-        return <BuildingInfo />;
-      case "employeeInfo":
-        return <EmployeeInfo />;
-      case "simulation":
-        return <Simulation />;
-      case "results":
-        return <Results />;
-    }
-  };
 
   return (
-    <Box bgcolor={"primary.white"} p={isMobile ? 1 : 2}>
+    <Box bgcolor={"primary.white"} p={isMobile ? 1 : 2} sx={{marginLeft: 10, marginRight: 10}}>
       {" "}
       {/* Adjust padding for mobile */}
       <Grid container spacing={1} padding={isMobile ? 5 : 5} md={12} xs={12}>
@@ -124,18 +130,11 @@ export default function Home() {
         </Grid>
 
         <Grid item xs={10}>
-          {() => {
-            switch (pageState) {
-              case "buildingInfo":
-                return <BuildingInfo />;
-              case "employeeInfo":
-                return <EmployeeInfo />;
-              case "simulation":
-                return <Simulation />;
-              case "results":
-                return <Results />;
-            }
-          }}
+          {/* displays subpage if the state is true */}
+          {showBuildingInfo && <BuildingInfo />}
+          {showEmployeeInfo && <EmployeeInfo />}
+          {showResults && <Results />}
+          {showSimulation && <Simulation />}
         </Grid>
 
         <Grid
