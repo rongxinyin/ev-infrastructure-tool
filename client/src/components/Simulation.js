@@ -1,6 +1,4 @@
 import { Box, Button, Grid, Typography, TextField } from "@mui/material";
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 const textFieldSX = {
   width: "100%",
@@ -21,57 +19,7 @@ export default function Simulation() {
       }}
     >
       <Grid container spacing={0}>
-        <Grid item xs={4}>
-          <Button
-            variant="contained"
-            color="secondary"
-            sx={{
-              marginTop: 10,
-              marginLeft: 3,
-              width: "75%",
-              height: "40px",
-            }}
-          >
-            BUILDING/SITE INFO
-          </Button>
-          <Button
-            variant="contained"
-            color="secondary"
-            sx={{
-              marginTop: 3,
-              marginLeft: 3,
-              width: "75%",
-              height: "40px",
-            }}
-          >
-            EMPLOYEE INFO
-          </Button>
-          <Button
-            variant="contained"
-            color="secondary"
-            sx={{
-              marginTop: 3,
-              marginLeft: 3,
-              width: "75%",
-              height: "40px",
-            }}
-          >
-            SIMULATION
-          </Button>
-          <Button
-            variant="contained"
-            color="secondary"
-            sx={{
-              marginTop: 3,
-              marginLeft: 3,
-              width: "75%",
-              height: "40px",
-            }}
-          >
-            RESULTS
-          </Button>
-        </Grid>
-        <Grid item xs={8}>
+        <Grid item xs={12}>
           <Typography variant="h4" color="white.main" sx={{ marginTop: 8 }}>
             SIMULATION
           </Typography>
