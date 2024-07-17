@@ -264,6 +264,25 @@ export default function EmployeeInfo() {
             <Typography variant="h6" align="center" gutterBottom>
               Traveling 0-10 Miles
             </Typography>
+          </Grid>
+          <Grid item xs={3}>
+            <Typography variant="h6" align="center" gutterBottom>
+              % with Home Charger
+            </Typography>
+          </Grid>
+          <Grid item xs={3}>
+            <Typography variant="h6" align="center" gutterBottom>
+              Trips Per Week
+            </Typography>
+          </Grid>
+          <Grid item xs={3}>
+            <Typography variant="h6" align="center" gutterBottom>
+              Avg Trip Duration (Min)
+            </Typography>
+          </Grid>
+        </Grid>
+        <Grid container spacing={2}>
+          <Grid item xs={3}>
             <Slider
               valueLabelDisplay="auto"
               aria-label="0-10 Miles"
@@ -272,10 +291,8 @@ export default function EmployeeInfo() {
               max={1000}
             />
           </Grid>
+
           <Grid item xs={3}>
-            <Typography variant="h6" align="center" gutterBottom>
-              % with Home Charger
-            </Typography>
             <Slider
               valueLabelDisplay="auto"
               aria-label="0-10 Miles"
@@ -284,10 +301,8 @@ export default function EmployeeInfo() {
               max={100}
             />
           </Grid>
+
           <Grid item xs={3}>
-            <Typography variant="h6" align="center" gutterBottom>
-              Trips Per Week
-            </Typography>
             <Slider
               valueLabelDisplay="auto"
               aria-label="0-10 Miles"
@@ -296,10 +311,8 @@ export default function EmployeeInfo() {
               max={200}
             />
           </Grid>
+
           <Grid item xs={3}>
-            <Typography variant="h6" align="center" gutterBottom>
-              Avg Trip Duration (Minutes)
-            </Typography>
             <Slider
               valueLabelDisplay="auto"
               aria-label="0-10 Miles"
@@ -314,6 +327,26 @@ export default function EmployeeInfo() {
             <Typography variant="h6" align="center" gutterBottom>
               Traveling 10-40 Miles
             </Typography>
+          </Grid>
+          <Grid item xs={3}>
+            <Typography variant="h6" align="center" gutterBottom>
+              % with Home Charger
+            </Typography>
+          </Grid>
+          <Grid item xs={3}>
+            <Typography variant="h6" align="center" gutterBottom>
+              Trips Per Week
+            </Typography>
+          </Grid>
+          <Grid item xs={3}>
+            <Typography variant="h6" align="center" gutterBottom>
+              Avg Trip Duration (Min)
+            </Typography>
+          </Grid>
+        </Grid>
+
+        <Grid container spacing={2}>
+          <Grid item xs={3}>
             <Slider
               valueLabelDisplay="auto"
               aria-label="10-40 Miles"
@@ -322,10 +355,8 @@ export default function EmployeeInfo() {
               max={1000}
             />
           </Grid>
+
           <Grid item xs={3}>
-            <Typography variant="h6" align="center" gutterBottom>
-              % with Home Charger
-            </Typography>
             <Slider
               valueLabelDisplay="auto"
               aria-label="10-40 Miles"
@@ -334,10 +365,8 @@ export default function EmployeeInfo() {
               max={100}
             />
           </Grid>
+
           <Grid item xs={3}>
-            <Typography variant="h6" align="center" gutterBottom>
-              Trips Per Week
-            </Typography>
             <Slider
               valueLabelDisplay="auto"
               aria-label="10-40 Miles"
@@ -346,10 +375,8 @@ export default function EmployeeInfo() {
               max={200}
             />
           </Grid>
+
           <Grid item xs={3}>
-            <Typography variant="h6" align="center" gutterBottom>
-              Avg Trip Duration (Minutes)
-            </Typography>
             <Slider
               valueLabelDisplay="auto"
               aria-label="10-40 Miles"
@@ -364,6 +391,26 @@ export default function EmployeeInfo() {
             <Typography variant="h6" align="center" gutterBottom>
               Traveling 40-100 Miles
             </Typography>
+          </Grid>
+          <Grid item xs={3}>
+            <Typography variant="h6" align="center" gutterBottom>
+              % with Home Charger
+            </Typography>
+          </Grid>
+          <Grid item xs={3}>
+            <Typography variant="h6" align="center" gutterBottom>
+              Trips Per Week
+            </Typography>
+          </Grid>
+          <Grid item xs={3}>
+            <Typography variant="h6" align="center" gutterBottom>
+              Avg Trip Duration (Min)
+            </Typography>
+          </Grid>
+        </Grid>
+
+        <Grid container spacing={2}>
+          <Grid item xs={3}>
             <Slider
               valueLabelDisplay="auto"
               aria-label="40-100 Miles"
@@ -372,10 +419,8 @@ export default function EmployeeInfo() {
               max={1000}
             />
           </Grid>
+
           <Grid item xs={3}>
-            <Typography variant="h6" align="center" gutterBottom>
-              % with Home Charger
-            </Typography>
             <Slider
               valueLabelDisplay="auto"
               aria-label="40-100 Miles"
@@ -384,10 +429,8 @@ export default function EmployeeInfo() {
               max={100}
             />
           </Grid>
+
           <Grid item xs={3}>
-            <Typography variant="h6" align="center" gutterBottom>
-              Trips Per Week
-            </Typography>
             <Slider
               valueLabelDisplay="auto"
               aria-label="40-100 Miles"
@@ -396,10 +439,8 @@ export default function EmployeeInfo() {
               max={200}
             />
           </Grid>
+
           <Grid item xs={3}>
-            <Typography variant="h6" align="center" gutterBottom>
-              Avg Trip Duration (Minutes)
-            </Typography>
             <Slider
               valueLabelDisplay="auto"
               aria-label="40-100 Miles"
