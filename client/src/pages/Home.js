@@ -82,8 +82,8 @@ export default function Home() {
           <Typography
             variant="h4"
             sx={{
-              fontWeight: "bold",
               marginTop: 0,
+              marginBottom: 2,
             }}
           >
             Electrical Vehicle Infrastructure Tool (EVIT)

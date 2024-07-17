@@ -94,8 +94,8 @@ export default function EmployeeInfo() {
   return (
     <Container maxWidth="lg">
       <Grid item xs={12} style={{ marginTop: 0 }}>
-        <Typography variant="h4" align="center" gutterBottom>
-          EMPLOYEE INFO
+        <Typography variant="h4" gutterBottom>
+          Employee Info
         </Typography>
       </Grid>
       <Grid container spacing={2} style={{ marginTop: 2 }}>
