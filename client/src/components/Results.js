@@ -13,37 +13,37 @@ const textFieldSX = {
 export default function Simulation() {
   return (
     <Box
-      bgcolor="primary.main"
+      bgcolor="primary.white"
       sx={{
         paddingRight: 5,
         paddingLeft: 3,
         paddingBottom: 5,
       }}
     >
-      <Grid container spacing={0}>
+      <Grid container spacing={1}>
         <Grid item xs={12}>
-          <Typography variant="h4" color="white.main" sx={{ marginTop: 8 }}>
-            RESULTS
+          <Typography variant="h4" sx={{ marginTop: 0 }}>
+            Results
           </Typography>
           <Grid container spacing={2}>
             <Grid item xs={4}>
-              <Typography variant="h6" color="white.main" sx={{ marginTop: 2 }}>
+              <Typography variant="h6" sx={{ marginTop: 1 }}>
                 Wait time
               </Typography>
             </Grid>
             <Grid item xs={4}>
-              <Typography variant="h6" color="white.main" sx={{ marginTop: 2 }}>
+              <Typography variant="h6" sx={{ marginTop: 1 }}>
                 Low SoC
               </Typography>
             </Grid>
           </Grid>
-          <Typography variant="h6" color="white.main" sx={{ marginTop: 2 }}>
+          <Typography variant="h6" sx={{ marginTop: 1 }}>
             Utilization
           </Typography>
-          <Typography variant="h6" color="white.main" sx={{ marginTop: 2 }}>
+          <Typography variant="h6" sx={{ marginTop: 1 }}>
             Charging demand (1 month)
           </Typography>
-          <Typography variant="h6" color="white.main" sx={{ marginTop: 2 }}>
+          <Typography variant="h6" sx={{ marginTop: 1 }}>
             Summary
           </Typography>
           <Grid container spacing={2}>

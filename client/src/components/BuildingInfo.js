@@ -46,6 +46,14 @@ export default function BuildingInfo() {
     setDistributedEnergySource({ ...distributedEnergySource, [name]: value });
   };
 
+  const handleOnsiteDERChange = (event) => {
+    const { checked } = event.target;
+    setDistributedEnergySource({
+      ...distributedEnergySource,
+      onsiteDER: checked,
+    });
+  };
+
   const handleElectricVehicleChargingStationsChange = (event) => {
     const { name, value } = event.target;
     setElectricVehicleChargingStations({
@@ -54,37 +62,41 @@ export default function BuildingInfo() {
     });
   };
 
+  const textFieldSX = {};
+
   return (
     <Grid container spacing={2} style={{ marginTop: 0, marginLeft: 10 }}>
       <Typography variant="h4" gutterBottom>
-        BUILDING/SITE INFO
+        Building/Site Info
       </Typography>
-      <Grid container spacing={2}>
-        <Grid item xs={12}>
-          <Typography variant="h6" gutterBottom>
-            Building Information
-          </Typography>
+      <Grid container spacing={1}>
+        <Grid item xs={6}>
           <TextField
-            label="Name"
             fullWidth
             name="name"
+            label="Name"
             value={buildingInfo.name}
             onChange={handleBuildingInfoChange}
+            // size="small"
+            sx={textFieldSX}
           />
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={6}>
           <TextField
-            label="Building Type"
             fullWidth
+            label="Type"
             name="buildingType"
             value={buildingInfo.buildingType}
             onChange={handleBuildingInfoChange}
+            // size="big"
           />
         </Grid>
-        <Grid item xs={12}>
-          <Typography variant="h6" gutterBottom>
+        {/* <Grid item xs={12}>
+        <Typography variant="h6" gutterBottom>
             Address
           </Typography>
+        </Grid> */}
+        <Grid item xs={2}>
           <RadioGroup
             name="addressType"
             value={buildingInfo.addressType}
@@ -101,37 +113,41 @@ export default function BuildingInfo() {
               label="Full Address"
             />
           </RadioGroup>
+        </Grid>
+        <Grid item xs={10} sx={{ marginLeft: 0 }}>
           {buildingInfo.addressType === "zipCode" ? (
-            <Grid container spacing={2}>
-              <Grid item xs={4}>
+            <Grid container spacing={0}>
+              <Grid item xs={3}>
                 <TextField
-                  label="Zip Code"
                   fullWidth
                   name="zipCode"
                   value={buildingInfo.zipCode}
                   onChange={handleBuildingInfoChange}
+                  sx={{ marginTop: 1 }}
+                  type="number"
+                  label="Zip Code"
                 />
               </Grid>
             </Grid>
           ) : (
-            <TextField
-              label="Full Address"
-              fullWidth
-              name="fullAddress"
-              value={buildingInfo.fullAddress}
-              onChange={handleBuildingInfoChange}
-            />
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                name="fullAddress"
+                value={buildingInfo.fullAddress}
+                onChange={handleBuildingInfoChange}
+                sx={{ marginTop: 1 }}
+                label="Full Address"
+              />
+            </Grid>
           )}
         </Grid>
         <Grid item xs={12}>
-          <Typography variant="h6" gutterBottom>
-            Onsite Distributed Energy Resource
-          </Typography>
           <FormControlLabel
             control={
               <Checkbox
                 checked={distributedEnergySource.onsiteDER}
-                onChange={handleDistributedEnergySourceChange}
+                onChange={handleOnsiteDERChange}
                 name="onsiteDER"
               />
             }
@@ -187,6 +203,7 @@ export default function BuildingInfo() {
               <TextField
                 label="Max Charging per Port"
                 fullWidth
+                type="number"
                 name="maxChargingPerPort"
                 value={electricVehicleChargingStations.maxChargingPerPort}
                 onChange={handleElectricVehicleChargingStationsChange}
@@ -197,6 +214,7 @@ export default function BuildingInfo() {
                 label="Number"
                 fullWidth
                 name="number"
+                type="number"
                 value={electricVehicleChargingStations.number}
                 onChange={handleElectricVehicleChargingStationsChange}
               />

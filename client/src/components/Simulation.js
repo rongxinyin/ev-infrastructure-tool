@@ -1,106 +1,99 @@
 import { Box, Button, Grid, Typography, TextField } from "@mui/material";
+import { DemoContainer } from "@mui/x-date-pickers/internals/demo/index.js";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs/index.js";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider/index.js";
+import { TimePicker } from "@mui/x-date-pickers/TimePicker/index.js";
 
 const textFieldSX = {
-  width: "100%",
-  marginBottom: 5,
+  marginBottom: 1,
   marginTop: 1,
-  border: "2px solid #F0F0F0",
-  backgroundColor: "secondary.main",
 };
 
 export default function Simulation() {
   return (
     <Box
-      bgcolor="primary.main"
       sx={{
         paddingRight: 5,
         paddingLeft: 3,
         paddingBottom: 5,
       }}
     >
-      <Grid container spacing={0}>
+      <Grid container spacing={2}>
         <Grid item xs={12}>
-          <Typography variant="h4" color="white.main" sx={{ marginTop: 8 }}>
-            SIMULATION
+          <Typography variant="h4" sx={{ marginTop: 0 }}>
+            Simulation
           </Typography>
-          <Box bgcolor="tertiary.main">
-            <Typography
-              variant="h6"
-              color="primary"
-              sx={{ paddingTop: 2, marginBottom: 1, paddingLeft: 3 }}
-            >
-              SIMULATION CONFIGURATIONS
-            </Typography>
-            <Grid container spacing={2} sx={{ paddingLeft: 3 }}>
-              <Grid item xs={4}>
-                <Typography variant="body1" color="primary">
-                  Start time
-                </Typography>
-                <TextField
-                  id="outlined-basic"
-                  label="Start time"
-                  variant="outlined"
-                  sx={textFieldSX}
-                />
+          <Box bgcolor="primary.white" sx={{ marginLeft: 0 }}>
+            <Grid container spacing={0} sx={{ paddingLeft: 0 }}>
+              <Grid item xs={3}>
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <DemoContainer components={["TimePicker"]}>
+                    <TimePicker
+                      label="Start time"
+                      fullWidth
+                      // value={} TODO
+                      name="startTime"
+                      // onChange={(newValue) =>
+                      //   handleTimeChange(newValue, "returnHomeTime")
+                      // } TODO
+                      slotProps={{ textField: { fullWidth: true } }}
+                    />
+                  </DemoContainer>
+                </LocalizationProvider>
               </Grid>
-              <Grid item xs={4}>
-                <Typography variant="body1" color="primary">
-                  Run period
-                </Typography>
+              <Grid item xs={3}>
                 <TextField
                   id="outlined-basic"
                   label="Run period"
                   variant="outlined"
                   sx={textFieldSX}
+                  fullWidth
+                  type="number"
                 />
               </Grid>
-            </Grid>
-            <Grid container spacing={2} sx={{ paddingLeft: 3 }}>
-              <Grid item xs={4}>
-                <Typography variant="body1" color="primary">
-                  Level 2 charging power (kW)
-                </Typography>
+              <Grid item xs={3}>
                 <TextField
                   id="outlined-basic"
-                  label="Level 2 charging power"
+                  label="Level 2 charging power (kW)"
                   variant="outlined"
+                  fullWidth
+                  type="number"
                   sx={textFieldSX}
                 />
               </Grid>
-              <Grid item xs={4}>
-                <Typography variant="body1" color="primary">
-                  Level 3 charging power (kW)
-                </Typography>
+              <Grid item xs={3}>
                 <TextField
                   id="outlined-basic"
-                  label="Level 3 charging power"
+                  label="Level 3 charging power (kW)"
                   variant="outlined"
+                  fullWidth
+                  type="number"
                   sx={textFieldSX}
                 />
               </Grid>
             </Grid>
           </Box>
-          <Grid container spacing={3}>
-            <Grid item xs={2}>
+          <Grid container spacing={1}>
+            <Grid item xs={6}>
               <Button
                 variant="contained"
                 color="secondary"
                 sx={{
-                  marginTop: 4,
-                  marginBottom: 3,
+                  marginTop: 0,
+                  marginBottom: 0,
                   width: "100%",
                 }}
               >
                 RUN
               </Button>
             </Grid>
-            <Grid item xs={2}>
+            <Grid item xs={6}>
               <Button
                 variant="contained"
                 color="secondary"
                 sx={{
-                  marginTop: 4,
-                  marginBottom: 3,
+                  marginTop: 0,
+                  marginBottom: 0,
                   width: "100%",
                 }}
               >
