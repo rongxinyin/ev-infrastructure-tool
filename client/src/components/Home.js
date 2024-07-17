@@ -124,18 +124,7 @@ export default function Home() {
         </Grid>
 
         <Grid item xs={10}>
-          {() => {
-            switch (pageState) {
-              case "buildingInfo":
-                return <BuildingInfo />;
-              case "employeeInfo":
-                return <EmployeeInfo />;
-              case "simulation":
-                return <Simulation />;
-              case "results":
-                return <Results />;
-            }
-          }}
+          <BuildingInfo></BuildingInfo>
         </Grid>
 
         <Grid
