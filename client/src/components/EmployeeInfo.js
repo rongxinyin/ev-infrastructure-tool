@@ -26,7 +26,7 @@ import {
 } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 
-const EmployeeInfo = () => {
+export default function EmployeeInfo() {
   const [employees, setEmployees] = useState([]);
   const [employeeData, setEmployeeData] = useState({
     employeeId: "",
@@ -93,56 +93,12 @@ const EmployeeInfo = () => {
 
   return (
     <Container maxWidth="lg">
-      <Grid item xs={12} style={{ marginTop: 100 }}>
+      <Grid item xs={12} style={{ marginTop: 0 }}>
         <Typography variant="h4" align="center" gutterBottom>
           EMPLOYEE INFO
         </Typography>
       </Grid>
-      <Grid container spacing={2} style={{ marginTop: 100 }}>
-        <Grid item xs={3}>
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <Button
-                component={RouterLink}
-                to="/buildinginfo"
-                variant="contained"
-                fullWidth
-              >
-                BUILDINGINFO
-              </Button>
-            </Grid>
-            <Grid item xs={12}>
-              <Button
-                component={RouterLink}
-                to="/employeeinfo"
-                variant="contained"
-                fullWidth
-              >
-                EMPLOYEE INFO
-              </Button>
-            </Grid>
-            <Grid item xs={12}>
-              <Button
-                component={RouterLink}
-                to="/simulation"
-                variant="contained"
-                fullWidth
-              >
-                SIMULATION
-              </Button>
-            </Grid>
-            <Grid item xs={12}>
-              <Button
-                component={RouterLink}
-                to="/results"
-                variant="contained"
-                fullWidth
-              >
-                RESULTS
-              </Button>
-            </Grid>
-          </Grid>
-        </Grid>
+      <Grid container spacing={2} style={{ marginTop: 2 }}>
         <Grid item xs={12} md={9}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
@@ -422,5 +378,3 @@ const EmployeeInfo = () => {
     </Container>
   );
 };
-
-export default EmployeeInfo;

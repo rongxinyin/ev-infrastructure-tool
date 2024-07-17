@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import BuildingInfo from "./BuildingInfo.js";
+import EmployeeInfo from "./EmployeeInfo.js";
 
 // Visualization
 const Item = styled(Paper)(({ theme }) => ({
@@ -77,7 +78,8 @@ export default function Home() {
 
         <Grid item xs={9}>
           {/* define custom subpage components */}
-          <BuildingInfo />
+          {/* <BuildingInfo /> */}
+          <EmployeeInfo />
         </Grid>
 
         <Grid
