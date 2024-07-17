@@ -46,6 +46,15 @@ export default function BuildingInfo() {
     setDistributedEnergySource({ ...distributedEnergySource, [name]: value });
   };
 
+  const handleOnsiteDERChange = (event) => {
+    const { checked } = event.target;
+    setDistributedEnergySource({
+      ...distributedEnergySource,
+      onsiteDER: checked,
+    });
+  };
+
+
   const handleElectricVehicleChargingStationsChange = (event) => {
     const { name, value } = event.target;
     setElectricVehicleChargingStations({
@@ -146,14 +155,11 @@ export default function BuildingInfo() {
           )}
         </Grid>
         <Grid item xs={12}>
-          <Typography variant="h6" gutterBottom>
-            Onsite Distributed Energy Resource
-          </Typography>
           <FormControlLabel
             control={
               <Checkbox
                 checked={distributedEnergySource.onsiteDER}
-                onChange={handleDistributedEnergySourceChange}
+                onChange={handleOnsiteDERChange}
                 name="onsiteDER"
               />
             }
