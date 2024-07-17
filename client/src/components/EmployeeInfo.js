@@ -163,6 +163,7 @@ export default function EmployeeInfo() {
                         onChange={(newValue) =>
                           handleTimeChange(newValue, "leaveToWorkTime")
                         }
+                        slotProps={{ textField: { fullWidth: true } }}
                       />
                     </DemoContainer>
                   </LocalizationProvider>
@@ -178,6 +179,7 @@ export default function EmployeeInfo() {
                         onChange={(newValue) =>
                           handleTimeChange(newValue, "returnHomeTime")
                         }
+                        slotProps={{ textField: { fullWidth: true } }}
                       />
                     </DemoContainer>
                   </LocalizationProvider>

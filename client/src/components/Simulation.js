@@ -36,6 +36,8 @@ export default function Simulation() {
                       // onChange={(newValue) =>
                       //   handleTimeChange(newValue, "returnHomeTime")
                       // } TODO
+                      slotProps={{ textField: { fullWidth: true } }}
+
                     />
                   </DemoContainer>
                 </LocalizationProvider>
