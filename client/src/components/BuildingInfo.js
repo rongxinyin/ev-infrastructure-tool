@@ -15,6 +15,7 @@ export default function BuildingInfo() {
   const [buildingInfo, setBuildingInfo] = useState({
     name: "",
     buildingType: "",
+    floorArea: "",
     addressType: "zipCode",
     zipCode: "",
     city: "",
@@ -70,7 +71,7 @@ export default function BuildingInfo() {
         Building/Site Info
       </Typography>
       <Grid container spacing={1}>
-        <Grid item xs={6}>
+        <Grid item xs={4}>
           <TextField
             fullWidth
             name="name"
@@ -81,7 +82,7 @@ export default function BuildingInfo() {
             sx={textFieldSX}
           />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={4}>
           <TextField
             fullWidth
             label="Type"
@@ -91,11 +92,16 @@ export default function BuildingInfo() {
             // size="big"
           />
         </Grid>
-        {/* <Grid item xs={12}>
-        <Typography variant="h6" gutterBottom>
-            Address
-          </Typography>
-        </Grid> */}
+        <Grid item xs={4}>
+          <TextField
+            fullWidth
+            label="Floor Area (ft^2)"
+            name="floorArea"
+            value={buildingInfo.floorArea}
+            onChange={handleBuildingInfoChange}
+            // size="big"
+          />
+        </Grid>
         <Grid item xs={2}>
           <RadioGroup
             name="addressType"
@@ -130,16 +136,42 @@ export default function BuildingInfo() {
               </Grid>
             </Grid>
           ) : (
-            <Grid item xs={12}>
-              <TextField
-                fullWidth
-                name="fullAddress"
-                value={buildingInfo.fullAddress}
-                onChange={handleBuildingInfoChange}
-                sx={{ marginTop: 1 }}
-                label="Full Address"
-              />
-            </Grid>
+            <>
+              <Grid container spacing={1}>
+                <Grid item xs={4}>
+                  <TextField
+                    fullWidth
+                    name="zipCode"
+                    value={buildingInfo.zipCode}
+                    onChange={handleBuildingInfoChange}
+                    sx={{ marginTop: 1 }}
+                    type="number"
+                    label="Zip Code"
+                  />
+                </Grid>
+                <Grid item xs={4}>
+                  <TextField
+                    fullWidth
+                    name="city"
+                    value={buildingInfo.city}
+                    onChange={handleBuildingInfoChange}
+                    sx={{ marginTop: 1 }}
+                    type="number"
+                    label="City"
+                  />
+                </Grid>
+                <Grid item xs={4}>
+                  <TextField
+                    fullWidth
+                    name="state"
+                    value={buildingInfo.state}
+                    onChange={handleBuildingInfoChange}
+                    sx={{ marginTop: 1 }}
+                    label="State"
+                  />
+                </Grid>
+              </Grid>
+            </>
           )}
         </Grid>
         <Grid item xs={12}>
@@ -180,7 +212,7 @@ export default function BuildingInfo() {
           <Typography variant="h6" gutterBottom>
             Existing Electric Vehicle Charging Stations
           </Typography>
-          <Grid container spacing={2}>
+          <Grid container spacing={1}>
             <Grid item xs={3}>
               <TextField
                 label="Level"
