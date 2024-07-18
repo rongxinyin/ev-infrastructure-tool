@@ -199,21 +199,22 @@ function BuildingInfo() {
               fullWidth
             />
           </Grid>
+          
           <Grid item xs={12}>
-            <TextField
-              label="Electrical Capacity"
-              type="number"
-              value={electricalCapacity}
-              onChange={(e) => setElectricalCapacity(e.target.value)}
-              fullWidth
-            />
-          </Grid>
-<          Grid item xs={12}>
               <TextField
               label="Electrical Capacity"
               type="number"
               value={transformerAndDistributionEquipment.electricalCapacity}
               onChange={(e) => setTransformerAndDistributionEquipment({...transformerAndDistributionEquipment, electricalCapacity: e.target.value})}
+              fullWidth
+              />
+          </Grid>
+          <Grid item xs={12}>
+              <TextField
+              label="Voltage"
+              type="number"
+              value={transformerAndDistributionEquipment.voltage}
+              onChange={(e) => setTransformerAndDistributionEquipment({...transformerAndDistributionEquipment, voltage: e.target.value})}
               fullWidth
               />
           </Grid>
