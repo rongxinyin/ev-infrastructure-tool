@@ -265,7 +265,20 @@ export default function BuildingInfo() {
           </Grid>
         </Grid>
         <Grid item xs={12}>
-          <Button variant="contained" fullWidth>
+          <Button
+            variant="contained"
+            fullWidth
+            onClick={() =>
+              console.log(
+                Object.assign(
+                  {},
+                  buildingInfo,
+                  distributedEnergySource,
+                  electricVehicleChargingStations
+                )
+              )
+            }
+          >
             SAVE
           </Button>
         </Grid>
