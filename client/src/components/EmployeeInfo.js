@@ -29,7 +29,6 @@ import { DemoContainer } from "@mui/x-date-pickers/internals/demo/index.js";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs/index.js";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider/index.js";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker/index.js";
-import dayjs from "dayjs";
 
 export default function EmployeeInfo() {
   const [employees, setEmployees] = useState([]);
@@ -40,6 +39,7 @@ export default function EmployeeInfo() {
     onsiteBldg: "",
     leaveToWorkTime: null,
     returnHomeTime: null,
+    homeCharging: null,
   });
   const [selectedFile, setSelectedFile] = useState(null);
 
@@ -69,6 +69,7 @@ export default function EmployeeInfo() {
       onsiteBldg: "",
       leaveToWorkTime: null,
       returnHomeTime: null,
+      homeCharging: null,
     });
   };
 
@@ -99,6 +100,7 @@ export default function EmployeeInfo() {
             onsiteBldg: columns[3],
             leaveToWorkTime: columns[4],
             returnHomeTime: columns[5],
+            homeCharging: columns[6],
           };
         });
         setEmployees(employeesFromCsv);
@@ -121,6 +123,7 @@ export default function EmployeeInfo() {
               <Grid container spacing={1}>
                 <Grid item xs={3}>
                   <TextField
+                    required
                     label="Employee ID"
                     fullWidth
                     name="employeeId"
@@ -130,6 +133,7 @@ export default function EmployeeInfo() {
                 </Grid>
                 <Grid item xs={3}>
                   <TextField
+                    required
                     label="Commute Mode"
                     fullWidth
                     name="commuteMode"
@@ -139,6 +143,7 @@ export default function EmployeeInfo() {
                 </Grid>
                 <Grid item xs={3}>
                   <TextField
+                    required
                     label="Zipcode"
                     fullWidth
                     name="zipcode"
@@ -149,6 +154,7 @@ export default function EmployeeInfo() {
                 </Grid>
                 <Grid item xs={3}>
                   <TextField
+                    required
                     label="Onsite Bldg"
                     fullWidth
                     name="onsiteBldg"
@@ -160,6 +166,7 @@ export default function EmployeeInfo() {
                   <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <DemoContainer components={["TimePicker"]}>
                       <TimePicker
+                        required
                         label="Leave to work time"
                         fullWidth
                         value={employeeData.leaveToWorkTime}
@@ -176,6 +183,7 @@ export default function EmployeeInfo() {
                   <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <DemoContainer components={["TimePicker"]}>
                       <TimePicker
+                        required
                         label="Return home time"
                         fullWidth
                         value={employeeData.returnHomeTime}
@@ -187,6 +195,17 @@ export default function EmployeeInfo() {
                       />
                     </DemoContainer>
                   </LocalizationProvider>
+                </Grid>
+                <Grid item xs={3}>
+                  <TextField
+                    label="Home Charging Level"
+                    fullWidth
+                    name="homeChargingLevel"
+                    value={employeeData.homeCharging}
+                    onChange={handleChange}
+                    type="number"
+                    sx={{ marginTop: 1 }}
+                  />
                 </Grid>
               </Grid>
             </Grid>
@@ -234,6 +253,7 @@ export default function EmployeeInfo() {
                       <TableCell>Onsite Bldg</TableCell>
                       <TableCell>Leave to Work Time</TableCell>
                       <TableCell>Return Home Time</TableCell>
+                      <TableCell>Home Charging Level</TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
@@ -257,6 +277,7 @@ export default function EmployeeInfo() {
                               )
                             : ""}
                         </TableCell>
+                        <TableCell>{employee.homeCharging}</TableCell>
                       </TableRow>
                     ))}
                   </TableBody>
