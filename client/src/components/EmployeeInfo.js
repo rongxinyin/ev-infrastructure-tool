@@ -197,7 +197,7 @@ export default function EmployeeInfo() {
                   </LocalizationProvider>
                 </Grid>
                 <Grid item xs={3}>
-                  <TextField
+                  {/* <TextField
                     label="Home Charging Level"
                     fullWidth
                     name="homeChargingLevel"
@@ -205,7 +205,28 @@ export default function EmployeeInfo() {
                     onChange={handleChange}
                     type="number"
                     sx={{ marginTop: 1 }}
-                  />
+                  /> */}
+
+                  <FormControl fullWidth sx={{ marginTop: 1 }}>
+                    <InputLabel id="homeChargingLevelLabel">
+                      Home Charging Level
+                    </InputLabel>
+                    <Select
+                      labelId="homeChargingLevelLabel"
+                      id="demo-simple-select"
+                      value={employeeData.homeCharging}
+                      label="Home Charging Level"
+                      onChange={handleChange}
+                      fullWidth
+                      // variant="filled"
+                      name="homeCharging"
+                    >
+                      <MenuItem value={"None"}>No Charger</MenuItem>
+                      <MenuItem value={"L1"}>Level 1</MenuItem>
+                      <MenuItem value={"L2"}>Level 2</MenuItem>
+                      <MenuItem value={"L3"}>Level 3</MenuItem>
+                    </Select>
+                  </FormControl>
                 </Grid>
               </Grid>
             </Grid>
