@@ -9,6 +9,10 @@ import {
   FormControlLabel,
   Radio,
   RadioGroup,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
 } from "@mui/material";
 
 export default function BuildingInfo() {
@@ -63,8 +67,6 @@ export default function BuildingInfo() {
     });
   };
 
-  const textFieldSX = {};
-
   return (
     <Grid container spacing={2} style={{ marginTop: 0, marginLeft: 10 }}>
       <Typography variant="h4" gutterBottom>
@@ -79,7 +81,6 @@ export default function BuildingInfo() {
             value={buildingInfo.name}
             onChange={handleBuildingInfoChange}
             // size="small"
-            sx={textFieldSX}
           />
         </Grid>
         <Grid item xs={4}>
@@ -214,13 +215,23 @@ export default function BuildingInfo() {
           </Typography>
           <Grid container spacing={1}>
             <Grid item xs={3}>
-              <TextField
-                label="Level"
-                fullWidth
-                name="level"
-                value={electricVehicleChargingStations.level}
-                onChange={handleElectricVehicleChargingStationsChange}
-              />
+              <FormControl fullWidth sx={{ marginTop: 0 }}>
+                <InputLabel id="chargingLevelLabel">Charging Level</InputLabel>
+                <Select
+                  labelId="chargingLevelLabel"
+                  id="demo-simple-select"
+                  value={electricVehicleChargingStations.level}
+                  label="Home Charging Level"
+                  onChange={handleElectricVehicleChargingStationsChange}
+                  fullWidth
+                  // variant="filled"
+                  name="level"
+                >
+                  <MenuItem value={"L1"}>Level 1</MenuItem>
+                  <MenuItem value={"L2"}>Level 2</MenuItem>
+                  <MenuItem value={"L3"}>Level 3</MenuItem>
+                </Select>
+              </FormControl>
             </Grid>
             <Grid item xs={3}>
               <TextField
