@@ -37,6 +37,9 @@ export default function About() {
             </Typography>
             <ul>
               <Typography variant="h6" color="common.white">
+                - Michael Leong
+              </Typography>
+              <Typography variant="h6" color="common.white">
                 - Vidhu Birru
               </Typography>
               <Typography variant="h6" color="common.white" sx={{}}>

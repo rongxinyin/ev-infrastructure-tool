@@ -308,7 +308,7 @@ export default function EmployeeInfo() {
           </Grid>
         </Grid>
       </Grid>
-      <Grid container spacing={2}>
+      {/* <Grid container spacing={2}>
         <Grid container spacing={2} style={{ marginTop: 50 }}>
           <Grid item xs={3}>
             <Typography variant="h6" align="center" gutterBottom>
@@ -500,7 +500,7 @@ export default function EmployeeInfo() {
             />
           </Grid>
         </Grid>
-      </Grid>
+      </Grid> */}
     </Container>
   );
 }
