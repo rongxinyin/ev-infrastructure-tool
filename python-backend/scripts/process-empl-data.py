@@ -46,7 +46,7 @@ def getDistance(origin, dest):
 
 def process_data(data):
     # Note - no space between lat and lng
-    dest_geocode = "32.89204,-117.13096" # geocode - Miramar
+    dest_geocode = "37.871666,-122.272781" # geocode - Berkeley, CA
 
     # Create a list of json data for each vehicle and dump to json file
     empl_commute = []
