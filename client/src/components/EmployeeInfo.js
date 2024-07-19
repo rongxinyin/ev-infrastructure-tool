@@ -110,15 +110,14 @@ export default function EmployeeInfo() {
   };
 
   return (
-    <Container maxWidth="lg">
+    <Grid container spacing={0} style={{ marginTop: 0, marginLeft: 10 }}>
       <Grid item xs={12} style={{ marginTop: 0 }}>
         <Typography variant="h4" gutterBottom>
           Employee Info
         </Typography>
       </Grid>
-      <Grid container spacing={0} style={{}}>
         <Grid item xs={12} md={12}>
-          <Grid container spacing={2}>
+          <Grid container spacing={0}>
             <Grid item xs={12}>
               <Grid container spacing={1}>
                 <Grid item xs={3}>
@@ -307,7 +306,6 @@ export default function EmployeeInfo() {
             </Grid>
           </Grid>
         </Grid>
-      </Grid>
       {/* <Grid container spacing={2}>
         <Grid container spacing={2} style={{ marginTop: 50 }}>
           <Grid item xs={3}>
@@ -501,6 +499,6 @@ export default function EmployeeInfo() {
           </Grid>
         </Grid>
       </Grid> */}
-    </Container>
+    </Grid>
   );
 }
