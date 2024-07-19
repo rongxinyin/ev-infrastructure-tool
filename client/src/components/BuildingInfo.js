@@ -100,6 +100,7 @@ export default function BuildingInfo() {
             name="floorArea"
             value={buildingInfo.floorArea}
             onChange={handleBuildingInfoChange}
+            type="number"
             // size="big"
           />
         </Grid>
