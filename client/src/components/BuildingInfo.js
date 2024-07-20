@@ -9,12 +9,17 @@ import {
   FormControlLabel,
   Radio,
   RadioGroup,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
 } from "@mui/material";
 
-export default function BuildingInfo() {
+export default function BuildingInfo({ onFormSubmit }) {
   const [buildingInfo, setBuildingInfo] = useState({
     name: "",
     buildingType: "",
+    floorArea: "",
     addressType: "zipCode",
     zipCode: "",
     city: "",
@@ -62,171 +67,226 @@ export default function BuildingInfo() {
     });
   };
 
-  const textFieldSX = {};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onFormSubmit(
+      Object.assign(
+        {},
+        buildingInfo,
+        distributedEnergySource,
+        electricVehicleChargingStations
+      )
+    );
+  };
 
   return (
-    <Grid container spacing={2} style={{ marginTop: 0, marginLeft: 10 }}>
-      <Typography variant="h4" gutterBottom>
-        Building/Site Info
-      </Typography>
-      <Grid container spacing={1}>
-        <Grid item xs={6}>
-          <TextField
-            fullWidth
-            name="name"
-            label="Name"
-            value={buildingInfo.name}
-            onChange={handleBuildingInfoChange}
-            // size="small"
-            sx={textFieldSX}
-          />
-        </Grid>
-        <Grid item xs={6}>
-          <TextField
-            fullWidth
-            label="Type"
-            name="buildingType"
-            value={buildingInfo.buildingType}
-            onChange={handleBuildingInfoChange}
-            // size="big"
-          />
-        </Grid>
-        {/* <Grid item xs={12}>
-        <Typography variant="h6" gutterBottom>
-            Address
-          </Typography>
-        </Grid> */}
-        <Grid item xs={2}>
-          <RadioGroup
-            name="addressType"
-            value={buildingInfo.addressType}
-            onChange={handleBuildingInfoChange}
-          >
-            <FormControlLabel
-              value="zipCode"
-              control={<Radio />}
-              label="Zip Code"
+    <form onSubmit={handleSubmit}>
+      <Grid container spacing={2} style={{ marginTop: 0, marginLeft: 10 }}>
+        <Typography variant="h4" gutterBottom>
+          Building/Site Info
+        </Typography>
+        <Grid container spacing={1}>
+          <Grid item xs={4}>
+            <TextField
+              fullWidth
+              name="name"
+              label="Name"
+              value={buildingInfo.name}
+              onChange={handleBuildingInfoChange}
+              // size="small"
             />
-            <FormControlLabel
-              value="fullAddress"
-              control={<Radio />}
-              label="Full Address"
+          </Grid>
+          <Grid item xs={4}>
+            <TextField
+              fullWidth
+              label="Type"
+              name="buildingType"
+              value={buildingInfo.buildingType}
+              onChange={handleBuildingInfoChange}
+              // size="big"
             />
-          </RadioGroup>
-        </Grid>
-        <Grid item xs={10} sx={{ marginLeft: 0 }}>
-          {buildingInfo.addressType === "zipCode" ? (
-            <Grid container spacing={0}>
-              <Grid item xs={3}>
-                <TextField
-                  fullWidth
-                  name="zipCode"
-                  value={buildingInfo.zipCode}
-                  onChange={handleBuildingInfoChange}
-                  sx={{ marginTop: 1 }}
-                  type="number"
-                  label="Zip Code"
-                />
-              </Grid>
-            </Grid>
-          ) : (
-            <Grid item xs={12}>
-              <TextField
-                fullWidth
-                name="fullAddress"
-                value={buildingInfo.fullAddress}
-                onChange={handleBuildingInfoChange}
-                sx={{ marginTop: 1 }}
+          </Grid>
+          <Grid item xs={4}>
+            <TextField
+              fullWidth
+              label="Floor Area (ft^2)"
+              name="floorArea"
+              value={buildingInfo.floorArea}
+              onChange={handleBuildingInfoChange}
+              type="number"
+              // size="big"
+            />
+          </Grid>
+          <Grid item xs={2}>
+            <RadioGroup
+              name="addressType"
+              value={buildingInfo.addressType}
+              onChange={handleBuildingInfoChange}
+            >
+              <FormControlLabel
+                value="zipCode"
+                control={<Radio />}
+                label="Zip Code"
+              />
+              <FormControlLabel
+                value="fullAddress"
+                control={<Radio />}
                 label="Full Address"
               />
-            </Grid>
-          )}
-        </Grid>
-        <Grid item xs={12}>
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={distributedEnergySource.onsiteDER}
-                onChange={handleOnsiteDERChange}
-                name="onsiteDER"
-              />
-            }
-            label="Onsite Distributed Energy Resource"
-          />
-          {distributedEnergySource.onsiteDER && (
-            <Grid container spacing={2}>
-              <Grid item xs={6}>
+            </RadioGroup>
+          </Grid>
+          <Grid item xs={10} sx={{ marginLeft: 0 }}>
+            {buildingInfo.addressType === "zipCode" ? (
+              <Grid container spacing={0}>
+                <Grid item xs={3}>
+                  <TextField
+                    fullWidth
+                    name="zipCode"
+                    value={buildingInfo.zipCode}
+                    onChange={handleBuildingInfoChange}
+                    sx={{ marginTop: 1 }}
+                    type="number"
+                    label="Zip Code"
+                  />
+                </Grid>
+              </Grid>
+            ) : (
+              <>
+                <Grid container spacing={1}>
+                  <Grid item xs={4}>
+                    <TextField
+                      fullWidth
+                      name="zipCode"
+                      value={buildingInfo.zipCode}
+                      onChange={handleBuildingInfoChange}
+                      sx={{ marginTop: 1 }}
+                      type="number"
+                      label="Zip Code"
+                    />
+                  </Grid>
+                  <Grid item xs={4}>
+                    <TextField
+                      fullWidth
+                      name="city"
+                      value={buildingInfo.city}
+                      onChange={handleBuildingInfoChange}
+                      sx={{ marginTop: 1 }}
+                      type="number"
+                      label="City"
+                    />
+                  </Grid>
+                  <Grid item xs={4}>
+                    <TextField
+                      fullWidth
+                      name="state"
+                      value={buildingInfo.state}
+                      onChange={handleBuildingInfoChange}
+                      sx={{ marginTop: 1 }}
+                      label="State"
+                    />
+                  </Grid>
+                </Grid>
+              </>
+            )}
+          </Grid>
+          <Grid item xs={12}>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={distributedEnergySource.onsiteDER}
+                  onChange={handleOnsiteDERChange}
+                  name="onsiteDER"
+                />
+              }
+              label="Onsite Distributed Energy Resource"
+            />
+            {distributedEnergySource.onsiteDER && (
+              <Grid container spacing={2}>
+                <Grid item xs={6}>
+                  <TextField
+                    label="DES Type"
+                    fullWidth
+                    name="desType"
+                    value={distributedEnergySource.desType}
+                    onChange={handleDistributedEnergySourceChange}
+                  />
+                </Grid>
+                <Grid item xs={6}>
+                  <TextField
+                    label="Capacity (kW)"
+                    fullWidth
+                    name="capacity"
+                    value={distributedEnergySource.capacity}
+                    onChange={handleDistributedEnergySourceChange}
+                  />
+                </Grid>
+              </Grid>
+            )}
+          </Grid>
+          <Grid item xs={12}>
+            <Typography variant="h6" gutterBottom>
+              Existing Electric Vehicle Charging Stations
+            </Typography>
+            <Grid container spacing={1}>
+              <Grid item xs={3}>
+                <FormControl fullWidth sx={{ marginTop: 0 }}>
+                  <InputLabel id="chargingLevelLabel">
+                    Charging Level
+                  </InputLabel>
+                  <Select
+                    labelId="chargingLevelLabel"
+                    id="demo-simple-select"
+                    value={electricVehicleChargingStations.level}
+                    label="Home Charging Level"
+                    onChange={handleElectricVehicleChargingStationsChange}
+                    fullWidth
+                    // variant="filled"
+                    name="level"
+                  >
+                    <MenuItem value={"L1"}>Level 1</MenuItem>
+                    <MenuItem value={"L2"}>Level 2</MenuItem>
+                    <MenuItem value={"L3"}>Level 3</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item xs={3}>
                 <TextField
-                  label="DES Type"
+                  label="Port Type"
                   fullWidth
-                  name="desType"
-                  value={distributedEnergySource.desType}
-                  onChange={handleDistributedEnergySourceChange}
+                  name="portType"
+                  value={electricVehicleChargingStations.portType}
+                  onChange={handleElectricVehicleChargingStationsChange}
                 />
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={3}>
                 <TextField
-                  label="Capacity (kW)"
+                  label="Max Charging per Port"
                   fullWidth
-                  name="capacity"
-                  value={distributedEnergySource.capacity}
-                  onChange={handleDistributedEnergySourceChange}
+                  type="number"
+                  name="maxChargingPerPort"
+                  value={electricVehicleChargingStations.maxChargingPerPort}
+                  onChange={handleElectricVehicleChargingStationsChange}
                 />
               </Grid>
-            </Grid>
-          )}
-        </Grid>
-        <Grid item xs={12}>
-          <Typography variant="h6" gutterBottom>
-            Existing Electric Vehicle Charging Stations
-          </Typography>
-          <Grid container spacing={2}>
-            <Grid item xs={3}>
-              <TextField
-                label="Level"
-                fullWidth
-                name="level"
-                value={electricVehicleChargingStations.level}
-                onChange={handleElectricVehicleChargingStationsChange}
-              />
-            </Grid>
-            <Grid item xs={3}>
-              <TextField
-                label="Port Type"
-                fullWidth
-                name="portType"
-                value={electricVehicleChargingStations.portType}
-                onChange={handleElectricVehicleChargingStationsChange}
-              />
-            </Grid>
-            <Grid item xs={3}>
-              <TextField
-                label="Max Charging per Port"
-                fullWidth
-                type="number"
-                name="maxChargingPerPort"
-                value={electricVehicleChargingStations.maxChargingPerPort}
-                onChange={handleElectricVehicleChargingStationsChange}
-              />
-            </Grid>
-            <Grid item xs={3}>
-              <TextField
-                label="Number"
-                fullWidth
-                name="number"
-                type="number"
-                value={electricVehicleChargingStations.number}
-                onChange={handleElectricVehicleChargingStationsChange}
-              />
+              <Grid item xs={3}>
+                <TextField
+                  label="Number"
+                  fullWidth
+                  name="number"
+                  type="number"
+                  value={electricVehicleChargingStations.number}
+                  onChange={handleElectricVehicleChargingStationsChange}
+                />
+              </Grid>
             </Grid>
           </Grid>
-        </Grid>
-        <Grid item xs={12}>
-          <Button variant="contained" fullWidth>
-            SAVE
-          </Button>
+          <Grid item xs={12}>
+            <Button variant="contained" fullWidth type="submit">
+              SAVE
+            </Button>
+          </Grid>
         </Grid>
       </Grid>
-    </Grid>
+    </form>
   );
 }

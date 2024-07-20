@@ -29,9 +29,8 @@ import { DemoContainer } from "@mui/x-date-pickers/internals/demo/index.js";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs/index.js";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider/index.js";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker/index.js";
-import dayjs from "dayjs";
 
-export default function EmployeeInfo() {
+export default function EmployeeInfo({ onFormSubmit }) {
   const [employees, setEmployees] = useState([]);
   const [employeeData, setEmployeeData] = useState({
     employeeId: "",
@@ -40,6 +39,7 @@ export default function EmployeeInfo() {
     onsiteBldg: "",
     leaveToWorkTime: null,
     returnHomeTime: null,
+    homeCharging: null,
   });
   const [selectedFile, setSelectedFile] = useState(null);
 
@@ -69,6 +69,7 @@ export default function EmployeeInfo() {
       onsiteBldg: "",
       leaveToWorkTime: null,
       returnHomeTime: null,
+      homeCharging: null,
     });
   };
 
@@ -99,6 +100,7 @@ export default function EmployeeInfo() {
             onsiteBldg: columns[3],
             leaveToWorkTime: columns[4],
             returnHomeTime: columns[5],
+            homeCharging: columns[6],
           };
         });
         setEmployees(employeesFromCsv);
@@ -107,16 +109,21 @@ export default function EmployeeInfo() {
     }
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onFormSubmit(employees);
+  };
+
   return (
-    <Container maxWidth="lg">
-      <Grid item xs={12} style={{ marginTop: 0 }}>
-        <Typography variant="h4" gutterBottom>
-          Employee Info
-        </Typography>
-      </Grid>
-      <Grid container spacing={0} style={{}}>
+    <form onSubmit={handleSubmit}>
+      <Grid container spacing={0} style={{ marginTop: 0, marginLeft: 10 }}>
+        <Grid item xs={12} style={{ marginTop: 0 }}>
+          <Typography variant="h4" gutterBottom>
+            Employee Info
+          </Typography>
+        </Grid>
         <Grid item xs={12} md={12}>
-          <Grid container spacing={2}>
+          <Grid container spacing={0}>
             <Grid item xs={12}>
               <Grid container spacing={1}>
                 <Grid item xs={3}>
@@ -188,6 +195,28 @@ export default function EmployeeInfo() {
                     </DemoContainer>
                   </LocalizationProvider>
                 </Grid>
+                <Grid item xs={3}>
+                  <FormControl fullWidth sx={{ marginTop: 1 }}>
+                    <InputLabel id="homeChargingLevelLabel">
+                      Home Charging Level
+                    </InputLabel>
+                    <Select
+                      labelId="homeChargingLevelLabel"
+                      id="demo-simple-select"
+                      value={employeeData.homeCharging}
+                      label="Home Charging Level"
+                      onChange={handleChange}
+                      fullWidth
+                      // variant="filled"
+                      name="homeCharging"
+                    >
+                      <MenuItem value={"None"}>No Charger</MenuItem>
+                      <MenuItem value={"L1"}>Level 1</MenuItem>
+                      <MenuItem value={"L2"}>Level 2</MenuItem>
+                      <MenuItem value={"L3"}>Level 3</MenuItem>
+                    </Select>
+                  </FormControl>
+                </Grid>
               </Grid>
             </Grid>
             <Grid item xs={12}>
@@ -234,6 +263,7 @@ export default function EmployeeInfo() {
                       <TableCell>Onsite Bldg</TableCell>
                       <TableCell>Leave to Work Time</TableCell>
                       <TableCell>Return Home Time</TableCell>
+                      <TableCell>Home Charging Level</TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
@@ -257,16 +287,26 @@ export default function EmployeeInfo() {
                               )
                             : ""}
                         </TableCell>
+                        <TableCell>{employee.homeCharging}</TableCell>
                       </TableRow>
                     ))}
                   </TableBody>
                 </Table>
               </TableContainer>
             </Grid>
+            <Grid item xs={12}>
+              <Button
+                variant="contained"
+                fullWidth
+                type="submit"
+                sx={{ marginTop: 1 }}
+              >
+                Update
+              </Button>
+            </Grid>
           </Grid>
         </Grid>
-      </Grid>
-      <Grid container spacing={2}>
+        {/* <Grid container spacing={2}>
         <Grid container spacing={2} style={{ marginTop: 50 }}>
           <Grid item xs={3}>
             <Typography variant="h6" align="center" gutterBottom>
@@ -458,7 +498,8 @@ export default function EmployeeInfo() {
             />
           </Grid>
         </Grid>
+      </Grid> */}
       </Grid>
-    </Container>
+    </form>
   );
 }
