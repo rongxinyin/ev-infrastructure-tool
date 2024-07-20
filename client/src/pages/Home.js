@@ -41,9 +41,14 @@ export default function Home() {
   const [showResults, setShowResults] = useState(false);
 
   const [buildingInfoData, setBuildingInfoData] = useState({});
+  const [employeeInfoData, setEmployeeInfoData] = useState({});
 
   const handleBuildingInfoFormSubmit = (data) => {
     setBuildingInfoData(data);
+  };
+
+  const handleEmployeeInfoFormSubmit = (data) => {
+    setEmployeeInfoData(data);
   };
 
   const switchPagesButton = (state) => {
@@ -142,7 +147,10 @@ export default function Home() {
             <BuildingInfo onFormSubmit={handleBuildingInfoFormSubmit} />
           )}
           {/* {showBuildingInfo && <pre>{JSON.stringify(buildingInfoData, null, 2)}</pre>} */}
-          {showEmployeeInfo && <EmployeeInfo />}
+          {showEmployeeInfo && (
+            <EmployeeInfo onFormSubmit={handleEmployeeInfoFormSubmit} />
+          )}
+          {/* {showEmployeeInfo && <pre>{JSON.stringify(employeeInfoData, null, 2)}</pre>} */}
           {showResults && <Results />}
           {showSimulation && <Simulation />}
         </Grid>

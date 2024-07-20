@@ -30,7 +30,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs/index.js";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider/index.js";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker/index.js";
 
-export default function EmployeeInfo() {
+export default function EmployeeInfo({ onFormSubmit }) {
   const [employees, setEmployees] = useState([]);
   const [employeeData, setEmployeeData] = useState({
     employeeId: "",
@@ -109,20 +109,25 @@ export default function EmployeeInfo() {
     }
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onFormSubmit(employees);
+  };
+
   return (
-    <Grid container spacing={0} style={{ marginTop: 0, marginLeft: 10 }}>
-      <Grid item xs={12} style={{ marginTop: 0 }}>
-        <Typography variant="h4" gutterBottom>
-          Employee Info
-        </Typography>
-      </Grid>
+    <form onSubmit={handleSubmit}>
+      <Grid container spacing={0} style={{ marginTop: 0, marginLeft: 10 }}>
+        <Grid item xs={12} style={{ marginTop: 0 }}>
+          <Typography variant="h4" gutterBottom>
+            Employee Info
+          </Typography>
+        </Grid>
         <Grid item xs={12} md={12}>
           <Grid container spacing={0}>
             <Grid item xs={12}>
               <Grid container spacing={1}>
                 <Grid item xs={3}>
                   <TextField
-                    required
                     label="Employee ID"
                     fullWidth
                     name="employeeId"
@@ -132,7 +137,6 @@ export default function EmployeeInfo() {
                 </Grid>
                 <Grid item xs={3}>
                   <TextField
-                    required
                     label="Commute Mode"
                     fullWidth
                     name="commuteMode"
@@ -142,7 +146,6 @@ export default function EmployeeInfo() {
                 </Grid>
                 <Grid item xs={3}>
                   <TextField
-                    required
                     label="Zipcode"
                     fullWidth
                     name="zipcode"
@@ -153,7 +156,6 @@ export default function EmployeeInfo() {
                 </Grid>
                 <Grid item xs={3}>
                   <TextField
-                    required
                     label="Onsite Bldg"
                     fullWidth
                     name="onsiteBldg"
@@ -165,7 +167,6 @@ export default function EmployeeInfo() {
                   <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <DemoContainer components={["TimePicker"]}>
                       <TimePicker
-                        required
                         label="Leave to work time"
                         fullWidth
                         value={employeeData.leaveToWorkTime}
@@ -182,7 +183,6 @@ export default function EmployeeInfo() {
                   <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <DemoContainer components={["TimePicker"]}>
                       <TimePicker
-                        required
                         label="Return home time"
                         fullWidth
                         value={employeeData.returnHomeTime}
@@ -196,16 +196,6 @@ export default function EmployeeInfo() {
                   </LocalizationProvider>
                 </Grid>
                 <Grid item xs={3}>
-                  {/* <TextField
-                    label="Home Charging Level"
-                    fullWidth
-                    name="homeChargingLevel"
-                    value={employeeData.homeCharging}
-                    onChange={handleChange}
-                    type="number"
-                    sx={{ marginTop: 1 }}
-                  /> */}
-
                   <FormControl fullWidth sx={{ marginTop: 1 }}>
                     <InputLabel id="homeChargingLevelLabel">
                       Home Charging Level
@@ -304,9 +294,19 @@ export default function EmployeeInfo() {
                 </Table>
               </TableContainer>
             </Grid>
+            <Grid item xs={12}>
+              <Button
+                variant="contained"
+                fullWidth
+                type="submit"
+                sx={{ marginTop: 1 }}
+              >
+                Update
+              </Button>
+            </Grid>
           </Grid>
         </Grid>
-      {/* <Grid container spacing={2}>
+        {/* <Grid container spacing={2}>
         <Grid container spacing={2} style={{ marginTop: 50 }}>
           <Grid item xs={3}>
             <Typography variant="h6" align="center" gutterBottom>
@@ -499,6 +499,7 @@ export default function EmployeeInfo() {
           </Grid>
         </Grid>
       </Grid> */}
-    </Grid>
+      </Grid>
+    </form>
   );
 }
