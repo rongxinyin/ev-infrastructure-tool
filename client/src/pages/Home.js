@@ -15,6 +15,7 @@ import EmployeeInfo from "../components/EmployeeInfo.js";
 import Simulation from "../components/Simulation.js";
 import Results from "../components/Results.js";
 import React, { useState } from "react";
+import axios from "axios";
 
 // Visualization
 const Item = styled(Paper)(({ theme }) => ({
@@ -42,6 +43,7 @@ export default function Home() {
 
   const [buildingInfoData, setBuildingInfoData] = useState({});
   const [employeeInfoData, setEmployeeInfoData] = useState({});
+  const [employeeCommuteData, setEmployeeCommuteData] = useState({});
 
   const handleBuildingInfoFormSubmit = (data) => {
     setBuildingInfoData(data);
@@ -49,6 +51,7 @@ export default function Home() {
 
   const handleEmployeeInfoFormSubmit = (data) => {
     setEmployeeInfoData(data);
+    getEmployeeCommuteInfo();
   };
 
   const switchPagesButton = (state) => {
@@ -78,6 +81,20 @@ export default function Home() {
         setShowResults(true);
         break;
     }
+  };
+
+  const getEmployeeCommuteInfo = async () => {
+    const response = await fetch("http://localhost:8080/process-data", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(employeeInfoData, null, 2),
+    });
+
+    const result = await response.json();
+    console.log(result); // Process the result as needed
+    setEmployeeCommuteData(result);
   };
 
   return (
@@ -150,7 +167,15 @@ export default function Home() {
           {showEmployeeInfo && (
             <EmployeeInfo onFormSubmit={handleEmployeeInfoFormSubmit} />
           )}
-          {/* {showEmployeeInfo && <pre>{JSON.stringify(employeeInfoData, null, 2)}</pre>} */}
+          {/* {showEmployeeInfo && (
+            <pre>{JSON.stringify(employeeInfoData, null, 2)}</pre>
+          )} */}
+          {/* {showEmployeeInfo && (
+            <Button onClick={() => getEmployeeCommuteInfo()}>TEST</Button>
+          )} */}
+          {/* {showEmployeeInfo && (
+            <pre>{JSON.stringify(employeeCommuteData, null, 2)}</pre>
+          )} */}
           {showResults && <Results />}
           {showSimulation && <Simulation />}
         </Grid>

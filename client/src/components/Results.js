@@ -12,7 +12,7 @@ const textFieldSX = {
 
 export default function Simulation() {
   return (
-    <Grid container spacing={1} sx={{ marginLeft: 1 }}>
+    <Grid container spacing={1} sx={{ marginLeft: 0 }}>
       <Grid item xs={12}>
         <Typography variant="h4" sx={{ marginTop: 0 }}>
           Results

@@ -60,7 +60,20 @@ export default function EmployeeInfo({ onFormSubmit }) {
   const handleAddRow = () => {
     setEmployees([
       ...employees,
-      { ...employeeData, id: Math.random().toString(36).substring(2, 15) },
+      {
+        employee_id: employeeData.employeeId,
+        commute_mode: employeeData.commuteMode,
+        zip_code: employeeData.zipcode,
+        onsite_bldg: employeeData.onsiteBldg,
+        leave_to_work_time: isValidDate(employeeData.leaveToWorkTime)
+          ? employeeData.leaveToWorkTime.format("HH:mm")
+          : "",
+        return_home_time: isValidDate(employeeData.returnHomeTime)
+          ? employeeData.returnHomeTime.format("HH:mm")
+          : "",
+        home_charging: employeeData.homeCharging,
+        id: Math.random().toString(36).substring(2, 15),
+      },
     ]);
     setEmployeeData({
       employeeId: "",
@@ -161,6 +174,7 @@ export default function EmployeeInfo({ onFormSubmit }) {
                     name="onsiteBldg"
                     value={employeeData.onsiteBldg}
                     onChange={handleChange}
+                    type="number"
                   />
                 </Grid>
                 <Grid item xs={3}>
@@ -269,25 +283,13 @@ export default function EmployeeInfo({ onFormSubmit }) {
                   <TableBody>
                     {employees.map((employee) => (
                       <TableRow key={employee.id}>
-                        <TableCell>{employee.employeeId}</TableCell>
-                        <TableCell>{employee.commuteMode}</TableCell>
-                        <TableCell>{employee.zipcode}</TableCell>
-                        <TableCell>{employee.onsiteBldg}</TableCell>
-                        <TableCell>
-                          {isValidDate(employee.leaveToWorkTime)
-                            ? employee.leaveToWorkTime.format(
-                                "MM/DD/YYYY HH:mm:ss"
-                              )
-                            : ""}
-                        </TableCell>
-                        <TableCell>
-                          {isValidDate(employee.returnHomeTime)
-                            ? employee.returnHomeTime.format(
-                                "MM/DD/YYYY HH:mm:ss"
-                              )
-                            : ""}
-                        </TableCell>
-                        <TableCell>{employee.homeCharging}</TableCell>
+                        <TableCell>{employee.employee_id}</TableCell>
+                        <TableCell>{employee.commute_mode}</TableCell>
+                        <TableCell>{employee.zip_code}</TableCell>
+                        <TableCell>{employee.onsite_bldg}</TableCell>
+                        <TableCell>{employee.leave_to_work_time}</TableCell>
+                        <TableCell>{employee.return_home_time}</TableCell>
+                        <TableCell>{employee.home_charging}</TableCell>
                       </TableRow>
                     ))}
                   </TableBody>
