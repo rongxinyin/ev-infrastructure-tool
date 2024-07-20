@@ -43,6 +43,7 @@ export default function Home() {
 
   const [buildingInfoData, setBuildingInfoData] = useState({});
   const [employeeInfoData, setEmployeeInfoData] = useState({});
+  const [employeeCommuteData, setEmployeeCommuteData] = useState({})
 
   const handleBuildingInfoFormSubmit = (data) => {
     setBuildingInfoData(data);
@@ -82,22 +83,17 @@ export default function Home() {
   };
 
   const getEmployeeCommuteInfo = async () => {
-    try {
-      const response = await axios.post(
-        "http://localhost:8080/api/python/process",
-        [JSON.stringify(employeeInfoData, null, 2)]
-      );
-      if (response.data) {
-        console.log("Data received:", response.data);
-        return response.data;
-      } else {
-        console.log("No data received, response:", response);
-        return null;
-      }
-    } catch (error) {
-      console.error("Error fetching data:", error);
-      return null;
-    }
+    const response = await fetch('http://localhost:8080/process-data', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(employeeInfoData, null, 2),
+    });
+
+    const result = await response.json();
+    console.log(result); // Process the result as needed
+    setEmployeeCommuteData(result);
   };
 
   return (
@@ -175,6 +171,9 @@ export default function Home() {
           )}
           {showEmployeeInfo && (
             <Button onClick={() => getEmployeeCommuteInfo()}>TEST</Button>
+          )}
+          {showEmployeeInfo && (
+            <pre>{JSON.stringify(employeeCommuteData, null, 2)}</pre>
           )}
           {showResults && <Results />}
           {showSimulation && <Simulation />}
