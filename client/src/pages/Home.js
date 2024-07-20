@@ -15,6 +15,7 @@ import EmployeeInfo from "../components/EmployeeInfo.js";
 import Simulation from "../components/Simulation.js";
 import Results from "../components/Results.js";
 import React, { useState } from "react";
+import axios from "axios";
 
 // Visualization
 const Item = styled(Paper)(({ theme }) => ({
@@ -77,6 +78,25 @@ export default function Home() {
         setShowSimulation(false);
         setShowResults(true);
         break;
+    }
+  };
+
+  const getEmployeeCommuteInfo = async () => {
+    try {
+      const response = await axios.post(
+        "http://localhost:8080/api/python/process",
+        [JSON.stringify(employeeInfoData, null, 2)]
+      );
+      if (response.data) {
+        console.log("Data received:", response.data);
+        return response.data;
+      } else {
+        console.log("No data received, response:", response);
+        return null;
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      return null;
     }
   };
 
@@ -150,7 +170,12 @@ export default function Home() {
           {showEmployeeInfo && (
             <EmployeeInfo onFormSubmit={handleEmployeeInfoFormSubmit} />
           )}
-          {/* {showEmployeeInfo && <pre>{JSON.stringify(employeeInfoData, null, 2)}</pre>} */}
+          {showEmployeeInfo && (
+            <pre>{JSON.stringify(employeeInfoData, null, 2)}</pre>
+          )}
+          {showEmployeeInfo && (
+            <Button onClick={() => getEmployeeCommuteInfo()}>TEST</Button>
+          )}
           {showResults && <Results />}
           {showSimulation && <Simulation />}
         </Grid>

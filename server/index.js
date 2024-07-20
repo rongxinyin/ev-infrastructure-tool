@@ -3,10 +3,13 @@ import dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
 import morgan from "morgan";
+import bodyParser from "body-parser";
+
+import pythonRoutes from "./routes/python.js";
 
 // app
-const bodyParser = require("body-parser");
-const pythonRoutes = require("./routes/python");
+// const bodyParser = require("body-parser");
+// const pythonRoutes = require("./routes/python");
 const app = express();
 
 //middleware
@@ -18,10 +21,10 @@ dotenv.config();
 app.use(bodyParser.json());
 app.use("/api/python", pythonRoutes);
 
-//connect
-mongoose.connect(process.env.CONNECTION_URL);
-const db = mongoose.connection;
-db.once("open", () => console.log(`Connected to database`));
+// //connect
+// mongoose.connect(process.env.CONNECTION_URL);
+// const db = mongoose.connection;
+// db.once("open", () => console.log(`Connected to database`));
 
 //listener
 const port = 8080;
