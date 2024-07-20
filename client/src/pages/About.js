@@ -11,14 +11,14 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function About() {
   return (
-    <Box bgcolor="primary.main">
-      <Box sx={{ flexGrow: 1, margin: 3 }}>
+    <Box bgcolor="primary.white">
+      <Box sx={{ flexGrow: 1, margin: 3, marginLeft: 10, marginRight: 10 }}>
         <Grid container spacing={2}>
           <Grid item xs={12}>
-            <Typography variant="h4" color="common.white" sx={{ marginTop: 3 }}>
+            <Typography variant="h4" color="" sx={{ marginTop: 3 }}>
               About
             </Typography>
-            <Typography variant="h6" color="common.white" sx={{}}>
+            <Typography variant="h6" color="" sx={{}}>
               Electrical Vehicle Infrastructure Tool (EVIT) is an open-source
               web-based tool web-based tool for planning optimal electric
               vehicle charging stations for both fleet and personally owned
@@ -29,31 +29,34 @@ export default function About() {
           </Grid>
 
           <Grid item xs={12}>
-            <Typography variant="h4" color="common.white" sx={{}}>
+            <Typography variant="h4" color="" sx={{}}>
               Thanks and Credits
             </Typography>
-            <Typography variant="h6" color="common.white" sx={{}}>
+            <Typography variant="h6" color="" sx={{}}>
               Developers:
             </Typography>
             <ul>
-              <Typography variant="h6" color="common.white">
+              <Typography variant="h6" color="">
+                - Michael Leong
+              </Typography>
+              <Typography variant="h6" color="">
                 - Vidhu Birru
               </Typography>
-              <Typography variant="h6" color="common.white" sx={{}}>
+              <Typography variant="h6" color="" sx={{}}>
                 - Katherine Shen
               </Typography>
             </ul>
-            <Typography variant="h6" color="common.white" sx={{}}>
+            <Typography variant="h6" color="" sx={{}}>
               And thank you to mentors Rongxin Yin and Michael Leong for leading
               this project in the 2024 Experiences in Research program.
             </Typography>
           </Grid>
 
           <Grid item xs={12}>
-            <Typography variant="h4" color="common.white" sx={{}}>
+            <Typography variant="h4" color="" sx={{}}>
               Source Code
             </Typography>
-            <Typography variant="h6" color="common.white" sx={{}}>
+            <Typography variant="h6" color="" sx={{}}>
               The source code for EVIT can be found on{" "}
               <a
                 style={{ color: "#2196f3" }} // Inline styling
@@ -64,7 +67,7 @@ export default function About() {
               .
             </Typography>
 
-            <Typography variant="h6" color="common.white" sx={{}}>
+            <Typography variant="h6" color="" sx={{}}>
               Paper citation: TBD.{" "}
               <a
                 href="https://doi.org/10.1016/j.buildenv.2023.110663"
