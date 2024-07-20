@@ -1,44 +1,42 @@
-import express from "express";
 import { spawn } from "child_process";
-import path from "path";
-import { fileURLToPath } from "url";
-
-// Get the directory name of the current module
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+import express from "express";
 
 const router = express.Router();
 
-router.post("/process", async (req, res) => {
-  const inputData = JSON.stringify(req.body);
+router.post("/process-data", (req, res) => {
+  const input = JSON.stringify(req.body);
 
-  // Make sure to use the correct path to your Python script
-  const scriptPath = path.resolve(
-    __dirname,
-    "../../python-backend/scripts/process-empl-data.py"
-  );
+  const python = spawn("python", [
+    "../python-backend/scripts/process-empl-data.py",
+    input,
+  ]);
 
-  const pythonProcess = spawn("python", [scriptPath, inputData]);
+  let dataToSend = "";
+  let errorOccurred = false;
 
-  let result = "";
-
-  pythonProcess.stdout.on("data", (data) => {
-    result += data.toString();
+  python.stdout.on("data", (data) => {
+    dataToSend += data.toString();
   });
 
-  pythonProcess.stderr.on("data", (data) => {
+  python.stderr.on("data", (data) => {
+    errorOccurred = true;
     console.error(`stderr: ${data}`);
   });
 
-  pythonProcess.on("close", (code) => {
-    if (code === 0) {
-      try {
-        res.status(200).json(JSON.parse(result));
-      } catch (e) {
-        res.status(500).json({ error: "Error parsing Python script output" });
-      }
+  python.on("close", (code) => {
+    if (errorOccurred) {
+      res.status(500).send({ status: "error", message: "Python script error" });
     } else {
-      res.status(500).json({ error: "Internal Server Error" });
+      console.log(`Python script output: ${dataToSend}`); // Log the raw output
+      try {
+        const result = JSON.parse(dataToSend);
+        res.send(result);
+      } catch (e) {
+        console.error(`Error parsing JSON: ${e.message}`); // Log the parsing error
+        res
+          .status(500)
+          .send({ status: "error", message: "Invalid JSON output" });
+      }
     }
   });
 });
