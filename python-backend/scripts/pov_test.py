@@ -167,20 +167,20 @@ def add_home_charging(data):
 
 if __name__ == "__main__":
     # Save the results to a csv file
-    output_folder = '~/github/ev-infrastructure-tool/python-backend/tests'
+    test_folder = '~/github/ev-infrastructure-tool/python-backend/tests'
 
     for parking_lot in ['bldg-90']:
         # Create the output folder if it doesn't exist
-        output_path = os.path.expanduser(output_folder)
-        site_path = os.path.join(output_path, parking_lot)
+        test_path = os.path.expanduser(test_folder)
+        site_path = os.path.join(test_path, parking_lot)
         if not os.path.exists(site_path):
             os.makedirs(site_path)
 
         # Create a list of json data for each vehicle and dump to json file
         driving_pattern_data = []
-        with open('data/pov_driving_pattern.json', 'w') as f:
+        with open(os.path.join(test_path,'pov_driving_pattern.json'), 'w') as f:
             # Load employee commute survey json data
-            with open('../tests/update_employee_commute.json', 'r') as file:
+            with open(os.path.join(test_path,'update_employee_commute.json'), 'r') as file:
                 pov_driving_patterns = json.load(file)
 
             for row in pov_driving_patterns:
@@ -192,7 +192,7 @@ if __name__ == "__main__":
         # Run the charging management model for different adoption rates
         for adoption_rate in [0.36]:
             print(f"Running charging management model for site {parking_lot} with adoption rate {adoption_rate}")
-            results = run_charging_management(parking_lot, 'tests/pov_driving_pattern.json', 
+            results = run_charging_management(parking_lot, '../tests/pov_driving_pattern.json', 
                                             start_time = datetime.datetime(2024, 2, 1), run_period = 30, 
                                             l2_max_rate = 7.0, l3_max_rate = 50.0, adoption_rate = adoption_rate)
             results.to_csv(os.path.join(site_path, f'pov_vehicle_status_{adoption_rate}.csv'), index=False)
