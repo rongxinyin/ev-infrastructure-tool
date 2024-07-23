@@ -163,19 +163,19 @@ export default function Home() {
           {showBuildingInfo && (
             <BuildingInfo onFormSubmit={handleBuildingInfoFormSubmit} />
           )}
-          {/* {showBuildingInfo && <pre>{JSON.stringify(buildingInfoData, null, 2)}</pre>} */}
+          {showBuildingInfo && <pre>{JSON.stringify(buildingInfoData, null, 2)}</pre>}
           {showEmployeeInfo && (
             <EmployeeInfo onFormSubmit={handleEmployeeInfoFormSubmit} />
           )}
-          {/* {showEmployeeInfo && (
+          {showEmployeeInfo && (
             <pre>{JSON.stringify(employeeInfoData, null, 2)}</pre>
-          )} */}
-          {/* {showEmployeeInfo && (
+          )}
+          {showEmployeeInfo && (
             <Button onClick={() => getEmployeeCommuteInfo()}>TEST</Button>
-          )} */}
-          {/* {showEmployeeInfo && (
+          )}
+          {showEmployeeInfo && (
             <pre>{JSON.stringify(employeeCommuteData, null, 2)}</pre>
-          )} */}
+          )}
           {showResults && <Results />}
           {showSimulation && <Simulation />}
         </Grid>

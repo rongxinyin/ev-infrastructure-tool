@@ -10,13 +10,17 @@ const BarChart = (props) => {
     labels: labels,
     datasets: [
       {
-        label: "Estimated Shed Results",
         backgroundColor: barColors,
         data: props.data,
       },
     ],
   };
   let options = {
+    plugins: {
+      legend: {
+        display: false,  // Disable legend
+      },
+    },
     scales: {
       x: {
         title: {

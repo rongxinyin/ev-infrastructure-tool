@@ -11,6 +11,7 @@ import random
 import os
 from datetime import datetime
 
+
 # Setup google maps config and credentials
 
 script_dir = os.path.dirname(__file__)

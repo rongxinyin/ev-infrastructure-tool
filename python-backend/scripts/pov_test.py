@@ -3,6 +3,7 @@ from pov_travel_pattern import *
 import os
 import random
 import json
+import pandas as pd
 
 def random_select_list(lst, percentage):
     n = max(int(len(lst) * percentage), 1)
@@ -54,6 +55,9 @@ def run_charging_management(site_id, driving_pattern_input, time_step = 15,
                             run_period = 30, 
                             l2_max_rate = 19.2, l3_max_rate = 60.0, adoption_rate = 0.1):
     # Create Vehicle objects and set daily travel patterns
+    print(os.getcwd())
+    print("start3")
+    print(driving_pattern_input)
     with open(driving_pattern_input, 'r') as file:
         fleet_driving_patterns = json.load(file)
 
@@ -172,13 +176,18 @@ if __name__ == "__main__":
     for parking_lot in ['bldg-90']:
         # Create the output folder if it doesn't exist
         output_path = os.path.expanduser(output_folder)
+        print("startS")
+        print(output_path)
         site_path = os.path.join(output_path, parking_lot)
+        print(site_path)
         if not os.path.exists(site_path):
             os.makedirs(site_path)
+            print("start1")
+
 
         # Create a list of json data for each vehicle and dump to json file
         driving_pattern_data = []
-        with open('data/pov_driving_pattern.json', 'w') as f:
+        with open('../pov_driving_pattern.json', 'w') as f:
             # Load employee commute survey json data
             with open('../tests/update_employee_commute.json', 'r') as file:
                 pov_driving_patterns = json.load(file)
