@@ -11,85 +11,81 @@ const textFieldSX = {
   backgroundColor: "secondary.main",
 };
 
-
 export default function Simulation() {
+  fetch("/bldg-90/pov_vehicle_status_0.36.csv")
+    .then((response) => response.text())
+    .then((data) => {
+      const parsedData = parseCSV(data);
+    });
 
-  fetch('/bldg-90/pov_vehicle_status_0.36.csv')
-  .then(response => response.text())
-  .then(data => {
-    const parsedData = parseCSV(data);
-  });
-
-let result = null
-function parseCSV(data) {
-  const lines = data.split('\n');
-  const headers = lines[0].split(',');
-  result = lines.slice(1).map(line => {
-    const values = line.split(',');
-    return headers.reduce((object, header, index) => {
+  let result = null;
+  function parseCSV(data) {
+    const lines = data.split("\n");
+    const headers = lines[0].split(",");
+    result = lines.slice(1).map((line) => {
+      const values = line.split(",");
+      return headers.reduce((object, header, index) => {
         object[header] = values[index];
         return object;
-    }, {});
-});
-}
+      }, {});
+    });
+  }
 
   const [waitTimeGraph, setWaitTimeGraph] = useState([]);
   const [lowSocGraph, setLowSocGraph] = useState([]);
   const [utilizationGraph, setUtilizationGraph] = useState([]);
   const [demandGraph, setDemandGraph] = useState([]);
 
-  const test = async() => {
+  const test = async () => {
     if (result === null) {
-      console.error('Result is not initialized');
+      console.error("Result is not initialized");
       return;
     }
-    
-    let waitTime = [0,0,0,0,0,0];
-    let lowSoc = [0,0,0,0,0,0];
-    let utilization = [0,0,0,0,0,0];
+
+    let waitTime = [0, 0, 0, 0, 0, 0];
+    let lowSoc = [0, 0, 0, 0, 0, 0];
+    let utilization = [0, 0, 0, 0, 0, 0];
     let demand = [];
 
-    for (let n=2; n<=12; n+=2) {
-      let waitData = result.filter(entry => entry.L2 === String(n))
-      
+    for (let n = 2; n <= 12; n += 2) {
+      let waitData = result.filter((entry) => entry.L2 === String(n));
+
       let count_in_queue = 0;
-      
-      for(let i=0; i<waitData.length; i++) {
-        if(waitData[i].queue_status === "In queue") {
+
+      for (let i = 0; i < waitData.length; i++) {
+        if (waitData[i].queue_status === "In queue") {
           count_in_queue++;
         }
       }
-      waitTime[n/2 - 1] = count_in_queue * 0.25;
+      waitTime[n / 2 - 1] = count_in_queue * 0.25;
     }
 
-    for (let n=2; n<=12; n+=2) {
-      let lowSocData = result.filter(entry => entry.L2 === String(n))
+    for (let n = 2; n <= 12; n += 2) {
+      let lowSocData = result.filter((entry) => entry.L2 === String(n));
 
       let count_low_soc = 0;
-      
-      for(let i=0; i<lowSocData.length; i++) {
-        if(Number(lowSocData[i].soc) < 50) {
+
+      for (let i = 0; i < lowSocData.length; i++) {
+        if (Number(lowSocData[i].soc) < 50) {
           count_low_soc++;
         }
       }
-      lowSoc[n/2 -1] = count_low_soc / 30; //divide by 30 so it's the # of hours per day
+      lowSoc[n / 2 - 1] = count_low_soc / 30; //divide by 30 so it's the # of hours per day
     }
 
-    for (let n=2; n<=12; n+=2) {
-      let utilizationData = result.filter(entry => entry.L2 === String(n))
-      
+    for (let n = 2; n <= 12; n += 2) {
+      let utilizationData = result.filter((entry) => entry.L2 === String(n));
+
       let utilized = 0;
 
-      for(let i=0; i<utilizationData.length; i++) {
-        if(utilizationData[i].status === "Charging") {
+      for (let i = 0; i < utilizationData.length; i++) {
+        if (utilizationData[i].status === "Charging") {
           utilized++;
         }
       }
 
-      utilization[n/2 -1] = (utilized / utilizationData.length) * 100;
-
+      utilization[n / 2 - 1] = (utilized / utilizationData.length) * 100;
     }
-
 
     setWaitTimeGraph(() => [
       //...prev,
@@ -132,7 +128,7 @@ function parseCSV(data) {
         "#007681"
       ),
     ]);
-  }
+  };
 
   return (
     <Grid container spacing={1} sx={{ marginLeft: 0 }}>

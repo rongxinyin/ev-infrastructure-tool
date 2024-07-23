@@ -18,7 +18,7 @@ const BarChart = (props) => {
   let options = {
     plugins: {
       legend: {
-        display: false,  // Disable legend
+        display: false, // Disable legend
       },
     },
     scales: {

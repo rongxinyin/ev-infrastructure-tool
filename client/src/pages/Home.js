@@ -163,7 +163,9 @@ export default function Home() {
           {showBuildingInfo && (
             <BuildingInfo onFormSubmit={handleBuildingInfoFormSubmit} />
           )}
-          {showBuildingInfo && <pre>{JSON.stringify(buildingInfoData, null, 2)}</pre>}
+          {showBuildingInfo && (
+            <pre>{JSON.stringify(buildingInfoData, null, 2)}</pre>
+          )}
           {showEmployeeInfo && (
             <EmployeeInfo onFormSubmit={handleEmployeeInfoFormSubmit} />
           )}
