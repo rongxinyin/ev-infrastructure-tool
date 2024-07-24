@@ -91,7 +91,7 @@ export default function Simulation() {
       //...prev,
       createVisualizations(
         ["(2,0)", "(4,0)", "(6,0)", "(8,0)", "(10,0)", "(12,0)"],
-        "Wait time",
+        "Wait Time for Charing",
         "Chargers (L2, L3)",
         "Hours",
         waitTime,
@@ -105,9 +105,9 @@ export default function Simulation() {
       //...prev,
       createVisualizations(
         ["(2,0)", "(4,0)", "(6,0)", "(8,0)", "(10,0)", "(12,0)"],
-        "Low Soc",
+        "Low State of Charge (<15%)",
         "Chargers (L2, L3)",
-        "Time w/ low Soc (hrs)",
+        "Time w/ low SoC (hours)",
         lowSoc,
         lowSocGraph.length,
         275,
@@ -119,9 +119,9 @@ export default function Simulation() {
       //...prev,
       createVisualizations(
         ["(2,0)", "(4,0)", "(6,0)", "(8,0)", "(10,0)", "(12,0)"],
-        "Charging port utilization",
+        "Charging Port Utilization",
         "Chargers (L2, L3)",
-        "Utilization (%)",
+        "Utilization Rate (%)",
         utilization,
         utilizationGraph.length,
         275,
