@@ -49,7 +49,6 @@ export default function Home() {
   const [simulationConfigData, setSimulationConfigData] = useState({});
   const [simulationResultData, setSimulationResultData] = useState({});
 
-
   const handleBuildingInfoFormSubmit = (data) => {
     setBuildingInfoData(data);
   };
@@ -61,7 +60,7 @@ export default function Home() {
 
   const handleSimulationConfigFormSubmit = (data) => {
     setSimulationConfigData(data);
-  }
+  };
 
   const switchPagesButton = (state) => {
     switch (state) {
@@ -101,7 +100,6 @@ export default function Home() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(employeeInfoData, null, 2),
-
       }
     );
 
@@ -117,30 +115,34 @@ export default function Home() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(employeeCommuteData, null, 2)
+        body: JSON.stringify(
+          Object.assign({}, employeeCommuteData, simulationConfigData),
+          null,
+          2
+        ),
       });
-  
+
       // Check if response is ok
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
-  
+
       // Get the response as a blob
       const blob = await response.blob();
-      
+
       // Create a URL for the blob
       const url = window.URL.createObjectURL(blob);
-      
+
       // Create a temporary link element
-      const a = document.createElement('a');
+      const a = document.createElement("a");
       a.href = url;
-      a.download = 'data.csv';  // Set the file name
+      a.download = "data.csv"; // Set the file name
       document.body.appendChild(a);
-      a.click();  // Trigger the download
-      a.remove();  // Clean up
-      window.URL.revokeObjectURL(url);  // Release memory
+      a.click(); // Trigger the download
+      a.remove(); // Clean up
+      window.URL.revokeObjectURL(url); // Release memory
     } catch (error) {
-      console.error('Error fetching and downloading CSV:', error);
+      console.error("Error fetching and downloading CSV:", error);
     }
   };
 
@@ -224,7 +226,9 @@ export default function Home() {
             <pre>{JSON.stringify(employeeCommuteData, null, 2)}</pre>
           )}
           {showResults && <Results />}
-          {showSimulation && <Simulation onFormSubmit={handleSimulationConfigFormSubmit} />}
+          {showSimulation && (
+            <Simulation onFormSubmit={handleSimulationConfigFormSubmit} />
+          )}
           {showSimulation && (
             <Button onClick={() => getSimulationData()}>TEST</Button>
           )}

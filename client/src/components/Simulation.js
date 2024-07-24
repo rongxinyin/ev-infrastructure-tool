@@ -56,6 +56,7 @@ export default function Simulation({ onFormSubmit }) {
                       label="Start time"
                       name="startTime"
                       slotProps={{ textField: { fullWidth: true } }}
+                      required
                       // onChange={(newValue) =>
                       //   handleTimeChange(newValue, "returnHomeTime")
                       // } TODO
@@ -74,6 +75,7 @@ export default function Simulation({ onFormSubmit }) {
                   name="run_period"
                   value={simulationConfig.run_period}
                   onChange={handleChange}
+                  required
                 />
               </Grid>
               <Grid item xs={2.4}>
@@ -87,6 +89,7 @@ export default function Simulation({ onFormSubmit }) {
                   name="l2_charging_power"
                   value={simulationConfig.l2_charging_power}
                   onChange={handleChange}
+                  required
                 />
               </Grid>
               <Grid item xs={2.4}>
@@ -100,6 +103,7 @@ export default function Simulation({ onFormSubmit }) {
                   name="l3_charging_power"
                   value={simulationConfig.l3_charging_power}
                   onChange={handleChange}
+                  required
                 />
               </Grid>
               <Grid item xs={2.4}>
@@ -113,6 +117,7 @@ export default function Simulation({ onFormSubmit }) {
                   name="adoption_rate"
                   value={simulationConfig.adoption_rate}
                   onChange={handleChange}
+                  required
                 />
               </Grid>
             </Grid>

@@ -1,14 +1,12 @@
 import { spawn, exec } from "child_process";
 import express from "express";
-import { parse } from 'csv-parse';
+import { parse } from "csv-parse";
 import { stringify } from "csv-stringify/sync";
 
 const router = express.Router();
 
 router.post("/process-employee-data", (req, res) => {
   const input = JSON.stringify(req.body);
-
-  console.log(typeof input)
 
   const python = spawn("python", [
     "../python-backend/scripts/process-empl-data.py",
@@ -46,16 +44,23 @@ router.post("/process-employee-data", (req, res) => {
 });
 
 router.post("/process-simulation", (req, res) => {
-  const input = JSON.stringify(req.body.data);
+  const employeeCommuteData = JSON.stringify(req.body.data);
+  const startTime = req.body.start_time;
+  const runPeriod = req.body.run_period;
+  const l2ChargingPower = req.body.l2_charging_power;
+  const l3ChargingPower = req.body.l3_charging_power;
+  const adoptionRate = req.body.adoption_rate;
+
+  // console.log(JSON.stringify(req.body))
 
   const python = spawn("python", [
     "../python-backend/scripts/main.py",
-    input,
-    "input.start_time",
-    30,
-    7,
-    50,
-    0.1
+    employeeCommuteData,
+    startTime,
+    runPeriod,
+    l2ChargingPower,
+    l3ChargingPower,
+    adoptionRate,
   ]);
 
   let dataToSend = "";
@@ -82,25 +87,30 @@ router.post("/process-simulation", (req, res) => {
         parse(dataToSend, { columns: true }, (err, records) => {
           if (err) {
             console.error(`Error parsing CSV: ${err.message}`);
-            res.status(500).send({ status: "error", message: "Invalid CSV output" });
+            res
+              .status(500)
+              .send({ status: "error", message: "Invalid CSV output" });
           } else {
             // Optionally: convert records to CSV string
             const csvOutput = stringify(records, { header: true });
 
             // Send CSV output to client
-            res.setHeader('Content-Type', 'text/csv');
-            res.setHeader('Content-Disposition', 'attachment; filename="data.csv"');
+            res.setHeader("Content-Type", "text/csv");
+            res.setHeader(
+              "Content-Disposition",
+              'attachment; filename="data.csv"'
+            );
             res.send(csvOutput);
           }
         });
       } catch (e) {
         console.error(`Error handling CSV: ${e.message}`);
-        res.status(500).send({ status: "error", message: "Error handling CSV data" });
+        res
+          .status(500)
+          .send({ status: "error", message: "Error handling CSV data" });
       }
     }
   });
 });
-
-
 
 export default router;
