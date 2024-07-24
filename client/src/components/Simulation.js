@@ -3,6 +3,8 @@ import { DemoContainer } from "@mui/x-date-pickers/internals/demo/index.js";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs/index.js";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider/index.js";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker/index.js";
+import { DatePicker } from '@mui/x-date-pickers/DatePicker/index.js';
+
 
 const textFieldSX = {
   marginBottom: 1,
@@ -20,16 +22,11 @@ export default function Simulation() {
           <Grid container spacing={0} sx={{ paddingLeft: 0 }}>
             <Grid item xs={2.4}>
               <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DemoContainer components={["TimePicker"]}>
-                  <TimePicker
-                    label="Start time"
-                    // value={} TODO
-                    name="startTime"
-                    // onChange={(newValue) =>
-                    //   handleTimeChange(newValue, "returnHomeTime")
-                    // } TODO
-                    slotProps={{ textField: { fullWidth: true } }}
-                  />
+                <DemoContainer components={['DatePicker']}>
+                  <DatePicker 
+                  label="Start time"
+                  name="startTime"
+                  slotProps={{ textField: { fullWidth: true } }} />
                 </DemoContainer>
               </LocalizationProvider>
             </Grid>

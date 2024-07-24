@@ -85,6 +85,6 @@ if __name__ == "__main__":
             # dump to json file
             json.dump(driving_pattern_data, f)
 
-        for adoption_rate in [0.36]:
-            results = run_charging_management(parking_lot, '../tests/pov_driving_pattern.json', start_time=datetime.datetime(2024, 2, 1), run_period=30, l2_max_rate=7.0, l3_max_rate=50.0, adoption_rate=adoption_rate)
-            results.to_csv(os.path.join(site_path, f'pov_vehicle_status_{adoption_rate}.csv'), index=False)
+        adoption_rate = 0.36
+        results = run_charging_management(parking_lot, '../tests/pov_driving_pattern.json', start_time=datetime.datetime(2024, 2, 1), run_period=30, l2_max_rate=7.0, l3_max_rate=50.0, adoption_rate=adoption_rate)
+        results.to_csv(os.path.join(site_path, f'pov_vehicle_status_{adoption_rate}.csv'), index=False)
