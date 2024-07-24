@@ -95,12 +95,12 @@ if __name__ == "__main__":
         site_path = os.path.join(test_path, parking_lot)
         os.makedirs(site_path, exist_ok=True)
 
-        input_data = json.loads(sys.argv[1]) # first argument after the filename
+        input_data = (sys.argv[1]) # first argument after the filename
         start_time = sys.argv[2] # datetime object? TODO: make sure to test user input start time
-        run_period = sys.argv[3]
-        l2_max_rate = sys.argv[4]
-        l3_max_rate = sys.argv[5]
-        adoption_rate = sys.argv[6]
+        run_period = int(sys.argv[3])
+        l2_max_rate = float(sys.argv[4])
+        l3_max_rate = float(sys.argv[5])
+        adoption_rate = float(sys.argv[6])
 
         # ex values:
         # start_time=datetime.datetime(2024, 2, 1), 
@@ -109,21 +109,29 @@ if __name__ == "__main__":
         # l3_max_rate=50.0, 
         # adoption_rate=0.36
 
-        output_data =  {}
+
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        driving_pattern_path = os.path.join(script_dir, '../tests/pov_driving_pattern.json')
+
+        with open(driving_pattern_path, 'w') as f: # TODO: fix path
 
         # Create a list of json data for each vehicle and dump to json file
-        driving_pattern_data = []
-        # Load employee commute survey json data
-        pov_driving_patterns = json.loads(input_data)
+            driving_pattern_data = []
+            # Load employee commute survey json data
+            pov_driving_patterns = json.loads(input_data)
 
-        # Add home charging information to the json data
-        add_home_charging(pov_driving_patterns)
+            # Add home charging information to the json data
+            add_home_charging(pov_driving_patterns)
 
-        for row in pov_driving_patterns:
-            if row['parking_lot'] == parking_lot:
-                driving_pattern_data.append(create_driving_pattern(row, scenario='normal'))
-        # dump to json file
-        json.dump(driving_pattern_data, output_data)
+            for row in pov_driving_patterns:
+                if row['parking_lot'] == parking_lot:
+                    driving_pattern_data.append(create_driving_pattern(row, scenario='normal'))
+            # dump to json file
+            json.dump(driving_pattern_data, f)
 
-        results = run_charging_management(parking_lot, '../tests/pov_driving_pattern.json', start_time=datetime.datetime(2024, 2, 1), run_period=run_period, l2_max_rate=l2_max_rate, l3_max_rate=l3_max_rate, adoption_rate=adoption_rate)
-        results.to_csv(os.path.join(site_path, f'pov_vehicle_status_{adoption_rate}.csv'), index=False)        
+        results = run_charging_management(parking_lot, driving_pattern_path, start_time=datetime.datetime(2024, 2, 1), run_period=run_period, l2_max_rate=l2_max_rate, l3_max_rate=l3_max_rate, adoption_rate=adoption_rate)
+        results.to_csv(os.path.join(site_path, f'pov_vehicle_status_{adoption_rate}.csv'), index=False)
+
+        print(results.to_json(orient='records'))
+
+        

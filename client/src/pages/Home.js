@@ -42,9 +42,13 @@ export default function Home() {
   const [showResults, setShowResults] = useState(false);
 
   const [buildingInfoData, setBuildingInfoData] = useState({});
+
   const [employeeInfoData, setEmployeeInfoData] = useState({});
   const [employeeCommuteData, setEmployeeCommuteData] = useState({});
-  const [simulationData, setSimulationData] = useState({});
+
+  const [simulationConfigData, setSimulationConfigData] = useState({});
+  const [simulationResultData, setSimulationResultData] = useState({});
+
 
   const handleBuildingInfoFormSubmit = (data) => {
     setBuildingInfoData(data);
@@ -55,8 +59,8 @@ export default function Home() {
     getEmployeeCommuteInfo();
   };
 
-  const handleSimulationFormSubmit = (data) => {
-    setSimulationData(data);
+  const handleSimulationConfigFormSubmit = (data) => {
+    setSimulationConfigData(data);
   }
 
   const switchPagesButton = (state) => {
@@ -97,12 +101,37 @@ export default function Home() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(employeeInfoData, null, 2),
+
       }
     );
 
     const result = await response.json();
     console.log(result); // Process the result as needed
     setEmployeeCommuteData(result);
+  };
+
+  const getSimulationData = async () => {
+    const response = await fetch(
+      "http://localhost:8080/process-simulation",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        // body: JSON.stringify(Object.assign({}, employeeCommuteData, simulationConfigData), null, 2),
+        body: JSON.stringify(employeeCommuteData, null, 2)
+
+        // startTime: simulationData.start_time,
+        // runPeriod: simulationData.run_period,
+        // l2ChargingPower: simulationData.l2_charging_power,
+        // l3ChargingPower: simulationData.l3_charging_power,
+        // adoptionRate: simulationData.adoption_rate
+      }
+    );
+
+    const result = await response.json();
+    console.log(result); // Process the result as needed
+    setSimulationResultData(result);
   };
 
   return (
@@ -178,14 +207,17 @@ export default function Home() {
           {/* {showEmployeeInfo && (
             <pre>{JSON.stringify(employeeInfoData, null, 2)}</pre>
           )} */}
-          {/* {showEmployeeInfo && (
+          {showEmployeeInfo && (
             <Button onClick={() => getEmployeeCommuteInfo()}>TEST</Button>
-          )} */}
-          {/* {showEmployeeInfo && (
+          )}
+          {showEmployeeInfo && (
             <pre>{JSON.stringify(employeeCommuteData, null, 2)}</pre>
-          )} */}
+          )}
           {showResults && <Results />}
-          {showSimulation && <Simulation onFormSubmit={handleSimulationFormSubmit} />}
+          {showSimulation && <Simulation onFormSubmit={handleSimulationConfigFormSubmit} />}
+          {showSimulation && (
+            <Button onClick={() => getSimulationData()}>TEST</Button>
+          )}
         </Grid>
 
         <Grid

@@ -6,6 +6,8 @@ const router = express.Router();
 router.post("/process-employee-data", (req, res) => {
   const input = JSON.stringify(req.body);
 
+  console.log(typeof input)
+
   const python = spawn("python", [
     "../python-backend/scripts/process-empl-data.py",
     input,
@@ -42,9 +44,19 @@ router.post("/process-employee-data", (req, res) => {
 });
 
 router.post("/process-simulation", (req, res) => {
-  const input = JSON.stringify(req.body);
+  const input = JSON.stringify(req.body.data)
 
-  const python = spawn("python", ["../python-backend/scripts/main.py", input]);
+  // console.log(typeof input); 
+
+
+  const python = spawn("python", [
+    "../python-backend/scripts/main.py", 
+    input, 
+    "input.start_time", 
+    30,
+    7,
+    50,
+    0.1]);
 
   let dataToSend = "";
   let errorOccurred = false;
@@ -62,7 +74,7 @@ router.post("/process-simulation", (req, res) => {
     if (errorOccurred) {
       res.status(500).send({ status: "error", message: "Python script error" });
     } else {
-      console.log(`Python script output: ${dataToSend}`); // Log the raw output
+      console.log(`Python script output: ${dataToSend.trim()}`); // Log the raw output
       try {
         const result = JSON.parse(dataToSend);
         res.send(result);

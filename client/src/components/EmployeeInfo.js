@@ -73,6 +73,8 @@ export default function EmployeeInfo({ onFormSubmit }) {
           : "",
         home_charging: employeeData.homeCharging,
         id: Math.random().toString(36).substring(2, 15),
+        parking_lot: "bldg-90" 
+        // TODO: find out above is permanent or use diff bldg types
       },
     ]);
     setEmployeeData({
