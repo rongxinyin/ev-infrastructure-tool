@@ -7,7 +7,7 @@ import {
   styled,
   useTheme,
   useMediaQuery,
-  ButtonGroup,
+  LinearProgress,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import BuildingInfo from "../components/BuildingInfo.js";
@@ -42,8 +42,12 @@ export default function Home() {
   const [showResults, setShowResults] = useState(false);
 
   const [buildingInfoData, setBuildingInfoData] = useState({});
+
   const [employeeInfoData, setEmployeeInfoData] = useState({});
   const [employeeCommuteData, setEmployeeCommuteData] = useState({});
+
+  const [simulationConfigData, setSimulationConfigData] = useState({});
+  const [showProgressBar, setShowProgressBar] = useState(false);
 
   const handleBuildingInfoFormSubmit = (data) => {
     setBuildingInfoData(data);
@@ -52,6 +56,12 @@ export default function Home() {
   const handleEmployeeInfoFormSubmit = (data) => {
     setEmployeeInfoData(data);
     getEmployeeCommuteInfo();
+  };
+
+  const handleSimulationConfigFormSubmit = (data) => {
+    setSimulationConfigData(data);
+    setShowProgressBar(true);
+    getSimulationData();
   };
 
   const switchPagesButton = (state) => {
@@ -84,17 +94,59 @@ export default function Home() {
   };
 
   const getEmployeeCommuteInfo = async () => {
-    const response = await fetch("http://localhost:8080/process-data", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(employeeInfoData, null, 2),
-    });
+    const response = await fetch(
+      "http://localhost:8080/process-employee-data",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(employeeInfoData, null, 2),
+      }
+    );
 
     const result = await response.json();
     console.log(result); // Process the result as needed
     setEmployeeCommuteData(result);
+  };
+
+  const getSimulationData = async () => {
+    try {
+      const response = await fetch("http://localhost:8080/process-simulation", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(
+          Object.assign({}, employeeCommuteData, simulationConfigData),
+          null,
+          2
+        ),
+      });
+
+      // Check if response is ok
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      // Get the response as a blob
+      const blob = await response.blob();
+
+      // Create a URL for the blob
+      const url = window.URL.createObjectURL(blob);
+
+      // Create a temporary link element
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "data.csv"; // Set the file name
+      document.body.appendChild(a);
+      a.click(); // Trigger the download
+      setShowProgressBar(false);
+      a.remove(); // Clean up
+      window.URL.revokeObjectURL(url); // Release memory
+    } catch (error) {
+      console.error("Error fetching and downloading CSV:", error);
+    }
   };
 
   return (
@@ -170,14 +222,25 @@ export default function Home() {
           {/* {showEmployeeInfo && (
             <pre>{JSON.stringify(employeeInfoData, null, 2)}</pre>
           )} */}
-          {/* {showEmployeeInfo && (
+          {showEmployeeInfo && (
             <Button onClick={() => getEmployeeCommuteInfo()}>TEST</Button>
-          )} */}
-          {/* {showEmployeeInfo && (
+          )}
+          {showEmployeeInfo && (
             <pre>{JSON.stringify(employeeCommuteData, null, 2)}</pre>
-          )} */}
+          )}
           {showResults && <Results />}
-          {showSimulation && <Simulation />}
+          {showSimulation && (
+            <Simulation
+              onFormSubmit={handleSimulationConfigFormSubmit}
+              progressBarState={showProgressBar}
+            />
+          )}
+          {/* {showSimulation && showProgressBar && (
+            <LinearProgress color="secondary" />
+          )} */}
+          {showSimulation && (
+            <Button onClick={() => getSimulationData()}>TEST</Button>
+          )}
         </Grid>
 
         <Grid
