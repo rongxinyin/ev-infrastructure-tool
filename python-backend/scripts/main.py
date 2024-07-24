@@ -132,6 +132,6 @@ if __name__ == "__main__":
         results = run_charging_management(parking_lot, driving_pattern_path, start_time=datetime.datetime(2024, 2, 1), run_period=run_period, l2_max_rate=l2_max_rate, l3_max_rate=l3_max_rate, adoption_rate=adoption_rate)
         results.to_csv(os.path.join(site_path, f'pov_vehicle_status_{adoption_rate}.csv'), index=False)
 
-        print(results.to_json(orient='records'))
+        
 
         

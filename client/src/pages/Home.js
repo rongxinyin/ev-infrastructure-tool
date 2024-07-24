@@ -111,27 +111,37 @@ export default function Home() {
   };
 
   const getSimulationData = async () => {
-    const response = await fetch(
-      "http://localhost:8080/process-simulation",
-      {
+    try {
+      const response = await fetch("http://localhost:8080/process-simulation", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        // body: JSON.stringify(Object.assign({}, employeeCommuteData, simulationConfigData), null, 2),
         body: JSON.stringify(employeeCommuteData, null, 2)
-
-        // startTime: simulationData.start_time,
-        // runPeriod: simulationData.run_period,
-        // l2ChargingPower: simulationData.l2_charging_power,
-        // l3ChargingPower: simulationData.l3_charging_power,
-        // adoptionRate: simulationData.adoption_rate
+      });
+  
+      // Check if response is ok
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
       }
-    );
-
-    const result = await response.json();
-    console.log(result); // Process the result as needed
-    setSimulationResultData(result);
+  
+      // Get the response as a blob
+      const blob = await response.blob();
+      
+      // Create a URL for the blob
+      const url = window.URL.createObjectURL(blob);
+      
+      // Create a temporary link element
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'data.csv';  // Set the file name
+      document.body.appendChild(a);
+      a.click();  // Trigger the download
+      a.remove();  // Clean up
+      window.URL.revokeObjectURL(url);  // Release memory
+    } catch (error) {
+      console.error('Error fetching and downloading CSV:', error);
+    }
   };
 
   return (
