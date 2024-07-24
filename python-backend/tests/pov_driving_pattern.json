@@ -23,10 +23,10 @@
       {
         "day of week": "Monday",
         "driving distance": 1.1535114978247358,
-        "equivalent efficiency mpge": 120.25821702340887,
+        "equivalent efficiency mpge": 111.83560614456042,
         "average speed mph": 16.673737510040162,
-        "equivalent electricity consumption rate": 4.672486986722711,
-        "equivalent electricity kWh": 0.6464978184256084,
+        "equivalent electricity consumption rate": 5.024383319942189,
+        "equivalent electricity kWh": 0.6951871379218051,
         "activities": [
           {
             "activity_id": 1,
@@ -73,10 +73,10 @@
       {
         "day of week": "Tuesday",
         "driving distance": 1.1535114978247358,
-        "equivalent efficiency mpge": 120.25821702340887,
+        "equivalent efficiency mpge": 111.83560614456042,
         "average speed mph": 16.673737510040162,
-        "equivalent electricity consumption rate": 4.672486986722711,
-        "equivalent electricity kWh": 0.6464978184256084,
+        "equivalent electricity consumption rate": 5.024383319942189,
+        "equivalent electricity kWh": 0.6951871379218051,
         "activities": [
           {
             "activity_id": 1,
@@ -123,10 +123,10 @@
       {
         "day of week": "Wednesday",
         "driving distance": 1.1535114978247358,
-        "equivalent efficiency mpge": 120.25821702340887,
+        "equivalent efficiency mpge": 111.83560614456042,
         "average speed mph": 16.673737510040162,
-        "equivalent electricity consumption rate": 4.672486986722711,
-        "equivalent electricity kWh": 0.6464978184256084,
+        "equivalent electricity consumption rate": 5.024383319942189,
+        "equivalent electricity kWh": 0.6951871379218051,
         "activities": [
           {
             "activity_id": 1,
@@ -173,10 +173,10 @@
       {
         "day of week": "Thursday",
         "driving distance": 1.1535114978247358,
-        "equivalent efficiency mpge": 120.25821702340887,
+        "equivalent efficiency mpge": 111.83560614456042,
         "average speed mph": 16.673737510040162,
-        "equivalent electricity consumption rate": 4.672486986722711,
-        "equivalent electricity kWh": 0.6464978184256084,
+        "equivalent electricity consumption rate": 5.024383319942189,
+        "equivalent electricity kWh": 0.6951871379218051,
         "activities": [
           {
             "activity_id": 1,
@@ -223,10 +223,10 @@
       {
         "day of week": "Friday",
         "driving distance": 1.1535114978247358,
-        "equivalent efficiency mpge": 120.25821702340887,
+        "equivalent efficiency mpge": 111.83560614456042,
         "average speed mph": 16.673737510040162,
-        "equivalent electricity consumption rate": 4.672486986722711,
-        "equivalent electricity kWh": 0.6464978184256084,
+        "equivalent electricity consumption rate": 5.024383319942189,
+        "equivalent electricity kWh": 0.6951871379218051,
         "activities": [
           {
             "activity_id": 1,
@@ -320,7 +320,7 @@
     "distance": { "text": "15.8 mi", "value": 25455 },
     "duration": { "text": "20 mins", "value": 1197 },
     "status": "OK",
-    "home_charging": "Level 2",
+    "home_charging": "Level 1",
     "parking_lot": "bldg-90",
     "days_drive": 5,
     "vehicle id": "278",
@@ -332,10 +332,10 @@
       {
         "day of week": "Monday",
         "driving distance": 15.820385332504662,
-        "equivalent efficiency mpge": 119.971512908122,
+        "equivalent efficiency mpge": 117.66078567887119,
         "average speed mph": 47.57001478696742,
-        "equivalent electricity consumption rate": 13.362417956240282,
-        "equivalent electricity kWh": 8.887893013630796,
+        "equivalent electricity consumption rate": 13.624841012842895,
+        "equivalent electricity kWh": 9.06244136700757,
         "activities": [
           {
             "activity_id": 1,
@@ -382,10 +382,10 @@
       {
         "day of week": "Tuesday",
         "driving distance": 15.820385332504662,
-        "equivalent efficiency mpge": 119.971512908122,
+        "equivalent efficiency mpge": 117.66078567887119,
         "average speed mph": 47.57001478696742,
-        "equivalent electricity consumption rate": 13.362417956240282,
-        "equivalent electricity kWh": 8.887893013630796,
+        "equivalent electricity consumption rate": 13.624841012842895,
+        "equivalent electricity kWh": 9.06244136700757,
         "activities": [
           {
             "activity_id": 1,
@@ -432,10 +432,10 @@
       {
         "day of week": "Wednesday",
         "driving distance": 15.820385332504662,
-        "equivalent efficiency mpge": 119.971512908122,
+        "equivalent efficiency mpge": 117.66078567887119,
         "average speed mph": 47.57001478696742,
-        "equivalent electricity consumption rate": 13.362417956240282,
-        "equivalent electricity kWh": 8.887893013630796,
+        "equivalent electricity consumption rate": 13.624841012842895,
+        "equivalent electricity kWh": 9.06244136700757,
         "activities": [
           {
             "activity_id": 1,
@@ -482,10 +482,10 @@
       {
         "day of week": "Thursday",
         "driving distance": 15.820385332504662,
-        "equivalent efficiency mpge": 119.971512908122,
+        "equivalent efficiency mpge": 117.66078567887119,
         "average speed mph": 47.57001478696742,
-        "equivalent electricity consumption rate": 13.362417956240282,
-        "equivalent electricity kWh": 8.887893013630796,
+        "equivalent electricity consumption rate": 13.624841012842895,
+        "equivalent electricity kWh": 9.06244136700757,
         "activities": [
           {
             "activity_id": 1,
@@ -532,10 +532,10 @@
       {
         "day of week": "Friday",
         "driving distance": 15.820385332504662,
-        "equivalent efficiency mpge": 119.971512908122,
+        "equivalent efficiency mpge": 117.66078567887119,
         "average speed mph": 47.57001478696742,
-        "equivalent electricity consumption rate": 13.362417956240282,
-        "equivalent electricity kWh": 8.887893013630796,
+        "equivalent electricity consumption rate": 13.624841012842895,
+        "equivalent electricity kWh": 9.06244136700757,
         "activities": [
           {
             "activity_id": 1,
@@ -641,10 +641,10 @@
       {
         "day of week": "Monday",
         "driving distance": 25.175264139216903,
-        "equivalent efficiency mpge": 118.95767438388255,
+        "equivalent efficiency mpge": 115.976686636224,
         "average speed mph": 44.65831866929522,
-        "equivalent electricity consumption rate": 12.651435453408274,
-        "equivalent electricity kWh": 14.26400450220233,
+        "equivalent electricity consumption rate": 12.976619550063813,
+        "equivalent electricity kWh": 14.63063700298228,
         "activities": [
           {
             "activity_id": 1,
@@ -691,10 +691,10 @@
       {
         "day of week": "Tuesday",
         "driving distance": 25.175264139216903,
-        "equivalent efficiency mpge": 118.95767438388255,
+        "equivalent efficiency mpge": 115.976686636224,
         "average speed mph": 44.65831866929522,
-        "equivalent electricity consumption rate": 12.651435453408274,
-        "equivalent electricity kWh": 14.26400450220233,
+        "equivalent electricity consumption rate": 12.976619550063813,
+        "equivalent electricity kWh": 14.63063700298228,
         "activities": [
           {
             "activity_id": 1,
@@ -741,10 +741,10 @@
       {
         "day of week": "Wednesday",
         "driving distance": 25.175264139216903,
-        "equivalent efficiency mpge": 118.95767438388255,
+        "equivalent efficiency mpge": 115.976686636224,
         "average speed mph": 44.65831866929522,
-        "equivalent electricity consumption rate": 12.651435453408274,
-        "equivalent electricity kWh": 14.26400450220233,
+        "equivalent electricity consumption rate": 12.976619550063813,
+        "equivalent electricity kWh": 14.63063700298228,
         "activities": [
           {
             "activity_id": 1,
@@ -791,10 +791,10 @@
       {
         "day of week": "Thursday",
         "driving distance": 25.175264139216903,
-        "equivalent efficiency mpge": 118.95767438388255,
+        "equivalent efficiency mpge": 115.976686636224,
         "average speed mph": 44.65831866929522,
-        "equivalent electricity consumption rate": 12.651435453408274,
-        "equivalent electricity kWh": 14.26400450220233,
+        "equivalent electricity consumption rate": 12.976619550063813,
+        "equivalent electricity kWh": 14.63063700298228,
         "activities": [
           {
             "activity_id": 1,
@@ -841,10 +841,10 @@
       {
         "day of week": "Friday",
         "driving distance": 25.175264139216903,
-        "equivalent efficiency mpge": 118.95767438388255,
+        "equivalent efficiency mpge": 115.976686636224,
         "average speed mph": 44.65831866929522,
-        "equivalent electricity consumption rate": 12.651435453408274,
-        "equivalent electricity kWh": 14.26400450220233,
+        "equivalent electricity consumption rate": 12.976619550063813,
+        "equivalent electricity kWh": 14.63063700298228,
         "activities": [
           {
             "activity_id": 1,
@@ -938,7 +938,7 @@
     "distance": { "text": "24.4 mi", "value": 39312 },
     "duration": { "text": "29 mins", "value": 1757 },
     "status": "OK",
-    "home_charging": "Level 2",
+    "home_charging": "Level 1",
     "parking_lot": "bldg-90",
     "days_drive": 5,
     "vehicle id": "531",
@@ -950,10 +950,10 @@
       {
         "day of week": "Monday",
         "driving distance": 24.432566811684275,
-        "equivalent efficiency mpge": 124.33635192258859,
+        "equivalent efficiency mpge": 122.56421626707562,
         "average speed mph": 50.05041848605578,
-        "equivalent electricity consumption rate": 13.565615179301814,
-        "equivalent electricity kWh": 13.244356760063095,
+        "equivalent electricity consumption rate": 13.761758157084364,
+        "equivalent electricity kWh": 13.435854715695575,
         "activities": [
           {
             "activity_id": 1,
@@ -1000,10 +1000,10 @@
       {
         "day of week": "Tuesday",
         "driving distance": 24.432566811684275,
-        "equivalent efficiency mpge": 124.33635192258859,
+        "equivalent efficiency mpge": 122.56421626707562,
         "average speed mph": 50.05041848605578,
-        "equivalent electricity consumption rate": 13.565615179301814,
-        "equivalent electricity kWh": 13.244356760063095,
+        "equivalent electricity consumption rate": 13.761758157084364,
+        "equivalent electricity kWh": 13.435854715695575,
         "activities": [
           {
             "activity_id": 1,
@@ -1050,10 +1050,10 @@
       {
         "day of week": "Wednesday",
         "driving distance": 24.432566811684275,
-        "equivalent efficiency mpge": 124.33635192258859,
+        "equivalent efficiency mpge": 122.56421626707562,
         "average speed mph": 50.05041848605578,
-        "equivalent electricity consumption rate": 13.565615179301814,
-        "equivalent electricity kWh": 13.244356760063095,
+        "equivalent electricity consumption rate": 13.761758157084364,
+        "equivalent electricity kWh": 13.435854715695575,
         "activities": [
           {
             "activity_id": 1,
@@ -1100,10 +1100,10 @@
       {
         "day of week": "Thursday",
         "driving distance": 24.432566811684275,
-        "equivalent efficiency mpge": 124.33635192258859,
+        "equivalent efficiency mpge": 122.56421626707562,
         "average speed mph": 50.05041848605578,
-        "equivalent electricity consumption rate": 13.565615179301814,
-        "equivalent electricity kWh": 13.244356760063095,
+        "equivalent electricity consumption rate": 13.761758157084364,
+        "equivalent electricity kWh": 13.435854715695575,
         "activities": [
           {
             "activity_id": 1,
@@ -1150,10 +1150,10 @@
       {
         "day of week": "Friday",
         "driving distance": 24.432566811684275,
-        "equivalent efficiency mpge": 124.33635192258859,
+        "equivalent efficiency mpge": 122.56421626707562,
         "average speed mph": 50.05041848605578,
-        "equivalent electricity consumption rate": 13.565615179301814,
-        "equivalent electricity kWh": 13.244356760063095,
+        "equivalent electricity consumption rate": 13.761758157084364,
+        "equivalent electricity kWh": 13.435854715695575,
         "activities": [
           {
             "activity_id": 1,
@@ -1259,10 +1259,10 @@
       {
         "day of week": "Monday",
         "driving distance": 25.492852703542574,
-        "equivalent efficiency mpge": 114.22928188071837,
+        "equivalent efficiency mpge": 117.50654643437593,
         "average speed mph": 53.129591731326,
-        "equivalent electricity consumption rate": 15.674328087042916,
-        "equivalent electricity kWh": 15.041837293637059,
+        "equivalent electricity consumption rate": 15.237170146478704,
+        "equivalent electricity kWh": 14.622319558837054,
         "activities": [
           {
             "activity_id": 1,
@@ -1309,10 +1309,10 @@
       {
         "day of week": "Tuesday",
         "driving distance": 25.492852703542574,
-        "equivalent efficiency mpge": 114.22928188071837,
+        "equivalent efficiency mpge": 117.50654643437593,
         "average speed mph": 53.129591731326,
-        "equivalent electricity consumption rate": 15.674328087042916,
-        "equivalent electricity kWh": 15.041837293637059,
+        "equivalent electricity consumption rate": 15.237170146478704,
+        "equivalent electricity kWh": 14.622319558837054,
         "activities": [
           {
             "activity_id": 1,
@@ -1359,10 +1359,10 @@
       {
         "day of week": "Wednesday",
         "driving distance": 25.492852703542574,
-        "equivalent efficiency mpge": 114.22928188071837,
+        "equivalent efficiency mpge": 117.50654643437593,
         "average speed mph": 53.129591731326,
-        "equivalent electricity consumption rate": 15.674328087042916,
-        "equivalent electricity kWh": 15.041837293637059,
+        "equivalent electricity consumption rate": 15.237170146478704,
+        "equivalent electricity kWh": 14.622319558837054,
         "activities": [
           {
             "activity_id": 1,
@@ -1409,10 +1409,10 @@
       {
         "day of week": "Thursday",
         "driving distance": 25.492852703542574,
-        "equivalent efficiency mpge": 114.22928188071837,
+        "equivalent efficiency mpge": 117.50654643437593,
         "average speed mph": 53.129591731326,
-        "equivalent electricity consumption rate": 15.674328087042916,
-        "equivalent electricity kWh": 15.041837293637059,
+        "equivalent electricity consumption rate": 15.237170146478704,
+        "equivalent electricity kWh": 14.622319558837054,
         "activities": [
           {
             "activity_id": 1,
@@ -1459,10 +1459,10 @@
       {
         "day of week": "Friday",
         "driving distance": 25.492852703542574,
-        "equivalent efficiency mpge": 114.22928188071837,
+        "equivalent efficiency mpge": 117.50654643437593,
         "average speed mph": 53.129591731326,
-        "equivalent electricity consumption rate": 15.674328087042916,
-        "equivalent electricity kWh": 15.041837293637059,
+        "equivalent electricity consumption rate": 15.237170146478704,
+        "equivalent electricity kWh": 14.622319558837054,
         "activities": [
           {
             "activity_id": 1,
@@ -1568,10 +1568,10 @@
       {
         "day of week": "Monday",
         "driving distance": 41.898073337476696,
-        "equivalent efficiency mpge": 119.79947751164237,
+        "equivalent efficiency mpge": 118.48804628649678,
         "average speed mph": 57.03520164901665,
-        "equivalent electricity consumption rate": 16.04419598061326,
-        "equivalent electricity kWh": 23.572140727170485,
+        "equivalent electricity consumption rate": 16.221773890375196,
+        "equivalent electricity kWh": 23.833038280653568,
         "activities": [
           {
             "activity_id": 1,
@@ -1618,10 +1618,10 @@
       {
         "day of week": "Tuesday",
         "driving distance": 41.898073337476696,
-        "equivalent efficiency mpge": 119.79947751164237,
+        "equivalent efficiency mpge": 118.48804628649678,
         "average speed mph": 57.03520164901665,
-        "equivalent electricity consumption rate": 16.04419598061326,
-        "equivalent electricity kWh": 23.572140727170485,
+        "equivalent electricity consumption rate": 16.221773890375196,
+        "equivalent electricity kWh": 23.833038280653568,
         "activities": [
           {
             "activity_id": 1,
@@ -1668,10 +1668,10 @@
       {
         "day of week": "Wednesday",
         "driving distance": 41.898073337476696,
-        "equivalent efficiency mpge": 119.79947751164237,
+        "equivalent efficiency mpge": 118.48804628649678,
         "average speed mph": 57.03520164901665,
-        "equivalent electricity consumption rate": 16.04419598061326,
-        "equivalent electricity kWh": 23.572140727170485,
+        "equivalent electricity consumption rate": 16.221773890375196,
+        "equivalent electricity kWh": 23.833038280653568,
         "activities": [
           {
             "activity_id": 1,
@@ -1718,10 +1718,10 @@
       {
         "day of week": "Thursday",
         "driving distance": 41.898073337476696,
-        "equivalent efficiency mpge": 119.79947751164237,
+        "equivalent efficiency mpge": 118.48804628649678,
         "average speed mph": 57.03520164901665,
-        "equivalent electricity consumption rate": 16.04419598061326,
-        "equivalent electricity kWh": 23.572140727170485,
+        "equivalent electricity consumption rate": 16.221773890375196,
+        "equivalent electricity kWh": 23.833038280653568,
         "activities": [
           {
             "activity_id": 1,
@@ -1768,10 +1768,10 @@
       {
         "day of week": "Friday",
         "driving distance": 41.898073337476696,
-        "equivalent efficiency mpge": 119.79947751164237,
+        "equivalent efficiency mpge": 118.48804628649678,
         "average speed mph": 57.03520164901665,
-        "equivalent electricity consumption rate": 16.04419598061326,
-        "equivalent electricity kWh": 23.572140727170485,
+        "equivalent electricity consumption rate": 16.221773890375196,
+        "equivalent electricity kWh": 23.833038280653568,
         "activities": [
           {
             "activity_id": 1,
@@ -1865,7 +1865,7 @@
     "distance": { "text": "41.9 mi", "value": 67414 },
     "duration": { "text": "44 mins", "value": 2644 },
     "status": "OK",
-    "home_charging": "Level 2",
+    "home_charging": "Level 1",
     "parking_lot": "bldg-90",
     "days_drive": 5,
     "vehicle id": "789",
@@ -1877,10 +1877,10 @@
       {
         "day of week": "Monday",
         "driving distance": 41.898073337476696,
-        "equivalent efficiency mpge": 118.58643362111272,
+        "equivalent efficiency mpge": 117.73587635832014,
         "average speed mph": 57.03520164901665,
-        "equivalent electricity consumption rate": 16.208315208407278,
-        "equivalent electricity kWh": 23.813264778401827,
+        "equivalent electricity consumption rate": 16.32540866067144,
+        "equivalent electricity kWh": 23.98529853679871,
         "activities": [
           {
             "activity_id": 1,
@@ -1927,10 +1927,10 @@
       {
         "day of week": "Tuesday",
         "driving distance": 41.898073337476696,
-        "equivalent efficiency mpge": 118.58643362111272,
+        "equivalent efficiency mpge": 117.73587635832014,
         "average speed mph": 57.03520164901665,
-        "equivalent electricity consumption rate": 16.208315208407278,
-        "equivalent electricity kWh": 23.813264778401827,
+        "equivalent electricity consumption rate": 16.32540866067144,
+        "equivalent electricity kWh": 23.98529853679871,
         "activities": [
           {
             "activity_id": 1,
@@ -1977,10 +1977,10 @@
       {
         "day of week": "Wednesday",
         "driving distance": 41.898073337476696,
-        "equivalent efficiency mpge": 118.58643362111272,
+        "equivalent efficiency mpge": 117.73587635832014,
         "average speed mph": 57.03520164901665,
-        "equivalent electricity consumption rate": 16.208315208407278,
-        "equivalent electricity kWh": 23.813264778401827,
+        "equivalent electricity consumption rate": 16.32540866067144,
+        "equivalent electricity kWh": 23.98529853679871,
         "activities": [
           {
             "activity_id": 1,
@@ -2027,10 +2027,10 @@
       {
         "day of week": "Thursday",
         "driving distance": 41.898073337476696,
-        "equivalent efficiency mpge": 118.58643362111272,
+        "equivalent efficiency mpge": 117.73587635832014,
         "average speed mph": 57.03520164901665,
-        "equivalent electricity consumption rate": 16.208315208407278,
-        "equivalent electricity kWh": 23.813264778401827,
+        "equivalent electricity consumption rate": 16.32540866067144,
+        "equivalent electricity kWh": 23.98529853679871,
         "activities": [
           {
             "activity_id": 1,
@@ -2077,10 +2077,10 @@
       {
         "day of week": "Friday",
         "driving distance": 41.898073337476696,
-        "equivalent efficiency mpge": 118.58643362111272,
+        "equivalent efficiency mpge": 117.73587635832014,
         "average speed mph": 57.03520164901665,
-        "equivalent electricity consumption rate": 16.208315208407278,
-        "equivalent electricity kWh": 23.813264778401827,
+        "equivalent electricity consumption rate": 16.32540866067144,
+        "equivalent electricity kWh": 23.98529853679871,
         "activities": [
           {
             "activity_id": 1,
@@ -2174,7 +2174,7 @@
     "distance": { "text": "43.1 mi", "value": 69441 },
     "duration": { "text": "55 mins", "value": 3281 },
     "status": "OK",
-    "home_charging": "Level 2",
+    "home_charging": "Level 1",
     "parking_lot": "bldg-90",
     "days_drive": 5,
     "vehicle id": "1055",
@@ -2186,10 +2186,10 @@
       {
         "day of week": "Monday",
         "driving distance": 43.15786202610317,
-        "equivalent efficiency mpge": 116.05687141686349,
+        "equivalent efficiency mpge": 122.12987977807478,
         "average speed mph": 47.343904462054255,
-        "equivalent electricity consumption rate": 13.747480531681799,
-        "equivalent electricity kWh": 25.063917931331456,
+        "equivalent electricity consumption rate": 13.06387579575475,
+        "equivalent electricity kWh": 23.817594071533343,
         "activities": [
           {
             "activity_id": 1,
@@ -2236,10 +2236,10 @@
       {
         "day of week": "Tuesday",
         "driving distance": 43.15786202610317,
-        "equivalent efficiency mpge": 116.05687141686349,
+        "equivalent efficiency mpge": 122.12987977807478,
         "average speed mph": 47.343904462054255,
-        "equivalent electricity consumption rate": 13.747480531681799,
-        "equivalent electricity kWh": 25.063917931331456,
+        "equivalent electricity consumption rate": 13.06387579575475,
+        "equivalent electricity kWh": 23.817594071533343,
         "activities": [
           {
             "activity_id": 1,
@@ -2286,10 +2286,10 @@
       {
         "day of week": "Wednesday",
         "driving distance": 43.15786202610317,
-        "equivalent efficiency mpge": 116.05687141686349,
+        "equivalent efficiency mpge": 122.12987977807478,
         "average speed mph": 47.343904462054255,
-        "equivalent electricity consumption rate": 13.747480531681799,
-        "equivalent electricity kWh": 25.063917931331456,
+        "equivalent electricity consumption rate": 13.06387579575475,
+        "equivalent electricity kWh": 23.817594071533343,
         "activities": [
           {
             "activity_id": 1,
@@ -2336,10 +2336,10 @@
       {
         "day of week": "Thursday",
         "driving distance": 43.15786202610317,
-        "equivalent efficiency mpge": 116.05687141686349,
+        "equivalent efficiency mpge": 122.12987977807478,
         "average speed mph": 47.343904462054255,
-        "equivalent electricity consumption rate": 13.747480531681799,
-        "equivalent electricity kWh": 25.063917931331456,
+        "equivalent electricity consumption rate": 13.06387579575475,
+        "equivalent electricity kWh": 23.817594071533343,
         "activities": [
           {
             "activity_id": 1,
@@ -2386,10 +2386,10 @@
       {
         "day of week": "Friday",
         "driving distance": 43.15786202610317,
-        "equivalent efficiency mpge": 116.05687141686349,
+        "equivalent efficiency mpge": 122.12987977807478,
         "average speed mph": 47.343904462054255,
-        "equivalent electricity consumption rate": 13.747480531681799,
-        "equivalent electricity kWh": 25.063917931331456,
+        "equivalent electricity consumption rate": 13.06387579575475,
+        "equivalent electricity kWh": 23.817594071533343,
         "activities": [
           {
             "activity_id": 1,
@@ -2483,7 +2483,7 @@
     "distance": { "text": "11.7 mi", "value": 18874 },
     "duration": { "text": "21 mins", "value": 1268 },
     "status": "OK",
-    "home_charging": "Level 2",
+    "home_charging": "Level 1",
     "parking_lot": "bldg-90",
     "days_drive": 5,
     "vehicle id": "1130",
@@ -2495,10 +2495,10 @@
       {
         "day of week": "Monday",
         "driving distance": 11.730267246737103,
-        "equivalent efficiency mpge": 117.09105301746489,
+        "equivalent efficiency mpge": 122.23611507988751,
         "average speed mph": 33.2965343533123,
-        "equivalent electricity consumption rate": 9.583082385801564,
-        "equivalent electricity kWh": 6.752181247461792,
+        "equivalent electricity consumption rate": 9.179719160522074,
+        "equivalent electricity kWh": 6.467973985539138,
         "activities": [
           {
             "activity_id": 1,
@@ -2545,10 +2545,10 @@
       {
         "day of week": "Tuesday",
         "driving distance": 11.730267246737103,
-        "equivalent efficiency mpge": 117.09105301746489,
+        "equivalent efficiency mpge": 122.23611507988751,
         "average speed mph": 33.2965343533123,
-        "equivalent electricity consumption rate": 9.583082385801564,
-        "equivalent electricity kWh": 6.752181247461792,
+        "equivalent electricity consumption rate": 9.179719160522074,
+        "equivalent electricity kWh": 6.467973985539138,
         "activities": [
           {
             "activity_id": 1,
@@ -2595,10 +2595,10 @@
       {
         "day of week": "Wednesday",
         "driving distance": 11.730267246737103,
-        "equivalent efficiency mpge": 117.09105301746489,
+        "equivalent efficiency mpge": 122.23611507988751,
         "average speed mph": 33.2965343533123,
-        "equivalent electricity consumption rate": 9.583082385801564,
-        "equivalent electricity kWh": 6.752181247461792,
+        "equivalent electricity consumption rate": 9.179719160522074,
+        "equivalent electricity kWh": 6.467973985539138,
         "activities": [
           {
             "activity_id": 1,
@@ -2645,10 +2645,10 @@
       {
         "day of week": "Thursday",
         "driving distance": 11.730267246737103,
-        "equivalent efficiency mpge": 117.09105301746489,
+        "equivalent efficiency mpge": 122.23611507988751,
         "average speed mph": 33.2965343533123,
-        "equivalent electricity consumption rate": 9.583082385801564,
-        "equivalent electricity kWh": 6.752181247461792,
+        "equivalent electricity consumption rate": 9.179719160522074,
+        "equivalent electricity kWh": 6.467973985539138,
         "activities": [
           {
             "activity_id": 1,
@@ -2695,10 +2695,10 @@
       {
         "day of week": "Friday",
         "driving distance": 11.730267246737103,
-        "equivalent efficiency mpge": 117.09105301746489,
+        "equivalent efficiency mpge": 122.23611507988751,
         "average speed mph": 33.2965343533123,
-        "equivalent electricity consumption rate": 9.583082385801564,
-        "equivalent electricity kWh": 6.752181247461792,
+        "equivalent electricity consumption rate": 9.179719160522074,
+        "equivalent electricity kWh": 6.467973985539138,
         "activities": [
           {
             "activity_id": 1,
@@ -2804,10 +2804,10 @@
       {
         "day of week": "Monday",
         "driving distance": 27.57489123679304,
-        "equivalent efficiency mpge": 108.59096898319652,
+        "equivalent efficiency mpge": 118.25201777286186,
         "average speed mph": 36.54217743740795,
-        "equivalent electricity consumption rate": 11.340458522211062,
-        "equivalent electricity kWh": 17.115121881336602,
+        "equivalent electricity consumption rate": 10.4139565889358,
+        "equivalent electricity kWh": 15.716836840194507,
         "activities": [
           {
             "activity_id": 1,
@@ -2854,10 +2854,10 @@
       {
         "day of week": "Tuesday",
         "driving distance": 27.57489123679304,
-        "equivalent efficiency mpge": 108.59096898319652,
+        "equivalent efficiency mpge": 118.25201777286186,
         "average speed mph": 36.54217743740795,
-        "equivalent electricity consumption rate": 11.340458522211062,
-        "equivalent electricity kWh": 17.115121881336602,
+        "equivalent electricity consumption rate": 10.4139565889358,
+        "equivalent electricity kWh": 15.716836840194507,
         "activities": [
           {
             "activity_id": 1,
@@ -2904,10 +2904,10 @@
       {
         "day of week": "Wednesday",
         "driving distance": 27.57489123679304,
-        "equivalent efficiency mpge": 108.59096898319652,
+        "equivalent efficiency mpge": 118.25201777286186,
         "average speed mph": 36.54217743740795,
-        "equivalent electricity consumption rate": 11.340458522211062,
-        "equivalent electricity kWh": 17.115121881336602,
+        "equivalent electricity consumption rate": 10.4139565889358,
+        "equivalent electricity kWh": 15.716836840194507,
         "activities": [
           {
             "activity_id": 1,
@@ -2954,10 +2954,10 @@
       {
         "day of week": "Thursday",
         "driving distance": 27.57489123679304,
-        "equivalent efficiency mpge": 108.59096898319652,
+        "equivalent efficiency mpge": 118.25201777286186,
         "average speed mph": 36.54217743740795,
-        "equivalent electricity consumption rate": 11.340458522211062,
-        "equivalent electricity kWh": 17.115121881336602,
+        "equivalent electricity consumption rate": 10.4139565889358,
+        "equivalent electricity kWh": 15.716836840194507,
         "activities": [
           {
             "activity_id": 1,
@@ -3004,10 +3004,10 @@
       {
         "day of week": "Friday",
         "driving distance": 27.57489123679304,
-        "equivalent efficiency mpge": 108.59096898319652,
+        "equivalent efficiency mpge": 118.25201777286186,
         "average speed mph": 36.54217743740795,
-        "equivalent electricity consumption rate": 11.340458522211062,
-        "equivalent electricity kWh": 17.115121881336602,
+        "equivalent electricity consumption rate": 10.4139565889358,
+        "equivalent electricity kWh": 15.716836840194507,
         "activities": [
           {
             "activity_id": 1,
@@ -3113,10 +3113,10 @@
       {
         "day of week": "Monday",
         "driving distance": 24.031075201988813,
-        "equivalent efficiency mpge": 117.02505290730399,
+        "equivalent efficiency mpge": 119.16288147424832,
         "average speed mph": 49.880923898500576,
-        "equivalent electricity consumption rate": 14.364335615477021,
-        "equivalent electricity kWh": 13.8405788194517,
+        "equivalent electricity consumption rate": 14.106633832471893,
+        "equivalent electricity kWh": 13.592273437631416,
         "activities": [
           {
             "activity_id": 1,
@@ -3163,10 +3163,10 @@
       {
         "day of week": "Tuesday",
         "driving distance": 24.031075201988813,
-        "equivalent efficiency mpge": 117.02505290730399,
+        "equivalent efficiency mpge": 119.16288147424832,
         "average speed mph": 49.880923898500576,
-        "equivalent electricity consumption rate": 14.364335615477021,
-        "equivalent electricity kWh": 13.8405788194517,
+        "equivalent electricity consumption rate": 14.106633832471893,
+        "equivalent electricity kWh": 13.592273437631416,
         "activities": [
           {
             "activity_id": 1,
@@ -3213,10 +3213,10 @@
       {
         "day of week": "Wednesday",
         "driving distance": 24.031075201988813,
-        "equivalent efficiency mpge": 117.02505290730399,
+        "equivalent efficiency mpge": 119.16288147424832,
         "average speed mph": 49.880923898500576,
-        "equivalent electricity consumption rate": 14.364335615477021,
-        "equivalent electricity kWh": 13.8405788194517,
+        "equivalent electricity consumption rate": 14.106633832471893,
+        "equivalent electricity kWh": 13.592273437631416,
         "activities": [
           {
             "activity_id": 1,
@@ -3263,10 +3263,10 @@
       {
         "day of week": "Thursday",
         "driving distance": 24.031075201988813,
-        "equivalent efficiency mpge": 117.02505290730399,
+        "equivalent efficiency mpge": 119.16288147424832,
         "average speed mph": 49.880923898500576,
-        "equivalent electricity consumption rate": 14.364335615477021,
-        "equivalent electricity kWh": 13.8405788194517,
+        "equivalent electricity consumption rate": 14.106633832471893,
+        "equivalent electricity kWh": 13.592273437631416,
         "activities": [
           {
             "activity_id": 1,
@@ -3313,10 +3313,10 @@
       {
         "day of week": "Friday",
         "driving distance": 24.031075201988813,
-        "equivalent efficiency mpge": 117.02505290730399,
+        "equivalent efficiency mpge": 119.16288147424832,
         "average speed mph": 49.880923898500576,
-        "equivalent electricity consumption rate": 14.364335615477021,
-        "equivalent electricity kWh": 13.8405788194517,
+        "equivalent electricity consumption rate": 14.106633832471893,
+        "equivalent electricity kWh": 13.592273437631416,
         "activities": [
           {
             "activity_id": 1,
@@ -3410,7 +3410,7 @@
     "distance": { "text": "28.6 mi", "value": 46049 },
     "duration": { "text": "32 mins", "value": 1895 },
     "status": "OK",
-    "home_charging": "Level 1",
+    "home_charging": "Level 2",
     "parking_lot": "bldg-90",
     "days_drive": 5,
     "vehicle id": "1436",
@@ -3422,10 +3422,10 @@
       {
         "day of week": "Monday",
         "driving distance": 28.61963952765693,
-        "equivalent efficiency mpge": 117.42314612603026,
+        "equivalent efficiency mpge": 115.18329565351775,
         "average speed mph": 54.35823222163589,
-        "equivalent electricity consumption rate": 15.600607599995497,
-        "equivalent electricity kWh": 16.42745717350922,
+        "equivalent electricity consumption rate": 15.903976487871775,
+        "equivalent electricity kWh": 16.746904950233258,
         "activities": [
           {
             "activity_id": 1,
@@ -3472,10 +3472,10 @@
       {
         "day of week": "Tuesday",
         "driving distance": 28.61963952765693,
-        "equivalent efficiency mpge": 117.42314612603026,
+        "equivalent efficiency mpge": 115.18329565351775,
         "average speed mph": 54.35823222163589,
-        "equivalent electricity consumption rate": 15.600607599995497,
-        "equivalent electricity kWh": 16.42745717350922,
+        "equivalent electricity consumption rate": 15.903976487871775,
+        "equivalent electricity kWh": 16.746904950233258,
         "activities": [
           {
             "activity_id": 1,
@@ -3522,10 +3522,10 @@
       {
         "day of week": "Wednesday",
         "driving distance": 28.61963952765693,
-        "equivalent efficiency mpge": 117.42314612603026,
+        "equivalent efficiency mpge": 115.18329565351775,
         "average speed mph": 54.35823222163589,
-        "equivalent electricity consumption rate": 15.600607599995497,
-        "equivalent electricity kWh": 16.42745717350922,
+        "equivalent electricity consumption rate": 15.903976487871775,
+        "equivalent electricity kWh": 16.746904950233258,
         "activities": [
           {
             "activity_id": 1,
@@ -3572,10 +3572,10 @@
       {
         "day of week": "Thursday",
         "driving distance": 28.61963952765693,
-        "equivalent efficiency mpge": 117.42314612603026,
+        "equivalent efficiency mpge": 115.18329565351775,
         "average speed mph": 54.35823222163589,
-        "equivalent electricity consumption rate": 15.600607599995497,
-        "equivalent electricity kWh": 16.42745717350922,
+        "equivalent electricity consumption rate": 15.903976487871775,
+        "equivalent electricity kWh": 16.746904950233258,
         "activities": [
           {
             "activity_id": 1,
@@ -3622,10 +3622,10 @@
       {
         "day of week": "Friday",
         "driving distance": 28.61963952765693,
-        "equivalent efficiency mpge": 117.42314612603026,
+        "equivalent efficiency mpge": 115.18329565351775,
         "average speed mph": 54.35823222163589,
-        "equivalent electricity consumption rate": 15.600607599995497,
-        "equivalent electricity kWh": 16.42745717350922,
+        "equivalent electricity consumption rate": 15.903976487871775,
+        "equivalent electricity kWh": 16.746904950233258,
         "activities": [
           {
             "activity_id": 1,
