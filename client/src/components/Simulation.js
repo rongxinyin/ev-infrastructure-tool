@@ -158,9 +158,6 @@ export default function Simulation({ onFormSubmit, progressBarState }) {
               </Button>
             </Grid>
           </Grid>
-          <Typography variant="h6" color="white.main">
-            Progress bar
-          </Typography>
         </Grid>
         <Grid item xs={12}>
           {progressBarState && <LinearProgress color="secondary" />}

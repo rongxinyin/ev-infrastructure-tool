@@ -223,7 +223,6 @@ export default function Home() {
           )}
           {/* {showEmployeeInfo && (
             <pre>{JSON.stringify(employeeInfoData, null, 2)}</pre>
-          )}
           )} */}
           {/* {showEmployeeInfo && (
             <Button onClick={() => getEmployeeCommuteInfo()}>TEST</Button>

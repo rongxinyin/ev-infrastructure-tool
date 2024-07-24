@@ -29,6 +29,7 @@ import { DemoContainer } from "@mui/x-date-pickers/internals/demo/index.js";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs/index.js";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider/index.js";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker/index.js";
+import Papa from "papaparse";
 
 export default function EmployeeInfo({ onFormSubmit }) {
   const [employees, setEmployees] = useState([]);
@@ -92,35 +93,39 @@ export default function EmployeeInfo({ onFormSubmit }) {
     setEmployees(employees.slice(0, -1));
   };
 
-  const handleFileChange = (e) => {
-    setSelectedFile(e.target.files[0]);
-  };
-
   const isValidDate = (date) => {
     return date != null;
   };
 
-  const handleUploadFile = () => {
-    if (selectedFile) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        const csvData = reader.result;
-        const rows = csvData.split("\n");
-        const employeesFromCsv = rows.map((row) => {
-          const columns = row.split(",");
-          return {
-            employeeId: columns[0],
-            commuteMode: columns[1],
-            zipcode: columns[2],
-            onsiteBldg: columns[3],
-            leaveToWorkTime: columns[4],
-            returnHomeTime: columns[5],
-            homeCharging: columns[6],
-          };
-        });
-        setEmployees(employeesFromCsv);
-      };
-      reader.readAsText(selectedFile);
+  const handleUploadFile = (e) => {
+    const file = e.target.files[0];
+    setSelectedFile(file);
+
+    if (file) {
+      Papa.parse(file, {
+        complete: (results) => {
+          console.log("Parsed Results:", results.data); // Log parsed data for debugging
+          const csvData = results.data;
+          const employeesFromCsv = csvData.slice(1).map((row) => {
+            // Skip the header row
+            return {
+              employee_id: row[0] || "",
+              commute_mode: row[1] || "",
+              zip_code: row[2] || "",
+              onsite_bldg: row[3] || "",
+              leave_to_work_time: row[4] || "",
+              return_home_time: row[5] || "",
+              home_charging: row[6] || "",
+              id: Math.random().toString(36).substring(2, 15),
+              parking_lot: "bldg-90",
+            };
+          });
+          setEmployees(employeesFromCsv);
+        },
+        header: false,
+        skipEmptyLines: true,
+        delimiter: ",",
+      });
     }
   };
 
@@ -257,7 +262,7 @@ export default function EmployeeInfo({ onFormSubmit }) {
                       <input
                         type="file"
                         accept=".csv"
-                        onChange={handleFileChange}
+                        onChange={handleUploadFile}
                         style={{ display: "none" }}
                       />
                       <IconButton component="span">
