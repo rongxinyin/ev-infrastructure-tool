@@ -71,7 +71,7 @@ if __name__ == "__main__":
 
         # Create a list of json data for each vehicle and dump to json file
         driving_pattern_data = []
-        with open(os.path.join(test_path,'pov_driving_pattern.json'), 'w') as f:
+        with open(os.path.join(test_path,'pov_driving_pattern.json'), 'w') as f: # TODO: fix path
             # Load employee commute survey json data
             with open(os.path.join(test_path,'update_employee_commute.json'), 'r') as file:
                 pov_driving_patterns = json.load(file)
