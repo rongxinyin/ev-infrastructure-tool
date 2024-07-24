@@ -7,7 +7,7 @@ import {
   styled,
   useTheme,
   useMediaQuery,
-  ButtonGroup,
+  LinearProgress,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import BuildingInfo from "../components/BuildingInfo.js";
@@ -47,7 +47,7 @@ export default function Home() {
   const [employeeCommuteData, setEmployeeCommuteData] = useState({});
 
   const [simulationConfigData, setSimulationConfigData] = useState({});
-  const [simulationResultData, setSimulationResultData] = useState({});
+  const [showProgressBar, setShowProgressBar] = useState(false);
 
   const handleBuildingInfoFormSubmit = (data) => {
     setBuildingInfoData(data);
@@ -60,6 +60,8 @@ export default function Home() {
 
   const handleSimulationConfigFormSubmit = (data) => {
     setSimulationConfigData(data);
+    setShowProgressBar(true);
+    getSimulationData();
   };
 
   const switchPagesButton = (state) => {
@@ -139,6 +141,7 @@ export default function Home() {
       a.download = "data.csv"; // Set the file name
       document.body.appendChild(a);
       a.click(); // Trigger the download
+      setShowProgressBar(false);
       a.remove(); // Clean up
       window.URL.revokeObjectURL(url); // Release memory
     } catch (error) {
@@ -227,8 +230,14 @@ export default function Home() {
           )}
           {showResults && <Results />}
           {showSimulation && (
-            <Simulation onFormSubmit={handleSimulationConfigFormSubmit} />
+            <Simulation
+              onFormSubmit={handleSimulationConfigFormSubmit}
+              progressBarState={showProgressBar}
+            />
           )}
+          {/* {showSimulation && showProgressBar && (
+            <LinearProgress color="secondary" />
+          )} */}
           {showSimulation && (
             <Button onClick={() => getSimulationData()}>TEST</Button>
           )}

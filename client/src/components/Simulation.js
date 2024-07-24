@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Box, Button, Grid, Typography, TextField } from "@mui/material";
+import {
+  Box,
+  Button,
+  Grid,
+  Typography,
+  TextField,
+  LinearProgress,
+} from "@mui/material";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo/index.js";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs/index.js";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider/index.js";
@@ -11,7 +18,7 @@ const textFieldSX = {
   marginTop: 1,
 };
 
-export default function Simulation({ onFormSubmit }) {
+export default function Simulation({ onFormSubmit, progressBarState }) {
   const [simulationConfig, setSimulationConfig] = useState({
     start_time: "test",
     run_period: "",
@@ -30,7 +37,7 @@ export default function Simulation({ onFormSubmit }) {
   const handleTimeChange = (newValue, field) => {
     setSimulationConfig({
       ...simulationConfig,
-      [field]: newValue.format('YYYY-MM-DD HH:mm:ss'),
+      [field]: newValue.format("YYYY-MM-DD HH:mm:ss"),
     });
   };
 
@@ -60,7 +67,6 @@ export default function Simulation({ onFormSubmit }) {
                       onChange={(newValue) =>
                         handleTimeChange(newValue, "start_time")
                       }
-
                     />
                   </DemoContainer>
                 </LocalizationProvider>
@@ -155,6 +161,9 @@ export default function Simulation({ onFormSubmit }) {
           <Typography variant="h6" color="white.main">
             Progress bar
           </Typography>
+        </Grid>
+        <Grid item xs={12}>
+          {progressBarState && <LinearProgress color="secondary" />}
         </Grid>
       </Grid>
     </form>
