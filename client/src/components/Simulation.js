@@ -18,12 +18,11 @@ export default function Simulation() {
         </Typography>
         <Box bgcolor="primary.white" sx={{ marginLeft: 0 }}>
           <Grid container spacing={0} sx={{ paddingLeft: 0 }}>
-            <Grid item xs={3}>
+            <Grid item xs={2.4}>
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DemoContainer components={["TimePicker"]}>
                   <TimePicker
                     label="Start time"
-                    fullWidth
                     // value={} TODO
                     name="startTime"
                     // onChange={(newValue) =>
@@ -34,7 +33,7 @@ export default function Simulation() {
                 </DemoContainer>
               </LocalizationProvider>
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={2.4}>
               <TextField
                 id="outlined-basic"
                 label="Run period"
@@ -44,7 +43,7 @@ export default function Simulation() {
                 type="number"
               />
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={2.4}>
               <TextField
                 id="outlined-basic"
                 label="Level 2 charging power (kW)"
@@ -54,10 +53,20 @@ export default function Simulation() {
                 sx={textFieldSX}
               />
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={2.4}>
               <TextField
                 id="outlined-basic"
                 label="Level 3 charging power (kW)"
+                variant="outlined"
+                fullWidth
+                type="number"
+                sx={textFieldSX}
+              />
+            </Grid>
+            <Grid item xs={2.4}>
+              <TextField
+                id="outlined-basic"
+                label="Adoption Rate"
                 variant="outlined"
                 fullWidth
                 type="number"
