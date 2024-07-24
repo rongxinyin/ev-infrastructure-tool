@@ -8,7 +8,7 @@ router.post("/process-data", (req, res) => {
 
   const python = spawn("python", [
     "../python-backend/scripts/process-empl-data.py",
-    inwhatput,
+    input,
   ]);
 
   let dataToSend = "";

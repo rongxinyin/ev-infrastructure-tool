@@ -79,9 +79,9 @@ const createVisualizations = (
             backgroundColor: "white.main",
             opacity: [0.9, 0.8, 0.7],
           },
-          marginTop: 3,
-          marginBottom: 3,
-          paddingRight: 5,
+          marginTop: 0,
+          marginBottom: 0,
+          paddingRight: 0,
           paddingTop: 2,
         }}
       >

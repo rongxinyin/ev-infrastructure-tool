@@ -138,23 +138,28 @@ export default function Simulation() {
         </Typography>
         <Button onClick={test}>Generate Graphs</Button>
         <Grid container spacing={0}>
-          <Grid item xs={7}>
+          <Grid item xs={6}>
             {/*<Typography variant="h6" sx={{ marginTop: 1 }}>
               Wait time
             </Typography>*/}
             {waitTimeGraph}
           </Grid>
-          <Grid item xs={5}>
+          <Grid item xs={6}>
             {/*<Typography variant="h6" sx={{ marginTop: 1 }}>
               Low SoC
             </Typography>*/}
             {lowSocGraph}
           </Grid>
+          <Grid item xs={6}>
+            {/*<Typography variant="h6" sx={{ marginTop: 1 }}>
+              Low SoC
+            </Typography>*/}
+            {utilizationGraph}
+          </Grid>
         </Grid>
         {/*<Typography variant="h6" sx={{ marginTop: 1 }}>
           Utilization
         </Typography>*/}
-        {utilizationGraph}
         {/*<Typography variant="h6" sx={{ marginTop: 1 }}>
           Charging demand (1 month)
         </Typography>*/}
