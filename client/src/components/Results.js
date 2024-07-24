@@ -176,7 +176,6 @@ export default function Simulation() {
 
   return (
     <div>
-      <h1>Graph Section</h1>
       <div id="graph-container">
         <Grid container spacing={1} sx={{ marginLeft: 0 }}>
           <Grid item xs={12}>
