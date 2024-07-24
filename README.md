@@ -29,7 +29,7 @@ Open [http://localhost:8080](http://localhost:8080) to view it in your browser.
 
 Installs all packages listed in the `package.json` file in the directory you are in. Make sure to install for the `home`, `client`, and `server` directories.
 
-## `pip3 install -r requirements.txt`
+### `pip3 install -r requirements.txt`
 
 Installs all required dependencies to run the Python scripts. Make sure to run in the `python-backend` directory.
 
