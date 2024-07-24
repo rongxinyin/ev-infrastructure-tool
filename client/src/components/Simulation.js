@@ -30,7 +30,7 @@ export default function Simulation({ onFormSubmit }) {
   const handleTimeChange = (newValue, field) => {
     setSimulationConfig({
       ...simulationConfig,
-      [field]: newValue,
+      [field]: newValue.format('YYYY-MM-DD HH:mm:ss'),
     });
   };
 
@@ -57,9 +57,10 @@ export default function Simulation({ onFormSubmit }) {
                       name="startTime"
                       slotProps={{ textField: { fullWidth: true } }}
                       required
-                      // onChange={(newValue) =>
-                      //   handleTimeChange(newValue, "returnHomeTime")
-                      // } TODO
+                      onChange={(newValue) =>
+                        handleTimeChange(newValue, "start_time")
+                      }
+
                     />
                   </DemoContainer>
                 </LocalizationProvider>
