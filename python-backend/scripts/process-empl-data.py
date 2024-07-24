@@ -67,7 +67,7 @@ def process_data(data):
 
 if __name__ == "__main__":
     try:
-        input_data = json.loads(sys.argv[1])
+        input_data = json.loads(sys.argv[1]) # first argument after the filename 
         output_data = process_data(input_data)
         print(json.dumps(output_data))
     except Exception as e:
