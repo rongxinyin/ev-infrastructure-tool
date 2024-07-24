@@ -10,7 +10,7 @@ import {
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo/index.js";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs/index.js";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider/index.js";
-import dayjs from 'dayjs';
+import dayjs from "dayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker/index.js";
 
 const textFieldSX = {
@@ -43,15 +43,13 @@ export default function Simulation({ onFormSubmit, progressBarState }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onFormSubmit(
-      {
-        start_time: simulationConfig.start_time.format("YYYY-MM-DD HH:mm:ss"),
-        run_period: simulationConfig.run_period,
-        l2_charging_power: simulationConfig.l2_charging_power,
-        l3_charging_power: simulationConfig.l3_charging_power,
-        adoption_rate: simulationConfig.adoption_rate
-      }
-    );
+    onFormSubmit({
+      start_time: simulationConfig.start_time.format("YYYY-MM-DD HH:mm:ss"),
+      run_period: simulationConfig.run_period,
+      l2_charging_power: simulationConfig.l2_charging_power,
+      l3_charging_power: simulationConfig.l3_charging_power,
+      adoption_rate: simulationConfig.adoption_rate,
+    });
     console.log(simulationConfig);
   };
 
