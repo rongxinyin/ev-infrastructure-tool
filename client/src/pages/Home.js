@@ -53,9 +53,14 @@ export default function Home() {
     setBuildingInfoData(data);
   };
 
+  useEffect(() => {
+    if (employeeInfoData) {
+      getEmployeeCommuteInfo();
+    }
+  }, [employeeInfoData]);
+
   const handleEmployeeInfoFormSubmit = (data) => {
     setEmployeeInfoData(data);
-    getEmployeeCommuteInfo();
   };
 
   useEffect(() => {
