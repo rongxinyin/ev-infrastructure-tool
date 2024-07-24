@@ -44,6 +44,7 @@ export default function Home() {
   const [buildingInfoData, setBuildingInfoData] = useState({});
   const [employeeInfoData, setEmployeeInfoData] = useState({});
   const [employeeCommuteData, setEmployeeCommuteData] = useState({});
+  const [simulationData, setSimulationData] = useState({});
 
   const handleBuildingInfoFormSubmit = (data) => {
     setBuildingInfoData(data);
@@ -53,6 +54,10 @@ export default function Home() {
     setEmployeeInfoData(data);
     getEmployeeCommuteInfo();
   };
+
+  const handleSimulationFormSubmit = (data) => {
+    setSimulationData(data);
+  }
 
   const switchPagesButton = (state) => {
     switch (state) {
@@ -84,13 +89,16 @@ export default function Home() {
   };
 
   const getEmployeeCommuteInfo = async () => {
-    const response = await fetch("http://localhost:8080/process-data", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(employeeInfoData, null, 2),
-    });
+    const response = await fetch(
+      "http://localhost:8080/process-employee-data",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(employeeInfoData, null, 2),
+      }
+    );
 
     const result = await response.json();
     console.log(result); // Process the result as needed
@@ -177,7 +185,7 @@ export default function Home() {
             <pre>{JSON.stringify(employeeCommuteData, null, 2)}</pre>
           )} */}
           {showResults && <Results />}
-          {showSimulation && <Simulation />}
+          {showSimulation && <Simulation onFormSubmit={handleSimulationFormSubmit} />}
         </Grid>
 
         <Grid

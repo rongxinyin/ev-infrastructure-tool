@@ -96,7 +96,7 @@ if __name__ == "__main__":
         os.makedirs(site_path, exist_ok=True)
 
         input_data = json.loads(sys.argv[1]) # first argument after the filename
-        start_time = sys.argv[2] # datetime object?
+        start_time = sys.argv[2] # datetime object? TODO: make sure to test user input start time
         run_period = sys.argv[3]
         l2_max_rate = sys.argv[4]
         l3_max_rate = sys.argv[5]
@@ -125,5 +125,5 @@ if __name__ == "__main__":
         # dump to json file
         json.dump(driving_pattern_data, output_data)
 
-        results = run_charging_management(parking_lot, '../tests/pov_driving_pattern.json', start_time=start_time, run_period=run_period, l2_max_rate=l2_max_rate, l3_max_rate=l3_max_rate, adoption_rate=adoption_rate)
+        results = run_charging_management(parking_lot, '../tests/pov_driving_pattern.json', start_time=datetime.datetime(2024, 2, 1), run_period=run_period, l2_max_rate=l2_max_rate, l3_max_rate=l3_max_rate, adoption_rate=adoption_rate)
         results.to_csv(os.path.join(site_path, f'pov_vehicle_status_{adoption_rate}.csv'), index=False)        
