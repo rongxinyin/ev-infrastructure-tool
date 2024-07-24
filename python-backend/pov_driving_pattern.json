@@ -1,0 +1,3710 @@
+[
+  {
+    "employee_id": "3",
+    "commute_mode": "car",
+    "zip_code": "92145",
+    "onsite_bldg": "7133",
+    "leave_to_work_time": "07:23",
+    "return_home_time": "16:23",
+    "geocode": "32.8728949,-117.1323579",
+    "dest": "32.89204,-117.13096",
+    "distance": { "text": "1.2 mi", "value": 1856 },
+    "duration": { "text": "4 mins", "value": 249 },
+    "status": "OK",
+    "home_charging": "Level 2",
+    "parking_lot": "bldg-90",
+    "days_drive": 5,
+    "vehicle id": "3",
+    "zev site": "7133",
+    "parking lot": "bldg-90",
+    "catagory": "Light-Duty",
+    "battery capacity": 80,
+    "weekly driving patterns": [
+      {
+        "day of week": "Monday",
+        "driving distance": 1.1535114978247358,
+        "equivalent efficiency mpge": 117.66261637570769,
+        "average speed mph": 16.673737510040162,
+        "equivalent electricity consumption rate": 4.775560593469541,
+        "equivalent electricity kWh": 0.6607593588190732,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "07:23",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "07:23",
+            "end_time": "07:27",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 1.1535114978247358
+          },
+          {
+            "activity_id": 3,
+            "start_time": "07:27",
+            "end_time": "16:23",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "16:23",
+            "end_time": "16:27",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 1.1535114978247358
+          },
+          {
+            "activity_id": 5,
+            "start_time": "16:27",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Tuesday",
+        "driving distance": 1.1535114978247358,
+        "equivalent efficiency mpge": 117.66261637570769,
+        "average speed mph": 16.673737510040162,
+        "equivalent electricity consumption rate": 4.775560593469541,
+        "equivalent electricity kWh": 0.6607593588190732,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "07:23",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "07:23",
+            "end_time": "07:27",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 1.1535114978247358
+          },
+          {
+            "activity_id": 3,
+            "start_time": "07:27",
+            "end_time": "16:23",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "16:23",
+            "end_time": "16:27",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 1.1535114978247358
+          },
+          {
+            "activity_id": 5,
+            "start_time": "16:27",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Wednesday",
+        "driving distance": 1.1535114978247358,
+        "equivalent efficiency mpge": 117.66261637570769,
+        "average speed mph": 16.673737510040162,
+        "equivalent electricity consumption rate": 4.775560593469541,
+        "equivalent electricity kWh": 0.6607593588190732,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "07:23",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "07:23",
+            "end_time": "07:27",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 1.1535114978247358
+          },
+          {
+            "activity_id": 3,
+            "start_time": "07:27",
+            "end_time": "16:23",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "16:23",
+            "end_time": "16:27",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 1.1535114978247358
+          },
+          {
+            "activity_id": 5,
+            "start_time": "16:27",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Thursday",
+        "driving distance": 1.1535114978247358,
+        "equivalent efficiency mpge": 117.66261637570769,
+        "average speed mph": 16.673737510040162,
+        "equivalent electricity consumption rate": 4.775560593469541,
+        "equivalent electricity kWh": 0.6607593588190732,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "07:23",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "07:23",
+            "end_time": "07:27",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 1.1535114978247358
+          },
+          {
+            "activity_id": 3,
+            "start_time": "07:27",
+            "end_time": "16:23",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "16:23",
+            "end_time": "16:27",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 1.1535114978247358
+          },
+          {
+            "activity_id": 5,
+            "start_time": "16:27",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Friday",
+        "driving distance": 1.1535114978247358,
+        "equivalent efficiency mpge": 117.66261637570769,
+        "average speed mph": 16.673737510040162,
+        "equivalent electricity consumption rate": 4.775560593469541,
+        "equivalent electricity kWh": 0.6607593588190732,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "07:23",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "07:23",
+            "end_time": "07:27",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 1.1535114978247358
+          },
+          {
+            "activity_id": 3,
+            "start_time": "07:27",
+            "end_time": "16:23",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "16:23",
+            "end_time": "16:27",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 1.1535114978247358
+          },
+          {
+            "activity_id": 5,
+            "start_time": "16:27",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Saturday",
+        "driving distance": 0,
+        "equivalent efficiency mpge": 0,
+        "average speed mph": 0,
+        "equivalent electricity consumption rate": 0,
+        "equivalent electricity kWh": 0,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Sunday",
+        "driving distance": 0,
+        "equivalent efficiency mpge": 0,
+        "average speed mph": 0,
+        "equivalent electricity consumption rate": 0,
+        "equivalent electricity kWh": 0,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "employee_id": "278",
+    "commute_mode": "car",
+    "zip_code": "91942",
+    "onsite_bldg": "9176",
+    "leave_to_work_time": "07:20",
+    "return_home_time": "16:20",
+    "geocode": "32.7749487,-117.0146736",
+    "dest": "32.89204,-117.13096",
+    "distance": { "text": "15.8 mi", "value": 25455 },
+    "duration": { "text": "20 mins", "value": 1197 },
+    "status": "OK",
+    "home_charging": "Level 2",
+    "parking_lot": "bldg-90",
+    "days_drive": 5,
+    "vehicle id": "278",
+    "zev site": "9176",
+    "parking lot": "bldg-90",
+    "catagory": "Light-Duty",
+    "battery capacity": 80,
+    "weekly driving patterns": [
+      {
+        "day of week": "Monday",
+        "driving distance": 15.820385332504662,
+        "equivalent efficiency mpge": 113.28293892978688,
+        "average speed mph": 47.57001478696742,
+        "equivalent electricity consumption rate": 14.151376310199849,
+        "equivalent electricity kWh": 9.412661619519834,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "07:20",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "07:20",
+            "end_time": "07:39",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 15.820385332504662
+          },
+          {
+            "activity_id": 3,
+            "start_time": "07:39",
+            "end_time": "16:20",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "16:20",
+            "end_time": "16:39",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 15.820385332504662
+          },
+          {
+            "activity_id": 5,
+            "start_time": "16:39",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Tuesday",
+        "driving distance": 15.820385332504662,
+        "equivalent efficiency mpge": 113.28293892978688,
+        "average speed mph": 47.57001478696742,
+        "equivalent electricity consumption rate": 14.151376310199849,
+        "equivalent electricity kWh": 9.412661619519834,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "07:20",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "07:20",
+            "end_time": "07:39",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 15.820385332504662
+          },
+          {
+            "activity_id": 3,
+            "start_time": "07:39",
+            "end_time": "16:20",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "16:20",
+            "end_time": "16:39",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 15.820385332504662
+          },
+          {
+            "activity_id": 5,
+            "start_time": "16:39",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Wednesday",
+        "driving distance": 15.820385332504662,
+        "equivalent efficiency mpge": 113.28293892978688,
+        "average speed mph": 47.57001478696742,
+        "equivalent electricity consumption rate": 14.151376310199849,
+        "equivalent electricity kWh": 9.412661619519834,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "07:20",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "07:20",
+            "end_time": "07:39",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 15.820385332504662
+          },
+          {
+            "activity_id": 3,
+            "start_time": "07:39",
+            "end_time": "16:20",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "16:20",
+            "end_time": "16:39",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 15.820385332504662
+          },
+          {
+            "activity_id": 5,
+            "start_time": "16:39",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Thursday",
+        "driving distance": 15.820385332504662,
+        "equivalent efficiency mpge": 113.28293892978688,
+        "average speed mph": 47.57001478696742,
+        "equivalent electricity consumption rate": 14.151376310199849,
+        "equivalent electricity kWh": 9.412661619519834,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "07:20",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "07:20",
+            "end_time": "07:39",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 15.820385332504662
+          },
+          {
+            "activity_id": 3,
+            "start_time": "07:39",
+            "end_time": "16:20",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "16:20",
+            "end_time": "16:39",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 15.820385332504662
+          },
+          {
+            "activity_id": 5,
+            "start_time": "16:39",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Friday",
+        "driving distance": 15.820385332504662,
+        "equivalent efficiency mpge": 113.28293892978688,
+        "average speed mph": 47.57001478696742,
+        "equivalent electricity consumption rate": 14.151376310199849,
+        "equivalent electricity kWh": 9.412661619519834,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "07:20",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "07:20",
+            "end_time": "07:39",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 15.820385332504662
+          },
+          {
+            "activity_id": 3,
+            "start_time": "07:39",
+            "end_time": "16:20",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "16:20",
+            "end_time": "16:39",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 15.820385332504662
+          },
+          {
+            "activity_id": 5,
+            "start_time": "16:39",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Saturday",
+        "driving distance": 0,
+        "equivalent efficiency mpge": 0,
+        "average speed mph": 0,
+        "equivalent electricity consumption rate": 0,
+        "equivalent electricity kWh": 0,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Sunday",
+        "driving distance": 0,
+        "equivalent efficiency mpge": 0,
+        "average speed mph": 0,
+        "equivalent electricity consumption rate": 0,
+        "equivalent electricity kWh": 0,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "employee_id": "425",
+    "commute_mode": "car",
+    "zip_code": "92009",
+    "onsite_bldg": "9176",
+    "leave_to_work_time": "06:22",
+    "return_home_time": "15:22",
+    "geocode": "33.095442,-117.2499749",
+    "dest": "32.89204,-117.13096",
+    "distance": { "text": "25.2 mi", "value": 40507 },
+    "duration": { "text": "34 mins", "value": 2029 },
+    "status": "OK",
+    "home_charging": "Level 2",
+    "parking_lot": "bldg-90",
+    "days_drive": 5,
+    "vehicle id": "425",
+    "zev site": "9176",
+    "parking lot": "bldg-90",
+    "catagory": "Light-Duty",
+    "battery capacity": 80,
+    "weekly driving patterns": [
+      {
+        "day of week": "Monday",
+        "driving distance": 25.175264139216903,
+        "equivalent efficiency mpge": 121.46465398353892,
+        "average speed mph": 44.65831866929522,
+        "equivalent electricity consumption rate": 12.390315122942736,
+        "equivalent electricity kWh": 13.969601421769777,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "06:22",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "06:22",
+            "end_time": "06:55",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 25.175264139216903
+          },
+          {
+            "activity_id": 3,
+            "start_time": "06:55",
+            "end_time": "15:22",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "15:22",
+            "end_time": "15:55",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 25.175264139216903
+          },
+          {
+            "activity_id": 5,
+            "start_time": "15:55",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Tuesday",
+        "driving distance": 25.175264139216903,
+        "equivalent efficiency mpge": 121.46465398353892,
+        "average speed mph": 44.65831866929522,
+        "equivalent electricity consumption rate": 12.390315122942736,
+        "equivalent electricity kWh": 13.969601421769777,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "06:22",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "06:22",
+            "end_time": "06:55",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 25.175264139216903
+          },
+          {
+            "activity_id": 3,
+            "start_time": "06:55",
+            "end_time": "15:22",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "15:22",
+            "end_time": "15:55",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 25.175264139216903
+          },
+          {
+            "activity_id": 5,
+            "start_time": "15:55",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Wednesday",
+        "driving distance": 25.175264139216903,
+        "equivalent efficiency mpge": 121.46465398353892,
+        "average speed mph": 44.65831866929522,
+        "equivalent electricity consumption rate": 12.390315122942736,
+        "equivalent electricity kWh": 13.969601421769777,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "06:22",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "06:22",
+            "end_time": "06:55",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 25.175264139216903
+          },
+          {
+            "activity_id": 3,
+            "start_time": "06:55",
+            "end_time": "15:22",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "15:22",
+            "end_time": "15:55",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 25.175264139216903
+          },
+          {
+            "activity_id": 5,
+            "start_time": "15:55",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Thursday",
+        "driving distance": 25.175264139216903,
+        "equivalent efficiency mpge": 121.46465398353892,
+        "average speed mph": 44.65831866929522,
+        "equivalent electricity consumption rate": 12.390315122942736,
+        "equivalent electricity kWh": 13.969601421769777,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "06:22",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "06:22",
+            "end_time": "06:55",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 25.175264139216903
+          },
+          {
+            "activity_id": 3,
+            "start_time": "06:55",
+            "end_time": "15:22",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "15:22",
+            "end_time": "15:55",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 25.175264139216903
+          },
+          {
+            "activity_id": 5,
+            "start_time": "15:55",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Friday",
+        "driving distance": 25.175264139216903,
+        "equivalent efficiency mpge": 121.46465398353892,
+        "average speed mph": 44.65831866929522,
+        "equivalent electricity consumption rate": 12.390315122942736,
+        "equivalent electricity kWh": 13.969601421769777,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "06:22",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "06:22",
+            "end_time": "06:55",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 25.175264139216903
+          },
+          {
+            "activity_id": 3,
+            "start_time": "06:55",
+            "end_time": "15:22",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "15:22",
+            "end_time": "15:55",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 25.175264139216903
+          },
+          {
+            "activity_id": 5,
+            "start_time": "15:55",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Saturday",
+        "driving distance": 0,
+        "equivalent efficiency mpge": 0,
+        "average speed mph": 0,
+        "equivalent electricity consumption rate": 0,
+        "equivalent electricity kWh": 0,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Sunday",
+        "driving distance": 0,
+        "equivalent efficiency mpge": 0,
+        "average speed mph": 0,
+        "equivalent electricity consumption rate": 0,
+        "equivalent electricity kWh": 0,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "employee_id": "531",
+    "commute_mode": "car",
+    "zip_code": "92021",
+    "onsite_bldg": "7133",
+    "leave_to_work_time": "07:20",
+    "return_home_time": "16:20",
+    "geocode": "32.8324351,-116.8792553",
+    "dest": "32.89204,-117.13096",
+    "distance": { "text": "24.4 mi", "value": 39312 },
+    "duration": { "text": "29 mins", "value": 1757 },
+    "status": "OK",
+    "home_charging": "Level 2",
+    "parking_lot": "bldg-90",
+    "days_drive": 5,
+    "vehicle id": "531",
+    "zev site": "7133",
+    "parking lot": "bldg-90",
+    "catagory": "Light-Duty",
+    "battery capacity": 80,
+    "weekly driving patterns": [
+      {
+        "day of week": "Monday",
+        "driving distance": 24.432566811684275,
+        "equivalent efficiency mpge": 117.75003294142006,
+        "average speed mph": 50.05041848605578,
+        "equivalent electricity consumption rate": 14.324404510521052,
+        "equivalent electricity kWh": 13.985176581027124,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "07:20",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "07:20",
+            "end_time": "07:49",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 24.432566811684275
+          },
+          {
+            "activity_id": 3,
+            "start_time": "07:49",
+            "end_time": "16:20",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "16:20",
+            "end_time": "16:49",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 24.432566811684275
+          },
+          {
+            "activity_id": 5,
+            "start_time": "16:49",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Tuesday",
+        "driving distance": 24.432566811684275,
+        "equivalent efficiency mpge": 117.75003294142006,
+        "average speed mph": 50.05041848605578,
+        "equivalent electricity consumption rate": 14.324404510521052,
+        "equivalent electricity kWh": 13.985176581027124,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "07:20",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "07:20",
+            "end_time": "07:49",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 24.432566811684275
+          },
+          {
+            "activity_id": 3,
+            "start_time": "07:49",
+            "end_time": "16:20",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "16:20",
+            "end_time": "16:49",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 24.432566811684275
+          },
+          {
+            "activity_id": 5,
+            "start_time": "16:49",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Wednesday",
+        "driving distance": 24.432566811684275,
+        "equivalent efficiency mpge": 117.75003294142006,
+        "average speed mph": 50.05041848605578,
+        "equivalent electricity consumption rate": 14.324404510521052,
+        "equivalent electricity kWh": 13.985176581027124,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "07:20",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "07:20",
+            "end_time": "07:49",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 24.432566811684275
+          },
+          {
+            "activity_id": 3,
+            "start_time": "07:49",
+            "end_time": "16:20",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "16:20",
+            "end_time": "16:49",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 24.432566811684275
+          },
+          {
+            "activity_id": 5,
+            "start_time": "16:49",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Thursday",
+        "driving distance": 24.432566811684275,
+        "equivalent efficiency mpge": 117.75003294142006,
+        "average speed mph": 50.05041848605578,
+        "equivalent electricity consumption rate": 14.324404510521052,
+        "equivalent electricity kWh": 13.985176581027124,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "07:20",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "07:20",
+            "end_time": "07:49",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 24.432566811684275
+          },
+          {
+            "activity_id": 3,
+            "start_time": "07:49",
+            "end_time": "16:20",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "16:20",
+            "end_time": "16:49",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 24.432566811684275
+          },
+          {
+            "activity_id": 5,
+            "start_time": "16:49",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Friday",
+        "driving distance": 24.432566811684275,
+        "equivalent efficiency mpge": 117.75003294142006,
+        "average speed mph": 50.05041848605578,
+        "equivalent electricity consumption rate": 14.324404510521052,
+        "equivalent electricity kWh": 13.985176581027124,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "07:20",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "07:20",
+            "end_time": "07:49",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 24.432566811684275
+          },
+          {
+            "activity_id": 3,
+            "start_time": "07:49",
+            "end_time": "16:20",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "16:20",
+            "end_time": "16:49",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 24.432566811684275
+          },
+          {
+            "activity_id": 5,
+            "start_time": "16:49",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Saturday",
+        "driving distance": 0,
+        "equivalent efficiency mpge": 0,
+        "average speed mph": 0,
+        "equivalent electricity consumption rate": 0,
+        "equivalent electricity kWh": 0,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Sunday",
+        "driving distance": 0,
+        "equivalent efficiency mpge": 0,
+        "average speed mph": 0,
+        "equivalent electricity consumption rate": 0,
+        "equivalent electricity kWh": 0,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "employee_id": "702",
+    "commute_mode": "car",
+    "zip_code": "92026",
+    "onsite_bldg": "7515",
+    "leave_to_work_time": "06:44",
+    "return_home_time": "15:44",
+    "geocode": "33.2156978,-117.1147095",
+    "dest": "32.89204,-117.13096",
+    "distance": { "text": "25.5 mi", "value": 41018 },
+    "duration": { "text": "29 mins", "value": 1727 },
+    "status": "OK",
+    "home_charging": "Level 2",
+    "parking_lot": "bldg-90",
+    "days_drive": 5,
+    "vehicle id": "702",
+    "zev site": "7515",
+    "parking lot": "bldg-90",
+    "catagory": "Light-Duty",
+    "battery capacity": 80,
+    "weekly driving patterns": [
+      {
+        "day of week": "Monday",
+        "driving distance": 25.492852703542574,
+        "equivalent efficiency mpge": 117.00706708278337,
+        "average speed mph": 53.129591731326,
+        "equivalent electricity consumption rate": 15.30221452417842,
+        "equivalent electricity kWh": 14.684739264536198,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "06:44",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "06:44",
+            "end_time": "07:12",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 25.492852703542574
+          },
+          {
+            "activity_id": 3,
+            "start_time": "07:12",
+            "end_time": "15:44",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "15:44",
+            "end_time": "16:12",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 25.492852703542574
+          },
+          {
+            "activity_id": 5,
+            "start_time": "16:12",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Tuesday",
+        "driving distance": 25.492852703542574,
+        "equivalent efficiency mpge": 117.00706708278337,
+        "average speed mph": 53.129591731326,
+        "equivalent electricity consumption rate": 15.30221452417842,
+        "equivalent electricity kWh": 14.684739264536198,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "06:44",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "06:44",
+            "end_time": "07:12",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 25.492852703542574
+          },
+          {
+            "activity_id": 3,
+            "start_time": "07:12",
+            "end_time": "15:44",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "15:44",
+            "end_time": "16:12",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 25.492852703542574
+          },
+          {
+            "activity_id": 5,
+            "start_time": "16:12",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Wednesday",
+        "driving distance": 25.492852703542574,
+        "equivalent efficiency mpge": 117.00706708278337,
+        "average speed mph": 53.129591731326,
+        "equivalent electricity consumption rate": 15.30221452417842,
+        "equivalent electricity kWh": 14.684739264536198,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "06:44",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "06:44",
+            "end_time": "07:12",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 25.492852703542574
+          },
+          {
+            "activity_id": 3,
+            "start_time": "07:12",
+            "end_time": "15:44",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "15:44",
+            "end_time": "16:12",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 25.492852703542574
+          },
+          {
+            "activity_id": 5,
+            "start_time": "16:12",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Thursday",
+        "driving distance": 25.492852703542574,
+        "equivalent efficiency mpge": 117.00706708278337,
+        "average speed mph": 53.129591731326,
+        "equivalent electricity consumption rate": 15.30221452417842,
+        "equivalent electricity kWh": 14.684739264536198,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "06:44",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "06:44",
+            "end_time": "07:12",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 25.492852703542574
+          },
+          {
+            "activity_id": 3,
+            "start_time": "07:12",
+            "end_time": "15:44",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "15:44",
+            "end_time": "16:12",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 25.492852703542574
+          },
+          {
+            "activity_id": 5,
+            "start_time": "16:12",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Friday",
+        "driving distance": 25.492852703542574,
+        "equivalent efficiency mpge": 117.00706708278337,
+        "average speed mph": 53.129591731326,
+        "equivalent electricity consumption rate": 15.30221452417842,
+        "equivalent electricity kWh": 14.684739264536198,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "06:44",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "06:44",
+            "end_time": "07:12",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 25.492852703542574
+          },
+          {
+            "activity_id": 3,
+            "start_time": "07:12",
+            "end_time": "15:44",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "15:44",
+            "end_time": "16:12",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 25.492852703542574
+          },
+          {
+            "activity_id": 5,
+            "start_time": "16:12",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Saturday",
+        "driving distance": 0,
+        "equivalent efficiency mpge": 0,
+        "average speed mph": 0,
+        "equivalent electricity consumption rate": 0,
+        "equivalent electricity kWh": 0,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Sunday",
+        "driving distance": 0,
+        "equivalent efficiency mpge": 0,
+        "average speed mph": 0,
+        "equivalent electricity consumption rate": 0,
+        "equivalent electricity kWh": 0,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "employee_id": "763",
+    "commute_mode": "car",
+    "zip_code": "92028",
+    "onsite_bldg": "8671",
+    "leave_to_work_time": "07:32",
+    "return_home_time": "16:32",
+    "geocode": "33.3826505,-117.2440957",
+    "dest": "32.89204,-117.13096",
+    "distance": { "text": "41.9 mi", "value": 67414 },
+    "duration": { "text": "44 mins", "value": 2644 },
+    "status": "OK",
+    "home_charging": "Level 2",
+    "parking_lot": "bldg-90",
+    "days_drive": 5,
+    "vehicle id": "763",
+    "zev site": "8671",
+    "parking lot": "bldg-90",
+    "catagory": "Light-Duty",
+    "battery capacity": 80,
+    "weekly driving patterns": [
+      {
+        "day of week": "Monday",
+        "driving distance": 41.898073337476696,
+        "equivalent efficiency mpge": 120.76754637056206,
+        "average speed mph": 57.03520164901665,
+        "equivalent electricity consumption rate": 15.915586209511526,
+        "equivalent electricity kWh": 23.38318718740056,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "07:32",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "07:32",
+            "end_time": "08:16",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 41.898073337476696
+          },
+          {
+            "activity_id": 3,
+            "start_time": "08:16",
+            "end_time": "16:32",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "16:32",
+            "end_time": "17:16",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 41.898073337476696
+          },
+          {
+            "activity_id": 5,
+            "start_time": "17:16",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Tuesday",
+        "driving distance": 41.898073337476696,
+        "equivalent efficiency mpge": 120.76754637056206,
+        "average speed mph": 57.03520164901665,
+        "equivalent electricity consumption rate": 15.915586209511526,
+        "equivalent electricity kWh": 23.38318718740056,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "07:32",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "07:32",
+            "end_time": "08:16",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 41.898073337476696
+          },
+          {
+            "activity_id": 3,
+            "start_time": "08:16",
+            "end_time": "16:32",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "16:32",
+            "end_time": "17:16",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 41.898073337476696
+          },
+          {
+            "activity_id": 5,
+            "start_time": "17:16",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Wednesday",
+        "driving distance": 41.898073337476696,
+        "equivalent efficiency mpge": 120.76754637056206,
+        "average speed mph": 57.03520164901665,
+        "equivalent electricity consumption rate": 15.915586209511526,
+        "equivalent electricity kWh": 23.38318718740056,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "07:32",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "07:32",
+            "end_time": "08:16",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 41.898073337476696
+          },
+          {
+            "activity_id": 3,
+            "start_time": "08:16",
+            "end_time": "16:32",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "16:32",
+            "end_time": "17:16",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 41.898073337476696
+          },
+          {
+            "activity_id": 5,
+            "start_time": "17:16",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Thursday",
+        "driving distance": 41.898073337476696,
+        "equivalent efficiency mpge": 120.76754637056206,
+        "average speed mph": 57.03520164901665,
+        "equivalent electricity consumption rate": 15.915586209511526,
+        "equivalent electricity kWh": 23.38318718740056,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "07:32",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "07:32",
+            "end_time": "08:16",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 41.898073337476696
+          },
+          {
+            "activity_id": 3,
+            "start_time": "08:16",
+            "end_time": "16:32",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "16:32",
+            "end_time": "17:16",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 41.898073337476696
+          },
+          {
+            "activity_id": 5,
+            "start_time": "17:16",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Friday",
+        "driving distance": 41.898073337476696,
+        "equivalent efficiency mpge": 120.76754637056206,
+        "average speed mph": 57.03520164901665,
+        "equivalent electricity consumption rate": 15.915586209511526,
+        "equivalent electricity kWh": 23.38318718740056,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "07:32",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "07:32",
+            "end_time": "08:16",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 41.898073337476696
+          },
+          {
+            "activity_id": 3,
+            "start_time": "08:16",
+            "end_time": "16:32",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "16:32",
+            "end_time": "17:16",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 41.898073337476696
+          },
+          {
+            "activity_id": 5,
+            "start_time": "17:16",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Saturday",
+        "driving distance": 0,
+        "equivalent efficiency mpge": 0,
+        "average speed mph": 0,
+        "equivalent electricity consumption rate": 0,
+        "equivalent electricity kWh": 0,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Sunday",
+        "driving distance": 0,
+        "equivalent efficiency mpge": 0,
+        "average speed mph": 0,
+        "equivalent electricity consumption rate": 0,
+        "equivalent electricity kWh": 0,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "employee_id": "789",
+    "commute_mode": "car",
+    "zip_code": "92028",
+    "onsite_bldg": "7515",
+    "leave_to_work_time": "08:16",
+    "return_home_time": "17:16",
+    "geocode": "33.3826505,-117.2440957",
+    "dest": "32.89204,-117.13096",
+    "distance": { "text": "41.9 mi", "value": 67414 },
+    "duration": { "text": "44 mins", "value": 2644 },
+    "status": "OK",
+    "home_charging": "Level 2",
+    "parking_lot": "bldg-90",
+    "days_drive": 5,
+    "vehicle id": "789",
+    "zev site": "7515",
+    "parking lot": "bldg-90",
+    "catagory": "Light-Duty",
+    "battery capacity": 80,
+    "weekly driving patterns": [
+      {
+        "day of week": "Monday",
+        "driving distance": 41.898073337476696,
+        "equivalent efficiency mpge": 114.11980215672607,
+        "average speed mph": 57.03520164901665,
+        "equivalent electricity consumption rate": 16.8427061670872,
+        "equivalent electricity kWh": 24.7453122909177,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "08:16",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "08:16",
+            "end_time": "09:00",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 41.898073337476696
+          },
+          {
+            "activity_id": 3,
+            "start_time": "09:00",
+            "end_time": "17:16",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "17:16",
+            "end_time": "18:00",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 41.898073337476696
+          },
+          {
+            "activity_id": 5,
+            "start_time": "18:00",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Tuesday",
+        "driving distance": 41.898073337476696,
+        "equivalent efficiency mpge": 114.11980215672607,
+        "average speed mph": 57.03520164901665,
+        "equivalent electricity consumption rate": 16.8427061670872,
+        "equivalent electricity kWh": 24.7453122909177,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "08:16",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "08:16",
+            "end_time": "09:00",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 41.898073337476696
+          },
+          {
+            "activity_id": 3,
+            "start_time": "09:00",
+            "end_time": "17:16",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "17:16",
+            "end_time": "18:00",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 41.898073337476696
+          },
+          {
+            "activity_id": 5,
+            "start_time": "18:00",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Wednesday",
+        "driving distance": 41.898073337476696,
+        "equivalent efficiency mpge": 114.11980215672607,
+        "average speed mph": 57.03520164901665,
+        "equivalent electricity consumption rate": 16.8427061670872,
+        "equivalent electricity kWh": 24.7453122909177,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "08:16",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "08:16",
+            "end_time": "09:00",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 41.898073337476696
+          },
+          {
+            "activity_id": 3,
+            "start_time": "09:00",
+            "end_time": "17:16",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "17:16",
+            "end_time": "18:00",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 41.898073337476696
+          },
+          {
+            "activity_id": 5,
+            "start_time": "18:00",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Thursday",
+        "driving distance": 41.898073337476696,
+        "equivalent efficiency mpge": 114.11980215672607,
+        "average speed mph": 57.03520164901665,
+        "equivalent electricity consumption rate": 16.8427061670872,
+        "equivalent electricity kWh": 24.7453122909177,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "08:16",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "08:16",
+            "end_time": "09:00",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 41.898073337476696
+          },
+          {
+            "activity_id": 3,
+            "start_time": "09:00",
+            "end_time": "17:16",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "17:16",
+            "end_time": "18:00",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 41.898073337476696
+          },
+          {
+            "activity_id": 5,
+            "start_time": "18:00",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Friday",
+        "driving distance": 41.898073337476696,
+        "equivalent efficiency mpge": 114.11980215672607,
+        "average speed mph": 57.03520164901665,
+        "equivalent electricity consumption rate": 16.8427061670872,
+        "equivalent electricity kWh": 24.7453122909177,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "08:16",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "08:16",
+            "end_time": "09:00",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 41.898073337476696
+          },
+          {
+            "activity_id": 3,
+            "start_time": "09:00",
+            "end_time": "17:16",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "17:16",
+            "end_time": "18:00",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 41.898073337476696
+          },
+          {
+            "activity_id": 5,
+            "start_time": "18:00",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Saturday",
+        "driving distance": 0,
+        "equivalent efficiency mpge": 0,
+        "average speed mph": 0,
+        "equivalent electricity consumption rate": 0,
+        "equivalent electricity kWh": 0,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Sunday",
+        "driving distance": 0,
+        "equivalent efficiency mpge": 0,
+        "average speed mph": 0,
+        "equivalent electricity consumption rate": 0,
+        "equivalent electricity kWh": 0,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "employee_id": "1055",
+    "commute_mode": "car",
+    "zip_code": "92058",
+    "onsite_bldg": "7515",
+    "leave_to_work_time": "07:50",
+    "return_home_time": "16:50",
+    "geocode": "33.2773221,-117.3381427",
+    "dest": "32.89204,-117.13096",
+    "distance": { "text": "43.1 mi", "value": 69441 },
+    "duration": { "text": "55 mins", "value": 3281 },
+    "status": "OK",
+    "home_charging": "Level 2",
+    "parking_lot": "bldg-90",
+    "days_drive": 5,
+    "vehicle id": "1055",
+    "zev site": "7515",
+    "parking lot": "bldg-90",
+    "catagory": "Light-Duty",
+    "battery capacity": 80,
+    "weekly driving patterns": [
+      {
+        "day of week": "Monday",
+        "driving distance": 43.15786202610317,
+        "equivalent efficiency mpge": 115.37819680928159,
+        "average speed mph": 47.343904462054255,
+        "equivalent electricity consumption rate": 13.828345601626525,
+        "equivalent electricity kWh": 25.21134825297731,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "07:50",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "07:50",
+            "end_time": "08:44",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 43.15786202610317
+          },
+          {
+            "activity_id": 3,
+            "start_time": "08:44",
+            "end_time": "16:50",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "16:50",
+            "end_time": "17:44",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 43.15786202610317
+          },
+          {
+            "activity_id": 5,
+            "start_time": "17:44",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Tuesday",
+        "driving distance": 43.15786202610317,
+        "equivalent efficiency mpge": 115.37819680928159,
+        "average speed mph": 47.343904462054255,
+        "equivalent electricity consumption rate": 13.828345601626525,
+        "equivalent electricity kWh": 25.21134825297731,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "07:50",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "07:50",
+            "end_time": "08:44",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 43.15786202610317
+          },
+          {
+            "activity_id": 3,
+            "start_time": "08:44",
+            "end_time": "16:50",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "16:50",
+            "end_time": "17:44",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 43.15786202610317
+          },
+          {
+            "activity_id": 5,
+            "start_time": "17:44",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Wednesday",
+        "driving distance": 43.15786202610317,
+        "equivalent efficiency mpge": 115.37819680928159,
+        "average speed mph": 47.343904462054255,
+        "equivalent electricity consumption rate": 13.828345601626525,
+        "equivalent electricity kWh": 25.21134825297731,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "07:50",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "07:50",
+            "end_time": "08:44",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 43.15786202610317
+          },
+          {
+            "activity_id": 3,
+            "start_time": "08:44",
+            "end_time": "16:50",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "16:50",
+            "end_time": "17:44",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 43.15786202610317
+          },
+          {
+            "activity_id": 5,
+            "start_time": "17:44",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Thursday",
+        "driving distance": 43.15786202610317,
+        "equivalent efficiency mpge": 115.37819680928159,
+        "average speed mph": 47.343904462054255,
+        "equivalent electricity consumption rate": 13.828345601626525,
+        "equivalent electricity kWh": 25.21134825297731,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "07:50",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "07:50",
+            "end_time": "08:44",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 43.15786202610317
+          },
+          {
+            "activity_id": 3,
+            "start_time": "08:44",
+            "end_time": "16:50",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "16:50",
+            "end_time": "17:44",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 43.15786202610317
+          },
+          {
+            "activity_id": 5,
+            "start_time": "17:44",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Friday",
+        "driving distance": 43.15786202610317,
+        "equivalent efficiency mpge": 115.37819680928159,
+        "average speed mph": 47.343904462054255,
+        "equivalent electricity consumption rate": 13.828345601626525,
+        "equivalent electricity kWh": 25.21134825297731,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "07:50",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "07:50",
+            "end_time": "08:44",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 43.15786202610317
+          },
+          {
+            "activity_id": 3,
+            "start_time": "08:44",
+            "end_time": "16:50",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "16:50",
+            "end_time": "17:44",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 43.15786202610317
+          },
+          {
+            "activity_id": 5,
+            "start_time": "17:44",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Saturday",
+        "driving distance": 0,
+        "equivalent efficiency mpge": 0,
+        "average speed mph": 0,
+        "equivalent electricity consumption rate": 0,
+        "equivalent electricity kWh": 0,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Sunday",
+        "driving distance": 0,
+        "equivalent efficiency mpge": 0,
+        "average speed mph": 0,
+        "equivalent electricity consumption rate": 0,
+        "equivalent electricity kWh": 0,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "employee_id": "1130",
+    "commute_mode": "car",
+    "zip_code": "92064",
+    "onsite_bldg": "7133",
+    "leave_to_work_time": "06:49",
+    "return_home_time": "15:49",
+    "geocode": "32.9799762,-117.0087877",
+    "dest": "32.89204,-117.13096",
+    "distance": { "text": "11.7 mi", "value": 18874 },
+    "duration": { "text": "21 mins", "value": 1268 },
+    "status": "OK",
+    "home_charging": "Level 2",
+    "parking_lot": "bldg-90",
+    "days_drive": 5,
+    "vehicle id": "1130",
+    "zev site": "7133",
+    "parking lot": "bldg-90",
+    "catagory": "Light-Duty",
+    "battery capacity": 80,
+    "weekly driving patterns": [
+      {
+        "day of week": "Monday",
+        "driving distance": 11.730267246737103,
+        "equivalent efficiency mpge": 113.28644582737489,
+        "average speed mph": 33.2965343533123,
+        "equivalent electricity consumption rate": 9.904920218050293,
+        "equivalent electricity kWh": 6.9789462159914715,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "06:49",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "06:49",
+            "end_time": "07:10",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 11.730267246737103
+          },
+          {
+            "activity_id": 3,
+            "start_time": "07:10",
+            "end_time": "15:49",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "15:49",
+            "end_time": "16:10",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 11.730267246737103
+          },
+          {
+            "activity_id": 5,
+            "start_time": "16:10",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Tuesday",
+        "driving distance": 11.730267246737103,
+        "equivalent efficiency mpge": 113.28644582737489,
+        "average speed mph": 33.2965343533123,
+        "equivalent electricity consumption rate": 9.904920218050293,
+        "equivalent electricity kWh": 6.9789462159914715,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "06:49",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "06:49",
+            "end_time": "07:10",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 11.730267246737103
+          },
+          {
+            "activity_id": 3,
+            "start_time": "07:10",
+            "end_time": "15:49",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "15:49",
+            "end_time": "16:10",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 11.730267246737103
+          },
+          {
+            "activity_id": 5,
+            "start_time": "16:10",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Wednesday",
+        "driving distance": 11.730267246737103,
+        "equivalent efficiency mpge": 113.28644582737489,
+        "average speed mph": 33.2965343533123,
+        "equivalent electricity consumption rate": 9.904920218050293,
+        "equivalent electricity kWh": 6.9789462159914715,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "06:49",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "06:49",
+            "end_time": "07:10",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 11.730267246737103
+          },
+          {
+            "activity_id": 3,
+            "start_time": "07:10",
+            "end_time": "15:49",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "15:49",
+            "end_time": "16:10",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 11.730267246737103
+          },
+          {
+            "activity_id": 5,
+            "start_time": "16:10",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Thursday",
+        "driving distance": 11.730267246737103,
+        "equivalent efficiency mpge": 113.28644582737489,
+        "average speed mph": 33.2965343533123,
+        "equivalent electricity consumption rate": 9.904920218050293,
+        "equivalent electricity kWh": 6.9789462159914715,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "06:49",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "06:49",
+            "end_time": "07:10",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 11.730267246737103
+          },
+          {
+            "activity_id": 3,
+            "start_time": "07:10",
+            "end_time": "15:49",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "15:49",
+            "end_time": "16:10",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 11.730267246737103
+          },
+          {
+            "activity_id": 5,
+            "start_time": "16:10",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Friday",
+        "driving distance": 11.730267246737103,
+        "equivalent efficiency mpge": 113.28644582737489,
+        "average speed mph": 33.2965343533123,
+        "equivalent electricity consumption rate": 9.904920218050293,
+        "equivalent electricity kWh": 6.9789462159914715,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "06:49",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "06:49",
+            "end_time": "07:10",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 11.730267246737103
+          },
+          {
+            "activity_id": 3,
+            "start_time": "07:10",
+            "end_time": "15:49",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "15:49",
+            "end_time": "16:10",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 11.730267246737103
+          },
+          {
+            "activity_id": 5,
+            "start_time": "16:10",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Saturday",
+        "driving distance": 0,
+        "equivalent efficiency mpge": 0,
+        "average speed mph": 0,
+        "equivalent electricity consumption rate": 0,
+        "equivalent electricity kWh": 0,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Sunday",
+        "driving distance": 0,
+        "equivalent efficiency mpge": 0,
+        "average speed mph": 0,
+        "equivalent electricity consumption rate": 0,
+        "equivalent electricity kWh": 0,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "employee_id": "1149",
+    "commute_mode": "car",
+    "zip_code": "92065",
+    "onsite_bldg": "9176",
+    "leave_to_work_time": "05:22",
+    "return_home_time": "14:22",
+    "geocode": "33.0654286,-116.8203511",
+    "dest": "32.89204,-117.13096",
+    "distance": { "text": "27.6 mi", "value": 44368 },
+    "duration": { "text": "45 mins", "value": 2716 },
+    "status": "OK",
+    "home_charging": "Level 2",
+    "parking_lot": "bldg-90",
+    "days_drive": 5,
+    "vehicle id": "1149",
+    "zev site": "9176",
+    "parking lot": "bldg-90",
+    "catagory": "Light-Duty",
+    "battery capacity": 80,
+    "weekly driving patterns": [
+      {
+        "day of week": "Monday",
+        "driving distance": 27.57489123679304,
+        "equivalent efficiency mpge": 117.71283551551393,
+        "average speed mph": 36.54217743740795,
+        "equivalent electricity consumption rate": 10.461657594496963,
+        "equivalent electricity kWh": 15.788827626320362,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "05:22",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "05:22",
+            "end_time": "06:07",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 27.57489123679304
+          },
+          {
+            "activity_id": 3,
+            "start_time": "06:07",
+            "end_time": "14:22",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "14:22",
+            "end_time": "15:07",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 27.57489123679304
+          },
+          {
+            "activity_id": 5,
+            "start_time": "15:07",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Tuesday",
+        "driving distance": 27.57489123679304,
+        "equivalent efficiency mpge": 117.71283551551393,
+        "average speed mph": 36.54217743740795,
+        "equivalent electricity consumption rate": 10.461657594496963,
+        "equivalent electricity kWh": 15.788827626320362,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "05:22",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "05:22",
+            "end_time": "06:07",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 27.57489123679304
+          },
+          {
+            "activity_id": 3,
+            "start_time": "06:07",
+            "end_time": "14:22",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "14:22",
+            "end_time": "15:07",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 27.57489123679304
+          },
+          {
+            "activity_id": 5,
+            "start_time": "15:07",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Wednesday",
+        "driving distance": 27.57489123679304,
+        "equivalent efficiency mpge": 117.71283551551393,
+        "average speed mph": 36.54217743740795,
+        "equivalent electricity consumption rate": 10.461657594496963,
+        "equivalent electricity kWh": 15.788827626320362,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "05:22",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "05:22",
+            "end_time": "06:07",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 27.57489123679304
+          },
+          {
+            "activity_id": 3,
+            "start_time": "06:07",
+            "end_time": "14:22",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "14:22",
+            "end_time": "15:07",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 27.57489123679304
+          },
+          {
+            "activity_id": 5,
+            "start_time": "15:07",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Thursday",
+        "driving distance": 27.57489123679304,
+        "equivalent efficiency mpge": 117.71283551551393,
+        "average speed mph": 36.54217743740795,
+        "equivalent electricity consumption rate": 10.461657594496963,
+        "equivalent electricity kWh": 15.788827626320362,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "05:22",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "05:22",
+            "end_time": "06:07",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 27.57489123679304
+          },
+          {
+            "activity_id": 3,
+            "start_time": "06:07",
+            "end_time": "14:22",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "14:22",
+            "end_time": "15:07",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 27.57489123679304
+          },
+          {
+            "activity_id": 5,
+            "start_time": "15:07",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Friday",
+        "driving distance": 27.57489123679304,
+        "equivalent efficiency mpge": 117.71283551551393,
+        "average speed mph": 36.54217743740795,
+        "equivalent electricity consumption rate": 10.461657594496963,
+        "equivalent electricity kWh": 15.788827626320362,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "05:22",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "05:22",
+            "end_time": "06:07",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 27.57489123679304
+          },
+          {
+            "activity_id": 3,
+            "start_time": "06:07",
+            "end_time": "14:22",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "14:22",
+            "end_time": "15:07",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 27.57489123679304
+          },
+          {
+            "activity_id": 5,
+            "start_time": "15:07",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Saturday",
+        "driving distance": 0,
+        "equivalent efficiency mpge": 0,
+        "average speed mph": 0,
+        "equivalent electricity consumption rate": 0,
+        "equivalent electricity kWh": 0,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Sunday",
+        "driving distance": 0,
+        "equivalent efficiency mpge": 0,
+        "average speed mph": 0,
+        "equivalent electricity consumption rate": 0,
+        "equivalent electricity kWh": 0,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "employee_id": "1233",
+    "commute_mode": "car",
+    "zip_code": "92069",
+    "onsite_bldg": "7515",
+    "leave_to_work_time": "07:15",
+    "return_home_time": "16:15",
+    "geocode": "33.1630271,-117.1617685",
+    "dest": "32.89204,-117.13096",
+    "distance": { "text": "24.0 mi", "value": 38666 },
+    "duration": { "text": "29 mins", "value": 1734 },
+    "status": "OK",
+    "home_charging": "Level 2",
+    "parking_lot": "bldg-90",
+    "days_drive": 5,
+    "vehicle id": "1233",
+    "zev site": "7515",
+    "parking lot": "bldg-90",
+    "catagory": "Light-Duty",
+    "battery capacity": 80,
+    "weekly driving patterns": [
+      {
+        "day of week": "Monday",
+        "driving distance": 24.031075201988813,
+        "equivalent efficiency mpge": 117.81814388690799,
+        "average speed mph": 49.880923898500576,
+        "equivalent electricity consumption rate": 14.267642316560561,
+        "equivalent electricity kWh": 13.747411181157025,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "07:15",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "07:15",
+            "end_time": "07:43",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 24.031075201988813
+          },
+          {
+            "activity_id": 3,
+            "start_time": "07:43",
+            "end_time": "16:15",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "16:15",
+            "end_time": "16:43",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 24.031075201988813
+          },
+          {
+            "activity_id": 5,
+            "start_time": "16:43",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Tuesday",
+        "driving distance": 24.031075201988813,
+        "equivalent efficiency mpge": 117.81814388690799,
+        "average speed mph": 49.880923898500576,
+        "equivalent electricity consumption rate": 14.267642316560561,
+        "equivalent electricity kWh": 13.747411181157025,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "07:15",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "07:15",
+            "end_time": "07:43",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 24.031075201988813
+          },
+          {
+            "activity_id": 3,
+            "start_time": "07:43",
+            "end_time": "16:15",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "16:15",
+            "end_time": "16:43",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 24.031075201988813
+          },
+          {
+            "activity_id": 5,
+            "start_time": "16:43",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Wednesday",
+        "driving distance": 24.031075201988813,
+        "equivalent efficiency mpge": 117.81814388690799,
+        "average speed mph": 49.880923898500576,
+        "equivalent electricity consumption rate": 14.267642316560561,
+        "equivalent electricity kWh": 13.747411181157025,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "07:15",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "07:15",
+            "end_time": "07:43",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 24.031075201988813
+          },
+          {
+            "activity_id": 3,
+            "start_time": "07:43",
+            "end_time": "16:15",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "16:15",
+            "end_time": "16:43",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 24.031075201988813
+          },
+          {
+            "activity_id": 5,
+            "start_time": "16:43",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Thursday",
+        "driving distance": 24.031075201988813,
+        "equivalent efficiency mpge": 117.81814388690799,
+        "average speed mph": 49.880923898500576,
+        "equivalent electricity consumption rate": 14.267642316560561,
+        "equivalent electricity kWh": 13.747411181157025,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "07:15",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "07:15",
+            "end_time": "07:43",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 24.031075201988813
+          },
+          {
+            "activity_id": 3,
+            "start_time": "07:43",
+            "end_time": "16:15",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "16:15",
+            "end_time": "16:43",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 24.031075201988813
+          },
+          {
+            "activity_id": 5,
+            "start_time": "16:43",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Friday",
+        "driving distance": 24.031075201988813,
+        "equivalent efficiency mpge": 117.81814388690799,
+        "average speed mph": 49.880923898500576,
+        "equivalent electricity consumption rate": 14.267642316560561,
+        "equivalent electricity kWh": 13.747411181157025,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "07:15",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "07:15",
+            "end_time": "07:43",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 24.031075201988813
+          },
+          {
+            "activity_id": 3,
+            "start_time": "07:43",
+            "end_time": "16:15",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "16:15",
+            "end_time": "16:43",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 24.031075201988813
+          },
+          {
+            "activity_id": 5,
+            "start_time": "16:43",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Saturday",
+        "driving distance": 0,
+        "equivalent efficiency mpge": 0,
+        "average speed mph": 0,
+        "equivalent electricity consumption rate": 0,
+        "equivalent electricity kWh": 0,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Sunday",
+        "driving distance": 0,
+        "equivalent efficiency mpge": 0,
+        "average speed mph": 0,
+        "equivalent electricity consumption rate": 0,
+        "equivalent electricity kWh": 0,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "employee_id": "1436",
+    "commute_mode": "car",
+    "zip_code": "92081",
+    "onsite_bldg": "7133",
+    "leave_to_work_time": "06:02",
+    "return_home_time": "15:02",
+    "geocode": "33.1778834,-117.2534184",
+    "dest": "32.89204,-117.13096",
+    "distance": { "text": "28.6 mi", "value": 46049 },
+    "duration": { "text": "32 mins", "value": 1895 },
+    "status": "OK",
+    "home_charging": "Level 1",
+    "parking_lot": "bldg-90",
+    "days_drive": 5,
+    "vehicle id": "1436",
+    "zev site": "7133",
+    "parking lot": "bldg-90",
+    "catagory": "Light-Duty",
+    "battery capacity": 80,
+    "weekly driving patterns": [
+      {
+        "day of week": "Monday",
+        "driving distance": 28.61963952765693,
+        "equivalent efficiency mpge": 118.29733627522621,
+        "average speed mph": 54.35823222163589,
+        "equivalent electricity consumption rate": 15.485322692365303,
+        "equivalent electricity kWh": 16.30606203740904,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "06:02",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "06:02",
+            "end_time": "06:33",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 28.61963952765693
+          },
+          {
+            "activity_id": 3,
+            "start_time": "06:33",
+            "end_time": "15:02",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "15:02",
+            "end_time": "15:33",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 28.61963952765693
+          },
+          {
+            "activity_id": 5,
+            "start_time": "15:33",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Tuesday",
+        "driving distance": 28.61963952765693,
+        "equivalent efficiency mpge": 118.29733627522621,
+        "average speed mph": 54.35823222163589,
+        "equivalent electricity consumption rate": 15.485322692365303,
+        "equivalent electricity kWh": 16.30606203740904,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "06:02",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "06:02",
+            "end_time": "06:33",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 28.61963952765693
+          },
+          {
+            "activity_id": 3,
+            "start_time": "06:33",
+            "end_time": "15:02",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "15:02",
+            "end_time": "15:33",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 28.61963952765693
+          },
+          {
+            "activity_id": 5,
+            "start_time": "15:33",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Wednesday",
+        "driving distance": 28.61963952765693,
+        "equivalent efficiency mpge": 118.29733627522621,
+        "average speed mph": 54.35823222163589,
+        "equivalent electricity consumption rate": 15.485322692365303,
+        "equivalent electricity kWh": 16.30606203740904,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "06:02",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "06:02",
+            "end_time": "06:33",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 28.61963952765693
+          },
+          {
+            "activity_id": 3,
+            "start_time": "06:33",
+            "end_time": "15:02",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "15:02",
+            "end_time": "15:33",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 28.61963952765693
+          },
+          {
+            "activity_id": 5,
+            "start_time": "15:33",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Thursday",
+        "driving distance": 28.61963952765693,
+        "equivalent efficiency mpge": 118.29733627522621,
+        "average speed mph": 54.35823222163589,
+        "equivalent electricity consumption rate": 15.485322692365303,
+        "equivalent electricity kWh": 16.30606203740904,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "06:02",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "06:02",
+            "end_time": "06:33",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 28.61963952765693
+          },
+          {
+            "activity_id": 3,
+            "start_time": "06:33",
+            "end_time": "15:02",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "15:02",
+            "end_time": "15:33",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 28.61963952765693
+          },
+          {
+            "activity_id": 5,
+            "start_time": "15:33",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Friday",
+        "driving distance": 28.61963952765693,
+        "equivalent efficiency mpge": 118.29733627522621,
+        "average speed mph": 54.35823222163589,
+        "equivalent electricity consumption rate": 15.485322692365303,
+        "equivalent electricity kWh": 16.30606203740904,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "06:02",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 2,
+            "start_time": "06:02",
+            "end_time": "06:33",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 28.61963952765693
+          },
+          {
+            "activity_id": 3,
+            "start_time": "06:33",
+            "end_time": "15:02",
+            "activity_type": "Parked",
+            "location": "On-Site",
+            "driving_distance": 0
+          },
+          {
+            "activity_id": 4,
+            "start_time": "15:02",
+            "end_time": "15:33",
+            "activity_type": "Driving",
+            "location": "Off-Site",
+            "driving_distance": 28.61963952765693
+          },
+          {
+            "activity_id": 5,
+            "start_time": "15:33",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Saturday",
+        "driving distance": 0,
+        "equivalent efficiency mpge": 0,
+        "average speed mph": 0,
+        "equivalent electricity consumption rate": 0,
+        "equivalent electricity kWh": 0,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      },
+      {
+        "day of week": "Sunday",
+        "driving distance": 0,
+        "equivalent efficiency mpge": 0,
+        "average speed mph": 0,
+        "equivalent electricity consumption rate": 0,
+        "equivalent electricity kWh": 0,
+        "activities": [
+          {
+            "activity_id": 1,
+            "start_time": "00:00",
+            "end_time": "23:59",
+            "activity_type": "Parked",
+            "location": "Home",
+            "driving_distance": 0
+          }
+        ]
+      }
+    ]
+  }
+]
