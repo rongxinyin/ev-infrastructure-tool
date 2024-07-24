@@ -14,7 +14,7 @@ import BuildingInfo from "../components/BuildingInfo.js";
 import EmployeeInfo from "../components/EmployeeInfo.js";
 import Simulation from "../components/Simulation.js";
 import Results from "../components/Results.js";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 // Visualization
@@ -58,10 +58,15 @@ export default function Home() {
     getEmployeeCommuteInfo();
   };
 
+  useEffect(() => {
+    if (simulationConfigData) {
+      getSimulationData();
+    }
+  }, [simulationConfigData]);
+
   const handleSimulationConfigFormSubmit = (data) => {
     setSimulationConfigData(data);
     setShowProgressBar(true);
-    getSimulationData();
   };
 
   const switchPagesButton = (state) => {

@@ -10,7 +10,7 @@ import {
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo/index.js";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs/index.js";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider/index.js";
-import { TimePicker } from "@mui/x-date-pickers/TimePicker/index.js";
+import dayjs from 'dayjs';
 import { DatePicker } from "@mui/x-date-pickers/DatePicker/index.js";
 
 const textFieldSX = {
@@ -20,7 +20,7 @@ const textFieldSX = {
 
 export default function Simulation({ onFormSubmit, progressBarState }) {
   const [simulationConfig, setSimulationConfig] = useState({
-    start_time: "test",
+    start_time: null,
     run_period: "",
     l2_charging_power: "",
     l3_charging_power: "",
@@ -37,13 +37,21 @@ export default function Simulation({ onFormSubmit, progressBarState }) {
   const handleTimeChange = (newValue, field) => {
     setSimulationConfig({
       ...simulationConfig,
-      [field]: newValue.format("YYYY-MM-DD HH:mm:ss"),
+      [field]: newValue,
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onFormSubmit(simulationConfig);
+    onFormSubmit(
+      {
+        start_time: simulationConfig.start_time.format("YYYY-MM-DD HH:mm:ss"),
+        run_period: simulationConfig.run_period,
+        l2_charging_power: simulationConfig.l2_charging_power,
+        l3_charging_power: simulationConfig.l3_charging_power,
+        adoption_rate: simulationConfig.adoption_rate
+      }
+    );
     console.log(simulationConfig);
   };
 
@@ -62,6 +70,7 @@ export default function Simulation({ onFormSubmit, progressBarState }) {
                     <DatePicker
                       label="Start time"
                       name="startTime"
+                      value={simulationConfig.start_time}
                       slotProps={{ textField: { fullWidth: true } }}
                       required
                       onChange={(newValue) =>
