@@ -221,9 +221,9 @@ export default function Home() {
           {showEmployeeInfo && (
             <EmployeeInfo onFormSubmit={handleEmployeeInfoFormSubmit} />
           )}
-          {showEmployeeInfo && (
+          {/* {showEmployeeInfo && (
             <pre>{JSON.stringify(employeeInfoData, null, 2)}</pre>
-          )}
+          )} */}
           {/* {showEmployeeInfo && (
             <Button onClick={() => getEmployeeCommuteInfo()}>TEST</Button>
           )} */}
