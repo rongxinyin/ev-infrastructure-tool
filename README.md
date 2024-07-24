@@ -2,9 +2,16 @@
 
 This web-based Electric Vehicle Infrastructure tool provides the ability to estimate the requirements for charging infrastructure and the related electrical demands.
 
+## Directories
+
+- `client`: Frontend code
+- `server`: Server code
+
 ## Setup/Installation
 
 Install [Node.js](https://nodejs.org) 20.
+
+Install [Python 3.10](https://www.python.org/downloads/) or higher.
 
 ## Available Scripts
 
@@ -21,6 +28,10 @@ Open [http://localhost:8080](http://localhost:8080) to view it in your browser.
 ### `npm install`
 
 Installs all packages listed in the `package.json` file in the directory you are in. Make sure to install for the `home`, `client`, and `server` directories.
+
+## `pip3 install -r requirements.txt`
+
+Installs all required dependencies to run the Python scripts. Make sure to run in the `python-backend` directory.
 
 ### `npm run format`
 

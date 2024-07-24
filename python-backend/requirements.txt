@@ -1,2 +1,5 @@
 # Add any Python dependencies here, e.g.:
-# numpy==1.19.2
+numpy
+pandas==2.0.2
+googlemaps==4.10.0
+simplejson
