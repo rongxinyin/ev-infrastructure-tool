@@ -49,6 +49,9 @@ export default function Home() {
   const [simulationConfigData, setSimulationConfigData] = useState({});
   const [showProgressBar, setShowProgressBar] = useState(false);
 
+  const controller = new AbortController();
+  const signal = controller.signal;
+
   const handleBuildingInfoFormSubmit = (data) => {
     setBuildingInfoData(data);
   };
@@ -159,6 +162,11 @@ export default function Home() {
     }
   };
 
+  const terminateGetSimulationData = async () => {
+    setShowProgressBar(false);
+    console.log("bruhmoment")
+  }
+
   return (
     <Box
       bgcolor={"primary.white"}
@@ -245,6 +253,7 @@ export default function Home() {
             <Simulation
               onFormSubmit={handleSimulationConfigFormSubmit}
               progressBarState={showProgressBar}
+              terminateProcess={terminateGetSimulationData}
             />
           )}
           {/* {showSimulation && showProgressBar && (

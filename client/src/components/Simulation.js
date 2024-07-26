@@ -18,7 +18,7 @@ const textFieldSX = {
   marginTop: 1,
 };
 
-export default function Simulation({ onFormSubmit, progressBarState }) {
+export default function Simulation({ onFormSubmit, progressBarState, terminateProcess }) {
   const [simulationConfig, setSimulationConfig] = useState({
     start_time: null,
     run_period: "",
@@ -148,7 +148,7 @@ export default function Simulation({ onFormSubmit, progressBarState }) {
                 }}
                 type="submit"
               >
-                RUN
+                Run
               </Button>
             </Grid>
             <Grid item xs={6}>
@@ -160,8 +160,9 @@ export default function Simulation({ onFormSubmit, progressBarState }) {
                   marginBottom: 0,
                   width: "100%",
                 }}
+                onClick={terminateProcess}
               >
-                TERMINATE
+                Terminate
               </Button>
             </Grid>
           </Grid>
