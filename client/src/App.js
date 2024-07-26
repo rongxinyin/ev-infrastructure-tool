@@ -10,7 +10,7 @@ import AppBar from "./components/SiteAppBar.js";
 
 const theme = createTheme({
   typography: {
-    fontFamily: 'sans-serif',
+    fontFamily: '"Open Sans", sans-serif',
     button: {
       textTransform: "none",
       fontSize: "medium",
