@@ -170,7 +170,7 @@ export default function Home() {
       <Grid container spacing={1} padding={isMobile ? 5 : 5} md={12} xs={12}>
         <Grid item xs={12} align="center">
           <Typography
-            variant="h4"
+            variant="h3"
             sx={{
               marginTop: 0,
               marginBottom: 2,
