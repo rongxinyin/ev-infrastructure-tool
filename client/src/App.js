@@ -10,8 +10,10 @@ import AppBar from "./components/SiteAppBar.js";
 
 const theme = createTheme({
   typography: {
+    fontFamily: '"Open Sans", sans-serif',
     button: {
       textTransform: "none",
+      fontSize: "medium",
     },
   },
   palette: {
@@ -29,17 +31,6 @@ const theme = createTheme({
     },
     lightgray: {
       main: "#b1b3b3", // light gray
-    },
-  },
-  typography: {
-    primary: {
-      main: "#00303C", // dark teal
-    },
-    secondary: {
-      main: "#007681", // teal
-    },
-    tertiary: {
-      main: "#BED7DD", // light blue
     },
   },
   mode: "dark",

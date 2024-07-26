@@ -224,7 +224,7 @@ export default function BuildingInfo({ onFormSubmit }) {
             )}
           </Grid>
           <Grid item xs={12}>
-            <Typography variant="h6" gutterBottom>
+            <Typography variant="h5" gutterBottom>
               Existing Electric Vehicle Charging Stations
             </Typography>
             <Grid container spacing={1}>
