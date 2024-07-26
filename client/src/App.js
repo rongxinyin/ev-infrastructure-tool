@@ -13,6 +13,7 @@ const theme = createTheme({
     fontFamily: 'sans-serif',
     button: {
       textTransform: "none",
+      fontSize: "medium",
     },
   },
   palette: {
