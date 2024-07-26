@@ -77,7 +77,7 @@ export default function SiteAppBar(props) {
           </IconButton>
           <Logo
             onClick={() => navigate("/")}
-            style={{ width: 430, height: 95, cursor: "pointer" }}
+            style={{ width: 290, height: 95, cursor: "pointer" }}
           ></Logo>
           <Typography
             variant="h6"
