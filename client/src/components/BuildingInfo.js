@@ -282,7 +282,7 @@ export default function BuildingInfo({ onFormSubmit }) {
           </Grid>
           <Grid item xs={12}>
             <Button variant="contained" fullWidth type="submit">
-              SAVE
+              Save
             </Button>
           </Grid>
         </Grid>
