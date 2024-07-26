@@ -14,7 +14,7 @@ import BuildingInfo from "../components/BuildingInfo.js";
 import EmployeeInfo from "../components/EmployeeInfo.js";
 import Simulation from "../components/Simulation.js";
 import Results from "../components/Results.js";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 // Visualization
@@ -49,7 +49,8 @@ export default function Home() {
   const [simulationConfigData, setSimulationConfigData] = useState({});
   const [showProgressBar, setShowProgressBar] = useState(false);
 
-  const abortControllerRef = useRef(null);
+  const controller = new AbortController();
+  const signal = controller.signal;
 
   const handleBuildingInfoFormSubmit = (data) => {
     setBuildingInfoData(data);
@@ -123,10 +124,6 @@ export default function Home() {
   };
 
   const getSimulationData = async () => {
-    // Initialize a new AbortController for each fetch request
-    abortControllerRef.current = new AbortController();
-    const { signal } = abortControllerRef.current;
-
     try {
       const response = await fetch("http://localhost:8080/process-simulation", {
         method: "POST",
@@ -138,7 +135,6 @@ export default function Home() {
           null,
           2
         ),
-        signal, // Pass the signal to fetch
       });
 
       // Check if response is ok
@@ -162,21 +158,14 @@ export default function Home() {
       a.remove(); // Clean up
       window.URL.revokeObjectURL(url); // Release memory
     } catch (error) {
-      if (error.name === "AbortError") {
-        console.log("Fetch aborted");
-      } else {
-        console.error("Error fetching and downloading CSV:", error);
-      }
+      console.error("Error fetching and downloading CSV:", error);
     }
   };
 
-  const terminateGetSimulationData = () => {
-    console.log("Terminating fetch request");
-    if (abortControllerRef.current) {
-      abortControllerRef.current.abort(); // Abort the fetch request
-      setShowProgressBar(false);
-    }
-  };
+  const terminateGetSimulationData = async () => {
+    setShowProgressBar(false);
+    console.log("bruhmoment")
+  }
 
   return (
     <Box

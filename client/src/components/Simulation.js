@@ -18,11 +18,7 @@ const textFieldSX = {
   marginTop: 1,
 };
 
-export default function Simulation({
-  onFormSubmit,
-  progressBarState,
-  terminateProcess,
-}) {
+export default function Simulation({ onFormSubmit, progressBarState, terminateProcess }) {
   const [simulationConfig, setSimulationConfig] = useState({
     start_time: null,
     run_period: "",
