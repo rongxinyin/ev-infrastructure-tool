@@ -5,10 +5,13 @@ import { stringify } from "csv-stringify/sync";
 
 const router = express.Router();
 
+// Error might occur because the "python" or "python3" keyword might not be properly configured in your system path.
+// replace with either or to make sure it works
+
 router.post("/process-employee-data", (req, res) => {
   const input = JSON.stringify(req.body);
 
-  const python = spawn("python", [
+  const python = spawn("python3", [
     "../python-backend/scripts/process-empl-data.py",
     input,
   ]);
@@ -53,7 +56,7 @@ router.post("/process-simulation", (req, res) => {
 
   // console.log(JSON.stringify(req.body))
 
-  const python = spawn("python", [
+  const python = spawn("python3", [
     "../python-backend/scripts/main.py",
     employeeCommuteData,
     startTime,
