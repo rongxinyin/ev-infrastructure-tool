@@ -1,14 +1,29 @@
-import { spawn, exec } from "child_process";
+import { spawn, execSync } from "child_process";
 import express from "express";
 import { parse } from "csv-parse";
 import { stringify } from "csv-stringify/sync";
 
 const router = express.Router();
 
+// handle cases where different paths use python vs python3 keyword
+function getPythonCommand() {
+  try {
+    execSync("python --version");
+    return "python";
+  } catch (e) {
+    try {
+      execSync("python3 --version");
+      return "python3";
+    } catch (e) {
+      throw new Error("Neither 'python' nor 'python3' is available");
+    }
+  }
+}
+
 router.post("/process-employee-data", (req, res) => {
   const input = JSON.stringify(req.body);
 
-  const python = spawn("python", [
+  const python = spawn(getPythonCommand(), [
     "../python-backend/scripts/process-empl-data.py",
     input,
   ]);
@@ -53,7 +68,7 @@ router.post("/process-simulation", (req, res) => {
 
   // console.log(JSON.stringify(req.body))
 
-  const python = spawn("python", [
+  const python = spawn(getPythonCommand(), [
     "../python-backend/scripts/main.py",
     employeeCommuteData,
     startTime,
