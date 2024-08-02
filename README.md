@@ -10,9 +10,15 @@ This web-based Electric Vehicle Infrastructure tool provides the ability to esti
 
 ## Setup/Installation
 
-Install [Node.js](https://nodejs.org) 20.
+Install [Node.js 20](https://nodejs.org) and [Python 3.10](https://www.python.org/downloads/) or higher.
 
-Install [Python 3.10](https://www.python.org/downloads/) or higher.
+In the `python-backend/scripts` folder, you need the following yaml configuration file “config.yaml” to save the Google Maps API key and URL:
+
+```
+google:
+ api_key: [API Key]
+ url: 'https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins={}&destinations={}'
+```
 
 ## Available Scripts
 
