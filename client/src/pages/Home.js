@@ -7,7 +7,11 @@ import {
   styled,
   useTheme,
   useMediaQuery,
-  LinearProgress,
+  Dialog,
+  DialogTitle,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import BuildingInfo from "../components/BuildingInfo.js";
@@ -51,22 +55,38 @@ export default function Home() {
 
   const abortControllerRef = useRef(null);
 
+  const [openPopup, setOpenPopup] = React.useState(false);
+  const [popupTitle, setPopupTitle] = React.useState("")
+
+  const handleClickOpenPopup = (title) => {
+    setPopupTitle(title);
+    setOpenPopup(true);
+  };
+
+  const handleClosePopup = () => {
+    setPopupTitle("");
+    setOpenPopup(false);
+  };
+
   const handleBuildingInfoFormSubmit = (data) => {
     setBuildingInfoData(data);
+    handleClickOpenPopup("Building/Site");
   };
 
   useEffect(() => {
-    if (employeeInfoData) {
+    if (Object.keys(employeeInfoData).length != 0) {
       getEmployeeCommuteInfo();
+      handleClickOpenPopup("Employee");
     }
   }, [employeeInfoData]);
 
   const handleEmployeeInfoFormSubmit = (data) => {
     setEmployeeInfoData(data);
+
   };
 
   useEffect(() => {
-    if (simulationConfigData) {
+    if (Object.keys(simulationConfigData).length != 0) {
       getSimulationData();
     }
   }, [simulationConfigData]);
@@ -244,6 +264,27 @@ export default function Home() {
           {showBuildingInfo && (
             <BuildingInfo onFormSubmit={handleBuildingInfoFormSubmit} />
           )}
+          <Dialog
+            open={openPopup}
+            onClose={handleClosePopup}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+          >
+            <DialogTitle id="alert-dialog-title">
+              {"Success"}
+            </DialogTitle>
+            <DialogContent>
+              <DialogContentText id="alert-dialog-description">
+                {popupTitle} info data saved.
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleClosePopup} autoFocus>
+                Close
+              </Button>
+            </DialogActions>
+          </Dialog>
+
           {/* {showBuildingInfo && (
             <pre>{JSON.stringify(buildingInfoData, null, 2)}</pre>
           )} */}
