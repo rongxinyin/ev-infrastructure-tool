@@ -7,7 +7,11 @@ import {
   styled,
   useTheme,
   useMediaQuery,
-  LinearProgress,
+  Dialog,
+  DialogTitle,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import BuildingInfo from "../components/BuildingInfo.js";
@@ -15,16 +19,6 @@ import EmployeeInfo from "../components/EmployeeInfo.js";
 import Simulation from "../components/Simulation.js";
 import Results from "../components/Results.js";
 import React, { useState, useEffect, useRef } from "react";
-import axios from "axios";
-
-// Visualization
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: "center",
-  color: theme.palette.text.secondary,
-}));
 
 const buttonSX = {
   marginBottom: 1,
@@ -51,12 +45,29 @@ export default function Home() {
 
   const abortControllerRef = useRef(null);
 
+  const [openPopup, setOpenPopup] = React.useState(false);
+  const [popupTitle, setPopupTitle] = React.useState("");
+  const [popupDialogue, setPopupDialogue] = React.useState("");
+
+  const handleClickOpenPopup = (title, dialogue) => {
+    setPopupDialogue(dialogue);
+    setPopupTitle(title);
+    setOpenPopup(true);
+  };
+
+  const handleClosePopup = () => {
+    setPopupDialogue("");
+    setPopupTitle("");
+    setOpenPopup(false);
+  };
+
   const handleBuildingInfoFormSubmit = (data) => {
     setBuildingInfoData(data);
+    handleClickOpenPopup("Success", "Building/Site info saved");
   };
 
   useEffect(() => {
-    if (employeeInfoData) {
+    if (Object.keys(employeeInfoData).length != 0) {
       getEmployeeCommuteInfo();
     }
   }, [employeeInfoData]);
@@ -66,7 +77,7 @@ export default function Home() {
   };
 
   useEffect(() => {
-    if (simulationConfigData) {
+    if (Object.keys(simulationConfigData).length != 0) {
       getSimulationData();
     }
   }, [simulationConfigData]);
@@ -118,12 +129,12 @@ export default function Home() {
     );
 
     const result = await response.json();
-    console.log(result); // Process the result as needed
+    console.log(result);
     setEmployeeCommuteData(result);
+    handleClickOpenPopup("Success", "Employee info saved");
   };
 
   const getSimulationData = async () => {
-    // Initialize a new AbortController for each fetch request
     abortControllerRef.current = new AbortController();
     const { signal } = abortControllerRef.current;
 
@@ -138,34 +149,41 @@ export default function Home() {
           null,
           2
         ),
-        signal, // Pass the signal to fetch
+        signal,
       });
 
-      // Check if response is ok
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
-      // Get the response as a blob
       const blob = await response.blob();
 
-      // Create a URL for the blob
       const url = window.URL.createObjectURL(blob);
 
-      // Create a temporary link element
       const a = document.createElement("a");
       a.href = url;
-      a.download = "data.csv"; // Set the file name
+      a.download = "data.csv";
       document.body.appendChild(a);
-      a.click(); // Trigger the download
+      a.click(); // initiate download
       setShowProgressBar(false);
-      a.remove(); // Clean up
-      window.URL.revokeObjectURL(url); // Release memory
+      a.remove(); // cleanup
+      window.URL.revokeObjectURL(url); // release memory
+      handleClickOpenPopup(
+        "Success",
+        "Simulation data successfully downloaded"
+      );
     } catch (error) {
       if (error.name === "AbortError") {
-        console.log("Fetch aborted");
+        console.log("Fetch aborted. Please try again");
+        handleClickOpenPopup("Error", "Abort error");
+        setShowProgressBar(false);
       } else {
         console.error("Error fetching and downloading CSV:", error);
+        handleClickOpenPopup(
+          "Error",
+          "Error fetching and downloading CSV. Please try again"
+        );
+        setShowProgressBar(false);
       }
     }
   };
@@ -175,6 +193,7 @@ export default function Home() {
     if (abortControllerRef.current) {
       abortControllerRef.current.abort(); // Abort the fetch request
       setShowProgressBar(false);
+      handleClickOpenPopup("Terminated", "Request successfully terminated");
     }
   };
 
@@ -244,6 +263,25 @@ export default function Home() {
           {showBuildingInfo && (
             <BuildingInfo onFormSubmit={handleBuildingInfoFormSubmit} />
           )}
+          <Dialog
+            open={openPopup}
+            onClose={handleClosePopup}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+          >
+            <DialogTitle id="alert-dialog-title">{popupTitle}</DialogTitle>
+            <DialogContent>
+              <DialogContentText id="alert-dialog-description">
+                {popupDialogue}.
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleClosePopup} autoFocus>
+                Close
+              </Button>
+            </DialogActions>
+          </Dialog>
+
           {/* {showBuildingInfo && (
             <pre>{JSON.stringify(buildingInfoData, null, 2)}</pre>
           )} */}
