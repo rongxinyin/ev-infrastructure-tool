@@ -243,7 +243,7 @@ export default function EmployeeInfo({ onFormSubmit }) {
               <Grid container justifyContent="flex-end">
                 <Tooltip title="Add Row">
                   <Fab color="primary" aria-label="add" onClick={handleAddRow}>
-                    +
+                  +
                   </Fab>
                 </Tooltip>
                 <Tooltip title="Delete Last Row">
@@ -264,9 +264,7 @@ export default function EmployeeInfo({ onFormSubmit }) {
                         onChange={handleUploadFile}
                         style={{ display: "none" }}
                       />
-                      <IconButton component="span">
-                        <i className="fas fa-upload" />
-                      </IconButton>
+                      📤
                     </label>
                   </Fab>
                 </Tooltip>
