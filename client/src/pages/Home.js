@@ -20,7 +20,6 @@ import Simulation from "../components/Simulation.js";
 import Results from "../components/Results.js";
 import React, { useState, useEffect, useRef } from "react";
 
-
 const buttonSX = {
   marginBottom: 1,
   height: 80,
@@ -47,8 +46,8 @@ export default function Home() {
   const abortControllerRef = useRef(null);
 
   const [openPopup, setOpenPopup] = React.useState(false);
-  const [popupTitle, setPopupTitle] = React.useState("")
-  const [popupDialogue, setPopupDialogue] = React.useState("")
+  const [popupTitle, setPopupTitle] = React.useState("");
+  const [popupDialogue, setPopupDialogue] = React.useState("");
 
   const handleClickOpenPopup = (title, dialogue) => {
     setPopupDialogue(dialogue);
@@ -75,7 +74,6 @@ export default function Home() {
 
   const handleEmployeeInfoFormSubmit = (data) => {
     setEmployeeInfoData(data);
-
   };
 
   useEffect(() => {
@@ -134,7 +132,6 @@ export default function Home() {
     console.log(result);
     setEmployeeCommuteData(result);
     handleClickOpenPopup("Success", "Employee info saved");
-
   };
 
   const getSimulationData = async () => {
@@ -152,7 +149,7 @@ export default function Home() {
           null,
           2
         ),
-        signal, 
+        signal,
       });
 
       if (!response.ok) {
@@ -165,13 +162,16 @@ export default function Home() {
 
       const a = document.createElement("a");
       a.href = url;
-      a.download = "data.csv"; 
+      a.download = "data.csv";
       document.body.appendChild(a);
       a.click(); // initiate download
       setShowProgressBar(false);
       a.remove(); // cleanup
       window.URL.revokeObjectURL(url); // release memory
-      handleClickOpenPopup("Success", "Simulation data successfully downloaded");
+      handleClickOpenPopup(
+        "Success",
+        "Simulation data successfully downloaded"
+      );
     } catch (error) {
       if (error.name === "AbortError") {
         console.log("Fetch aborted. Please try again");
@@ -179,7 +179,10 @@ export default function Home() {
         setShowProgressBar(false);
       } else {
         console.error("Error fetching and downloading CSV:", error);
-        handleClickOpenPopup("Error", "Error fetching and downloading CSV. Please try again");
+        handleClickOpenPopup(
+          "Error",
+          "Error fetching and downloading CSV. Please try again"
+        );
         setShowProgressBar(false);
       }
     }
@@ -266,9 +269,7 @@ export default function Home() {
             aria-labelledby="alert-dialog-title"
             aria-describedby="alert-dialog-description"
           >
-            <DialogTitle id="alert-dialog-title">
-              {popupTitle}
-            </DialogTitle>
+            <DialogTitle id="alert-dialog-title">{popupTitle}</DialogTitle>
             <DialogContent>
               <DialogContentText id="alert-dialog-description">
                 {popupDialogue}.
