@@ -282,9 +282,11 @@ export default function Home() {
             </DialogActions>
           </Dialog>
 
-
           {showEmployeeInfo && (
-            <EmployeeInfo onFormSubmit={handleEmployeeInfoFormSubmit} handlePopup={handleClickOpenPopup}/>
+            <EmployeeInfo
+              onFormSubmit={handleEmployeeInfoFormSubmit}
+              handlePopup={handleClickOpenPopup}
+            />
           )}
 
           {showResults && <Results />}
@@ -295,7 +297,6 @@ export default function Home() {
               terminateProcess={terminateGetSimulationData}
             />
           )}
-
         </Grid>
 
         <Grid

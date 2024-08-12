@@ -44,7 +44,7 @@ export default function EmployeeInfo({ onFormSubmit, handlePopup }) {
       }
     }
     return true;
-  }
+  };
 
   const handleChange = (e) => {
     setEmployeeData({
@@ -61,7 +61,8 @@ export default function EmployeeInfo({ onFormSubmit, handlePopup }) {
   };
 
   const handleAddRow = () => {
-    if (checkNotEmpty(employeeData)) { // prevent adding empty rows
+    if (checkNotEmpty(employeeData)) {
+      // prevent adding empty rows
       setEmployees([
         ...employees,
         {
@@ -91,7 +92,7 @@ export default function EmployeeInfo({ onFormSubmit, handlePopup }) {
         homeCharging: "",
       });
     } else {
-      handlePopup("Erorr", "One or more inputs are empty")
+      handlePopup("Erorr", "One or more inputs are empty");
     }
   };
 
