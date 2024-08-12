@@ -205,7 +205,7 @@ export default function Home() {
     >
       {" "}
       {/* Adjust padding for mobile */}
-      <Grid container spacing={1} padding={isMobile ? 5 : 5} md={12} xs={12}>
+      <Grid container spacing={1} padding={isMobile ? 5 : 5}>
         <Grid item xs={12} align="center">
           <Typography
             variant="h3"
@@ -219,7 +219,7 @@ export default function Home() {
         </Grid>
 
         {/* buttons for subpage navigation */}
-        <Grid item xs={2} align="center" spacing={0}>
+        <Grid item xs={2} align="center">
           <Button
             variant="contained"
             sx={buttonSX}
