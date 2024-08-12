@@ -205,7 +205,7 @@ export default function Home() {
     >
       {" "}
       {/* Adjust padding for mobile */}
-      <Grid container spacing={1} padding={isMobile ? 5 : 5} md={12} xs={12}>
+      <Grid container spacing={1} padding={isMobile ? 5 : 5}>
         <Grid item xs={12} align="center">
           <Typography
             variant="h3"
@@ -219,7 +219,7 @@ export default function Home() {
         </Grid>
 
         {/* buttons for subpage navigation */}
-        <Grid item xs={2} align="center" spacing={0}>
+        <Grid item xs={2} align="center">
           <Button
             variant="contained"
             sx={buttonSX}
@@ -282,21 +282,13 @@ export default function Home() {
             </DialogActions>
           </Dialog>
 
-          {/* {showBuildingInfo && (
-            <pre>{JSON.stringify(buildingInfoData, null, 2)}</pre>
-          )} */}
           {showEmployeeInfo && (
-            <EmployeeInfo onFormSubmit={handleEmployeeInfoFormSubmit} />
+            <EmployeeInfo
+              onFormSubmit={handleEmployeeInfoFormSubmit}
+              handlePopup={handleClickOpenPopup}
+            />
           )}
-          {/* {showEmployeeInfo && (
-            <pre>{JSON.stringify(employeeInfoData, null, 2)}</pre>
-          )} */}
-          {/* {showEmployeeInfo && (
-            <Button onClick={() => getEmployeeCommuteInfo()}>TEST</Button>
-          )} */}
-          {/* {showEmployeeInfo && (
-            <pre>{JSON.stringify(employeeCommuteData, null, 2)}</pre>
-          )} */}
+
           {showResults && <Results />}
           {showSimulation && (
             <Simulation
@@ -305,12 +297,6 @@ export default function Home() {
               terminateProcess={terminateGetSimulationData}
             />
           )}
-          {/* {showSimulation && showProgressBar && (
-            <LinearProgress color="secondary" />
-          )} */}
-          {/* {showSimulation && (
-            <Button onClick={() => getSimulationData()}>TEST</Button>
-          )} */}
         </Grid>
 
         <Grid

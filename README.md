@@ -4,15 +4,14 @@ This web-based Electric Vehicle Infrastructure tool provides the ability to esti
 
 ## Directories
 
-- `client`: Frontend code
-- `server`: Server code
-- `python-backend`: Computational Python scripts
+- `client`: React frontend
+- `server`: Express, Node, Python backend
 
 ## Setup/Installation
 
 Install [Node.js 20](https://nodejs.org) and [Python 3.10](https://www.python.org/downloads/) or higher.
 
-In the `python-backend/scripts` folder, you need the following yaml configuration file “config.yaml” to save the Google Maps API key and URL:
+In the `server/python-backend/scripts` directory, you need the following yaml configuration file “config.yaml” to save the Google Maps API key and URL:
 
 ```
 google:
@@ -38,7 +37,7 @@ Installs all packages listed in the `package.json` file in the directory you are
 
 ### `pip install -r requirements.txt`
 
-Installs all required dependencies to run the Python scripts. Make sure to run in the `python-backend` directory.
+Installs all required dependencies to run the Python scripts. Make sure to run in the `server/python-backend` directory.
 
 ### `npm run format`
 

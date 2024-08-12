@@ -24,7 +24,7 @@ router.post("/process-employee-data", (req, res) => {
   const input = JSON.stringify(req.body);
 
   const python = spawn(getPythonCommand(), [
-    "../python-backend/scripts/process-empl-data.py",
+    "./python-backend/scripts/process-empl-data.py",
     input,
   ]);
 
@@ -44,12 +44,12 @@ router.post("/process-employee-data", (req, res) => {
     if (errorOccurred) {
       res.status(500).send({ status: "error", message: "Python script error" });
     } else {
-      console.log(`Python script output: ${dataToSend}`); // Log the raw output
+      console.log(`Python script output: ${dataToSend}`); // raw output
       try {
         const result = JSON.parse(dataToSend);
         res.send(result);
       } catch (e) {
-        console.error(`Error parsing JSON: ${e.message}`); // Log the parsing error
+        console.error(`Error parsing JSON: ${e.message}`); // parsing error
         res
           .status(500)
           .send({ status: "error", message: "Invalid JSON output" });
@@ -69,7 +69,7 @@ router.post("/process-simulation", (req, res) => {
   // console.log(JSON.stringify(req.body))
 
   const python = spawn(getPythonCommand(), [
-    "../python-backend/scripts/main.py",
+    "./python-backend/scripts/main.py",
     employeeCommuteData,
     startTime,
     runPeriod,
@@ -96,9 +96,8 @@ router.post("/process-simulation", (req, res) => {
     } else {
       console.log(`Python script output: ${dataToSend}`);
 
-      // Handle CSV data
       try {
-        // Assuming the Python script returns CSV data as a string
+        // assuming the Python script returns CSV data as a string
         parse(dataToSend, { columns: true }, (err, records) => {
           if (err) {
             console.error(`Error parsing CSV: ${err.message}`);
@@ -106,10 +105,9 @@ router.post("/process-simulation", (req, res) => {
               .status(500)
               .send({ status: "error", message: "Invalid CSV output" });
           } else {
-            // Optionally: convert records to CSV string
             const csvOutput = stringify(records, { header: true });
 
-            // Send CSV output to client
+            // send csv to client
             res.setHeader("Content-Type", "text/csv");
             res.setHeader(
               "Content-Disposition",
