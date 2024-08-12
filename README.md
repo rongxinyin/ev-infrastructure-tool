@@ -4,8 +4,8 @@ This web-based Electric Vehicle Infrastructure tool provides the ability to esti
 
 ## Directories
 
-- `client`: Frontend code
-- `server`: Server code
+- `client`: React frontend
+- `server`: Express, Node, Python backend
 
 ## Setup/Installation
 
