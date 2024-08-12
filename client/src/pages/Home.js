@@ -282,21 +282,11 @@ export default function Home() {
             </DialogActions>
           </Dialog>
 
-          {/* {showBuildingInfo && (
-            <pre>{JSON.stringify(buildingInfoData, null, 2)}</pre>
-          )} */}
+
           {showEmployeeInfo && (
             <EmployeeInfo onFormSubmit={handleEmployeeInfoFormSubmit} />
           )}
-          {/* {showEmployeeInfo && (
-            <pre>{JSON.stringify(employeeInfoData, null, 2)}</pre>
-          )} */}
-          {/* {showEmployeeInfo && (
-            <Button onClick={() => getEmployeeCommuteInfo()}>TEST</Button>
-          )} */}
-          {/* {showEmployeeInfo && (
-            <pre>{JSON.stringify(employeeCommuteData, null, 2)}</pre>
-          )} */}
+
           {showResults && <Results />}
           {showSimulation && (
             <Simulation
@@ -305,12 +295,7 @@ export default function Home() {
               terminateProcess={terminateGetSimulationData}
             />
           )}
-          {/* {showSimulation && showProgressBar && (
-            <LinearProgress color="secondary" />
-          )} */}
-          {/* {showSimulation && (
-            <Button onClick={() => getSimulationData()}>TEST</Button>
-          )} */}
+
         </Grid>
 
         <Grid
