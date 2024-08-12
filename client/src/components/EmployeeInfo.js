@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import {
-  Box,
   Button,
-  Container,
   Grid,
   TextField,
   Typography,
@@ -18,11 +16,7 @@ import {
   Fab,
   TableContainer,
   Paper,
-  IconButton,
   Tooltip,
-  Slider,
-  Checkbox,
-  Link,
 } from "@mui/material";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo/index.js";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs/index.js";
@@ -39,9 +33,18 @@ export default function EmployeeInfo({ onFormSubmit }) {
     onsiteBldg: "",
     leaveToWorkTime: null,
     returnHomeTime: null,
-    homeCharging: null,
+    homeCharging: "",
   });
   const [selectedFile, setSelectedFile] = useState(null);
+
+  const checkNotEmpty = (employeeData) => {
+    for (var key in employeeData) {
+      if (employeeData[key] == "" || employeeData[key] == null) {
+        return false;
+      }
+    }
+    return true;
+  }
 
   const handleChange = (e) => {
     setEmployeeData({
@@ -58,34 +61,36 @@ export default function EmployeeInfo({ onFormSubmit }) {
   };
 
   const handleAddRow = () => {
-    setEmployees([
-      ...employees,
-      {
-        employee_id: employeeData.employeeId,
-        commute_mode: employeeData.commuteMode,
-        zip_code: employeeData.zipcode,
-        onsite_bldg: employeeData.onsiteBldg,
-        leave_to_work_time: isValidDate(employeeData.leaveToWorkTime)
-          ? employeeData.leaveToWorkTime.format("HH:mm")
-          : "",
-        return_home_time: isValidDate(employeeData.returnHomeTime)
-          ? employeeData.returnHomeTime.format("HH:mm")
-          : "",
-        home_charging: employeeData.homeCharging,
-        id: Math.random().toString(36).substring(2, 15),
-        parking_lot: "bldg-90",
-        // TODO: find out above is permanent or use diff bldg types
-      },
-    ]);
-    setEmployeeData({
-      employeeId: "",
-      commuteMode: "",
-      zipcode: "",
-      onsiteBldg: "",
-      leaveToWorkTime: null,
-      returnHomeTime: null,
-      homeCharging: null,
-    });
+    if (checkNotEmpty(employeeData)) { // prevent adding empty rows
+      setEmployees([
+        ...employees,
+        {
+          employee_id: employeeData.employeeId,
+          commute_mode: employeeData.commuteMode,
+          zip_code: employeeData.zipcode,
+          onsite_bldg: employeeData.onsiteBldg,
+          leave_to_work_time: isValidDate(employeeData.leaveToWorkTime)
+            ? employeeData.leaveToWorkTime.format("HH:mm")
+            : "",
+          return_home_time: isValidDate(employeeData.returnHomeTime)
+            ? employeeData.returnHomeTime.format("HH:mm")
+            : "",
+          home_charging: employeeData.homeCharging,
+          id: Math.random().toString(36).substring(2, 15),
+          parking_lot: "bldg-90",
+          // TODO: find out above is permanent or use diff bldg types
+        },
+      ]);
+      setEmployeeData({
+        employeeId: "",
+        commuteMode: "",
+        zipcode: "",
+        onsiteBldg: "",
+        leaveToWorkTime: null,
+        returnHomeTime: null,
+        homeCharging: "",
+      });
+    }
   };
 
   const handleDeleteLastRow = () => {
