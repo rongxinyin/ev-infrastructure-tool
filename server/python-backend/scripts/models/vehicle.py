@@ -5,7 +5,7 @@ from utilities.activity import generate_timeseries_activity
 class Vehicle:
     def __init__(self, vehicle_info, initial_soc):
         self.vehicle_id = vehicle_info['vehicle id']
-        self.vehicle_catagory = vehicle_info['catagory']
+        self.vehicle_category = vehicle_info['category']
         self.soc = initial_soc
         self.battery_capacity = vehicle_info['battery capacity']
         self.site = vehicle_info['zev site']
@@ -26,6 +26,9 @@ class Vehicle:
                 self.activities = generate_timeseries_activity(daily_trip)
                 self.equivalent_electricity_kwh_rate = daily_trip["equivalent electricity consumption rate"]
                 self.equivalent_electricity_kwh = daily_trip["equivalent electricity kWh"]
+
+    def release_station(self):
+        self.charging_station = None
 
     def update_location(self, current_time):
         self.location = self.activities.loc[current_time.strftime('%H:%M')]["location"]
