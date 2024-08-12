@@ -24,7 +24,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider/i
 import { TimePicker } from "@mui/x-date-pickers/TimePicker/index.js";
 import Papa from "papaparse";
 
-export default function EmployeeInfo({ onFormSubmit }) {
+export default function EmployeeInfo({ onFormSubmit, handlePopup }) {
   const [employees, setEmployees] = useState([]);
   const [employeeData, setEmployeeData] = useState({
     employeeId: "",
@@ -90,6 +90,8 @@ export default function EmployeeInfo({ onFormSubmit }) {
         returnHomeTime: null,
         homeCharging: "",
       });
+    } else {
+      handlePopup("Erorr", "One or more inputs are empty")
     }
   };
 

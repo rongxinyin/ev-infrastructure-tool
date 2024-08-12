@@ -284,7 +284,7 @@ export default function Home() {
 
 
           {showEmployeeInfo && (
-            <EmployeeInfo onFormSubmit={handleEmployeeInfoFormSubmit} />
+            <EmployeeInfo onFormSubmit={handleEmployeeInfoFormSubmit} handlePopup={handleClickOpenPopup}/>
           )}
 
           {showResults && <Results />}
