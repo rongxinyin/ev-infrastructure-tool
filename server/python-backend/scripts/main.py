@@ -63,10 +63,8 @@ def run_charging_management(site_id, driving_pattern_data, start_time, run_perio
 def fleet_charging_management(site_id, driving_pattern_input, start_time, run_period=30, 
                             l2_port_low=0, l2_port_high=0, l3_port_low=0, l3_port_high=0, 
                             l2_max_rate=19.2, l3_max_rate=60.0, adoption_rate=0.1):
-    with open(driving_pattern_input, 'r') as file:
-        fleet_driving_patterns = json.load(file)
 
-    fleet_vehicles = [Vehicle(vehicle_info, 80) for vehicle_info in fleet_driving_patterns]
+    fleet_vehicles = [Vehicle(vehicle_info, 80) for vehicle_info in driving_pattern_input]
 
     charging_period_limit = 240
     end_time = start_time + datetime.timedelta(days=run_period)
@@ -126,7 +124,7 @@ if __name__ == "__main__":
         os.makedirs(site_path, exist_ok=True)
 
         input_data = sys.argv[1] # first argument after the filename
-        start_time = datetime.datetime.strptime(sys.argv[2], "%Y-%m-%d %H:%M:%S") # datetime object? TODO: make sure to test user input start time
+        start_time = datetime.datetime.strptime(sys.argv[2], "%Y-%m-%d %H:%M:%S")
         run_period = int(sys.argv[3])
         l2_max_rate = float(sys.argv[4])
         l3_max_rate = float(sys.argv[5])
