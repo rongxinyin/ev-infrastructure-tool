@@ -69,7 +69,7 @@ router.post("/process-simulation", (req, res) => {
   // console.log(JSON.stringify(req.body))
 
   const python = spawn(getPythonCommand(), [
-    "./python-backend/scripts/main.py",
+    "./python-backend/scripts/run-charging-management.py",
     employeeCommuteData,
     startTime,
     runPeriod,
