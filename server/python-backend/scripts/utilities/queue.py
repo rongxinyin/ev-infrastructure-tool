@@ -29,7 +29,7 @@ def assign_charging_stations(vehicles, stations, charging_queue, current_time):
         if vehicle.location == 'On-Site':
             if charging_request and vehicle.charging_station is None:
                 # Prioritize L3 for vehicles with short stay
-                if vehicle.vehicle_catagory in ['Heavy-Duty']: # assuming high priority for heavy-duty vehicles
+                if vehicle.vehicle_category in ['Heavy-Duty']: # assuming high priority for heavy-duty vehicles
                     assign_to_station(vehicle, stations, charging_queue, preferred_type='L3')
                 else:
                     assign_to_station(vehicle, stations, charging_queue, preferred_type='L2')
