@@ -182,7 +182,6 @@ export default function Simulation({
                 Terminate
               </Button>
             </Grid>
-            
           </Grid>
         </Grid>
         <Grid item xs={12}>

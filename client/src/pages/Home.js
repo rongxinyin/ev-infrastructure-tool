@@ -40,6 +40,9 @@ export default function Home() {
   const [employeeInfoData, setEmployeeInfoData] = useState({});
   const [employeeCommuteData, setEmployeeCommuteData] = useState({});
 
+  const [mode, setMode] = useState(""); // set either Employee or Fleet
+  const [openModePopup, setOpenModePopup] = React.useState(false);
+
   const [simulationConfigData, setSimulationConfigData] = useState({});
   const [showProgressBar, setShowProgressBar] = useState(false);
 
@@ -60,6 +63,21 @@ export default function Home() {
     setPopupTitle("");
     setOpenPopup(false);
   };
+
+  const handleClickOpenModePopup = () => {
+    setOpenModePopup(true);
+  };
+
+  const handleCloseModePopupFleet = async () => {
+    setMode("Fleet")
+    setOpenModePopup(false);
+  };
+
+  const handleCloseModePopupEmployee = async () => {
+    setMode("Employee")
+    setOpenModePopup(false);
+  };
+
 
   const handleBuildingInfoFormSubmit = (data) => {
     setBuildingInfoData(data);
@@ -100,6 +118,9 @@ export default function Home() {
         setShowEmployeeInfo(true);
         setShowSimulation(false);
         setShowResults(false);
+        if (mode == "") {
+          handleClickOpenModePopup();
+        }
         break;
       case "simulation":
         setShowBuildingInfo(false);
@@ -139,18 +160,21 @@ export default function Home() {
     const { signal } = abortControllerRef.current;
 
     try {
-      const response = await fetch("http://localhost:8080/process-employee-simulation", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(
-          Object.assign({}, employeeCommuteData, simulationConfigData),
-          null,
-          2
-        ),
-        signal,
-      });
+      const response = await fetch(
+        "http://localhost:8080/process-employee-simulation",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(
+            Object.assign({}, employeeCommuteData, simulationConfigData),
+            null,
+            2
+          ),
+          signal,
+        }
+      );
 
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -286,8 +310,28 @@ export default function Home() {
             <EmployeeInfo
               onFormSubmit={handleEmployeeInfoFormSubmit}
               handlePopup={handleClickOpenPopup}
+              mode={mode}
             />
           )}
+
+          <Dialog
+            open={openModePopup}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+          >
+            <DialogTitle id="alert-dialog-title">{"Select Mode"}</DialogTitle>
+            <DialogContent>
+              <DialogContentText id="alert-dialog-description">
+                Select to use either Employee or Fleet configuration.
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleCloseModePopupFleet}>Fleet</Button>
+              <Button onClick={handleCloseModePopupEmployee} autoFocus>
+                Employee
+              </Button>
+            </DialogActions>
+          </Dialog>
 
           {showResults && <Results />}
           {showSimulation && (

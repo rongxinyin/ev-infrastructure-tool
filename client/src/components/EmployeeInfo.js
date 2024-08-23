@@ -24,7 +24,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider/i
 import { TimePicker } from "@mui/x-date-pickers/TimePicker/index.js";
 import Papa from "papaparse";
 
-export default function EmployeeInfo({ onFormSubmit, handlePopup }) {
+export default function EmployeeInfo({ onFormSubmit, handlePopup, mode}) {
   const [employees, setEmployees] = useState([]);
   const [employeeData, setEmployeeData] = useState({
     employeeId: "",
@@ -146,7 +146,7 @@ export default function EmployeeInfo({ onFormSubmit, handlePopup }) {
       <Grid container spacing={0} style={{ marginTop: 0, marginLeft: 10 }}>
         <Grid item xs={12} style={{ marginTop: 0 }}>
           <Typography variant="h4" gutterBottom>
-            Employee/Fleet Info
+            {mode} Info
           </Typography>
         </Grid>
         <Grid item xs={12} md={12}>
