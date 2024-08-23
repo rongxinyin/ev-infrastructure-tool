@@ -139,7 +139,7 @@ export default function Home() {
     const { signal } = abortControllerRef.current;
 
     try {
-      const response = await fetch("http://localhost:8080/process-simulation", {
+      const response = await fetch("http://localhost:8080/process-employee-simulation", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -235,7 +235,7 @@ export default function Home() {
             fullWidth
             onClick={() => switchPagesButton("employeeInfo")}
           >
-            Employee Info
+            Employee/Fleet Info
           </Button>
 
           <Button

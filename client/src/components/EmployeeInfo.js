@@ -146,7 +146,7 @@ export default function EmployeeInfo({ onFormSubmit, handlePopup }) {
       <Grid container spacing={0} style={{ marginTop: 0, marginLeft: 10 }}>
         <Grid item xs={12} style={{ marginTop: 0 }}>
           <Typography variant="h4" gutterBottom>
-            Employee Info
+            Employee/Fleet Info
           </Typography>
         </Grid>
         <Grid item xs={12} md={12}>

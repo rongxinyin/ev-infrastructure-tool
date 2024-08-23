@@ -141,7 +141,7 @@ export default function Simulation({
             </Grid>
           </Box>
           <Grid container spacing={1}>
-            <Grid item xs={6}>
+            <Grid item xs={4}>
               <Button
                 variant="contained"
                 color="secondary"
@@ -152,10 +152,23 @@ export default function Simulation({
                 }}
                 type="submit"
               >
-                Run
+                Run Employee
               </Button>
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={4}>
+              <Button
+                variant="contained"
+                color="secondary"
+                sx={{
+                  marginTop: 0,
+                  marginBottom: 0,
+                  width: "100%",
+                }}
+              >
+                Run Fleet
+              </Button>
+            </Grid>
+            <Grid item xs={4}>
               <Button
                 variant="contained"
                 color="secondary"
@@ -169,6 +182,7 @@ export default function Simulation({
                 Terminate
               </Button>
             </Grid>
+            
           </Grid>
         </Grid>
         <Grid item xs={12}>
