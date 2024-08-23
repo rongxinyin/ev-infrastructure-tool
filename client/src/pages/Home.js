@@ -69,15 +69,14 @@ export default function Home() {
   };
 
   const handleCloseModePopupFleet = async () => {
-    setMode("Fleet")
+    setMode("Fleet");
     setOpenModePopup(false);
   };
 
   const handleCloseModePopupEmployee = async () => {
-    setMode("Employee")
+    setMode("Employee");
     setOpenModePopup(false);
   };
-
 
   const handleBuildingInfoFormSubmit = (data) => {
     setBuildingInfoData(data);
@@ -152,29 +151,33 @@ export default function Home() {
     const result = await response.json();
     console.log(result);
     setEmployeeCommuteData(result);
-    handleClickOpenPopup("Success", "Employee info saved");
+    handleClickOpenPopup("Success", `${mode} info saved`);
   };
 
   const getSimulationData = async () => {
     abortControllerRef.current = new AbortController();
     const { signal } = abortControllerRef.current;
 
+    let call = "";
+    if (mode == "Fleet") {
+      call = "http://localhost:8080/process-fleet-simulation";
+    } else {
+      call = "http://localhost:8080/process-employee-simulation";
+    }
+
     try {
-      const response = await fetch(
-        "http://localhost:8080/process-employee-simulation",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(
-            Object.assign({}, employeeCommuteData, simulationConfigData),
-            null,
-            2
-          ),
-          signal,
-        }
-      );
+      const response = await fetch(call, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(
+          Object.assign({}, employeeCommuteData, simulationConfigData),
+          null,
+          2
+        ),
+        signal,
+      });
 
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -339,6 +342,7 @@ export default function Home() {
               onFormSubmit={handleSimulationConfigFormSubmit}
               progressBarState={showProgressBar}
               terminateProcess={terminateGetSimulationData}
+              mode={mode}
             />
           )}
         </Grid>

@@ -22,6 +22,7 @@ export default function Simulation({
   onFormSubmit,
   progressBarState,
   terminateProcess,
+  mode,
 }) {
   const [simulationConfig, setSimulationConfig] = useState({
     start_time: null,
@@ -62,7 +63,7 @@ export default function Simulation({
       <Grid container spacing={1} sx={{ marginLeft: 0 }}>
         <Grid item xs={12}>
           <Typography variant="h4" sx={{ marginTop: 0 }}>
-            Simulation
+            {mode} Simulation
           </Typography>
           <Box bgcolor="primary.white" sx={{ marginLeft: 0 }}>
             <Grid container spacing={0} sx={{ paddingLeft: 0 }}>
@@ -141,7 +142,7 @@ export default function Simulation({
             </Grid>
           </Box>
           <Grid container spacing={1}>
-            <Grid item xs={4}>
+            <Grid item xs={6}>
               <Button
                 variant="contained"
                 color="secondary"
@@ -152,23 +153,10 @@ export default function Simulation({
                 }}
                 type="submit"
               >
-                Run Employee
+                Run
               </Button>
             </Grid>
-            <Grid item xs={4}>
-              <Button
-                variant="contained"
-                color="secondary"
-                sx={{
-                  marginTop: 0,
-                  marginBottom: 0,
-                  width: "100%",
-                }}
-              >
-                Run Fleet
-              </Button>
-            </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={6}>
               <Button
                 variant="contained"
                 color="secondary"
