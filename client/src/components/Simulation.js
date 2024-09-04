@@ -97,10 +97,10 @@ export default function Simulation({
                   required
                 />
               </Grid>
-              <Grid item xs={2.4}>
+              <Grid item xs={2.5}>
                 <TextField
                   id="outlined-basic"
-                  label="Level 2 charging power (kW)"
+                  label="L2 charging power (kW)"
                   variant="outlined"
                   fullWidth
                   type="number"
@@ -111,10 +111,10 @@ export default function Simulation({
                   required
                 />
               </Grid>
-              <Grid item xs={2.4}>
+              <Grid item xs={2.5}>
                 <TextField
                   id="outlined-basic"
-                  label="Level 3 charging power (kW)"
+                  label="L3 charging power (kW)"
                   variant="outlined"
                   fullWidth
                   type="number"
@@ -125,7 +125,7 @@ export default function Simulation({
                   required
                 />
               </Grid>
-              <Grid item xs={2.4}>
+              <Grid item xs={2.2}>
                 <TextField
                   id="outlined-basic"
                   label="Adoption Rate"
