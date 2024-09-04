@@ -155,7 +155,7 @@ export default function EmployeeInfo({ onFormSubmit, handlePopup, mode }) {
               <Grid container spacing={1}>
                 <Grid item xs={3}>
                   <TextField
-                    label="Employee ID"
+                    label="ID"
                     fullWidth
                     name="employeeId"
                     value={employeeData.employeeId}
@@ -283,7 +283,7 @@ export default function EmployeeInfo({ onFormSubmit, handlePopup, mode }) {
                 <Table>
                   <TableHead>
                     <TableRow>
-                      <TableCell>Employee ID</TableCell>
+                      <TableCell>{mode} ID</TableCell>
                       <TableCell>Commute Mode</TableCell>
                       <TableCell>Zipcode</TableCell>
                       <TableCell>Onsite Bldg</TableCell>
