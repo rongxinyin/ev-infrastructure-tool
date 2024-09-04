@@ -23,14 +23,14 @@ def create_driving_pattern(row, scenario):
     row.update({"vehicle id": row['employee_id'], 
                 "zev site": row['onsite_bldg'], 
                 "parking lot": row['parking_lot'],
-                "catagory": 'Light-Duty', 
+                "category": 'Light-Duty', 
                 "battery capacity": 80,
                 "weekly driving patterns": []
                 })
 
-    if row['catagory'] == 'Heavy-Duty':
+    if row['category'] == 'Heavy-Duty':
         mu, sigma = 24.09, 2.85
-    elif row['catagory'] == 'Medium-Duty':
+    elif row['category'] == 'Medium-Duty':
         mu, sigma = 68, 2.0
     else:
         mu, sigma = 117, 3.2

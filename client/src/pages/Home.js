@@ -40,6 +40,9 @@ export default function Home() {
   const [employeeInfoData, setEmployeeInfoData] = useState({});
   const [employeeCommuteData, setEmployeeCommuteData] = useState({});
 
+  const [mode, setMode] = useState(""); // set either Employee or Fleet
+  const [openModePopup, setOpenModePopup] = React.useState(false);
+
   const [simulationConfigData, setSimulationConfigData] = useState({});
   const [showProgressBar, setShowProgressBar] = useState(false);
 
@@ -59,6 +62,20 @@ export default function Home() {
     setPopupDialogue("");
     setPopupTitle("");
     setOpenPopup(false);
+  };
+
+  const handleClickOpenModePopup = () => {
+    setOpenModePopup(true);
+  };
+
+  const handleCloseModePopupFleet = async () => {
+    setMode("Fleet");
+    setOpenModePopup(false);
+  };
+
+  const handleCloseModePopupEmployee = async () => {
+    setMode("Employee");
+    setOpenModePopup(false);
   };
 
   const handleBuildingInfoFormSubmit = (data) => {
@@ -100,6 +117,9 @@ export default function Home() {
         setShowEmployeeInfo(true);
         setShowSimulation(false);
         setShowResults(false);
+        if (mode == "") {
+          handleClickOpenModePopup();
+        }
         break;
       case "simulation":
         setShowBuildingInfo(false);
@@ -131,15 +151,22 @@ export default function Home() {
     const result = await response.json();
     console.log(result);
     setEmployeeCommuteData(result);
-    handleClickOpenPopup("Success", "Employee info saved");
+    handleClickOpenPopup("Success", `${mode} info saved`);
   };
 
   const getSimulationData = async () => {
     abortControllerRef.current = new AbortController();
     const { signal } = abortControllerRef.current;
 
+    let call = "";
+    if (mode == "Fleet") {
+      call = "http://localhost:8080/process-fleet-simulation";
+    } else {
+      call = "http://localhost:8080/process-employee-simulation";
+    }
+
     try {
-      const response = await fetch("http://localhost:8080/process-simulation", {
+      const response = await fetch(call, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -235,7 +262,7 @@ export default function Home() {
             fullWidth
             onClick={() => switchPagesButton("employeeInfo")}
           >
-            Employee Info
+            Employee/Fleet Info
           </Button>
 
           <Button
@@ -286,8 +313,28 @@ export default function Home() {
             <EmployeeInfo
               onFormSubmit={handleEmployeeInfoFormSubmit}
               handlePopup={handleClickOpenPopup}
+              mode={mode}
             />
           )}
+
+          <Dialog
+            open={openModePopup}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+          >
+            <DialogTitle id="alert-dialog-title">{"Select Mode"}</DialogTitle>
+            <DialogContent>
+              <DialogContentText id="alert-dialog-description">
+                Select to use either Employee or Fleet configuration.
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleCloseModePopupFleet}>Fleet</Button>
+              <Button onClick={handleCloseModePopupEmployee} autoFocus>
+                Employee
+              </Button>
+            </DialogActions>
+          </Dialog>
 
           {showResults && <Results />}
           {showSimulation && (
@@ -295,6 +342,7 @@ export default function Home() {
               onFormSubmit={handleSimulationConfigFormSubmit}
               progressBarState={showProgressBar}
               terminateProcess={terminateGetSimulationData}
+              mode={mode}
             />
           )}
         </Grid>
