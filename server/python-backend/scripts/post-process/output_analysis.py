@@ -156,7 +156,7 @@ def process_site_data(site, site_path, adoption_rates):
 
 def main(output_path):
     """Main function to process all sites."""
-    df = pd.read_csv(os.path.join(output_path, 'pendelton-simulated-charging-stations.csv'))
+    df = pd.read_csv(os.path.join(output_path, 'vehicle_status_normal_7_50.csv'), low_memory=False)
     site_list = df['ZEV Sites'].unique()
 
     for site in site_list:
@@ -164,6 +164,7 @@ def main(output_path):
             process_site_data(site, os.path.join(output_path, site), ['7_50', '17_60'])
 
 if __name__ == "__main__":
-    output_folder = '~/Documents/LBNL/don-blueprint-report/camp-pendleton'
+    output_folder = '~/Desktop/ev-infrastructure-tool/server/python-backend/tests'
     output_path = os.path.expanduser(output_folder)
+    print(output_path)
     main(output_path)
