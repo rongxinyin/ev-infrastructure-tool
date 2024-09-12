@@ -145,7 +145,7 @@ export default function Simulation({
             <Grid item xs={6}>
               <Button
                 variant="contained"
-                color="secondary"
+                color="primary"
                 sx={{
                   marginTop: 0,
                   marginBottom: 0,
@@ -159,7 +159,7 @@ export default function Simulation({
             <Grid item xs={6}>
               <Button
                 variant="contained"
-                color="secondary"
+                color="primary"
                 sx={{
                   marginTop: 0,
                   marginBottom: 0,
