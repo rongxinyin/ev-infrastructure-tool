@@ -1,24 +1,23 @@
+import React, { useState, useEffect, useRef } from "react";
 import {
   Box,
   Button,
   Grid,
   Typography,
-  Paper,
-  styled,
-  useTheme,
-  useMediaQuery,
   Dialog,
   DialogTitle,
   DialogActions,
   DialogContent,
   DialogContentText,
+  useTheme,
+  useMediaQuery,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import BuildingInfo from "../components/BuildingInfo.js";
 import EmployeeInfo from "../components/EmployeeInfo.js";
 import Simulation from "../components/Simulation.js";
 import Results from "../components/Results.js";
-import React, { useState, useEffect, useRef } from "react";
+import SmartCharging from "../components/SmartCharging.js";
 
 const buttonSX = {
   marginBottom: 1,
@@ -34,6 +33,7 @@ export default function Home() {
   const [showEmployeeInfo, setShowEmployeeInfo] = useState(false);
   const [showSimulation, setShowSimulation] = useState(false);
   const [showResults, setShowResults] = useState(false);
+  const [showSmartCharging, setShowSmartCharging] = useState(false);
 
   const [buildingInfoData, setBuildingInfoData] = useState({});
 
@@ -111,12 +111,14 @@ export default function Home() {
         setShowEmployeeInfo(false);
         setShowSimulation(false);
         setShowResults(false);
+        setShowSmartCharging(false);
         break;
       case "employeeInfo":
         setShowBuildingInfo(false);
         setShowEmployeeInfo(true);
         setShowSimulation(false);
         setShowResults(false);
+        setShowSmartCharging(false);
         if (mode == "") {
           handleClickOpenModePopup();
         }
@@ -126,12 +128,23 @@ export default function Home() {
         setShowEmployeeInfo(false);
         setShowSimulation(true);
         setShowResults(false);
+        setShowSmartCharging(false);
         break;
       case "results":
         setShowBuildingInfo(false);
         setShowEmployeeInfo(false);
         setShowSimulation(false);
         setShowResults(true);
+        setShowSmartCharging(false);
+        break;
+      case "smartCharging":
+        setShowBuildingInfo(false);
+        setShowEmployeeInfo(false);
+        setShowSimulation(false);
+        setShowResults(false);
+        setShowSmartCharging(true);
+        break;
+      default:
         break;
     }
   };
@@ -230,8 +243,6 @@ export default function Home() {
       p={isMobile ? 1 : 2}
       sx={{ marginLeft: 10, marginRight: 10 }}
     >
-      {" "}
-      {/* Adjust padding for mobile */}
       <Grid container spacing={1} padding={isMobile ? 5 : 5}>
         <Grid item xs={12} align="center">
           <Typography
@@ -245,48 +256,67 @@ export default function Home() {
           </Typography>
         </Grid>
 
-        {/* buttons for subpage navigation */}
-        <Grid item xs={2} align="center">
-          <Button
-            variant="contained"
-            sx={buttonSX}
-            fullWidth
-            onClick={() => switchPagesButton("buildingInfo")}
+        {/* Sidebar */}
+        <Grid item xs={12} md={2}>
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              position: 'sticky',
+              top: theme.spacing(2),
+            }}
           >
-            Building/Site Info
-          </Button>
+            <Button
+              variant="contained"
+              sx={buttonSX}
+              fullWidth
+              onClick={() => switchPagesButton("buildingInfo")}
+            >
+              Building/Site Info
+            </Button>
 
-          <Button
-            variant="contained"
-            sx={buttonSX}
-            fullWidth
-            onClick={() => switchPagesButton("employeeInfo")}
-          >
-            Employee/Fleet Info
-          </Button>
+            <Button
+              variant="contained"
+              sx={buttonSX}
+              fullWidth
+              onClick={() => switchPagesButton("employeeInfo")}
+            >
+              Employee/Fleet Info
+            </Button>
 
-          <Button
-            variant="contained"
-            sx={buttonSX}
-            fullWidth
-            onClick={() => switchPagesButton("simulation")}
-          >
-            Simulation
-          </Button>
+            <Button
+              variant="contained"
+              sx={buttonSX}
+              fullWidth
+              onClick={() => switchPagesButton("simulation")}
+            >
+              Simulation
+            </Button>
 
-          <Button
-            to="/results"
-            variant="contained"
-            sx={buttonSX}
-            fullWidth
-            onClick={() => switchPagesButton("results")}
-          >
-            Results
-          </Button>
+            <Button
+              to="/results"
+              variant="contained"
+              sx={buttonSX}
+              fullWidth
+              onClick={() => switchPagesButton("results")}
+            >
+              Results
+            </Button>
+
+            <Button
+              to="/smartCharging"
+              variant="contained"
+              sx={buttonSX}
+              fullWidth
+              onClick={() => switchPagesButton("smartCharging")}
+            >
+              Smart Charging
+            </Button>
+          </Box>
         </Grid>
 
-        <Grid item xs={10}>
-          {/* displays subpage if the state is true */}
+        <Grid item xs={12} md={10}>
           {showBuildingInfo && (
             <BuildingInfo onFormSubmit={handleBuildingInfoFormSubmit} />
           )}
@@ -345,6 +375,7 @@ export default function Home() {
               mode={mode}
             />
           )}
+          {showSmartCharging && <SmartCharging />}
         </Grid>
 
         <Grid
