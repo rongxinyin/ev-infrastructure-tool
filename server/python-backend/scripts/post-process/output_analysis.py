@@ -163,7 +163,7 @@ def main(output_path):
     # for site in site_list:
     #     if site == 'BLDG 4100377':
 
-    process_site_data("site", os.path.join(output_path), ['7_50'])
+    process_site_data("site", os.path.join(output_path), ['0.36'])
 
 if __name__ == "__main__":
     output_folder = '~/Desktop/ev-infrastructure-tool/server/python-backend/tests'
