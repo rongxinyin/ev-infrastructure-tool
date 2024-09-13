@@ -6,7 +6,7 @@ import seaborn as sns
 
 def clean_dataframe(site_path, input_file):
     """Cleans the input CSV file and adds relevant columns."""
-    df = pd.read_csv(os.path.join(site_path, input_file))
+    df = pd.read_csv(os.path.join(site_path, input_file), low_memory=False)
     df['low_soc'] = df['soc'].apply(lambda x: 1 if x < 15 else 0)
     df['charging-ports'] = list(zip(df['L2'], df['L3']))
     df['connected'] = df['charging_station'].fillna(0).apply(lambda x: 1 if x != 0 else 0)
@@ -156,12 +156,14 @@ def process_site_data(site, site_path, adoption_rates):
 
 def main(output_path):
     """Main function to process all sites."""
-    df = pd.read_csv(os.path.join(output_path, 'vehicle_status_normal_7_50.csv'), low_memory=False)
-    site_list = df['ZEV Sites'].unique()
 
-    for site in site_list:
-        if site == 'BLDG 4100377':
-            process_site_data(site, os.path.join(output_path, site), ['7_50', '17_60'])
+    # df = pd.read_csv(os.path.join(output_path, 'pendelton-simulated-charging-stations.csv'), low_memory=False)
+    # site_list = df['ZEV Sites'].unique()
+
+    # for site in site_list:
+    #     if site == 'BLDG 4100377':
+
+    process_site_data("site", os.path.join(output_path), ['7_50'])
 
 if __name__ == "__main__":
     output_folder = '~/Desktop/ev-infrastructure-tool/server/python-backend/tests'
