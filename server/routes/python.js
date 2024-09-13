@@ -122,10 +122,7 @@ router.post("/process-employee-simulation", (req, res) => {
 
       // Send the filtered data (optional)
       res.setHeader("Content-Type", "text/csv");
-      res.setHeader(
-        "Content-Disposition",
-        'attachment; filename="data.csv"'
-      );
+      res.setHeader("Content-Disposition", 'attachment; filename="data.csv"');
       res.send(filteredData);
     }
   });
