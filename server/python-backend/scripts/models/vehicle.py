@@ -87,10 +87,15 @@ class Vehicle:
     def get_status(self, current_time, charging_queue):
         station_type = self.charging_station.station_type if self.charging_station else 'None'
         return {
-            "time": current_time, "vehicle_id": self.vehicle_id, 
-            "soc": self.soc, "location": self.location,
-            "charging_station": station_type, "charging_rate": self.charging_rate,
-            "status": self.vehicle_status, "status_duration": self.status_duration, 
-            "trip_status": self.trip_status, "equivalent_electricity_kwh": self.equivalent_electricity_kwh, 
+            "time": current_time, 
+            "vehicle_id": self.vehicle_id, 
+            "soc": self.soc, 
+            "location": self.location,
+            "charging_station": station_type, 
+            "charging_rate": "None",
+            "status": self.vehicle_status, 
+            "status_duration": self.status_duration, 
+            "trip_status": "None", 
+            "equivalent_electricity_kwh": self.equivalent_electricity_kwh, 
             "queue_status": 'In queue' if self in charging_queue.queue else 'Not in queue'
         }

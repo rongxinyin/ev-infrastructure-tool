@@ -25,7 +25,7 @@ def assign_charging_stations(vehicles, stations, charging_queue, current_time):
     """
     for vehicle in vehicles:
         charging_request = check_charging_request(vehicle, current_time)
-        print(f"Vehicle {vehicle.vehicle_id}: Charging Request = {charging_request}, SoC = {vehicle.soc}, Location = {vehicle.location}, Home Charging = {vehicle.home_charging}")
+        # print(f"Vehicle {vehicle.vehicle_id}: Charging Request = {charging_request}, SoC = {vehicle.soc}, Location = {vehicle.location}, Home Charging = {vehicle.home_charging}")
         if vehicle.location == 'On-Site':
             if charging_request and vehicle.charging_station is None:
                 # Prioritize L3 for vehicles with short stay

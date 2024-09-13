@@ -74,13 +74,6 @@ if __name__ == "__main__":
         l3_max_rate = float(sys.argv[5])
         adoption_rate = float(sys.argv[6])
 
-        # ex values:
-        # start_time=datetime.datetime(2024, 2, 1), 
-        # run_period=30, 
-        # l2_max_rate=7.0, 
-        # l3_max_rate=50.0, 
-        # adoption_rate=0.36
-
         pov_driving_patterns = json.loads(input_data)
 
         # add home charging information to the json data
@@ -92,4 +85,9 @@ if __name__ == "__main__":
                 driving_pattern_data.append(create_driving_pattern(row, scenario='normal'))
 
         results = run_charging_management(parking_lot, driving_pattern_data, start_time=start_time, run_period=run_period, l2_max_rate=l2_max_rate, l3_max_rate=l3_max_rate, adoption_rate=adoption_rate)
-        results.to_csv(os.path.join(site_path, f'pov_vehicle_status_{adoption_rate}.csv'), index=False)
+        
+
+        print(results.to_csv(sep=',', index=False, float_format='%.2f'))  # Use tab delimiter and format floats
+
+
+
