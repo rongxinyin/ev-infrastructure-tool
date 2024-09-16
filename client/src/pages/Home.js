@@ -244,7 +244,7 @@ export default function Home() {
       sx={{ marginLeft: 10, marginRight: 10 }}
     >
       <Grid container spacing={1} padding={isMobile ? 5 : 5}>
-        <Grid item xs={12} align="center">
+        {/* <Grid item xs={12} align="center">
           <Typography
             variant="h3"
             sx={{
@@ -254,7 +254,7 @@ export default function Home() {
           >
             Electrical Vehicle Infrastructure Tool (EVIT)
           </Typography>
-        </Grid>
+        </Grid> */}
 
         {/* Sidebar */}
         <Grid item xs={12} md={2}>
@@ -378,48 +378,7 @@ export default function Home() {
           {showSmartCharging && <SmartCharging />}
         </Grid>
 
-        <Grid
-          item
-          xs={12}
-          align="left"
-          sx={{
-            marginTop: 5,
-            width: "100%",
-            backgroundColor: "primary.white",
-            fontSize: isMobile
-              ? "0.8rem"
-              : "1.2rem" /* Adjust font size for mobile */,
-          }}
-        >
-          <Typography variant="body2" sx={{ fontSize: "1.2rem" }}>
-            Paper Citations:
-          </Typography>
-          <Typography variant="body2" sx={{ fontSize: "1.2rem" }}>
-            Yin, R., J. Liu, M.A. Piette, J. Xie, M. Pritoni, A. Casillas, L.
-            Yu, P. Schwartz, Comparing simulated demand flexibility against
-            actual performance in commercial office buildings, Building and
-            Environment, 2023.{" "}
-            <a
-              href="https://doi.org/10.1016/j.buildenv.2023.110663"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ color: "#2196f3" }}
-            >
-              https://doi.org/10.1016/j.buildenv.2023.110663
-            </a>
-          </Typography>
-          <Typography variant="body2" sx={{ fontSize: "1.2rem" }}>
-            TBD.{" "}
-            <a
-              href="https://doi.org/10.1016/j.buildenv.2023.110663"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ color: "#2196f3" }}
-            >
-              To be submitted to Journal of SoftwareX
-            </a>
-          </Typography>
-        </Grid>
+        
       </Grid>
     </Box>
   );
