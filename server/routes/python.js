@@ -20,6 +20,7 @@ function getPythonCommand() {
   }
 }
 
+// fleet/employee info page submissison
 router.post("/process-employee-data", (req, res) => {
   const input = JSON.stringify(req.body);
 
@@ -58,6 +59,7 @@ router.post("/process-employee-data", (req, res) => {
   });
 });
 
+// simulation -- employee
 router.post("/process-employee-simulation", (req, res) => {
   const employeeCommuteData = JSON.stringify(req.body.data);
   const startTime = req.body.start_time;
@@ -128,6 +130,7 @@ router.post("/process-employee-simulation", (req, res) => {
   });
 });
 
+// simulation -- fleet
 router.post("/process-fleet-simulation", (req, res) => {
   const employeeCommuteData = JSON.stringify(req.body.data);
   const startTime = req.body.start_time;
