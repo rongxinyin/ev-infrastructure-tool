@@ -158,4 +158,4 @@ def process_site_data(site, site_path, adoption_rates):
 if __name__ == "__main__":
     # output_folder = '~/Desktop/ev-infrastructure-tool/server/python-backend/tests'
     current_dir = os.getcwd()
-    process_site_data("site", os.path.join(current_dir), ['0.36'])
+    process_site_data("site", os.path.join(current_dir), ['temp'])
