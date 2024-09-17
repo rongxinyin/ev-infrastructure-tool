@@ -22,7 +22,6 @@ export default function Simulation({
   onFormSubmit,
   progressBarState,
   terminateProcess,
-  downloadRawCSV,
   mode,
 }) {
   const [simulationConfig, setSimulationConfig] = useState({
@@ -175,28 +174,6 @@ export default function Simulation({
         </Grid>
         <Grid item xs={12}>
           {progressBarState && <LinearProgress color="secondary" />}
-        </Grid>
-      </Grid>
-
-      <Grid container spacing={1} sx={{ marginLeft: 0 }}>
-        <Grid item xs={6}>
-          <Typography variant="h5" sx={{ marginTop: 0 }}>
-            CSV Downloads
-          </Typography>
-        </Grid>
-        <Grid item xs={6}>
-          <Button
-            variant="contained"
-            color="primary"
-            sx={{
-              marginTop: 0,
-              marginBottom: 0,
-              width: "100%",
-            }}
-            onClick={downloadRawCSV}
-          >
-            Download Raw CSV
-          </Button>
         </Grid>
       </Grid>
     </form>

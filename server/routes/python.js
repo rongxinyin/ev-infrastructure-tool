@@ -95,44 +95,39 @@ router.post("/process-employee-simulation", (req, res) => {
       res.status(500).send({ status: "error", message: "Python script error" });
     } else {
       console.log(`Python script output: ${dataToSend}`);
-      res.send({ status: "success", rawData: dataToSend });
+
+      let filteredData = "";
+      let skippedRows = 0;
+
+      // split data into lines (assuming each row is a new line)
+      const lines = dataToSend.split("\n");
+
+      for (let i = 0; i < lines.length; i++) {
+        const row = lines[i];
+
+        // Split the row by delimiter (assuming comma)
+        const columns = row.split(",");
+
+        // Check if there are less than 13 columns
+        if (columns.length < 13) {
+          skippedRows++;
+          console.warn(`Skipping row ${i + 1} (has ${columns.length} columns)`);
+        } else {
+          // Add the row to the filtered data if it has 13 columns
+          filteredData += row + "\n";
+        }
+      }
+
+      if (skippedRows > 0) {
+        console.warn(`Skipped a total of ${skippedRows} rows.`);
+      }
+
+      // Send the filtered data (optional)
+      res.setHeader("Content-Type", "text/csv");
+      res.setHeader("Content-Disposition", 'attachment; filename="data.csv"');
+      res.send(filteredData);
     }
   });
-});
-
-router.post("/download-csv", (req, res) => {
-  const rawData = req.body.rawData;
-
-  let filteredData = "";
-  let skippedRows = 0;
-
-  // split data into lines (assuming each row is a new line)
-  const lines = rawData.split("\n");
-
-  for (let i = 0; i < lines.length; i++) {
-    const row = lines[i];
-
-    // Split the row by delimiter (assuming comma)
-    const columns = row.split(",");
-
-    // Check if there are less than 13 columns
-    if (columns.length < 13) {
-      skippedRows++;
-      console.warn(`Skipping row ${i + 1} (has ${columns.length} columns)`);
-    } else {
-      // Add the row to the filtered data if it has 13 columns
-      filteredData += row + "\n";
-    }
-  }
-
-  if (skippedRows > 0) {
-    console.warn(`Skipped a total of ${skippedRows} rows.`);
-  }
-
-  // Send the filtered data
-  res.setHeader("Content-Type", "text/csv");
-  res.setHeader("Content-Disposition", 'attachment; filename="data.csv"');
-  res.send(filteredData);
 });
 
 // simulation -- fleet

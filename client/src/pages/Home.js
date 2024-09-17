@@ -13,7 +13,6 @@ import {
   DialogContent,
   DialogContentText,
 } from "@mui/material";
-import _ from 'lodash';
 import { useNavigate } from "react-router-dom";
 import BuildingInfo from "../components/BuildingInfo.js";
 import EmployeeInfo from "../components/EmployeeInfo.js";
@@ -46,8 +45,6 @@ export default function Home() {
 
   const [simulationConfigData, setSimulationConfigData] = useState({});
   const [showProgressBar, setShowProgressBar] = useState(false);
-
-  const [simulationRawData, setSimulationRawData] = useState();
 
   const abortControllerRef = useRef(null);
 
@@ -162,7 +159,7 @@ export default function Home() {
     const { signal } = abortControllerRef.current;
 
     let call = "";
-    if (mode === "Fleet") {
+    if (mode == "Fleet") {
       call = "http://localhost:8080/process-fleet-simulation";
     } else {
       call = "http://localhost:8080/process-employee-simulation";
@@ -186,30 +183,32 @@ export default function Home() {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
-      const result = await response.json();
+      const blob = await response.blob();
 
-      if (result.status === "success") {
-        setSimulationRawData(result.rawData); // Save raw data to state variable
-        // console.log(simulationRawData);
-        handleClickOpenPopup(
-          "Success",
-          "Simulation data retrieved successfully"
-        );
-      } else {
-        handleClickOpenPopup("Error", "Failed to retrieve simulation data");
-      }
+      const url = window.URL.createObjectURL(blob);
 
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "data.csv";
+      document.body.appendChild(a);
+      a.click(); // initiate download
       setShowProgressBar(false);
+      a.remove(); // cleanup
+      window.URL.revokeObjectURL(url); // release memory
+      handleClickOpenPopup(
+        "Success",
+        "Simulation data successfully downloaded"
+      );
     } catch (error) {
       if (error.name === "AbortError") {
         console.log("Fetch aborted. Please try again");
         handleClickOpenPopup("Error", "Abort error");
         setShowProgressBar(false);
       } else {
-        console.error("Error fetching simulation data:", error);
+        console.error("Error fetching and downloading CSV:", error);
         handleClickOpenPopup(
           "Error",
-          "Error fetching simulation data. Please try again"
+          "Error fetching and downloading CSV. Please try again"
         );
         setShowProgressBar(false);
       }
@@ -224,47 +223,6 @@ export default function Home() {
       handleClickOpenPopup("Terminated", "Request successfully terminated");
     }
   };
-
-  const downloadCsv = async () => {
-    try {
-      // Create a deep copy of the rawData to avoid circular structure issues
-      const rawDataCopy = JSON.parse(JSON.stringify(simulationRawData));
-  
-      const response = await fetch("http://localhost:8080/download-csv", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ rawData: rawDataCopy }, null, 2),
-      });
-  
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-  
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
-  
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "data.csv";
-      document.body.appendChild(a);
-      a.click(); // initiate download
-      a.remove(); // cleanup
-      window.URL.revokeObjectURL(url); // release memory
-  
-      handleClickOpenPopup("Success", "CSV file successfully downloaded");
-    } catch (error) {
-      console.error("Error downloading CSV:", error);
-      handleClickOpenPopup("Error", "Error downloading CSV. Please try again");
-    }
-  };
-          
-  
-
-  
-
-          
 
   return (
     <Box
@@ -384,7 +342,6 @@ export default function Home() {
               onFormSubmit={handleSimulationConfigFormSubmit}
               progressBarState={showProgressBar}
               terminateProcess={terminateGetSimulationData}
-              downloadRawCSV={downloadCsv}
               mode={mode}
             />
           )}
