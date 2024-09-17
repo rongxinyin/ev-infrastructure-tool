@@ -6,16 +6,18 @@ import multer from "multer";
 
 const router = express.Router();
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "uploads/"); // Replace 'uploads/' with your desired directory
-  },
-  filename: (req, file, cb) => {
-    cb(null, file.originalname);
-  },
-});
+// const storage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     cb(null, "uploads/"); // Replace 'uploads/' with your desired directory
+//   },
+//   filename: (req, file, cb) => {
+//     cb(null, file.originalname);
+//   },
+// });
 
-const upload = multer({ storage: storage });
+// const upload = multer({ storage: storage });
+const upload = multer();
+
 // handle cases where different paths use python vs python3 keyword
 function getPythonCommand() {
   try {
@@ -215,14 +217,14 @@ router.post("/process-fleet-simulation", (req, res) => {
 });
 
 router.post("/upload-csv", upload.single("csvFile"), (req, res) => {
-  // const csvData = req.file.buffer.toString();
-  console.log(req.file.path);
+  const csvData = req.file.buffer.toString();
+  // console.log(csvData);
 
-  // // Execute the Python script
-  // const pythonProcess = spawn(getPythonCommand(), [
-  //   "./python-backend/scripts/post-process/output-analysis.py",
-  //   csvData,
-  // ]);
+  // Execute the Python script
+  const pythonProcess = spawn(getPythonCommand(), [
+    "./python-backend/scripts/post-process/output-analysis.py",
+    csvData,
+  ]);
 
   // pythonProcess.stdout.on("data", (data) => {
   //   console.log(`stdout: ${data}`);
