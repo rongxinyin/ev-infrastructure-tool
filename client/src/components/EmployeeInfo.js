@@ -124,7 +124,7 @@ export default function EmployeeInfo({ onFormSubmit, handlePopup, mode }) {
               return_home_time: row[5] || "",
               home_charging: row[6] || "",
               id: Math.random().toString(36).substring(2, 15),
-              parking_lot: "bldg-90",
+              parking_lot: "bldg-90", // TODO: don't hardcode
             };
           });
           setEmployees(employeesFromCsv);
@@ -263,7 +263,7 @@ export default function EmployeeInfo({ onFormSubmit, handlePopup, mode }) {
                     -
                   </Fab>
                 </Tooltip>
-                <Tooltip title="Upload File">
+                <Tooltip title="Upload CSV File">
                   <Fab color="default" aria-label="upload">
                     <label>
                       <input

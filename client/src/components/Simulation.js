@@ -6,6 +6,8 @@ import {
   Typography,
   TextField,
   LinearProgress,
+  Tooltip,
+  Fab,
 } from "@mui/material";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo/index.js";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs/index.js";
@@ -174,6 +176,34 @@ export default function Simulation({
         </Grid>
         <Grid item xs={12}>
           {progressBarState && <LinearProgress color="secondary" />}
+        </Grid>
+      </Grid>
+
+      <Grid container spacing={1} sx={{ marginLeft: 0 }}>
+        <Grid item xs={12}>
+          <Typography variant="h5" sx={{ marginTop: 0 }}>
+            Data Post-Processing
+          </Typography>
+        </Grid>
+        <Grid item xs={12}>
+          <Typography variant="p" sx={{ marginTop: 0 }}>
+            Optional: Upload generated, unprocessed data for post-processing.
+          </Typography>
+        </Grid>
+        <Grid item xs={12}>
+          <Tooltip title="Upload CSV file">
+            <Fab color="default" aria-label="upload">
+              <label>
+                <input
+                  type="file"
+                  accept=".csv"
+                  onChange={{}}
+                  style={{ display: "none" }}
+                />
+                📤
+              </label>
+            </Fab>
+          </Tooltip>
         </Grid>
       </Grid>
     </form>
