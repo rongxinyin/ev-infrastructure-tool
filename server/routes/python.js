@@ -3,6 +3,8 @@ import express from "express";
 import { parse } from "csv-parse";
 import { stringify } from "csv-stringify/sync";
 import multer from "multer";
+import fs from "fs";
+import path from 'path';
 
 const router = express.Router();
 
@@ -218,13 +220,15 @@ router.post("/process-fleet-simulation", (req, res) => {
 
 router.post("/upload-csv", upload.single("csvFile"), (req, res) => {
   const csvData = req.file.buffer.toString();
+  const tempFilePath = path.join('./python-backend/scripts/post-process/vehicle_status_normal_temp.csv');
+  fs.writeFileSync(tempFilePath, csvData);
   // console.log(csvData);
 
   // Execute the Python script
-  const pythonProcess = spawn(getPythonCommand(), [
-    "./python-backend/scripts/post-process/output-analysis.py",
-    csvData,
-  ]);
+  // const pythonProcess = spawn(getPythonCommand(), [
+  //   "./python-backend/scripts/post-process/output-analysis.py",
+  //   csvData,
+  // ]);
 
   // pythonProcess.stdout.on("data", (data) => {
   //   console.log(`stdout: ${data}`);
