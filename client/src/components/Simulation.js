@@ -12,7 +12,7 @@ import {
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo/index.js";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs/index.js";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider/index.js";
-import dayjs from "dayjs";
+import Dropzone from 'react-dropzone';
 import { DatePicker } from "@mui/x-date-pickers/DatePicker/index.js";
 
 const textFieldSX = {
@@ -26,6 +26,9 @@ export default function Simulation({
   terminateProcess,
   mode,
 }) {
+
+  const [selectedFile, setSelectedFile] = useState(null);
+
   const [simulationConfig, setSimulationConfig] = useState({
     start_time: null,
     run_period: "",
@@ -59,6 +62,34 @@ export default function Simulation({
     });
     console.log(simulationConfig);
   };
+
+  const handleDrop = (acceptedFiles) => {
+    setSelectedFile(acceptedFiles[0]);
+  };
+
+  const handleUpload = async () => {
+    const formData = new FormData();
+    formData.append('csvFile',   
+ selectedFile);
+
+    try {
+      const response = await fetch('/upload-csv', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error('Error uploading file');
+      }
+
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+
 
   return (
     <form onSubmit={handleSubmit}>
@@ -191,19 +222,18 @@ export default function Simulation({
           </Typography>
         </Grid>
         <Grid item xs={12}>
-          <Tooltip title="Upload CSV file">
-            <Fab color="default" aria-label="upload">
-              <label>
-                <input
-                  type="file"
-                  accept=".csv"
-                  onChange={{}}
-                  style={{ display: "none" }}
-                />
-                📤
-              </label>
-            </Fab>
-          </Tooltip>
+        <Dropzone onDrop={handleDrop}>
+        {({ getRootProps, getInputProps }) => (
+          <div {...getRootProps()}>
+            <input {...getInputProps()} />
+            <p>Drag 'n' drop some files here, or click to select files</p>
+          </div>
+        )}
+      </Dropzone>   
+
+      <button onClick={handleUpload} disabled={!selectedFile}>
+        Submit
+      </button>
         </Grid>
       </Grid>
     </form>

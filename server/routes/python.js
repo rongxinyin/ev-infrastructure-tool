@@ -4,6 +4,8 @@ import { parse } from "csv-parse";
 import { stringify } from "csv-stringify/sync";
 
 const router = express.Router();
+const upload = multer();   
+
 
 // handle cases where different paths use python vs python3 keyword
 function getPythonCommand() {
@@ -202,5 +204,28 @@ router.post("/process-fleet-simulation", (req, res) => {
     }
   });
 });
+
+router.post('/upload-csv', upload.single('csvFile'), (req, res) => {
+  const csvData = req.file.buffer.toString();
+
+  // Execute the Python script
+  const pythonProcess = spawn(getPythonCommand(), ['./python-backend/scripts/post-process/output-analysis.py', csvData]);
+
+  pythonProcess.stdout.on('data', (data) => {
+    console.log(`stdout: ${data}`);
+    // Handle the script's output here
+  });
+
+  pythonProcess.stderr.on('data', (data) => {
+    console.error(`stderr: ${data}`);
+    // Handle any errors from the script
+  });
+
+  pythonProcess.on('close', (code) => {
+    console.log(`child process exited with code ${code}`);
+    res.send('CSV file processed successfully');
+  });
+});
+
 
 export default router;
