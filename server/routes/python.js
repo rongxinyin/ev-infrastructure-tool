@@ -216,7 +216,7 @@ router.post("/process-fleet-simulation", (req, res) => {
 
 router.post("/upload-csv", upload.single("csvFile"), (req, res) => {
   // const csvData = req.file.buffer.toString();
-  console.log(req.file);
+  console.log(req.file.path);
 
   // // Execute the Python script
   // const pythonProcess = spawn(getPythonCommand(), [

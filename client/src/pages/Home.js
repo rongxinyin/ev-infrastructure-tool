@@ -189,7 +189,7 @@ export default function Home() {
 
       const a = document.createElement("a");
       a.href = url;
-      a.download = "data.csv";
+      a.download = `vehicle_status_normal_${simulationConfigData.adoption_rate}.csv`;
       document.body.appendChild(a);
       a.click(); // initiate download
       setShowProgressBar(false);
