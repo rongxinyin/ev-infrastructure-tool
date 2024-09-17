@@ -19,6 +19,7 @@
     "dayjs": "^1.11.11",
     "deck.gl": "^8.9.30",
     "js-yaml": "^4.1.0",
+    "lodash": "^4.17.21",
     "mapbox-gl": "^2.15.0",
     "moment": "^2.30.1",
     "moment-timezone": "^0.5.44",
