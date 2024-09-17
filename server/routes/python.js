@@ -2,11 +2,20 @@ import { spawn, execSync } from "child_process";
 import express from "express";
 import { parse } from "csv-parse";
 import { stringify } from "csv-stringify/sync";
+import multer from "multer";
 
 const router = express.Router();
-const upload = multer();   
 
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "uploads/"); // Replace 'uploads/' with your desired directory
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+  },
+});
 
+const upload = multer({ storage: storage });
 // handle cases where different paths use python vs python3 keyword
 function getPythonCommand() {
   try {
@@ -205,27 +214,30 @@ router.post("/process-fleet-simulation", (req, res) => {
   });
 });
 
-router.post('/upload-csv', upload.single('csvFile'), (req, res) => {
-  const csvData = req.file.buffer.toString();
+router.post("/upload-csv", upload.single("csvFile"), (req, res) => {
+  // const csvData = req.file.buffer.toString();
+  console.log(req.file);
 
-  // Execute the Python script
-  const pythonProcess = spawn(getPythonCommand(), ['./python-backend/scripts/post-process/output-analysis.py', csvData]);
+  // // Execute the Python script
+  // const pythonProcess = spawn(getPythonCommand(), [
+  //   "./python-backend/scripts/post-process/output-analysis.py",
+  //   csvData,
+  // ]);
 
-  pythonProcess.stdout.on('data', (data) => {
-    console.log(`stdout: ${data}`);
-    // Handle the script's output here
-  });
+  // pythonProcess.stdout.on("data", (data) => {
+  //   console.log(`stdout: ${data}`);
+  //   // Handle the script's output here
+  // });
 
-  pythonProcess.stderr.on('data', (data) => {
-    console.error(`stderr: ${data}`);
-    // Handle any errors from the script
-  });
+  // pythonProcess.stderr.on("data", (data) => {
+  //   console.error(`stderr: ${data}`);
+  //   // Handle any errors from the script
+  // });
 
-  pythonProcess.on('close', (code) => {
-    console.log(`child process exited with code ${code}`);
-    res.send('CSV file processed successfully');
-  });
+  // pythonProcess.on("close", (code) => {
+  //   console.log(`child process exited with code ${code}`);
+  //   res.send("CSV file processed successfully");
+  // });
 });
-
 
 export default router;
