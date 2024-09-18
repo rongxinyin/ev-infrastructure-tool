@@ -80,18 +80,15 @@ export default function Simulation({
         throw new Error("Error uploading file");
       }
   
-      // Create a blob from the response
       const blob = await response.blob();
       const url = window.URL.createObjectURL(blob);
   
-      // Create a link element, set its href to the blob URL, and trigger a click to download the file
       const link = document.createElement("a");
       link.href = url;
-      link.setAttribute("download", "files.zip"); // Set the desired file name
+      link.setAttribute("download", "files.zip");
       document.body.appendChild(link);
       link.click();
   
-      // Cleanup the link element
       link.parentNode.removeChild(link);
       window.URL.revokeObjectURL(url);
     } catch (error) {
@@ -221,21 +218,16 @@ export default function Simulation({
       </form>
       <Grid container spacing={1} sx={{ marginLeft: 0 }}>
         <Grid item xs={12}>
-          <Typography variant="h5" sx={{ marginTop: 0 }}>
+          <Typography variant="h5" sx={{ marginTop: 0, marginBottom: 0 }}>
             Data Post-Processing
           </Typography>
         </Grid>
         <Grid item xs={12}>
-          <Typography variant="p" sx={{ marginTop: 0 }}>
-            Optional: Upload generated, unprocessed data for post-processing.
-          </Typography>
-        </Grid>
-        <Grid item xs={12}>
-          <Dropzone onDrop={handleDrop}>
+          <Dropzone onDrop={handleDrop} accept=".csv">
             {({ getRootProps, getInputProps }) => (
-              <div {...getRootProps()}>
-                <input {...getInputProps()} />
-                <p>Drag 'n' drop some files here, or click to select files</p>
+              <div {...getRootProps() } style={{textAlign: "center", padding: 10, backgroundColor: "#f5f5f5", border: '2px dashed #c3c3c3'}}>
+                <input {...getInputProps({ accept: '.csv' })}/>
+                <p> Optional: Upload generated, unprocessed data for post-processing.</p>
               </div>
             )}
           </Dropzone>{" "}
