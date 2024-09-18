@@ -229,8 +229,9 @@ export default function Home() {
         {
           method: "POST",
           body: formData,
+          signal: signal,
         },
-        signal
+        
       );
 
       if (!response.ok) {

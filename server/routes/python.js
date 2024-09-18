@@ -218,6 +218,25 @@ router.post("/upload-csv", upload.single("csvFile"), (req, res) => {
     directoryPath,
     "vehicle_status_normal_temp.csv"
   );
+  const deleteFiles = () => {
+    fs.readdir(directoryPath, (err, files) => {
+      if (err) {
+        console.error("Unable to scan directory:", err);
+        return;
+      }
+
+      files.forEach((file) => {
+        const filePath = path.join(directoryPath, file);
+        fs.unlink(filePath, (err) => {
+          if (err) {
+            console.error("Error deleting file:", err);
+          } else {
+            console.log(`Deleted file: ${filePath}`);
+          }
+        });
+      });
+    });
+  }
 
   // write the uploaded CSV data to a temp file
   fs.writeFileSync(tempFilePath, csvData);
@@ -246,23 +265,7 @@ router.post("/upload-csv", upload.single("csvFile"), (req, res) => {
           console.error(err);
         }
 
-        fs.readdir(directoryPath, (err, files) => {
-          if (err) {
-            console.error("Unable to scan directory:", err);
-            return;
-          }
-
-          files.forEach((file) => {
-            const filePath = path.join(directoryPath, file);
-            fs.unlink(filePath, (err) => {
-              if (err) {
-                console.error("Error deleting file:", err);
-              } else {
-                console.log(`Deleted file: ${filePath}`);
-              }
-            });
-          });
-        });
+        deleteFiles();
       });
     });
 
