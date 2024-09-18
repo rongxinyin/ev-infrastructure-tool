@@ -227,6 +227,23 @@ router.post("/upload-csv", upload.single("csvFile"), (req, res) => {
     "./python-backend/scripts/post-process/output-analysis.py",
   ]);
 
+  let errorOccurred = false;
+
+  python.stderr.on("data", (data) => {
+    errorOccurred = true;
+    console.error(`stderr: ${data}`);
+  });
+
+  python.on("close", (code) => {
+    if (errorOccurred) {
+      res.status(500).send({ status: "error", message: "Python script error" });
+    } else {
+        console.error(`Error generating one or more CSV files`);
+        res.send("success")
+      }
+    });
+
+
 });
 
 export default router;

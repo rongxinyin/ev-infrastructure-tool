@@ -156,6 +156,6 @@ def process_site_data(site, site_path, adoption_rates):
 
 
 if __name__ == "__main__":
-    # output_folder = '~/Desktop/ev-infrastructure-tool/server/python-backend/tests'
-    temp_dir = os.getcwd() + "\\temp"
+    temp_dir = os.getcwd() + "\\python-backend\\scripts\\post-process\\temp" # NOTE: base directory is in the server directory
+    print(temp_dir)
     process_site_data("site", os.path.join(temp_dir), ['temp'])
