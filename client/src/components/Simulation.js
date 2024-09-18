@@ -69,24 +69,36 @@ export default function Simulation({
   const handleUpload = async () => {
     const formData = new FormData();
     formData.append("csvFile", selectedFile);
-
+  
     try {
       const response = await fetch("http://localhost:8080/upload-csv", {
         method: "POST",
         body: formData,
       });
-
+  
       if (!response.ok) {
         throw new Error("Error uploading file");
       }
-
-      const data = await response.json();
-      console.log(data);
+  
+      // Create a blob from the response
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+  
+      // Create a link element, set its href to the blob URL, and trigger a click to download the file
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", "files.zip"); // Set the desired file name
+      document.body.appendChild(link);
+      link.click();
+  
+      // Cleanup the link element
+      link.parentNode.removeChild(link);
+      window.URL.revokeObjectURL(url);
     } catch (error) {
       console.error(error);
     }
   };
-
+  
   return (
     <>
       <form onSubmit={handleSubmit}>

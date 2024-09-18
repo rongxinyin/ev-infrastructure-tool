@@ -241,13 +241,14 @@ router.post("/upload-csv", upload.single("csvFile"), (req, res) => {
   python.on("close", (code) => {
     // if (errorOccurred) {
     //   return res.status(500).send({ status: "error", message: "Python script error" });
-    // } 
+    // }
 
     // Python script finished successfully, create ZIP file
     const output = fs.createWriteStream(zipPath);
     const archive = archiver("zip", { zlib: { level: 0 } });
 
     output.on("close", () => {
+      // Ensure the file is sent only after the ZIP archive is finalized
       res.download(zipPath, "files.zip", (err) => {
         if (err) {
           console.error(err);
