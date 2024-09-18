@@ -93,7 +93,7 @@ def output_results_to_csv(df, site_path, scenario):
         pivot_df = demand_df.pivot_table(index=['L3'], columns='L2', values='total_charging_power').fillna(0)
         pivot_df.insert(0, 'number_of_vehicles', number_of_vehicles)
         pivot_df.insert(0, 'metrics', 'peak_demand')
-        pivot_df.to_csv(os.path.join(site_path, f'pivot_peak_demand_{scenario}.csv'))
+        pivot_df.to_csv(os.path.join(site_path, f'pivot_peak_demand.csv'))
     except KeyError:
         print('No charging rate data available.')
 
@@ -102,12 +102,12 @@ def output_results_to_csv(df, site_path, scenario):
         pivot_waiting = waiting_df.pivot_table(index=['L3'], columns='L2', values='Waiting for station').fillna(0)
         pivot_waiting.insert(0, 'number_of_vehicles', number_of_vehicles)
         pivot_waiting.insert(0, 'metrics', 'waiting_for_station')
-        pivot_waiting.to_csv(os.path.join(site_path, f'pivot_waiting_for_station_{scenario}.csv'))
+        pivot_waiting.to_csv(os.path.join(site_path, f'pivot_waiting_for_station.csv'))
     except KeyError:
         pivot_waiting = pd.DataFrame(0, index=pivot_df.index, columns=pivot_df.columns)
         pivot_waiting['number_of_vehicles'] = number_of_vehicles
         pivot_waiting['metrics'] = 'waiting_for_station'
-        pivot_waiting.to_csv(os.path.join(site_path, f'pivot_waiting_for_station_{scenario}.csv'))
+        pivot_waiting.to_csv(os.path.join(site_path, f'pivot_waiting_for_station.csv'))
 
     utilization_df = df[(df['time'] > '2024-02-15') & (df['time'] < '2024-03-01')].pivot_table(index=['L2', 'L3', 'time'], columns='vehicle_id', values='connected').sum(axis=1).reset_index()
     utilization_df.rename(columns={0: 'connected'}, inplace=True)
@@ -120,14 +120,14 @@ def output_results_to_csv(df, site_path, scenario):
     pivot_utilization = utilization_df.pivot_table(index=['L3'], columns='L2', values='utilization').fillna(0)
     pivot_utilization.insert(0, 'number_of_vehicles', number_of_vehicles)
     pivot_utilization.insert(0, 'metrics', 'utilization')
-    pivot_utilization.to_csv(os.path.join(site_path, f'pivot_utilization_{scenario}.csv'))
+    pivot_utilization.to_csv(os.path.join(site_path, f'pivot_utilization.csv'))
 
     cost_df = utilization_df.groupby(['L2', 'L3']).mean().reset_index()
     cost_df['installation_cost'] = cost_df['L2'] * 10000 + cost_df['L3'] * 25000
     pivot_cost = cost_df.pivot_table(index=['L3'], columns='L2', values='installation_cost').fillna(0)
     pivot_cost.insert(0, 'number_of_vehicles', number_of_vehicles)
     pivot_cost.insert(0, 'metrics', 'cost')
-    pivot_cost.to_csv(os.path.join(site_path, f'pivot_cost_{scenario}.csv'))
+    pivot_cost.to_csv(os.path.join(site_path, f'pivot_cost.csv'))
 
 def process_site_data(site, site_path, adoption_rates):
     """Processes data for a specific site and saves results."""

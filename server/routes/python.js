@@ -210,6 +210,7 @@ router.post("/process-fleet-simulation", (req, res) => {
   });
 });
 
+// post processing data generated from simulation
 router.post("/post-process", upload.single("csvFile"), (req, res) => {
   const csvData = req.file.buffer.toString();
   const directoryPath = path.join("./python-backend/scripts/post-process/temp");
@@ -236,7 +237,7 @@ router.post("/post-process", upload.single("csvFile"), (req, res) => {
         });
       });
     });
-  }
+  };
 
   // write the uploaded CSV data to a temp file
   fs.writeFileSync(tempFilePath, csvData);
@@ -246,14 +247,13 @@ router.post("/post-process", upload.single("csvFile"), (req, res) => {
   ]);
 
   python.on("close", (code) => {
-
-
     fs.unlink(tempFilePath, (err) => {
       if (err) {
         console.error("Error deleting temporary file:", err);
       } else {
         console.log(`Deleted temporary file: ${tempFilePath}`);
-      }});
+      }
+    });
 
     // create zip file
     const output = fs.createWriteStream(zipPath);

@@ -224,15 +224,11 @@ export default function Home() {
     setShowProgressBar(true);
 
     try {
-      const response = await fetch(
-        "http://localhost:8080/post-process",
-        {
-          method: "POST",
-          body: formData,
-          signal: signal,
-        },
-        
-      );
+      const response = await fetch("http://localhost:8080/post-process", {
+        method: "POST",
+        body: formData,
+        signal: signal,
+      });
 
       if (!response.ok) {
         setShowProgressBar(false);
@@ -243,15 +239,28 @@ export default function Home() {
       const blob = await response.blob();
       const url = window.URL.createObjectURL(blob);
 
+      const now = new Date();
+
+      const year = now.getFullYear();
+      const month = String(now.getMonth() + 1).padStart(2, "0");
+      const day = String(now.getDate()).padStart(2, "0");
+      const hours = String(now.getHours()).padStart(2, "0");
+      const minutes = String(now.getMinutes()).padStart(2, "0");
+      const seconds = String(now.getSeconds()).padStart(2, "0");
+
       const a = document.createElement("a");
       a.href = url;
-      a.setAttribute("download", "files.zip");
+      a.setAttribute(
+        "download",
+        `post-process${year}.${month}.${day}.${hours}.${minutes}.${seconds}.zip`
+      );
       document.body.appendChild(a);
       a.click();
       setShowProgressBar(false);
-      handleClickOpenPopup("Success", "Post-processed data successfully downloaded"
+      handleClickOpenPopup(
+        "Success",
+        "Post-processed data successfully downloaded"
       );
-
 
       a.parentNode.removeChild(a);
       window.URL.revokeObjectURL(url);
@@ -259,7 +268,6 @@ export default function Home() {
       console.error(error);
       setShowProgressBar(false);
       handleClickOpenPopup("Error", "Abort error");
-
     }
   };
 
