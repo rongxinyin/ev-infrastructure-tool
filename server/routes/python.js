@@ -8,17 +8,6 @@ import path from "path";
 import archiver from "archiver";
 
 const router = express.Router();
-
-// const storage = multer.diskStorage({
-//   destination: (req, file, cb) => {
-//     cb(null, "uploads/"); // Replace 'uploads/' with your desired directory
-//   },
-//   filename: (req, file, cb) => {
-//     cb(null, file.originalname);
-//   },
-// });
-
-// const upload = multer({ storage: storage });
 const upload = multer();
 
 // handle cases where different paths use python vs python3 keyword
@@ -155,8 +144,6 @@ router.post("/process-fleet-simulation", (req, res) => {
   const l3ChargingPower = req.body.l3_charging_power;
   const adoptionRate = req.body.adoption_rate;
 
-  // console.log(JSON.stringify(req.body))
-
   const python = spawn(getPythonCommand(), [
     "./python-backend/scripts/fleet-charging-management.py",
     employeeCommuteData,
@@ -189,32 +176,36 @@ router.post("/process-fleet-simulation", (req, res) => {
     } else {
       console.log(`Python script output: ${dataToSend}`);
 
-      try {
-        // assuming the Python script returns CSV data as a string
-        parse(dataToSend, { columns: true }, (err, records) => {
-          if (err) {
-            console.error(`Error parsing CSV: ${err.message}`);
-            res
-              .status(500)
-              .send({ status: "error", message: "Invalid CSV output" });
-          } else {
-            const csvOutput = stringify(records, { header: true });
+      let filteredData = "";
+      let skippedRows = 0;
 
-            // send csv to client
-            res.setHeader("Content-Type", "text/csv");
-            res.setHeader(
-              "Content-Disposition",
-              'attachment; filename="data.csv"'
-            );
-            res.send(csvOutput);
-          }
-        });
-      } catch (e) {
-        console.error(`Error handling CSV: ${e.message}`);
-        res
-          .status(500)
-          .send({ status: "error", message: "Error handling CSV data" });
+      // split data into lines (assuming each row is a new line)
+      const lines = dataToSend.split("\n");
+
+      for (let i = 0; i < lines.length; i++) {
+        const row = lines[i];
+
+        // Split the row by delimiter (assuming comma)
+        const columns = row.split(",");
+
+        // Check if there are less than 13 columns
+        if (columns.length < 13) {
+          skippedRows++;
+          console.warn(`Skipping row ${i + 1} (has ${columns.length} columns)`);
+        } else {
+          // Add the row to the filtered data if it has 13 columns
+          filteredData += row + "\n";
+        }
       }
+
+      if (skippedRows > 0) {
+        console.warn(`Skipped a total of ${skippedRows} rows.`);
+      }
+
+      // Send the filtered data (optional)
+      res.setHeader("Content-Type", "text/csv");
+      res.setHeader("Content-Disposition", 'attachment; filename="data.csv"');
+      res.send(filteredData);
     }
   });
 });
