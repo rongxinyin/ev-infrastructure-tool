@@ -69,8 +69,7 @@ export default function Simulation({
 
   const handleUpload = async () => {
     handleFileUpload(selectedFile);
-  }
-
+  };
 
   return (
     <>
@@ -188,7 +187,9 @@ export default function Simulation({
             </Grid>
           </Grid>
           <Grid item xs={12}>
-            {progressBarState && !selectedFile && <LinearProgress color="secondary" />}
+            {progressBarState && !selectedFile && (
+              <LinearProgress color="secondary" />
+            )}
           </Grid>
         </Grid>
       </form>
@@ -255,7 +256,9 @@ export default function Simulation({
           </Button>
         </Grid>
         <Grid item xs={12}>
-            {progressBarState && selectedFile && <LinearProgress color="secondary" />}
+          {progressBarState && selectedFile && (
+            <LinearProgress color="secondary" />
+          )}
         </Grid>
       </Grid>
     </>

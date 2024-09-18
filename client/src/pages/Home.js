@@ -216,15 +216,22 @@ export default function Home() {
   };
 
   const handlePostProcessFileUpload = async (selectedFile) => {
+    abortControllerRef.current = new AbortController();
+    const { signal } = abortControllerRef.current;
+
     const formData = new FormData();
     formData.append("csvFile", selectedFile);
     setShowProgressBar(true);
 
     try {
-      const response = await fetch("http://localhost:8080/upload-csv", {
-        method: "POST",
-        body: formData,
-      });
+      const response = await fetch(
+        "http://localhost:8080/upload-csv",
+        {
+          method: "POST",
+          body: formData,
+        },
+        signal
+      );
 
       if (!response.ok) {
         throw new Error("Error uploading file");
