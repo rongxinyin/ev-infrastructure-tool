@@ -214,7 +214,7 @@ export default function Simulation({
                 <input {...getInputProps({})} />
                 <p>
                   Optional: Upload generated, unprocessed data for
-                  post-processing.
+                  post-processing
                 </p>
                 {selectedFile && (
                   <Typography variant="body2" sx={{ marginTop: 2 }}>
@@ -237,7 +237,7 @@ export default function Simulation({
             }}
             disabled={!selectedFile}
           >
-            Submit
+            Run
           </Button>
         </Grid>
         <Grid item xs={6}>
