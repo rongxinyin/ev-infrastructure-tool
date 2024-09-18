@@ -200,7 +200,7 @@ export default function Simulation({
           </Typography>
         </Grid>
         <Grid item xs={12}>
-          <Dropzone onDrop={handleDrop}>
+          <Dropzone onDrop={handleDrop} accept={{ 'text/csv': ['.csv'] }}>
             {({ getRootProps, getInputProps }) => (
               <div
                 {...getRootProps()}
