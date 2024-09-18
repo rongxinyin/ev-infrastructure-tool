@@ -4,7 +4,7 @@ import { parse } from "csv-parse";
 import { stringify } from "csv-stringify/sync";
 import multer from "multer";
 import fs from "fs";
-import path from 'path';
+import path from "path";
 
 const router = express.Router();
 
@@ -220,7 +220,9 @@ router.post("/process-fleet-simulation", (req, res) => {
 
 router.post("/upload-csv", upload.single("csvFile"), (req, res) => {
   const csvData = req.file.buffer.toString();
-  const tempFilePath = path.join('./python-backend/scripts/post-process/temp/vehicle_status_normal_temp.csv');
+  const tempFilePath = path.join(
+    "./python-backend/scripts/post-process/temp/vehicle_status_normal_temp.csv"
+  );
   fs.writeFileSync(tempFilePath, csvData);
 
   const python = spawn(getPythonCommand(), [
@@ -238,12 +240,10 @@ router.post("/upload-csv", upload.single("csvFile"), (req, res) => {
     if (errorOccurred) {
       res.status(500).send({ status: "error", message: "Python script error" });
     } else {
-        console.error(`Error generating one or more CSV files`);
-        res.send("success")
-      }
-    });
-
-
+      console.error(`Error generating one or more CSV files`);
+      res.send("success");
+    }
+  });
 });
 
 export default router;
