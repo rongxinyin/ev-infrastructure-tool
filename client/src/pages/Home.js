@@ -215,7 +215,7 @@ export default function Home() {
     }
   };
 
-  const handlePostProcessFileUpload = async (selectedFile) => {
+  const getPostProcessData = async (selectedFile) => {
     abortControllerRef.current = new AbortController();
     const { signal } = abortControllerRef.current;
 
@@ -225,7 +225,7 @@ export default function Home() {
 
     try {
       const response = await fetch(
-        "http://localhost:8080/upload-csv",
+        "http://localhost:8080/post-process",
         {
           method: "POST",
           body: formData,
@@ -390,7 +390,7 @@ export default function Home() {
               onFormSubmit={handleSimulationConfigFormSubmit}
               progressBarState={showProgressBar}
               terminateProcess={terminateGetSimulationData}
-              handleFileUpload={handlePostProcessFileUpload}
+              handleFileUpload={getPostProcessData}
               mode={mode}
             />
           )}
