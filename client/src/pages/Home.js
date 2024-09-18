@@ -234,6 +234,7 @@ export default function Home() {
       );
 
       if (!response.ok) {
+        setShowProgressBar(false);
         handleClickOpenPopup("Error", "Error uploading file");
         throw new Error("Error uploading file");
       }
@@ -255,6 +256,7 @@ export default function Home() {
       window.URL.revokeObjectURL(url);
     } catch (error) {
       console.error(error);
+      setShowProgressBar(false);
       handleClickOpenPopup("Error", "Abort error");
 
     }

@@ -239,9 +239,16 @@ router.post("/upload-csv", upload.single("csvFile"), (req, res) => {
     //   return res.status(500).send({ status: "error", message: "Python script error" });
     // }
 
+    fs.unlink(tempFilePath, (err) => {
+      if (err) {
+        console.error("Error deleting temporary file:", err);
+      } else {
+        console.log(`Deleted temporary file: ${tempFilePath}`);
+      }});
+
     // create zip file
     const output = fs.createWriteStream(zipPath);
-    const archive = archiver("zip", { zlib: { level: 0 } });
+    const archive = archiver("zip", { zlib: { level: 0 } }); // level refers to compression level (0 for no compression, 9 for max compression)
 
     output.on("close", () => {
       res.download(zipPath, "files.zip", (err) => {
