@@ -5,6 +5,7 @@ import { stringify } from "csv-stringify/sync";
 import multer from "multer";
 import fs from "fs";
 import path from "path";
+import archiver from "archiver";
 
 const router = express.Router();
 
@@ -220,14 +221,15 @@ router.post("/process-fleet-simulation", (req, res) => {
 
 router.post("/upload-csv", upload.single("csvFile"), (req, res) => {
   const csvData = req.file.buffer.toString();
-  const tempFilePath = path.join(
-    "./python-backend/scripts/post-process/temp/vehicle_status_normal_temp.csv"
-  );
+  const directoryPath = path.join("./python-backend/scripts/post-process/temp");
+  const zipPath = path.join(directoryPath, "files.zip");
+  const tempFilePath = path.join(directoryPath, "vehicle_status_normal_temp.csv");
+
+  // Write the uploaded CSV data to a temp file
   fs.writeFileSync(tempFilePath, csvData);
 
-  const python = spawn(getPythonCommand(), [
-    "./python-backend/scripts/post-process/output-analysis.py",
-  ]);
+  // Spawn the Python script
+  const python = spawn(getPythonCommand(), ["./python-backend/scripts/post-process/output-analysis.py"]);
 
   let errorOccurred = false;
 
@@ -237,13 +239,47 @@ router.post("/upload-csv", upload.single("csvFile"), (req, res) => {
   });
 
   python.on("close", (code) => {
-    if (errorOccurred) {
-      res.status(500).send({ status: "error", message: "Python script error" });
-    } else {
-      console.error(`Error generating one or more CSV files`);
-      res.send("success");
-    }
+    // if (errorOccurred) {
+    //   return res.status(500).send({ status: "error", message: "Python script error" });
+    // } 
+
+    // Python script finished successfully, create ZIP file
+    const output = fs.createWriteStream(zipPath);
+    const archive = archiver("zip", { zlib: { level: 0 } });
+
+    output.on("close", () => {
+      res.download(zipPath, "files.zip", (err) => {
+        if (err) {
+          console.error(err);
+        }
+        // // Clean up the ZIP file after download
+        // fs.unlinkSync(zipPath);
+      });
+    });
+
+    archive.on("error", (err) => {
+      console.error(err);
+      res.status(500).send({ status: "error", message: "Error creating ZIP file" });
+    });
+
+    archive.pipe(output);
+
+    // Append files from the existing directory to the ZIP
+    fs.readdirSync(directoryPath).forEach((file) => {
+      const filePath = path.join(directoryPath, file);
+      archive.file(filePath, { name: file });
+    });
+
+    archive.finalize();
+
+    // Handle request abort event
+    req.on("aborted", () => {
+      console.log("Request aborted by the client");
+      // Cleanup if necessary
+      output.end();
+    });
   });
 });
+
 
 export default router;
