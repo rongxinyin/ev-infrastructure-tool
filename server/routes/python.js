@@ -219,25 +219,15 @@ router.post("/upload-csv", upload.single("csvFile"), (req, res) => {
     "vehicle_status_normal_temp.csv"
   );
 
-  // Write the uploaded CSV data to a temp file
+  // write the uploaded CSV data to a temp file
   fs.writeFileSync(tempFilePath, csvData);
 
-  // Spawn the Python script
   const python = spawn(getPythonCommand(), [
     "./python-backend/scripts/post-process/output-analysis.py",
   ]);
 
-  let errorOccurred = false;
-
-  python.stderr.on("data", (data) => {
-    errorOccurred = true;
-    console.error(`stderr: ${data}`);
-  });
-
   python.on("close", (code) => {
-    // if (errorOccurred) {
-    //   return res.status(500).send({ status: "error", message: "Python script error" });
-    // }
+
 
     fs.unlink(tempFilePath, (err) => {
       if (err) {
