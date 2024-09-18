@@ -218,7 +218,7 @@ export default function Home() {
   const terminateGetSimulationData = () => {
     console.log("Terminating fetch request");
     if (abortControllerRef.current) {
-      abortControllerRef.current.abort(); // Abort the fetch request
+      abortControllerRef.current.abort(); // abort the fetch request
       setShowProgressBar(false);
       handleClickOpenPopup("Terminated", "Request successfully terminated");
     }

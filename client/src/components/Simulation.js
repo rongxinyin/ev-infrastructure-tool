@@ -265,7 +265,7 @@ export default function Simulation({
         </Grid>
         <Grid item xs={6}>
           <Button
-            onClick={handleUpload}
+            onClick={terminateProcess}
             variant="contained"
             color="primary"
             sx={{
