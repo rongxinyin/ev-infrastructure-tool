@@ -248,18 +248,33 @@ router.post("/upload-csv", upload.single("csvFile"), (req, res) => {
     //   return res.status(500).send({ status: "error", message: "Python script error" });
     // }
 
-    // Python script finished successfully, create ZIP file
+    // create zip file
     const output = fs.createWriteStream(zipPath);
     const archive = archiver("zip", { zlib: { level: 0 } });
 
     output.on("close", () => {
-      // Ensure the file is sent only after the ZIP archive is finalized
       res.download(zipPath, "files.zip", (err) => {
         if (err) {
           console.error(err);
         }
-        // // Clean up the ZIP file after download
-        // fs.unlinkSync(zipPath);
+
+        fs.readdir(directoryPath, (err, files) => {
+          if (err) {
+            console.error("Unable to scan directory:", err);
+            return;
+          }
+
+          files.forEach((file) => {
+            const filePath = path.join(directoryPath, file);
+            fs.unlink(filePath, (err) => {
+              if (err) {
+                console.error("Error deleting file:", err);
+              } else {
+                console.log(`Deleted file: ${filePath}`);
+              }
+            });
+          });
+        });
       });
     });
 
@@ -272,7 +287,6 @@ router.post("/upload-csv", upload.single("csvFile"), (req, res) => {
 
     archive.pipe(output);
 
-    // Append files from the existing directory to the ZIP
     fs.readdirSync(directoryPath).forEach((file) => {
       const filePath = path.join(directoryPath, file);
       archive.file(filePath, { name: file });
@@ -283,7 +297,6 @@ router.post("/upload-csv", upload.single("csvFile"), (req, res) => {
     // Handle request abort event
     req.on("aborted", () => {
       console.log("Request aborted by the client");
-      // Cleanup if necessary
       output.end();
     });
   });
