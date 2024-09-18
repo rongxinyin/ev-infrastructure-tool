@@ -220,30 +220,13 @@ router.post("/process-fleet-simulation", (req, res) => {
 
 router.post("/upload-csv", upload.single("csvFile"), (req, res) => {
   const csvData = req.file.buffer.toString();
-  const tempFilePath = path.join('./python-backend/scripts/post-process/vehicle_status_normal_temp.csv');
+  const tempFilePath = path.join('./python-backend/scripts/post-process/temp/vehicle_status_normal_temp.csv');
   fs.writeFileSync(tempFilePath, csvData);
-  // console.log(csvData);
 
-  // Execute the Python script
-  // const pythonProcess = spawn(getPythonCommand(), [
-  //   "./python-backend/scripts/post-process/output-analysis.py",
-  //   csvData,
-  // ]);
+  const python = spawn(getPythonCommand(), [
+    "./python-backend/scripts/post-process/output-analysis.py",
+  ]);
 
-  // pythonProcess.stdout.on("data", (data) => {
-  //   console.log(`stdout: ${data}`);
-  //   // Handle the script's output here
-  // });
-
-  // pythonProcess.stderr.on("data", (data) => {
-  //   console.error(`stderr: ${data}`);
-  //   // Handle any errors from the script
-  // });
-
-  // pythonProcess.on("close", (code) => {
-  //   console.log(`child process exited with code ${code}`);
-  //   res.send("CSV file processed successfully");
-  // });
 });
 
 export default router;
