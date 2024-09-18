@@ -2,8 +2,13 @@ import { spawn, execSync } from "child_process";
 import express from "express";
 import { parse } from "csv-parse";
 import { stringify } from "csv-stringify/sync";
+import multer from "multer";
+import fs from "fs";
+import path from "path";
+import archiver from "archiver";
 
 const router = express.Router();
+const upload = multer();
 
 // handle cases where different paths use python vs python3 keyword
 function getPythonCommand() {
@@ -20,6 +25,7 @@ function getPythonCommand() {
   }
 }
 
+// fleet/employee info page submissison
 router.post("/process-employee-data", (req, res) => {
   const input = JSON.stringify(req.body);
 
@@ -58,6 +64,7 @@ router.post("/process-employee-data", (req, res) => {
   });
 });
 
+// simulation -- employee
 router.post("/process-employee-simulation", (req, res) => {
   const employeeCommuteData = JSON.stringify(req.body.data);
   const startTime = req.body.start_time;
@@ -65,8 +72,6 @@ router.post("/process-employee-simulation", (req, res) => {
   const l2ChargingPower = req.body.l2_charging_power;
   const l3ChargingPower = req.body.l3_charging_power;
   const adoptionRate = req.body.adoption_rate;
-
-  // console.log(JSON.stringify(req.body))
 
   const python = spawn(getPythonCommand(), [
     "./python-backend/scripts/pov-charging-management.py",
@@ -96,36 +101,41 @@ router.post("/process-employee-simulation", (req, res) => {
     } else {
       console.log(`Python script output: ${dataToSend}`);
 
-      try {
-        // assuming the Python script returns CSV data as a string
-        parse(dataToSend, { columns: true }, (err, records) => {
-          if (err) {
-            console.error(`Error parsing CSV: ${err.message}`);
-            res
-              .status(500)
-              .send({ status: "error", message: "Invalid CSV output" });
-          } else {
-            const csvOutput = stringify(records, { header: true });
+      let filteredData = "";
+      let skippedRows = 0;
 
-            // send csv to client
-            res.setHeader("Content-Type", "text/csv");
-            res.setHeader(
-              "Content-Disposition",
-              'attachment; filename="data.csv"'
-            );
-            res.send(csvOutput);
-          }
-        });
-      } catch (e) {
-        console.error(`Error handling CSV: ${e.message}`);
-        res
-          .status(500)
-          .send({ status: "error", message: "Error handling CSV data" });
+      // split data into lines (assuming each row is a new line)
+      const lines = dataToSend.split("\n");
+
+      for (let i = 0; i < lines.length; i++) {
+        const row = lines[i];
+
+        // split the row by delimiter (assuming comma)
+        const columns = row.split(",");
+
+        // check if there are less than 13 columns
+        if (columns.length < 13) {
+          skippedRows++;
+          console.warn(`Skipping row ${i + 1} (has ${columns.length} columns)`);
+        } else {
+          // add the row to the filtered data if it has 13 columns
+          filteredData += row + "\n";
+        }
       }
+
+      if (skippedRows > 0) {
+        console.warn(`Skipped a total of ${skippedRows} rows.`);
+      }
+
+      // s the filtered data
+      res.setHeader("Content-Type", "text/csv");
+      res.setHeader("Content-Disposition", 'attachment; filename="data.csv"');
+      res.send(filteredData);
     }
   });
 });
 
+// simulation -- fleet
 router.post("/process-fleet-simulation", (req, res) => {
   const employeeCommuteData = JSON.stringify(req.body.data);
   const startTime = req.body.start_time;
@@ -133,8 +143,6 @@ router.post("/process-fleet-simulation", (req, res) => {
   const l2ChargingPower = req.body.l2_charging_power;
   const l3ChargingPower = req.body.l3_charging_power;
   const adoptionRate = req.body.adoption_rate;
-
-  // console.log(JSON.stringify(req.body))
 
   const python = spawn(getPythonCommand(), [
     "./python-backend/scripts/fleet-charging-management.py",
@@ -168,33 +176,120 @@ router.post("/process-fleet-simulation", (req, res) => {
     } else {
       console.log(`Python script output: ${dataToSend}`);
 
-      try {
-        // assuming the Python script returns CSV data as a string
-        parse(dataToSend, { columns: true }, (err, records) => {
-          if (err) {
-            console.error(`Error parsing CSV: ${err.message}`);
-            res
-              .status(500)
-              .send({ status: "error", message: "Invalid CSV output" });
-          } else {
-            const csvOutput = stringify(records, { header: true });
+      let filteredData = "";
+      let skippedRows = 0;
 
-            // send csv to client
-            res.setHeader("Content-Type", "text/csv");
-            res.setHeader(
-              "Content-Disposition",
-              'attachment; filename="data.csv"'
-            );
-            res.send(csvOutput);
+      // split data into lines (assuming each row is a new line)
+      const lines = dataToSend.split("\n");
+
+      for (let i = 0; i < lines.length; i++) {
+        const row = lines[i];
+
+        // split the row by delimiter (assuming comma)
+        const columns = row.split(",");
+
+        // check if there are less than 13 columns
+        if (columns.length < 13) {
+          skippedRows++;
+          console.warn(`Skipping row ${i + 1} (has ${columns.length} columns)`);
+        } else {
+          // add the row to the filtered data if it has 13 columns
+          filteredData += row + "\n";
+        }
+      }
+
+      if (skippedRows > 0) {
+        console.warn(`Skipped a total of ${skippedRows} rows.`);
+      }
+
+      // send the filtered data
+      res.setHeader("Content-Type", "text/csv");
+      res.setHeader("Content-Disposition", 'attachment; filename="data.csv"');
+      res.send(filteredData);
+    }
+  });
+});
+
+// post processing data generated from simulation
+router.post("/post-process", upload.single("csvFile"), (req, res) => {
+  const csvData = req.file.buffer.toString();
+  const directoryPath = path.join("./python-backend/scripts/post-process/temp");
+  const zipPath = path.join(directoryPath, "files.zip");
+  const tempFilePath = path.join(
+    directoryPath,
+    "vehicle_status_normal_temp.csv"
+  );
+  const deleteFiles = () => {
+    fs.readdir(directoryPath, (err, files) => {
+      if (err) {
+        console.error("Unable to scan directory:", err);
+        return;
+      }
+
+      files.forEach((file) => {
+        const filePath = path.join(directoryPath, file);
+        fs.unlink(filePath, (err) => {
+          if (err) {
+            console.error("Error deleting file:", err);
+          } else {
+            console.log(`Deleted file: ${filePath}`);
           }
         });
-      } catch (e) {
-        console.error(`Error handling CSV: ${e.message}`);
-        res
-          .status(500)
-          .send({ status: "error", message: "Error handling CSV data" });
+      });
+    });
+  };
+
+  // write the uploaded CSV data to a temp file
+  fs.writeFileSync(tempFilePath, csvData);
+
+  const python = spawn(getPythonCommand(), [
+    "./python-backend/scripts/post-process/output-analysis.py",
+  ]);
+
+  python.on("close", (code) => {
+    fs.unlink(tempFilePath, (err) => {
+      if (err) {
+        console.error("Error deleting temporary file:", err);
+      } else {
+        console.log(`Deleted temporary file: ${tempFilePath}`);
       }
-    }
+    });
+
+    // create zip file
+    const output = fs.createWriteStream(zipPath);
+    const archive = archiver("zip", { zlib: { level: 0 } }); // level refers to compression level (0 for no compression, 9 for max compression)
+
+    output.on("close", () => {
+      res.download(zipPath, "files.zip", (err) => {
+        if (err) {
+          console.error(err);
+        }
+
+        deleteFiles();
+      });
+    });
+
+    archive.on("error", (err) => {
+      console.error(err);
+      res
+        .status(500)
+        .send({ status: "error", message: "Error creating ZIP file" });
+    });
+
+    archive.pipe(output);
+
+    fs.readdirSync(directoryPath).forEach((file) => {
+      const filePath = path.join(directoryPath, file);
+      archive.file(filePath, { name: file });
+    });
+
+    archive.finalize();
+
+    // Handle request abort event
+    req.on("aborted", () => {
+      console.log("Request aborted by the client");
+      output.end();
+    });
   });
 });
 

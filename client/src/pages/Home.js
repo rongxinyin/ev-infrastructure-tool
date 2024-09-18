@@ -189,7 +189,7 @@ export default function Home() {
 
       const a = document.createElement("a");
       a.href = url;
-      a.download = "data.csv";
+      a.download = `vehicle_status_normal_${simulationConfigData.adoption_rate}.csv`;
       document.body.appendChild(a);
       a.click(); // initiate download
       setShowProgressBar(false);
@@ -215,10 +215,66 @@ export default function Home() {
     }
   };
 
+  const getPostProcessData = async (selectedFile) => {
+    abortControllerRef.current = new AbortController();
+    const { signal } = abortControllerRef.current;
+
+    const formData = new FormData();
+    formData.append("csvFile", selectedFile);
+    setShowProgressBar(true);
+
+    try {
+      const response = await fetch("http://localhost:8080/post-process", {
+        method: "POST",
+        body: formData,
+        signal: signal,
+      });
+
+      if (!response.ok) {
+        setShowProgressBar(false);
+        handleClickOpenPopup("Error", "Error uploading file");
+        throw new Error("Error uploading file");
+      }
+
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+
+      const now = new Date();
+
+      const year = now.getFullYear();
+      const month = String(now.getMonth() + 1).padStart(2, "0");
+      const day = String(now.getDate()).padStart(2, "0");
+      const hours = String(now.getHours()).padStart(2, "0");
+      const minutes = String(now.getMinutes()).padStart(2, "0");
+      const seconds = String(now.getSeconds()).padStart(2, "0");
+
+      const a = document.createElement("a");
+      a.href = url;
+      a.setAttribute(
+        "download",
+        `post-process${year}.${month}.${day}.${hours}.${minutes}.${seconds}.zip`
+      );
+      document.body.appendChild(a);
+      a.click();
+      setShowProgressBar(false);
+      handleClickOpenPopup(
+        "Success",
+        "Post-processed data successfully downloaded"
+      );
+
+      a.parentNode.removeChild(a);
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error(error);
+      setShowProgressBar(false);
+      handleClickOpenPopup("Error", "Abort error");
+    }
+  };
+
   const terminateGetSimulationData = () => {
     console.log("Terminating fetch request");
     if (abortControllerRef.current) {
-      abortControllerRef.current.abort(); // Abort the fetch request
+      abortControllerRef.current.abort(); // abort the fetch request
       setShowProgressBar(false);
       handleClickOpenPopup("Terminated", "Request successfully terminated");
     }
@@ -342,6 +398,7 @@ export default function Home() {
               onFormSubmit={handleSimulationConfigFormSubmit}
               progressBarState={showProgressBar}
               terminateProcess={terminateGetSimulationData}
+              handleFileUpload={getPostProcessData}
               mode={mode}
             />
           )}
