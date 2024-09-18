@@ -234,6 +234,7 @@ export default function Home() {
       );
 
       if (!response.ok) {
+        handleClickOpenPopup("Error", "Error uploading file");
         throw new Error("Error uploading file");
       }
 
@@ -246,11 +247,16 @@ export default function Home() {
       document.body.appendChild(a);
       a.click();
       setShowProgressBar(false);
+      handleClickOpenPopup("Success", "Post-processed data successfully downloaded"
+      );
+
 
       a.parentNode.removeChild(a);
       window.URL.revokeObjectURL(url);
     } catch (error) {
       console.error(error);
+      handleClickOpenPopup("Error", "Abort error");
+
     }
   };
 
