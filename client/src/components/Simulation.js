@@ -24,6 +24,7 @@ export default function Simulation({
   onFormSubmit,
   progressBarState,
   terminateProcess,
+  handleFileUpload,
   mode,
 }) {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -67,34 +68,9 @@ export default function Simulation({
   };
 
   const handleUpload = async () => {
-    const formData = new FormData();
-    formData.append("csvFile", selectedFile);
+    handleFileUpload(selectedFile);
+  }
 
-    try {
-      const response = await fetch("http://localhost:8080/upload-csv", {
-        method: "POST",
-        body: formData,
-      });
-
-      if (!response.ok) {
-        throw new Error("Error uploading file");
-      }
-
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
-
-      const link = document.createElement("a");
-      link.href = url;
-      link.setAttribute("download", "files.zip");
-      document.body.appendChild(link);
-      link.click();
-
-      link.parentNode.removeChild(link);
-      window.URL.revokeObjectURL(url);
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
   return (
     <>
@@ -212,7 +188,7 @@ export default function Simulation({
             </Grid>
           </Grid>
           <Grid item xs={12}>
-            {progressBarState && <LinearProgress color="secondary" />}
+            {progressBarState && !selectedFile && <LinearProgress color="secondary" />}
           </Grid>
         </Grid>
       </form>
@@ -277,6 +253,9 @@ export default function Simulation({
           >
             Terminate
           </Button>
+        </Grid>
+        <Grid item xs={12}>
+            {progressBarState && selectedFile && <LinearProgress color="secondary" />}
         </Grid>
       </Grid>
     </>

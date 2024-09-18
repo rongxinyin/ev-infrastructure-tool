@@ -215,6 +215,38 @@ export default function Home() {
     }
   };
 
+  const handlePostProcessFileUpload = async (selectedFile) => {
+    const formData = new FormData();
+    formData.append("csvFile", selectedFile);
+    setShowProgressBar(true);
+
+    try {
+      const response = await fetch("http://localhost:8080/upload-csv", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error("Error uploading file");
+      }
+
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+
+      const a = document.createElement("a");
+      a.href = url;
+      a.setAttribute("download", "files.zip");
+      document.body.appendChild(a);
+      a.click();
+      setShowProgressBar(false);
+
+      a.parentNode.removeChild(a);
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const terminateGetSimulationData = () => {
     console.log("Terminating fetch request");
     if (abortControllerRef.current) {
@@ -342,6 +374,7 @@ export default function Home() {
               onFormSubmit={handleSimulationConfigFormSubmit}
               progressBarState={showProgressBar}
               terminateProcess={terminateGetSimulationData}
+              handleFileUpload={handlePostProcessFileUpload}
               mode={mode}
             />
           )}
