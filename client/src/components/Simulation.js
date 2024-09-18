@@ -69,33 +69,33 @@ export default function Simulation({
   const handleUpload = async () => {
     const formData = new FormData();
     formData.append("csvFile", selectedFile);
-  
+
     try {
       const response = await fetch("http://localhost:8080/upload-csv", {
         method: "POST",
         body: formData,
       });
-  
+
       if (!response.ok) {
         throw new Error("Error uploading file");
       }
-  
+
       const blob = await response.blob();
       const url = window.URL.createObjectURL(blob);
-  
+
       const link = document.createElement("a");
       link.href = url;
       link.setAttribute("download", "files.zip");
       document.body.appendChild(link);
       link.click();
-  
+
       link.parentNode.removeChild(link);
       window.URL.revokeObjectURL(url);
     } catch (error) {
       console.error(error);
     }
   };
-  
+
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -223,17 +223,60 @@ export default function Simulation({
           </Typography>
         </Grid>
         <Grid item xs={12}>
-          <Dropzone onDrop={handleDrop} accept=".csv">
+          <Dropzone onDrop={handleDrop}>
             {({ getRootProps, getInputProps }) => (
-              <div {...getRootProps() } style={{textAlign: "center", padding: 10, backgroundColor: "#f5f5f5", border: '2px dashed #c3c3c3'}}>
-                <input {...getInputProps({ accept: '.csv' })}/>
-                <p> Optional: Upload generated, unprocessed data for post-processing.</p>
+              <div
+                {...getRootProps()}
+                style={{
+                  textAlign: "center",
+                  padding: 10,
+                  backgroundColor: "#f5f5f5",
+                  border: "2px dashed #c3c3c3",
+                }}
+              >
+                <input {...getInputProps({})} />
+                <p>
+                  Optional: Upload generated, unprocessed data for
+                  post-processing.
+                </p>
+                {selectedFile && (
+                  <Typography variant="body2" sx={{ marginTop: 2 }}>
+                    Uploaded file: {selectedFile.name}
+                  </Typography>
+                )}
               </div>
             )}
           </Dropzone>{" "}
-          <button onClick={handleUpload} disabled={!selectedFile}>
+        </Grid>
+        <Grid item xs={6}>
+          <Button
+            onClick={handleUpload}
+            variant="contained"
+            color="primary"
+            sx={{
+              marginTop: 0,
+              marginBottom: 0,
+              width: "100%",
+            }}
+            disabled={!selectedFile}
+          >
             Submit
-          </button>
+          </Button>
+        </Grid>
+        <Grid item xs={6}>
+          <Button
+            onClick={handleUpload}
+            variant="contained"
+            color="primary"
+            sx={{
+              marginTop: 0,
+              marginBottom: 0,
+              width: "100%",
+            }}
+            disabled={!selectedFile}
+          >
+            Terminate
+          </Button>
         </Grid>
       </Grid>
     </>

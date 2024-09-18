@@ -223,13 +223,18 @@ router.post("/upload-csv", upload.single("csvFile"), (req, res) => {
   const csvData = req.file.buffer.toString();
   const directoryPath = path.join("./python-backend/scripts/post-process/temp");
   const zipPath = path.join(directoryPath, "files.zip");
-  const tempFilePath = path.join(directoryPath, "vehicle_status_normal_temp.csv");
+  const tempFilePath = path.join(
+    directoryPath,
+    "vehicle_status_normal_temp.csv"
+  );
 
   // Write the uploaded CSV data to a temp file
   fs.writeFileSync(tempFilePath, csvData);
 
   // Spawn the Python script
-  const python = spawn(getPythonCommand(), ["./python-backend/scripts/post-process/output-analysis.py"]);
+  const python = spawn(getPythonCommand(), [
+    "./python-backend/scripts/post-process/output-analysis.py",
+  ]);
 
   let errorOccurred = false;
 
@@ -260,7 +265,9 @@ router.post("/upload-csv", upload.single("csvFile"), (req, res) => {
 
     archive.on("error", (err) => {
       console.error(err);
-      res.status(500).send({ status: "error", message: "Error creating ZIP file" });
+      res
+        .status(500)
+        .send({ status: "error", message: "Error creating ZIP file" });
     });
 
     archive.pipe(output);
@@ -281,6 +288,5 @@ router.post("/upload-csv", upload.single("csvFile"), (req, res) => {
     });
   });
 });
-
 
 export default router;
