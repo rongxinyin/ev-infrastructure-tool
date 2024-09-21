@@ -14,7 +14,11 @@ app.use(cors({ origin: true, credentials: true }));
 app.use(express.json());
 dotenv.config();
 
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: "1gb" }));
+app.use(bodyParser.urlencoded({ limit: "1gb" }));
+app.use(express.json({ limit: "1gb" }));
+app.use(express.urlencoded({ limit: "1gb", extended: true }));
+
 app.use("/", pythonRoutes);
 
 //listener

@@ -9,8 +9,11 @@ from utilities.pattern_generator import create_driving_pattern
 from models.vehicle import Vehicle
 from models.charging_station import ChargingStation
 
-def run_charging_management(site_id, driving_pattern_data, start_time, run_period=30, l2_max_rate=19.2, l3_max_rate=60.0, adoption_rate=0.1):
-    site_pov_vehicles = [vehicle_info for vehicle_info in driving_pattern_data if vehicle_info['parking_lot'] == site_id and vehicle_info['distance']['value'] < 100 * 1609]
+def run_charging_management(site_id, driving_pattern_input, start_time, run_period=30, l2_max_rate=19.2, l3_max_rate=60.0, adoption_rate=0.1):
+    with open(driving_pattern_input, 'r') as file:
+        fleet_driving_patterns = json.load(file)
+
+    site_pov_vehicles = [vehicle_info for vehicle_info in fleet_driving_patterns if vehicle_info['parking_lot'] == site_id and vehicle_info['distance']['value'] < 100 * 1609]
     selected_vehicles = rank_and_select_vehicles(site_pov_vehicles, adoption_rate)
     ev_pov_vehicles = [Vehicle(vehicle_info, 80) for vehicle_info in selected_vehicles]
 
@@ -61,33 +64,35 @@ def run_charging_management(site_id, driving_pattern_data, start_time, run_perio
     return results
 
 if __name__ == "__main__":
-    test_folder = '~/github/ev-infrastructure-tool/python-backend/tests'
+    test_folder = '~/Desktop/ev-infrastructure-tool/server/python-backend/tests'
     for parking_lot in ['bldg-90']:
         test_path = os.path.expanduser(test_folder)
         site_path = os.path.join(test_path, parking_lot)
         os.makedirs(site_path, exist_ok=True)
 
-        input_data = sys.argv[1] # first argument after the filename
-        start_time = datetime.datetime.strptime(sys.argv[2], "%Y-%m-%d %H:%M:%S")
-        run_period = int(sys.argv[3])
-        l2_max_rate = float(sys.argv[4])
-        l3_max_rate = float(sys.argv[5])
-        adoption_rate = float(sys.argv[6])
-
-        pov_driving_patterns = json.loads(input_data)
-
-        # add home charging information to the json data
-        add_home_charging(pov_driving_patterns)
-
+        # Create a list of json data for each vehicle and dump to json file
         driving_pattern_data = []
-        for row in pov_driving_patterns:
-            if row['parking_lot'] == parking_lot:
-                driving_pattern_data.append(create_driving_pattern(row, scenario='normal'))
+        with open(os.path.join('../tests/pov_driving_pattern.json'), 'w') as f: # TODO: fix path
+            # Load employee commute survey json data
+            with open(os.path.join('../tests/update_employee_commute.json'), 'r') as file:
+                pov_driving_patterns = json.load(file)
 
-        results = run_charging_management(parking_lot, driving_pattern_data, start_time=start_time, run_period=run_period, l2_max_rate=l2_max_rate, l3_max_rate=l3_max_rate, adoption_rate=adoption_rate)
+            # Add home charging information to the json data
+            add_home_charging(pov_driving_patterns)
+
+            for row in pov_driving_patterns:
+                if row['parking_lot'] == parking_lot:
+                    driving_pattern_data.append(create_driving_pattern(row, scenario='normal'))
+            # dump to json file
+            json.dump(driving_pattern_data, f)
+
+        adoption_rate = 0.36
+        results = run_charging_management(parking_lot, '../tests/pov_driving_pattern.json', start_time=datetime.datetime(2024, 2, 1), run_period=30, l2_max_rate=7.0, l3_max_rate=50.0, adoption_rate=adoption_rate)
+        results.to_csv(os.path.join(site_path, f'pov_vehicle_status_{adoption_rate}.csv'), index=False)
+
+
+
+
         
 
-        print(results.to_csv(sep=',', index=False, float_format='%.2f'))  # Use tab delimiter and format floats
-
-
-
+        

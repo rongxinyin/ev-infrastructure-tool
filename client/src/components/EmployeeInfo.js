@@ -14,6 +14,7 @@ import {
   InputLabel,
   FormControl,
   TableContainer,
+  Fab,
   Paper,
   Tooltip,
 } from "@mui/material";
@@ -123,7 +124,7 @@ export default function EmployeeInfo({ onFormSubmit, handlePopup, mode }) {
               return_home_time: row[5] || "",
               home_charging: row[6] || "",
               id: Math.random().toString(36).substring(2, 15),
-              parking_lot: "bldg-90",
+              parking_lot: "bldg-90", // TODO: don't hardcode
             };
           });
           setEmployees(employeesFromCsv);
@@ -246,53 +247,34 @@ export default function EmployeeInfo({ onFormSubmit, handlePopup, mode }) {
               </Grid>
             </Grid>
             <Grid item xs={12}>
-              <Grid container justifyContent="flex-end" spacing={1}>
-                <Grid item>
-                  <Tooltip title="Add Row">
-                    <Button
-                      color="secondary"
-                      aria-label="add"
-                      onClick={handleAddRow}
-                      sx={{ fontSize: '1.25rem' }} // Increased font size
-                      variant="contained"
-                    >
-                      +
-                    </Button>
-                  </Tooltip>
-                </Grid>
-                <Grid item>
-                  <Tooltip title="Delete Last Row">
-                    <Button
-                      color="secondary"
-                      aria-label="delete"
-                      onClick={handleDeleteLastRow}
-                      sx={{ fontSize: '1.25rem' }} // Increased font size
-                      variant="contained"
-                    >
-                      -
-                    </Button>
-                  </Tooltip>
-                </Grid>
-                <Grid item>
-                  <Tooltip title="Upload File">
-                    <Button
-                      color="secondary"
-                      aria-label="upload"
-                      sx={{ fontSize: '1.25rem' }} // Increased font size
-                      variant="contained"
-                    >
-                      <label>
-                        <input
-                          type="file"
-                          accept=".csv"
-                          onChange={handleUploadFile}
-                          style={{ display: "none" }}
-                        />
-                        📤
-                      </label>
-                    </Button>
-                  </Tooltip>
-                </Grid>
+              <Grid container justifyContent="flex-end">
+                <Tooltip title="Add Row">
+                  <Fab color="primary" aria-label="add" onClick={handleAddRow}>
+                    +
+                  </Fab>
+                </Tooltip>
+                <Tooltip title="Delete Last Row">
+                  <Fab
+                    color="secondary"
+                    aria-label="delete"
+                    onClick={handleDeleteLastRow}
+                  >
+                    -
+                  </Fab>
+                </Tooltip>
+                <Tooltip title="Upload CSV File">
+                  <Fab color="default" aria-label="upload">
+                    <label>
+                      <input
+                        type="file"
+                        accept=".csv"
+                        onChange={handleUploadFile}
+                        style={{ display: "none" }}
+                      />
+                      📤
+                    </label>
+                  </Fab>
+                </Tooltip>
               </Grid>
             </Grid>
             <Grid item xs={12}>
