@@ -13,7 +13,6 @@ import {
   MenuItem,
   InputLabel,
   FormControl,
-  Fab,
   TableContainer,
   Paper,
   Tooltip,
@@ -39,7 +38,7 @@ export default function EmployeeInfo({ onFormSubmit, handlePopup, mode }) {
 
   const checkNotEmpty = (employeeData) => {
     for (var key in employeeData) {
-      if (employeeData[key] == "" || employeeData[key] == null) {
+      if (employeeData[key] === "" || employeeData[key] === null) {
         return false;
       }
     }
@@ -92,7 +91,7 @@ export default function EmployeeInfo({ onFormSubmit, handlePopup, mode }) {
         homeCharging: "",
       });
     } else {
-      handlePopup("Erorr", "One or more inputs are empty");
+      handlePopup("Error", "One or more inputs are empty");
     }
   };
 
@@ -101,7 +100,7 @@ export default function EmployeeInfo({ onFormSubmit, handlePopup, mode }) {
   };
 
   const isValidDate = (date) => {
-    return date != null;
+    return date !== null;
   };
 
   const handleUploadFile = (e) => {
@@ -235,7 +234,6 @@ export default function EmployeeInfo({ onFormSubmit, handlePopup, mode }) {
                       label="Home Charging Level"
                       onChange={handleChange}
                       fullWidth
-                      // variant="filled"
                       name="homeCharging"
                     >
                       <MenuItem value={"None"}>No Charger</MenuItem>
@@ -248,34 +246,53 @@ export default function EmployeeInfo({ onFormSubmit, handlePopup, mode }) {
               </Grid>
             </Grid>
             <Grid item xs={12}>
-              <Grid container justifyContent="flex-end">
-                <Tooltip title="Add Row">
-                  <Fab color="primary" aria-label="add" onClick={handleAddRow}>
-                    +
-                  </Fab>
-                </Tooltip>
-                <Tooltip title="Delete Last Row">
-                  <Fab
-                    color="secondary"
-                    aria-label="delete"
-                    onClick={handleDeleteLastRow}
-                  >
-                    -
-                  </Fab>
-                </Tooltip>
-                <Tooltip title="Upload File">
-                  <Fab color="default" aria-label="upload">
-                    <label>
-                      <input
-                        type="file"
-                        accept=".csv"
-                        onChange={handleUploadFile}
-                        style={{ display: "none" }}
-                      />
-                      📤
-                    </label>
-                  </Fab>
-                </Tooltip>
+              <Grid container justifyContent="flex-end" spacing={1}>
+                <Grid item>
+                  <Tooltip title="Add Row">
+                    <Button
+                      color="secondary"
+                      aria-label="add"
+                      onClick={handleAddRow}
+                      sx={{ fontSize: '1.25rem' }} // Increased font size
+                      variant="contained"
+                    >
+                      +
+                    </Button>
+                  </Tooltip>
+                </Grid>
+                <Grid item>
+                  <Tooltip title="Delete Last Row">
+                    <Button
+                      color="secondary"
+                      aria-label="delete"
+                      onClick={handleDeleteLastRow}
+                      sx={{ fontSize: '1.25rem' }} // Increased font size
+                      variant="contained"
+                    >
+                      -
+                    </Button>
+                  </Tooltip>
+                </Grid>
+                <Grid item>
+                  <Tooltip title="Upload File">
+                    <Button
+                      color="secondary"
+                      aria-label="upload"
+                      sx={{ fontSize: '1.25rem' }} // Increased font size
+                      variant="contained"
+                    >
+                      <label>
+                        <input
+                          type="file"
+                          accept=".csv"
+                          onChange={handleUploadFile}
+                          style={{ display: "none" }}
+                        />
+                        📤
+                      </label>
+                    </Button>
+                  </Tooltip>
+                </Grid>
               </Grid>
             </Grid>
             <Grid item xs={12}>
@@ -320,199 +337,6 @@ export default function EmployeeInfo({ onFormSubmit, handlePopup, mode }) {
             </Grid>
           </Grid>
         </Grid>
-        {/* <Grid container spacing={2}>
-        <Grid container spacing={2} style={{ marginTop: 50 }}>
-          <Grid item xs={3}>
-            <Typography variant="h6" align="center" gutterBottom>
-              Traveling 0-10 Miles
-            </Typography>
-          </Grid>
-          <Grid item xs={3}>
-            <Typography variant="h6" align="center" gutterBottom>
-              % with Home Charger
-            </Typography>
-          </Grid>
-          <Grid item xs={3}>
-            <Typography variant="h6" align="center" gutterBottom>
-              Trips Per Week
-            </Typography>
-          </Grid>
-          <Grid item xs={3}>
-            <Typography variant="h6" align="center" gutterBottom>
-              Avg Trip Duration (Min)
-            </Typography>
-          </Grid>
-        </Grid>
-        <Grid container spacing={2}>
-          <Grid item xs={3}>
-            <Slider
-              valueLabelDisplay="auto"
-              aria-label="0-10 Miles"
-              defaultValue={0}
-              min={1}
-              max={1000}
-            />
-          </Grid>
-
-          <Grid item xs={3}>
-            <Slider
-              valueLabelDisplay="auto"
-              aria-label="0-10 Miles"
-              defaultValue={0}
-              min={0}
-              max={100}
-            />
-          </Grid>
-
-          <Grid item xs={3}>
-            <Slider
-              valueLabelDisplay="auto"
-              aria-label="0-10 Miles"
-              defaultValue={0}
-              min={1}
-              max={200}
-            />
-          </Grid>
-
-          <Grid item xs={3}>
-            <Slider
-              valueLabelDisplay="auto"
-              aria-label="0-10 Miles"
-              defaultValue={0}
-              min={1}
-              max={120}
-            />
-          </Grid>
-        </Grid>
-        <Grid container spacing={2}>
-          <Grid item xs={3}>
-            <Typography variant="h6" align="center" gutterBottom>
-              Traveling 10-40 Miles
-            </Typography>
-          </Grid>
-          <Grid item xs={3}>
-            <Typography variant="h6" align="center" gutterBottom>
-              % with Home Charger
-            </Typography>
-          </Grid>
-          <Grid item xs={3}>
-            <Typography variant="h6" align="center" gutterBottom>
-              Trips Per Week
-            </Typography>
-          </Grid>
-          <Grid item xs={3}>
-            <Typography variant="h6" align="center" gutterBottom>
-              Avg Trip Duration (Min)
-            </Typography>
-          </Grid>
-        </Grid>
-
-        <Grid container spacing={2}>
-          <Grid item xs={3}>
-            <Slider
-              valueLabelDisplay="auto"
-              aria-label="10-40 Miles"
-              defaultValue={10}
-              min={1}
-              max={1000}
-            />
-          </Grid>
-
-          <Grid item xs={3}>
-            <Slider
-              valueLabelDisplay="auto"
-              aria-label="10-40 Miles"
-              defaultValue={10}
-              min={0}
-              max={100}
-            />
-          </Grid>
-
-          <Grid item xs={3}>
-            <Slider
-              valueLabelDisplay="auto"
-              aria-label="10-40 Miles"
-              defaultValue={10}
-              min={1}
-              max={200}
-            />
-          </Grid>
-
-          <Grid item xs={3}>
-            <Slider
-              valueLabelDisplay="auto"
-              aria-label="10-40 Miles"
-              defaultValue={10}
-              min={1}
-              max={120}
-            />
-          </Grid>
-        </Grid>
-        <Grid container spacing={2}>
-          <Grid item xs={3}>
-            <Typography variant="h6" align="center" gutterBottom>
-              Traveling 40-100 Miles
-            </Typography>
-          </Grid>
-          <Grid item xs={3}>
-            <Typography variant="h6" align="center" gutterBottom>
-              % with Home Charger
-            </Typography>
-          </Grid>
-          <Grid item xs={3}>
-            <Typography variant="h6" align="center" gutterBottom>
-              Trips Per Week
-            </Typography>
-          </Grid>
-          <Grid item xs={3}>
-            <Typography variant="h6" align="center" gutterBottom>
-              Avg Trip Duration (Min)
-            </Typography>
-          </Grid>
-        </Grid>
-
-        <Grid container spacing={2}>
-          <Grid item xs={3}>
-            <Slider
-              valueLabelDisplay="auto"
-              aria-label="40-100 Miles"
-              defaultValue={40}
-              min={1}
-              max={1000}
-            />
-          </Grid>
-
-          <Grid item xs={3}>
-            <Slider
-              valueLabelDisplay="auto"
-              aria-label="40-100 Miles"
-              defaultValue={40}
-              min={0}
-              max={100}
-            />
-          </Grid>
-
-          <Grid item xs={3}>
-            <Slider
-              valueLabelDisplay="auto"
-              aria-label="40-100 Miles"
-              defaultValue={40}
-              min={1}
-              max={200}
-            />
-          </Grid>
-
-          <Grid item xs={3}>
-            <Slider
-              valueLabelDisplay="auto"
-              aria-label="40-100 Miles"
-              defaultValue={40}
-              min={1}
-              max={120}
-            />
-          </Grid>
-        </Grid>
-      </Grid> */}
       </Grid>
     </form>
   );
