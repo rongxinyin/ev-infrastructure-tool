@@ -30,7 +30,7 @@ def generate_statistics(raw_output_path, optimal_L2, optimal_L3):
     return stats
 
 def main():
-    base_dir = os.getcwd() + '/server/python-backend/tests'
+    base_dir = os.getcwd() + "\\python-backend\\tests"
     melted_results_path = os.path.join(base_dir, 'melted_results_adoption_rate.csv')
     raw_output_path = os.path.join(base_dir, 'vehicle_status_normal_0.36.csv')
 

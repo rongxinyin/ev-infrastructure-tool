@@ -313,8 +313,9 @@ export default function EmployeeInfo({ onFormSubmit, handlePopup, mode }) {
                 fullWidth
                 type="submit"
                 sx={{ marginTop: 1 }}
+                color="secondary"
               >
-                Update
+                Save
               </Button>
             </Grid>
           </Grid>

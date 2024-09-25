@@ -8,11 +8,10 @@ const SmartCharging = () => {
   const [loading, setLoading] = useState(false);
 
   const handleRunScript = async () => {
-    console.log("Button clicked, running script...");
     setLoading(true);
     try {
       const response = await axios.post(
-        "http://localhost:3000/run-smart-charging"
+        "http://localhost:8080/run-smart-charging"
       );
       console.log("Response from backend:", response.data);
       const result = response.data;
@@ -30,16 +29,15 @@ const SmartCharging = () => {
   };
 
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={0} style={{ marginTop: 0, marginLeft: 10 }}>
       <Grid item xs={12}>
-        <Typography variant="h4" sx={{ marginTop: 0, marginBottom: 2 }}>
-          Smart Charging
-        </Typography>
+        <Typography variant="h4">Smart Charging</Typography>
         <Button
           variant="contained"
           color="secondary"
           onClick={handleRunScript}
           disabled={loading}
+          sx={{ marginTop: 1, marginBottom: 2 }}
         >
           {loading ? "Loading..." : "Query Optimal Stations"}
         </Button>
