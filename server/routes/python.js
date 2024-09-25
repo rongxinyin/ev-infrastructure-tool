@@ -293,4 +293,40 @@ router.post("/post-process", upload.single("csvFile"), (req, res) => {
   });
 });
 
+// New route to call the post-process Python script smart charging
+router.post("/run-smart-charging", (req, res) => {
+  const python = spawn(getPythonCommand(), [
+    "./python-backend/scripts/post-process/smart-charging-analysis.py",
+  ]);
+
+  let dataToSend = "";
+  let errorOccurred = false;
+
+  python.stdout.on("data", (data) => {
+    dataToSend += data.toString();
+  });
+
+  python.stderr.on("data", (data) => {
+    errorOccurred = true;
+    console.error(`stderr: ${data}`);
+  });
+
+  python.on("close", (code) => {
+    if (errorOccurred) {
+      res.status(500).send({ status: "error", message: "Python script error" });
+    } else {
+      console.log(`Python script output: ${dataToSend}`);
+      try {
+        const result = JSON.parse(dataToSend);
+        res.send(result);
+      } catch (e) {
+        console.error(`Error parsing JSON: ${e.message}`);
+        res
+          .status(500)
+          .send({ status: "error", message: "Invalid JSON output" });
+      }
+    }
+  });
+});
+
 export default router;
