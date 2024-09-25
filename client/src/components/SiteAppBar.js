@@ -34,7 +34,7 @@ export default function SiteAppBar(props) {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
+      <Typography variant="h6">
         Electrical Vehicle Infrastructure Tool
       </Typography>
       <Divider />
@@ -71,10 +71,7 @@ export default function SiteAppBar(props) {
             edge="start"
             onClick={handleDrawerToggle}
             sx={{ mr: 2, display: { sm: "none" } }}
-          >
-            <MenuIcon />
-            {/* <MenuIcon /> */}
-          </IconButton>
+          ></IconButton>
           <Logo
             onClick={() => navigate("/")}
             style={{ width: 290, height: 95, cursor: "pointer" }}
@@ -82,7 +79,12 @@ export default function SiteAppBar(props) {
           <Typography
             variant="h5"
             component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" }, marginLeft: 2 }}
+            sx={{
+              flexGrow: 1,
+              display: { xs: "none", sm: "block" },
+              marginLeft: 2,
+              marginTop: 0,
+            }}
           >
             Electrical Vehicle Charging Infrastructure Planning Tool (EV-CIPT)
           </Typography>
@@ -124,22 +126,27 @@ export default function SiteAppBar(props) {
           {drawer}
         </Drawer>
       </Box>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+      <Box component="main" sx={{ flexGrow: 0, p: 0 }}>
         {props.children}
       </Box>
-      <Box component="footer" sx={{ p: 2, backgroundColor: "#f1f1f1", textAlign: "left", mt: 'auto' }}>
+      <Box
+        component="footer"
+        sx={{ p: 2, backgroundColor: "#f1f1f1", textAlign: "left", mt: "auto" }}
+      >
         <Typography variant="body2" sx={{ fontSize: "1.2rem" }}>
           Paper Citations:
         </Typography>
         <Typography variant="body2" sx={{ fontSize: "1.2rem" }}>
-          TBD. {"DFAT: A Web-Based Toolkit for Estimating Demand Flexibility in Building-to-Grid Integration. "}
+          TBD.{" "}
+          {
+            "DFAT: A Web-Based Toolkit for Estimating Demand Flexibility in Building-to-Grid Integration. "
+          }
           <a
-            href="https://doi.org/10.1016/j.buildenv.2023.110663"
+            href="https://www.sciencedirect.com/journal/softwarex"
             target="_blank"
             rel="noopener noreferrer"
-            style={{ color: "#2196f3" }}
           >
-            submitted to Journal of SoftwareX.
+            Submitted to Journal of SoftwareX.
           </a>
         </Typography>
       </Box>
@@ -153,5 +160,5 @@ SiteAppBar.propTypes = {
    * You won't need it on your project.
    */
   window: PropTypes.func,
-  children: PropTypes.node
+  children: PropTypes.node,
 };

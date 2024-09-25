@@ -316,10 +316,10 @@ export default function Home() {
         <Grid item xs={12} md={2}>
           <Box
             sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              position: 'sticky',
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              position: "sticky",
               top: theme.spacing(2),
             }}
           >
@@ -434,8 +434,6 @@ export default function Home() {
           )}
           {showSmartCharging && <SmartCharging />}
         </Grid>
-
-        
       </Grid>
     </Box>
   );

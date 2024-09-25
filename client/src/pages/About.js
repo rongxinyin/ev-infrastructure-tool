@@ -19,12 +19,13 @@ export default function About() {
               About
             </Typography>
             <Typography variant="h6" color="" sx={{}}>
-              Electrical Vehicle Infrastructure Tool (EVIT) is an open-source
-              web-based tool web-based tool for planning optimal electric
-              vehicle charging stations for both fleet and personally owned
-              vehicles in the context of transportation electrification. It
-              provides the ability to estimate the requirements for charging
-              infrastructure and the related electrical demands.
+              Electrical Vehicle Charging Infrastructure Planning Tool (EV-CIPT)
+              is an open-source web-based tool web-based tool for planning
+              optimal electric vehicle charging stations for both fleet and
+              personally owned vehicles in the context of transportation
+              electrification. It provides the ability to estimate the
+              requirements for charging infrastructure and the related
+              electrical demands.
             </Typography>
           </Grid>
 
