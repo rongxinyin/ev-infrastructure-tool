@@ -13,8 +13,8 @@ import {
   MenuItem,
   InputLabel,
   FormControl,
-  Fab,
   TableContainer,
+  Fab,
   Paper,
   Tooltip,
 } from "@mui/material";
@@ -39,7 +39,7 @@ export default function EmployeeInfo({ onFormSubmit, handlePopup, mode }) {
 
   const checkNotEmpty = (employeeData) => {
     for (var key in employeeData) {
-      if (employeeData[key] == "" || employeeData[key] == null) {
+      if (employeeData[key] === "" || employeeData[key] === null) {
         return false;
       }
     }
@@ -92,7 +92,7 @@ export default function EmployeeInfo({ onFormSubmit, handlePopup, mode }) {
         homeCharging: "",
       });
     } else {
-      handlePopup("Erorr", "One or more inputs are empty");
+      handlePopup("Error", "One or more inputs are empty");
     }
   };
 
@@ -101,7 +101,7 @@ export default function EmployeeInfo({ onFormSubmit, handlePopup, mode }) {
   };
 
   const isValidDate = (date) => {
-    return date != null;
+    return date !== null;
   };
 
   const handleUploadFile = (e) => {
@@ -235,7 +235,6 @@ export default function EmployeeInfo({ onFormSubmit, handlePopup, mode }) {
                       label="Home Charging Level"
                       onChange={handleChange}
                       fullWidth
-                      // variant="filled"
                       name="homeCharging"
                     >
                       <MenuItem value={"None"}>No Charger</MenuItem>
@@ -314,205 +313,13 @@ export default function EmployeeInfo({ onFormSubmit, handlePopup, mode }) {
                 fullWidth
                 type="submit"
                 sx={{ marginTop: 1 }}
+                color="secondary"
               >
-                Update
+                Save
               </Button>
             </Grid>
           </Grid>
         </Grid>
-        {/* <Grid container spacing={2}>
-        <Grid container spacing={2} style={{ marginTop: 50 }}>
-          <Grid item xs={3}>
-            <Typography variant="h6" align="center" gutterBottom>
-              Traveling 0-10 Miles
-            </Typography>
-          </Grid>
-          <Grid item xs={3}>
-            <Typography variant="h6" align="center" gutterBottom>
-              % with Home Charger
-            </Typography>
-          </Grid>
-          <Grid item xs={3}>
-            <Typography variant="h6" align="center" gutterBottom>
-              Trips Per Week
-            </Typography>
-          </Grid>
-          <Grid item xs={3}>
-            <Typography variant="h6" align="center" gutterBottom>
-              Avg Trip Duration (Min)
-            </Typography>
-          </Grid>
-        </Grid>
-        <Grid container spacing={2}>
-          <Grid item xs={3}>
-            <Slider
-              valueLabelDisplay="auto"
-              aria-label="0-10 Miles"
-              defaultValue={0}
-              min={1}
-              max={1000}
-            />
-          </Grid>
-
-          <Grid item xs={3}>
-            <Slider
-              valueLabelDisplay="auto"
-              aria-label="0-10 Miles"
-              defaultValue={0}
-              min={0}
-              max={100}
-            />
-          </Grid>
-
-          <Grid item xs={3}>
-            <Slider
-              valueLabelDisplay="auto"
-              aria-label="0-10 Miles"
-              defaultValue={0}
-              min={1}
-              max={200}
-            />
-          </Grid>
-
-          <Grid item xs={3}>
-            <Slider
-              valueLabelDisplay="auto"
-              aria-label="0-10 Miles"
-              defaultValue={0}
-              min={1}
-              max={120}
-            />
-          </Grid>
-        </Grid>
-        <Grid container spacing={2}>
-          <Grid item xs={3}>
-            <Typography variant="h6" align="center" gutterBottom>
-              Traveling 10-40 Miles
-            </Typography>
-          </Grid>
-          <Grid item xs={3}>
-            <Typography variant="h6" align="center" gutterBottom>
-              % with Home Charger
-            </Typography>
-          </Grid>
-          <Grid item xs={3}>
-            <Typography variant="h6" align="center" gutterBottom>
-              Trips Per Week
-            </Typography>
-          </Grid>
-          <Grid item xs={3}>
-            <Typography variant="h6" align="center" gutterBottom>
-              Avg Trip Duration (Min)
-            </Typography>
-          </Grid>
-        </Grid>
-
-        <Grid container spacing={2}>
-          <Grid item xs={3}>
-            <Slider
-              valueLabelDisplay="auto"
-              aria-label="10-40 Miles"
-              defaultValue={10}
-              min={1}
-              max={1000}
-            />
-          </Grid>
-
-          <Grid item xs={3}>
-            <Slider
-              valueLabelDisplay="auto"
-              aria-label="10-40 Miles"
-              defaultValue={10}
-              min={0}
-              max={100}
-            />
-          </Grid>
-
-          <Grid item xs={3}>
-            <Slider
-              valueLabelDisplay="auto"
-              aria-label="10-40 Miles"
-              defaultValue={10}
-              min={1}
-              max={200}
-            />
-          </Grid>
-
-          <Grid item xs={3}>
-            <Slider
-              valueLabelDisplay="auto"
-              aria-label="10-40 Miles"
-              defaultValue={10}
-              min={1}
-              max={120}
-            />
-          </Grid>
-        </Grid>
-        <Grid container spacing={2}>
-          <Grid item xs={3}>
-            <Typography variant="h6" align="center" gutterBottom>
-              Traveling 40-100 Miles
-            </Typography>
-          </Grid>
-          <Grid item xs={3}>
-            <Typography variant="h6" align="center" gutterBottom>
-              % with Home Charger
-            </Typography>
-          </Grid>
-          <Grid item xs={3}>
-            <Typography variant="h6" align="center" gutterBottom>
-              Trips Per Week
-            </Typography>
-          </Grid>
-          <Grid item xs={3}>
-            <Typography variant="h6" align="center" gutterBottom>
-              Avg Trip Duration (Min)
-            </Typography>
-          </Grid>
-        </Grid>
-
-        <Grid container spacing={2}>
-          <Grid item xs={3}>
-            <Slider
-              valueLabelDisplay="auto"
-              aria-label="40-100 Miles"
-              defaultValue={40}
-              min={1}
-              max={1000}
-            />
-          </Grid>
-
-          <Grid item xs={3}>
-            <Slider
-              valueLabelDisplay="auto"
-              aria-label="40-100 Miles"
-              defaultValue={40}
-              min={0}
-              max={100}
-            />
-          </Grid>
-
-          <Grid item xs={3}>
-            <Slider
-              valueLabelDisplay="auto"
-              aria-label="40-100 Miles"
-              defaultValue={40}
-              min={1}
-              max={200}
-            />
-          </Grid>
-
-          <Grid item xs={3}>
-            <Slider
-              valueLabelDisplay="auto"
-              aria-label="40-100 Miles"
-              defaultValue={40}
-              min={1}
-              max={120}
-            />
-          </Grid>
-        </Grid>
-      </Grid> */}
       </Grid>
     </form>
   );

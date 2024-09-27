@@ -159,7 +159,7 @@ export default function Simulation({
               <Grid item xs={6}>
                 <Button
                   variant="contained"
-                  color="primary"
+                  color="secondary"
                   sx={{
                     marginTop: 0,
                     marginBottom: 0,
@@ -173,7 +173,7 @@ export default function Simulation({
               <Grid item xs={6}>
                 <Button
                   variant="contained"
-                  color="primary"
+                  color="secondary"
                   sx={{
                     marginTop: 0,
                     marginBottom: 0,
@@ -229,7 +229,7 @@ export default function Simulation({
           <Button
             onClick={handleUpload}
             variant="contained"
-            color="primary"
+            color="secondary"
             sx={{
               marginTop: 0,
               marginBottom: 0,
@@ -244,7 +244,7 @@ export default function Simulation({
           <Button
             onClick={terminateProcess}
             variant="contained"
-            color="primary"
+            color="secondary"
             sx={{
               marginTop: 0,
               marginBottom: 0,

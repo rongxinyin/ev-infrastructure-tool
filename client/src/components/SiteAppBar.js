@@ -22,7 +22,7 @@ import { useNavigate } from "react-router-dom";
 import { ReactComponent as Logo } from "./images/5_BL_Horiz_Tile_rgb.svg";
 
 const drawerWidth = 240;
-const navItems = ["FAQ", "About"];
+const navItems = ["Home", "FAQ", "About"];
 
 export default function SiteAppBar(props) {
   const { window } = props;
@@ -34,7 +34,7 @@ export default function SiteAppBar(props) {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
+      <Typography variant="h6">
         Electrical Vehicle Infrastructure Tool
       </Typography>
       <Divider />
@@ -56,7 +56,7 @@ export default function SiteAppBar(props) {
   const navigate = useNavigate();
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
       <CssBaseline />
       <AppBar
         component="nav"
@@ -71,21 +71,28 @@ export default function SiteAppBar(props) {
             edge="start"
             onClick={handleDrawerToggle}
             sx={{ mr: 2, display: { sm: "none" } }}
-          >
-            <MenuIcon />
-            {/* <MenuIcon /> */}
-          </IconButton>
+          ></IconButton>
           <Logo
             onClick={() => navigate("/")}
             style={{ width: 290, height: 95, cursor: "pointer" }}
           ></Logo>
           <Typography
-            variant="h6"
+            variant="h5"
             component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
-          ></Typography>
+            sx={{
+              flexGrow: 1,
+              display: { xs: "none", sm: "block" },
+              marginLeft: 2,
+              marginTop: 0,
+            }}
+          >
+            Electrical Vehicle Charging Infrastructure Planning Tool (EV-CIPT)
+          </Typography>
 
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
+            <Button sx={{ color: "primary" }} onClick={() => navigate(`/`)}>
+              Home
+            </Button>
             <Button sx={{ color: "primary" }} onClick={() => navigate(`/faq`)}>
               FAQ
             </Button>
@@ -119,6 +126,30 @@ export default function SiteAppBar(props) {
           {drawer}
         </Drawer>
       </Box>
+      <Box component="main" sx={{ flexGrow: 0, p: 0 }}>
+        {props.children}
+      </Box>
+      <Box
+        component="footer"
+        sx={{ p: 2, backgroundColor: "#f1f1f1", textAlign: "left", mt: "auto" }}
+      >
+        <Typography variant="body2" sx={{ fontSize: "1.2rem" }}>
+          Paper Citations:
+        </Typography>
+        <Typography variant="body2" sx={{ fontSize: "1.2rem" }}>
+          TBD.{" "}
+          {
+            "DFAT: A Web-Based Toolkit for Estimating Demand Flexibility in Building-to-Grid Integration. "
+          }
+          <a
+            href="https://www.sciencedirect.com/journal/softwarex"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Submitted to Journal of SoftwareX.
+          </a>
+        </Typography>
+      </Box>
     </Box>
   );
 }
@@ -129,4 +160,5 @@ SiteAppBar.propTypes = {
    * You won't need it on your project.
    */
   window: PropTypes.func,
+  children: PropTypes.node,
 };

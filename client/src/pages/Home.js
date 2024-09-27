@@ -1,24 +1,23 @@
+import React, { useState, useEffect, useRef } from "react";
 import {
   Box,
   Button,
   Grid,
   Typography,
-  Paper,
-  styled,
-  useTheme,
-  useMediaQuery,
   Dialog,
   DialogTitle,
   DialogActions,
   DialogContent,
   DialogContentText,
+  useTheme,
+  useMediaQuery,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import BuildingInfo from "../components/BuildingInfo.js";
 import EmployeeInfo from "../components/EmployeeInfo.js";
 import Simulation from "../components/Simulation.js";
 import Results from "../components/Results.js";
-import React, { useState, useEffect, useRef } from "react";
+import SmartCharging from "../components/SmartCharging.js";
 
 const buttonSX = {
   marginBottom: 1,
@@ -34,6 +33,7 @@ export default function Home() {
   const [showEmployeeInfo, setShowEmployeeInfo] = useState(false);
   const [showSimulation, setShowSimulation] = useState(false);
   const [showResults, setShowResults] = useState(false);
+  const [showSmartCharging, setShowSmartCharging] = useState(false);
 
   const [buildingInfoData, setBuildingInfoData] = useState({});
 
@@ -111,12 +111,14 @@ export default function Home() {
         setShowEmployeeInfo(false);
         setShowSimulation(false);
         setShowResults(false);
+        setShowSmartCharging(false);
         break;
       case "employeeInfo":
         setShowBuildingInfo(false);
         setShowEmployeeInfo(true);
         setShowSimulation(false);
         setShowResults(false);
+        setShowSmartCharging(false);
         if (mode == "") {
           handleClickOpenModePopup();
         }
@@ -126,12 +128,23 @@ export default function Home() {
         setShowEmployeeInfo(false);
         setShowSimulation(true);
         setShowResults(false);
+        setShowSmartCharging(false);
         break;
       case "results":
         setShowBuildingInfo(false);
         setShowEmployeeInfo(false);
         setShowSimulation(false);
         setShowResults(true);
+        setShowSmartCharging(false);
+        break;
+      case "smartCharging":
+        setShowBuildingInfo(false);
+        setShowEmployeeInfo(false);
+        setShowSimulation(false);
+        setShowResults(false);
+        setShowSmartCharging(true);
+        break;
+      default:
         break;
     }
   };
@@ -286,10 +299,8 @@ export default function Home() {
       p={isMobile ? 1 : 2}
       sx={{ marginLeft: 10, marginRight: 10 }}
     >
-      {" "}
-      {/* Adjust padding for mobile */}
-      <Grid container spacing={1} padding={isMobile ? 5 : 5}>
-        <Grid item xs={12} align="center">
+      <Grid container spacing={4} padding={isMobile ? 5 : 5}>
+        {/* <Grid item xs={12} align="center">
           <Typography
             variant="h3"
             sx={{
@@ -299,50 +310,69 @@ export default function Home() {
           >
             Electrical Vehicle Infrastructure Tool (EVIT)
           </Typography>
+        </Grid> */}
+
+        {/* Sidebar */}
+        <Grid item xs={12} md={2}>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              position: "sticky",
+              top: theme.spacing(2),
+            }}
+          >
+            <Button
+              variant="contained"
+              sx={buttonSX}
+              fullWidth
+              onClick={() => switchPagesButton("buildingInfo")}
+            >
+              Building/Site Info
+            </Button>
+
+            <Button
+              variant="contained"
+              sx={buttonSX}
+              fullWidth
+              onClick={() => switchPagesButton("employeeInfo")}
+            >
+              Employee/Fleet Info
+            </Button>
+
+            <Button
+              variant="contained"
+              sx={buttonSX}
+              fullWidth
+              onClick={() => switchPagesButton("simulation")}
+            >
+              Simulation
+            </Button>
+
+            <Button
+              to="/results"
+              variant="contained"
+              sx={buttonSX}
+              fullWidth
+              onClick={() => switchPagesButton("results")}
+            >
+              Results
+            </Button>
+
+            <Button
+              to="/smartCharging"
+              variant="contained"
+              sx={buttonSX}
+              fullWidth
+              onClick={() => switchPagesButton("smartCharging")}
+            >
+              Smart Charging
+            </Button>
+          </Box>
         </Grid>
 
-        {/* buttons for subpage navigation */}
-        <Grid item xs={2} align="center">
-          <Button
-            variant="contained"
-            sx={buttonSX}
-            fullWidth
-            onClick={() => switchPagesButton("buildingInfo")}
-          >
-            Building/Site Info
-          </Button>
-
-          <Button
-            variant="contained"
-            sx={buttonSX}
-            fullWidth
-            onClick={() => switchPagesButton("employeeInfo")}
-          >
-            Employee/Fleet Info
-          </Button>
-
-          <Button
-            variant="contained"
-            sx={buttonSX}
-            fullWidth
-            onClick={() => switchPagesButton("simulation")}
-          >
-            Simulation
-          </Button>
-
-          <Button
-            to="/results"
-            variant="contained"
-            sx={buttonSX}
-            fullWidth
-            onClick={() => switchPagesButton("results")}
-          >
-            Results
-          </Button>
-        </Grid>
-
-        <Grid item xs={10}>
-          {/* displays subpage if the state is true */}
+        <Grid item xs={12} md={10}>
           {showBuildingInfo && (
             <BuildingInfo onFormSubmit={handleBuildingInfoFormSubmit} />
           )}
@@ -402,49 +432,7 @@ export default function Home() {
               mode={mode}
             />
           )}
-        </Grid>
-
-        <Grid
-          item
-          xs={12}
-          align="left"
-          sx={{
-            marginTop: 5,
-            width: "100%",
-            backgroundColor: "primary.white",
-            fontSize: isMobile
-              ? "0.8rem"
-              : "1.2rem" /* Adjust font size for mobile */,
-          }}
-        >
-          <Typography variant="body2" sx={{ fontSize: "1.2rem" }}>
-            Paper Citations:
-          </Typography>
-          <Typography variant="body2" sx={{ fontSize: "1.2rem" }}>
-            Yin, R., J. Liu, M.A. Piette, J. Xie, M. Pritoni, A. Casillas, L.
-            Yu, P. Schwartz, Comparing simulated demand flexibility against
-            actual performance in commercial office buildings, Building and
-            Environment, 2023.{" "}
-            <a
-              href="https://doi.org/10.1016/j.buildenv.2023.110663"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ color: "#2196f3" }}
-            >
-              https://doi.org/10.1016/j.buildenv.2023.110663
-            </a>
-          </Typography>
-          <Typography variant="body2" sx={{ fontSize: "1.2rem" }}>
-            TBD.{" "}
-            <a
-              href="https://doi.org/10.1016/j.buildenv.2023.110663"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ color: "#2196f3" }}
-            >
-              To be submitted to Journal of SoftwareX
-            </a>
-          </Typography>
+          {showSmartCharging && <SmartCharging />}
         </Grid>
       </Grid>
     </Box>

@@ -6,7 +6,7 @@ import About from "./pages/About.js";
 import FAQ from "./pages/FAQ.js";
 import Home from "./pages/Home.js";
 import NotFound from "./pages/NotFound.js";
-import AppBar from "./components/SiteAppBar.js";
+import SiteAppBar from "./components/SiteAppBar.js";
 
 const theme = createTheme({
   typography: {
@@ -40,15 +40,16 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
-        <AppBar />
-        <Suspense>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/faq" element={<FAQ />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/*" element={<NotFound />} />
-          </Routes>
-        </Suspense>
+        <SiteAppBar>
+          <Suspense>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/faq" element={<FAQ />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
+        </SiteAppBar>
       </BrowserRouter>
     </ThemeProvider>
   );
