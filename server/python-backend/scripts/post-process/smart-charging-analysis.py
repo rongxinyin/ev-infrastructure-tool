@@ -15,19 +15,38 @@ def get_optimal_charging_stations(melted_results_path):
 def generate_statistics(raw_output_path, optimal_L2, optimal_L3):
     df = read_csv(raw_output_path)
     # Filter the data based on the optimal L2 and L3 values
-    df_filtered = df[(df['L2'] == optimal_L2) & (df['L3'] == optimal_L3)]
+    df_filtered = df[(df['L2'] == optimal_L2) & (df['L3'] == optimal_L3)].copy()
+
+    # Convert 'time' column to datetime
+    df_filtered['time'] = pd.to_datetime(df_filtered['time'])
+
+    # Aggregate the charging rate by time
+    aggregated_charging_rate = df_filtered.groupby('time')['charging_rate'].sum().reset_index()
     
+    # Time as index
+    aggregated_charging_rate.set_index('time', inplace=True)
+
+    # Calculate consumed electricity (sum of charging rates over time)
+    consumed_electricity = aggregated_charging_rate['charging_rate'].sum()
+
+    # Calculate peak demand (maximum charging rate at any time)
+    peak_demand = aggregated_charging_rate['charging_rate'].max()
+
+    # Calculate load factor (average load divided by peak load)
+    average_load = aggregated_charging_rate['charging_rate'].mean()
+    load_factor = average_load / peak_demand
+
+    # Convert aggregated charging rate to JSON serializable format
+    aggregated_charging_rate_list = aggregated_charging_rate.to_dict(orient='records')
+
     # Generate statistics
     stats = {
-        'total_sessions': len(df_filtered),
-        'total_energy': df_filtered['energy'].sum(),
-        'average_energy_per_session': df_filtered['energy'].mean(),
-        'total_duration': df_filtered['duration'].sum(),
-        'average_duration_per_session': df_filtered['duration'].mean(),
-        'L2_sessions': len(df_filtered[df_filtered['station_type'] == 'L2']),
-        'L3_sessions': len(df_filtered[df_filtered['station_type'] == 'L3']),
+        'consumed_electricity': round(consumed_electricity, 0),
+        'peak_demand': round(peak_demand, 0),
+        'average_load': round(average_load, 2),
+        'load_factor': round(load_factor, 2)
     }
-    return stats
+    return stats, aggregated_charging_rate_list
 
 def main():
     # Get the current working directory
@@ -44,12 +63,13 @@ def main():
 
     optimal_L2, optimal_L3 = get_optimal_charging_stations(melted_results_path)
     
-    # stats = generate_statistics(raw_output_path, optimal_L2, optimal_L3)
+    stats, aggregated_charging_rate_list = generate_statistics(raw_output_path, optimal_L2, optimal_L3)
     
     result = {
         'optimal_L2': optimal_L2,
         'optimal_L3': optimal_L3,
-        # 'statistics': stats
+        'statistics': stats,
+        'aggregated_charging_rate': aggregated_charging_rate_list
     }
     
     print(json.dumps(result))  # Print the result as a JSON string

@@ -5,6 +5,7 @@ import { Button, TextField, Grid, Typography } from "@mui/material";
 const SmartCharging = () => {
   const [L2, setL2] = useState("");
   const [L3, setL3] = useState("");
+  const [statistics, setStatistics] = useState({});
   const [loading, setLoading] = useState(false);
 
   const handleRunScript = async () => {
@@ -17,6 +18,7 @@ const SmartCharging = () => {
       const result = response.data;
       setL2(result.optimal_L2);
       setL3(result.optimal_L3);
+      setStatistics(result.statistics);
     } catch (error) {
       if (axios.isAxiosError(error)) {
         console.error("Axios error:", error.response?.data || error.message);
@@ -29,7 +31,7 @@ const SmartCharging = () => {
   };
 
   return (
-    <Grid container spacing={0} style={{ marginTop: 0, marginLeft: 10 }}>
+    <Grid container spacing={1} style={{ marginTop: 0, marginLeft: 10 }}>
       <Grid item xs={12}>
         <Typography variant="h4">Smart Charging</Typography>
         <Button
@@ -61,6 +63,51 @@ const SmartCharging = () => {
             readOnly: true,
           }}
         />
+      </Grid>
+      <Grid item xs={12} >
+        <Typography variant="h6">Charging Load Metrics</Typography>
+        <Grid container spacing={1} style={{ marginTop: 2 }}>
+          <Grid item xs={6}>
+            <TextField
+              label="Consumed Electricity (kWh)"
+              value={statistics.consumed_electricity || ""}
+              fullWidth
+              InputProps={{
+                readOnly: true,
+              }}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <TextField
+              label="Peak Demand (kW)"
+              value={statistics.peak_demand || ""}
+              fullWidth
+              InputProps={{
+                readOnly: true,
+              }}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <TextField
+              label="Average Load"
+              value={statistics.average_load || ""}
+              fullWidth
+              InputProps={{
+                readOnly: true,
+              }}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <TextField
+              label="Load Factor"
+              value={statistics.load_factor || ""}
+              fullWidth
+              InputProps={{
+                readOnly: true,
+              }}
+            />
+          </Grid>
+        </Grid>
       </Grid>
     </Grid>
   );
