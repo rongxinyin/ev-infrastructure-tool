@@ -30,9 +30,17 @@ def generate_statistics(raw_output_path, optimal_L2, optimal_L3):
     return stats
 
 def main():
-    base_dir = os.getcwd() + "\\python-backend\\tests"
-    melted_results_path = os.path.join(base_dir, 'melted_results_adoption_rate.csv')
-    raw_output_path = os.path.join(base_dir, 'vehicle_status_normal_0.36.csv')
+    # Get the current working directory
+    base_dir = os.getcwd()
+
+    # Define the relative path to the 'python-backend/tests' directory
+    relative_path = os.path.join('python-backend', 'tests')
+
+    # Combine the base directory with the relative path
+    test_dir = os.path.join(base_dir, relative_path)
+
+    melted_results_path = os.path.join(test_dir, 'melted_results_adoption_rate.csv')
+    raw_output_path = os.path.join(test_dir, 'vehicle_status_normal_0.36.csv')
 
     optimal_L2, optimal_L3 = get_optimal_charging_stations(melted_results_path)
     
