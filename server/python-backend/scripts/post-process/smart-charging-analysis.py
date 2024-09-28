@@ -36,7 +36,9 @@ def generate_statistics(raw_output_path, optimal_L2, optimal_L3):
     average_load = aggregated_charging_rate['charging_rate'].mean()
     load_factor = average_load / peak_demand
 
-    # Convert aggregated charging rate to JSON serializable format
+    # Convert aggregated time series charging rate to JSON format for the frontend
+    aggregated_charging_rate.reset_index(inplace=True) # Reset index to convert to JSON
+    aggregated_charging_rate['time'] = aggregated_charging_rate['time'].dt.strftime('%Y-%m-%d %H:%M:%S')
     aggregated_charging_rate_list = aggregated_charging_rate.to_dict(orient='records')
 
     # Generate statistics

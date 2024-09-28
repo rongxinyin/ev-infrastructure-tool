@@ -19,6 +19,7 @@
     "date-fns": "^3.6.0",
     "dayjs": "^1.11.11",
     "deck.gl": "^8.9.30",
+    "html-to-image": "^1.11.11",
     "js-yaml": "^4.1.0",
     "mapbox-gl": "^2.15.0",
     "moment": "^2.30.1",
