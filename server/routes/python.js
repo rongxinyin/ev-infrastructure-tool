@@ -329,14 +329,14 @@ router.post("/run-smart-charging", (req, res) => {
   });
 });
 
-router.post("/run-flex-e", upload.single('csv'), (req, res) => {
+router.post("/run-flex-e", upload.single("csv"), (req, res) => {
   const csvFilePath = req.file.path;
-  const timezone = req.body.timezone || 'UTC';
+  const timezone = req.body.timezone || "UTC";
 
-  const python = spawn('python', [
+  const python = spawn("python", [
     "./python-backend/scripts/operation/post-process-session.py",
     csvFilePath,
-    timezone
+    timezone,
   ]);
 
   let dataToSend = "";
@@ -368,6 +368,5 @@ router.post("/run-flex-e", upload.single('csv'), (req, res) => {
     }
   });
 });
-
 
 export default router;

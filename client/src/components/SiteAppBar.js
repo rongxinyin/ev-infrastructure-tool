@@ -31,7 +31,9 @@ export default function SiteAppBar(props) {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography variant="h6">Electrical Vehicle Infrastructure Tool</Typography>
+      <Typography variant="h6">
+        Electrical Vehicle Infrastructure Tool
+      </Typography>
       <Divider />
       <List>
         {navItems.map((item) => (
@@ -45,14 +47,20 @@ export default function SiteAppBar(props) {
     </Box>
   );
 
-  const container = window !== undefined ? () => window().document.body : undefined;
+  const container =
+    window !== undefined ? () => window().document.body : undefined;
 
   const navigate = useNavigate();
 
   return (
     <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
       <CssBaseline />
-      <AppBar component="nav" position="fixed" color="white" sx={{ height: 95 }}>
+      <AppBar
+        component="nav"
+        position="fixed"
+        color="white"
+        sx={{ height: 95 }}
+      >
         <Toolbar>
           <IconButton
             color="inherit"
@@ -82,13 +90,19 @@ export default function SiteAppBar(props) {
             <Button sx={{ color: "primary" }} onClick={() => navigate(`/`)}>
               Home
             </Button>
-            <Button sx={{ color: "primary" }} onClick={() => navigate(`/operation`)}>
+            <Button
+              sx={{ color: "primary" }}
+              onClick={() => navigate(`/operation`)}
+            >
               Operation
             </Button>
             <Button sx={{ color: "primary" }} onClick={() => navigate(`/faq`)}>
               FAQ
             </Button>
-            <Button sx={{ color: "primary" }} onClick={() => navigate(`/about`)}>
+            <Button
+              sx={{ color: "primary" }}
+              onClick={() => navigate(`/about`)}
+            >
               About
             </Button>
           </Box>
@@ -122,7 +136,12 @@ export default function SiteAppBar(props) {
       {!hideFootnote && ( // Conditionally render the footnote section based on hideFootnote
         <Box
           component="footer"
-          sx={{ p: 2, backgroundColor: "#f1f1f1", textAlign: "left", mt: "auto" }}
+          sx={{
+            p: 2,
+            backgroundColor: "#f1f1f1",
+            textAlign: "left",
+            mt: "auto",
+          }}
         >
           <Typography variant="body2" sx={{ fontSize: "1.2rem" }}>
             Paper Citations:

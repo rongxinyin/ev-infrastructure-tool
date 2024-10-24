@@ -11,9 +11,14 @@ import {
 import { SaveAlt } from "@mui/icons-material";
 import * as htmlToImage from "html-to-image";
 import { useDropzone } from "react-dropzone";
-import { Gauge, gaugeClasses } from '@mui/x-charts/Gauge/index.js';
-import { Bar } from 'react-chartjs-2';
-import { Chart as ChartJS, BarElement, CategoryScale, LinearScale } from 'chart.js';
+import { Gauge, gaugeClasses } from "@mui/x-charts/Gauge/index.js";
+import { Bar } from "react-chartjs-2";
+import {
+  Chart as ChartJS,
+  BarElement,
+  CategoryScale,
+  LinearScale,
+} from "chart.js";
 
 ChartJS.register(BarElement, CategoryScale, LinearScale);
 
@@ -50,11 +55,15 @@ const Flex = () => {
     console.log("File to be uploaded:", file);
 
     try {
-      const response = await axios.post("http://localhost:8080/run-flex-e", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      const response = await axios.post(
+        "http://localhost:8080/run-flex-e",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
 
       console.log("Response from backend:", response.data);
       const result = response.data;
@@ -86,29 +95,45 @@ const Flex = () => {
     }
   };
 
-  const histogramData = metrics ? {
-    labels: metrics.sessions.map((_, index) => `Session ${index + 1}`),
-    datasets: [
-      {
-        label: 'Load Flexibility',
-        data: metrics.sessions.map(session => session.load_flexibility),
-        backgroundColor: 'rgba(75, 192, 192, 0.6)',
-      },
-    ],
-  } : null;
+  const histogramData = metrics
+    ? {
+        labels: metrics.sessions.map((_, index) => `Session ${index + 1}`),
+        datasets: [
+          {
+            label: "Load Flexibility",
+            data: metrics.sessions.map((session) => session.load_flexibility),
+            backgroundColor: "rgba(75, 192, 192, 0.6)",
+          },
+        ],
+      }
+    : null;
 
   return (
     <Grid container spacing={1} style={{ marginTop: 0, marginLeft: 10 }}>
       <Grid item xs={12}>
         <Typography variant="h4">
           Charging Session Data
-          <IconButton onClick={handleProcessData} color="secondary" disabled={loading}>
+          <IconButton
+            onClick={handleProcessData}
+            color="secondary"
+            disabled={loading}
+          >
             <SaveAlt />
           </IconButton>
         </Typography>
-        <div {...getRootProps()} style={{ textAlign: "center", padding: 10, backgroundColor: "#f5f5f5", border: "2px dashed #c3c3c3" }}>
+        <div
+          {...getRootProps()}
+          style={{
+            textAlign: "center",
+            padding: 10,
+            backgroundColor: "#f5f5f5",
+            border: "2px dashed #c3c3c3",
+          }}
+        >
           <input {...getInputProps()} />
-          <p>Optional: Upload generated, unprocessed data for post-processing</p>
+          <p>
+            Optional: Upload generated, unprocessed data for post-processing
+          </p>
           {file && (
             <Typography variant="body2" sx={{ marginTop: 2 }}>
               Uploaded file: {file.name}
@@ -237,23 +262,27 @@ const Flex = () => {
             </Grid>
           </Grid>
           <Grid item xs={6}>
-            <Typography variant="h6" sx={{ marginTop: 3 }}>Average Load Flexibility</Typography>
+            <Typography variant="h6" sx={{ marginTop: 3 }}>
+              Average Load Flexibility
+            </Typography>
             <Gauge
-                value={metrics.average_load_flexibility.toFixed(2) * 100 || 0}
-                startAngle={-110}
-                endAngle={110}
-                sx={{
+              value={metrics.average_load_flexibility.toFixed(2) * 100 || 0}
+              startAngle={-110}
+              endAngle={110}
+              sx={{
                 [`& .${gaugeClasses.valueText}`]: {
-                    fontSize: 12,
+                  fontSize: 12,
                 },
-                width: 200,  // Define width
+                width: 200, // Define width
                 height: 200, // Define height
-                }}
-                text={({ value, valueMax }) => `${value} / ${valueMax}`}
+              }}
+              text={({ value, valueMax }) => `${value} / ${valueMax}`}
             />
           </Grid>
           <Grid item xs={6}>
-            <Typography variant="h6" sx={{ marginTop: 3 }}>Load Flexibility Distribution</Typography>
+            <Typography variant="h6" sx={{ marginTop: 3 }}>
+              Load Flexibility Distribution
+            </Typography>
             {histogramData && (
               <Bar
                 data={histogramData}
@@ -262,13 +291,13 @@ const Flex = () => {
                     x: {
                       title: {
                         display: true,
-                        text: 'Sessions',
+                        text: "Sessions",
                       },
                     },
                     y: {
                       title: {
                         display: true,
-                        text: 'Load Flexibility',
+                        text: "Load Flexibility",
                       },
                     },
                   },

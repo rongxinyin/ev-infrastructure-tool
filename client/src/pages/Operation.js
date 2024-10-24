@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Box, Button, Typography, styled } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import Flex from '../components/Flex.js'; // Import the Flex component
-import SiteAppBar from '../components/SiteAppBar.js'; // Import the SiteAppBar component
+import Flex from "../components/Flex.js"; // Import the Flex component
+import SiteAppBar from "../components/SiteAppBar.js"; // Import the SiteAppBar component
 
 // visualization. will delete later
 const Item = styled(Box)(({ theme }) => ({
@@ -38,7 +38,12 @@ export default function Operation() {
   };
 
   return (
-    <Box bgcolor="primary.white" display="flex" height="100vh" sx={{ marginTop: 4 }}>
+    <Box
+      bgcolor="primary.white"
+      display="flex"
+      height="100vh"
+      sx={{ marginTop: 4 }}
+    >
       {/* Render SiteAppBar with the hideFootnote prop */}
       {/* <SiteAppBar hideFootnote={true} /> */}
 
@@ -47,7 +52,10 @@ export default function Operation() {
         <Button
           variant="contained"
           fullWidth
-          sx={{ marginBottom: 2, backgroundColor: showData ? "#1abc9c" : "#34495e" }}
+          sx={{
+            marginBottom: 2,
+            backgroundColor: showData ? "#1abc9c" : "#34495e",
+          }}
           onClick={handleDataClick}
         >
           Data
@@ -55,7 +63,10 @@ export default function Operation() {
         <Button
           variant="contained"
           fullWidth
-          sx={{ marginBottom: 2, backgroundColor: showFlexE ? "#1abc9c" : "#34495e" }}
+          sx={{
+            marginBottom: 2,
+            backgroundColor: showFlexE ? "#1abc9c" : "#34495e",
+          }}
           onClick={handleFlexEClick}
         >
           Flex-E
@@ -72,7 +83,8 @@ export default function Operation() {
 
       {/* Content Panel */}
       <Box sx={{ flexGrow: 1, padding: 3 }}>
-        {showData && <Flex />} {/* Render Flex component when Data is selected */}
+        {showData && <Flex />}{" "}
+        {/* Render Flex component when Data is selected */}
         {showFlexE && (
           <Box>
             <Typography variant="h4">Flex-E Content</Typography>
