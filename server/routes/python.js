@@ -329,4 +329,45 @@ router.post("/run-smart-charging", (req, res) => {
   });
 });
 
+router.post("/run-flex-e", upload.single('csv'), (req, res) => {
+  const csvFilePath = req.file.path;
+  const timezone = req.body.timezone || 'UTC';
+
+  const python = spawn('python', [
+    "./python-backend/scripts/operation/post-process-session.py",
+    csvFilePath,
+    timezone
+  ]);
+
+  let dataToSend = "";
+  let errorOccurred = false;
+
+  python.stdout.on("data", (data) => {
+    dataToSend += data.toString();
+  });
+
+  python.stderr.on("data", (data) => {
+    errorOccurred = true;
+    console.error(`stderr: ${data}`);
+  });
+
+  python.on("close", (code) => {
+    if (errorOccurred) {
+      res.status(500).send({ status: "error", message: "Python script error" });
+    } else {
+      console.log(`Python script output: ${dataToSend}`);
+      try {
+        const result = JSON.parse(dataToSend);
+        res.send(result);
+      } catch (e) {
+        console.error(`Error parsing JSON: ${e.message}`);
+        res
+          .status(500)
+          .send({ status: "error", message: "Invalid JSON output" });
+      }
+    }
+  });
+});
+
+
 export default router;

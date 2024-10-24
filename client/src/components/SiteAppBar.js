@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
 import * as React from "react";
-
 import {
   AppBar,
   Box,
@@ -13,11 +12,9 @@ import {
   ListItem,
   ListItemButton,
   ListItemText,
-  MenuItem,
   Toolbar,
   Typography,
 } from "@mui/material";
-import { Menu as MenuIcon } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import { ReactComponent as Logo } from "./images/5_BL_Horiz_Tile_rgb.svg";
 
@@ -25,7 +22,7 @@ const drawerWidth = 240;
 const navItems = ["Home", "FAQ", "About"];
 
 export default function SiteAppBar(props) {
-  const { window } = props;
+  const { window, hideFootnote } = props; // Destructure hideFootnote prop
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
@@ -34,9 +31,7 @@ export default function SiteAppBar(props) {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography variant="h6">
-        Electrical Vehicle Infrastructure Tool
-      </Typography>
+      <Typography variant="h6">Electrical Vehicle Infrastructure Tool</Typography>
       <Divider />
       <List>
         {navItems.map((item) => (
@@ -50,20 +45,14 @@ export default function SiteAppBar(props) {
     </Box>
   );
 
-  const container =
-    window !== undefined ? () => window().document.body : undefined;
+  const container = window !== undefined ? () => window().document.body : undefined;
 
   const navigate = useNavigate();
 
   return (
     <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
       <CssBaseline />
-      <AppBar
-        component="nav"
-        position="fixed"
-        color="white"
-        sx={{ height: 95 }}
-      >
+      <AppBar component="nav" position="fixed" color="white" sx={{ height: 95 }}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -75,7 +64,7 @@ export default function SiteAppBar(props) {
           <Logo
             onClick={() => navigate("/")}
             style={{ width: 290, height: 95, cursor: "pointer" }}
-          ></Logo>
+          />
           <Typography
             variant="h5"
             component="div"
@@ -93,13 +82,13 @@ export default function SiteAppBar(props) {
             <Button sx={{ color: "primary" }} onClick={() => navigate(`/`)}>
               Home
             </Button>
+            <Button sx={{ color: "primary" }} onClick={() => navigate(`/operation`)}>
+              Operation
+            </Button>
             <Button sx={{ color: "primary" }} onClick={() => navigate(`/faq`)}>
               FAQ
             </Button>
-            <Button
-              sx={{ color: "primary" }}
-              onClick={() => navigate(`/about`)}
-            >
+            <Button sx={{ color: "primary" }} onClick={() => navigate(`/about`)}>
               About
             </Button>
           </Box>
@@ -129,36 +118,36 @@ export default function SiteAppBar(props) {
       <Box component="main" sx={{ flexGrow: 0, p: 0 }}>
         {props.children}
       </Box>
-      <Box
-        component="footer"
-        sx={{ p: 2, backgroundColor: "#f1f1f1", textAlign: "left", mt: "auto" }}
-      >
-        <Typography variant="body2" sx={{ fontSize: "1.2rem" }}>
-          Paper Citations:
-        </Typography>
-        <Typography variant="body2" sx={{ fontSize: "1.2rem" }}>
-          TBD.{" "}
-          {
-            "DFAT: A Web-Based Toolkit for Estimating Demand Flexibility in Building-to-Grid Integration. "
-          }
-          <a
-            href="https://www.sciencedirect.com/journal/softwarex"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Submitted to Journal of SoftwareX.
-          </a>
-        </Typography>
-      </Box>
+
+      {!hideFootnote && ( // Conditionally render the footnote section based on hideFootnote
+        <Box
+          component="footer"
+          sx={{ p: 2, backgroundColor: "#f1f1f1", textAlign: "left", mt: "auto" }}
+        >
+          <Typography variant="body2" sx={{ fontSize: "1.2rem" }}>
+            Paper Citations:
+          </Typography>
+          <Typography variant="body2" sx={{ fontSize: "1.2rem" }}>
+            TBD.{" "}
+            {
+              "DFAT: A Web-Based Toolkit for Estimating Demand Flexibility in Building-to-Grid Integration. "
+            }
+            <a
+              href="https://www.sciencedirect.com/journal/softwarex"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Submitted to Journal of SoftwareX.
+            </a>
+          </Typography>
+        </Box>
+      )}
     </Box>
   );
 }
 
 SiteAppBar.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
   window: PropTypes.func,
   children: PropTypes.node,
+  hideFootnote: PropTypes.bool, // Add prop type for hideFootnote
 };
