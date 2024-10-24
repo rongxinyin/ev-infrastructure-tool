@@ -7,6 +7,7 @@ import FAQ from "./pages/FAQ.js";
 import Home from "./pages/Home.js";
 import NotFound from "./pages/NotFound.js";
 import SiteAppBar from "./components/SiteAppBar.js";
+import Operation from "./pages/Operation.js";
 
 const theme = createTheme({
   typography: {
@@ -47,6 +48,7 @@ export default function App() {
               <Route path="/faq" element={<FAQ />} />
               <Route path="/about" element={<About />} />
               <Route path="/*" element={<NotFound />} />
+              <Route path="/operation" element={<Operation />} />
             </Routes>
           </Suspense>
         </SiteAppBar>
