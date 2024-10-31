@@ -146,15 +146,17 @@ export default function Home() {
             color="white.main"
             sx={{ fontSize: "1.2rem" }}
           >
-            Development of a Web-Based EV Charging Infrastructure Planning Tool: Enabling Scalable 
-            and Adaptive Solutions for Urban and Regional Planning{" "}
+            TBD.{" "}
+            {
+              "DFAT: A Web-Based Toolkit for Estimating Demand Flexibility in Building-to-Grid Integration. "
+            }
             <a
-              href="https://www.softxjournal.com/"
+              href="https://www.sciencedirect.com/journal/softwarex"
               target="_blank"
               rel="noopener noreferrer"
               style={{ color: "#2196f3" }}
             >
-              To be submitted to Journal of SoftwareX
+              Submitted to Journal of SoftwareX.
             </a>
           </Typography>
         </Grid>

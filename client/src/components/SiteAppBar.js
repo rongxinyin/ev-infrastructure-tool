@@ -92,6 +92,12 @@ export default function SiteAppBar(props) {
             </Button>
             <Button
               sx={{ color: "primary" }}
+              onClick={() => navigate(`/planning`)}
+            >
+              Planning
+            </Button>
+            <Button
+              sx={{ color: "primary" }}
               onClick={() => navigate(`/operation`)}
             >
               Operation
@@ -133,7 +139,7 @@ export default function SiteAppBar(props) {
         {props.children}
       </Box>
 
-      {!hideFootnote && ( // Conditionally render the footnote section based on hideFootnote
+      {/* {!hideFootnote && ( // Conditionally render the footnote section based on hideFootnote
         <Box
           component="footer"
           sx={{
@@ -160,7 +166,7 @@ export default function SiteAppBar(props) {
             </a>
           </Typography>
         </Box>
-      )}
+      )} */}
     </Box>
   );
 }
