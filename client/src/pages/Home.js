@@ -58,6 +58,8 @@ export default function Home() {
   const [pivotUtilization, setPivotUtilization] = useState(null);
   const [meltedResults, setMeltedResults] = useState(null);
 
+  const [uploadedFileContent, setUploadedFileContent] = useState(null);
+
   const handleClickOpenPopup = (title, dialogue) => {
     setPopupDialogue(dialogue);
     setPopupTitle(title);
@@ -238,6 +240,13 @@ export default function Home() {
     abortControllerRef.current = new AbortController();
     const { signal } = abortControllerRef.current;
 
+    // Read and store the uploaded file content
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      setUploadedFileContent(e.target.result);
+    };
+    reader.readAsText(selectedFile);
+
     const formData = new FormData();
     formData.append("csvFile", selectedFile);
     setShowProgressBar(true);
@@ -308,11 +317,6 @@ export default function Home() {
         );
       }
 
-      console.log("pivotCost: ", pivotCost);
-      console.log("pivotWaitingForStation: ", pivotWaitingForStation);
-      console.log("pivotPeakDemand: ", pivotPeakDemand);
-      console.log("pivotUtilization: ", pivotUtilization);
-      console.log("meltedResults: ", meltedResults);
 
     } catch (error) {
       console.error(error);
