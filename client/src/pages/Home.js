@@ -52,6 +52,12 @@ export default function Home() {
   const [popupTitle, setPopupTitle] = React.useState("");
   const [popupDialogue, setPopupDialogue] = React.useState("");
 
+  const [pivotCost, setPivotCost] = useState(null);
+  const [pivotWaitingForStation, setPivotWaitingForStation] = useState(null);
+  const [pivotPeakDemand, setPivotPeakDemand] = useState(null);
+  const [pivotUtilization, setPivotUtilization] = useState(null);
+  const [meltedResults, setMeltedResults] = useState(null);
+
   const handleClickOpenPopup = (title, dialogue) => {
     setPopupDialogue(dialogue);
     setPopupTitle(title);
@@ -249,38 +255,25 @@ export default function Home() {
         throw new Error("Error uploading file");
       }
 
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
+      const results = await response.json();
 
-      const now = new Date();
+      console.log("results: ", results);
+      
+      // Store the CSV data in state variables
+      // You'll need to add these state variables using useState
+      setPivotCost(results.pivot_cost);
+      setPivotWaitingForStation(results.pivot_waiting_for_station);
+      setPivotPeakDemand(results.pivot_peak_demand);
+      setPivotUtilization(results.pivot_utilization);
+      setMeltedResults(results.melted_results_adoption_rate);
 
-      const year = now.getFullYear();
-      const month = String(now.getMonth() + 1).padStart(2, "0");
-      const day = String(now.getDate()).padStart(2, "0");
-      const hours = String(now.getHours()).padStart(2, "0");
-      const minutes = String(now.getMinutes()).padStart(2, "0");
-      const seconds = String(now.getSeconds()).padStart(2, "0");
-
-      const a = document.createElement("a");
-      a.href = url;
-      a.setAttribute(
-        "download",
-        `post-process${year}.${month}.${day}.${hours}.${minutes}.${seconds}.zip`
-      );
-      document.body.appendChild(a);
-      a.click();
       setShowProgressBar(false);
-      handleClickOpenPopup(
-        "Success",
-        "Post-processed data successfully downloaded"
-      );
+      handleClickOpenPopup("Success", "Post-processed data successfully received");
 
-      a.parentNode.removeChild(a);
-      window.URL.revokeObjectURL(url);
     } catch (error) {
       console.error(error);
       setShowProgressBar(false);
-      handleClickOpenPopup("Error", "Abort error");
+      handleClickOpenPopup("Error", "Error processing data");
     }
   };
 
