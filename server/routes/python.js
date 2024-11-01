@@ -240,22 +240,32 @@ router.post("/post-process", upload.single("csvFile"), (req, res) => {
       'melted_results_adoption_rate.csv'
     ];
 
-    try {
-      csvFiles.forEach(filename => {
-        const filePath = path.join(directoryPath, filename);
+    let hasAnyValidData = false;
+
+    csvFiles.forEach(filename => {
+      const filePath = path.join(directoryPath, filename);
+      try {
         const fileContent = fs.readFileSync(filePath, 'utf8');
         results[filename.replace('.csv', '')] = fileContent;
-        
+        hasAnyValidData = true;
+
         // Clean up the file
         fs.unlink(filePath, (err) => {
           if (err) console.error(`Error deleting ${filename}:`, err);
         });
-      });
+      } catch (error) {
+        console.warn(`Warning: Could not read ${filename}:`, error.message);
+        results[filename.replace('.csv', '')] = null;
+      }
+    });
 
+    if (!hasAnyValidData) {
+      res.status(500).send({ 
+        status: "error", 
+        message: "No valid data files were generated" 
+      });
+    } else {
       res.json(results);
-    } catch (error) {
-      console.error('Error reading CSV files:', error);
-      res.status(500).send({ status: "error", message: "Error processing results" });
     }
   });
 });

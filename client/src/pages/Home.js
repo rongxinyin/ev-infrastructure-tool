@@ -256,19 +256,63 @@ export default function Home() {
       }
 
       const results = await response.json();
-
-      console.log("results: ", results);
       
-      // Store the CSV data in state variables
-      // You'll need to add these state variables using useState
-      setPivotCost(results.pivot_cost);
-      setPivotWaitingForStation(results.pivot_waiting_for_station);
-      setPivotPeakDemand(results.pivot_peak_demand);
-      setPivotUtilization(results.pivot_utilization);
-      setMeltedResults(results.melted_results_adoption_rate);
+      // Store each CSV result, handling null values
+      let successCount = 0;
+      let totalFiles = 0;
+
+      if (results.pivot_cost !== null) {
+        setPivotCost(results.pivot_cost);
+        successCount++;
+      }
+      totalFiles++;
+
+      if (results.pivot_waiting_for_station !== null) {
+        setPivotWaitingForStation(results.pivot_waiting_for_station);
+        successCount++;
+      }
+      totalFiles++;
+
+      if (results.pivot_peak_demand !== null) {
+        setPivotPeakDemand(results.pivot_peak_demand);
+        successCount++;
+      }
+      totalFiles++;
+
+      if (results.pivot_utilization !== null) {
+        setPivotUtilization(results.pivot_utilization);
+        successCount++;
+      }
+      totalFiles++;
+
+      if (results.melted_results_adoption_rate !== null) {
+        setMeltedResults(results.melted_results_adoption_rate);
+        successCount++;
+      }
+      totalFiles++;
 
       setShowProgressBar(false);
-      handleClickOpenPopup("Success", "Post-processed data successfully received");
+
+      // Show appropriate message based on how many files were processed
+      if (successCount === 0) {
+        handleClickOpenPopup("Error", "No data files were successfully processed");
+      } else if (successCount < totalFiles) {
+        handleClickOpenPopup(
+          "Partial Success", 
+          `Processed ${successCount} out of ${totalFiles} data files successfully`
+        );
+      } else {
+        handleClickOpenPopup(
+          "Success", 
+          "All data files were successfully processed"
+        );
+      }
+
+      console.log("pivotCost: ", pivotCost);
+      console.log("pivotWaitingForStation: ", pivotWaitingForStation);
+      console.log("pivotPeakDemand: ", pivotPeakDemand);
+      console.log("pivotUtilization: ", pivotUtilization);
+      console.log("meltedResults: ", meltedResults);
 
     } catch (error) {
       console.error(error);
