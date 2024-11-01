@@ -265,7 +265,7 @@ export default function Home() {
       }
 
       const results = await response.json();
-      
+
       // Store each CSV result, handling null values
       let successCount = 0;
       let totalFiles = 0;
@@ -304,20 +304,21 @@ export default function Home() {
 
       // Show appropriate message based on how many files were processed
       if (successCount === 0) {
-        handleClickOpenPopup("Error", "No data files were successfully processed");
+        handleClickOpenPopup(
+          "Error",
+          "No data files were successfully processed"
+        );
       } else if (successCount < totalFiles) {
         handleClickOpenPopup(
-          "Partial Success", 
+          "Partial Success",
           `Processed ${successCount} out of ${totalFiles} data files successfully`
         );
       } else {
         handleClickOpenPopup(
-          "Success", 
+          "Success",
           "All data files were successfully processed"
         );
       }
-
-
     } catch (error) {
       console.error(error);
       setShowProgressBar(false);

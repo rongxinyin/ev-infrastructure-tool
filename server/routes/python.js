@@ -214,7 +214,10 @@ router.post("/process-fleet-simulation", (req, res) => {
 router.post("/post-process", upload.single("csvFile"), (req, res) => {
   const csvData = req.file.buffer.toString();
   const directoryPath = path.join("./python-backend/scripts/post-process/temp");
-  const tempFilePath = path.join(directoryPath, "vehicle_status_normal_temp.csv");
+  const tempFilePath = path.join(
+    directoryPath,
+    "vehicle_status_normal_temp.csv"
+  );
 
   // write the uploaded CSV data to a temp file
   fs.writeFileSync(tempFilePath, csvData);
@@ -233,20 +236,20 @@ router.post("/post-process", upload.single("csvFile"), (req, res) => {
     // Read all CSV files and send them as JSON
     const results = {};
     const csvFiles = [
-      'pivot_cost.csv',
-      'pivot_waiting_for_station.csv',
-      'pivot_peak_demand.csv',
-      'pivot_utilization.csv',
-      'melted_results_adoption_rate.csv'
+      "pivot_cost.csv",
+      "pivot_waiting_for_station.csv",
+      "pivot_peak_demand.csv",
+      "pivot_utilization.csv",
+      "melted_results_adoption_rate.csv",
     ];
 
     let hasAnyValidData = false;
 
-    csvFiles.forEach(filename => {
+    csvFiles.forEach((filename) => {
       const filePath = path.join(directoryPath, filename);
       try {
-        const fileContent = fs.readFileSync(filePath, 'utf8');
-        results[filename.replace('.csv', '')] = fileContent;
+        const fileContent = fs.readFileSync(filePath, "utf8");
+        results[filename.replace(".csv", "")] = fileContent;
         hasAnyValidData = true;
 
         // Clean up the file
@@ -255,14 +258,14 @@ router.post("/post-process", upload.single("csvFile"), (req, res) => {
         });
       } catch (error) {
         console.warn(`Warning: Could not read ${filename}:`, error.message);
-        results[filename.replace('.csv', '')] = null;
+        results[filename.replace(".csv", "")] = null;
       }
     });
 
     if (!hasAnyValidData) {
-      res.status(500).send({ 
-        status: "error", 
-        message: "No valid data files were generated" 
+      res.status(500).send({
+        status: "error",
+        message: "No valid data files were generated",
       });
     } else {
       res.json(results);

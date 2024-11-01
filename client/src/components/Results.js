@@ -20,7 +20,6 @@ export default function Results({ uploadedFileContent }) {
   const [data, setData] = useState([]);
   const [headers, setHeaders] = useState([]);
 
-
   // TODO: need to get a example-output-summary.csv file for the data
   // useEffect(() => {
   //   // Parse the uploaded file content when it changes
