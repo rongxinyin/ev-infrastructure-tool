@@ -463,7 +463,7 @@ export default function Home() {
             </DialogActions>
           </Dialog>
 
-          {showResults && <Results />}
+          {showResults && <Results uploadedFileContent={uploadedFileContent} />}
           {showSimulation && (
             <Simulation
               onFormSubmit={handleSimulationConfigFormSubmit}

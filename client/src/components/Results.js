@@ -12,26 +12,7 @@ const textFieldSX = {
   backgroundColor: "secondary.main",
 };
 
-export default function Simulation() {
-  fetch("/bldg-90/pov_vehicle_status_0.36.csv")
-    .then((response) => response.text())
-    .then((data) => {
-      const parsedData = parseCSV(data);
-    });
-
-  let result = null;
-  function parseCSV(data) {
-    const lines = data.split("\n");
-    const headers = lines[0].split(",");
-    result = lines.slice(1).map((line) => {
-      const values = line.split(",");
-      return headers.reduce((object, header, index) => {
-        object[header] = values[index];
-        return object;
-      }, {});
-    });
-  }
-
+export default function Results({ uploadedFileContent }) {
   const [waitTimeGraph, setWaitTimeGraph] = useState([]);
   const [lowSocGraph, setLowSocGraph] = useState([]);
   const [utilizationGraph, setUtilizationGraph] = useState([]);
@@ -39,27 +20,23 @@ export default function Simulation() {
   const [data, setData] = useState([]);
   const [headers, setHeaders] = useState([]);
 
-  useEffect(() => {
-    // Fetch CSV data from the public data folder
-    fetch("/bldg-90/example-output-summary.csv")
-      .then((response) => response.text())
-      .then((csvData) => {
-        // Parse CSV data
-        Papa.parse(csvData, {
-          header: true,
-          complete: (result) => {
-            setData(result.data);
-            setHeaders(result.meta.fields); // Preserving original header order
-          },
-          error: (error) => {
-            console.error("Error parsing CSV:", error);
-          },
-        });
-      })
-      .catch((error) => {
-        console.error("Error fetching CSV:", error);
-      });
-  }, []);
+
+  // TODO: need to get a example-output-summary.csv file for the data
+  // useEffect(() => {
+  //   // Parse the uploaded file content when it changes
+  //   if (uploadedFileContent) {
+  //     Papa.parse(uploadedFileContent, {
+  //       header: true,
+  //       complete: (result) => {
+  //         setData(result.data);
+  //         setHeaders(result.meta.fields);
+  //       },
+  //       error: (error) => {
+  //         console.error("Error parsing CSV:", error);
+  //       },
+  //     });
+  //   }
+  // }, [uploadedFileContent]);
 
   const handleDownload = () => {
     // Convert JSON data to CSV string
@@ -81,8 +58,8 @@ export default function Simulation() {
   };
 
   const test = async () => {
-    if (result === null) {
-      console.error("Result is not initialized");
+    if (data === null) {
+      console.error("Data is not initialized");
       return;
     }
 
@@ -92,7 +69,7 @@ export default function Simulation() {
     let demand = [];
 
     for (let n = 2; n <= 12; n += 2) {
-      let waitData = result.filter((entry) => entry.L2 === String(n));
+      let waitData = data.filter((entry) => entry.L2 === String(n));
 
       let count_in_queue = 0;
 
@@ -105,7 +82,7 @@ export default function Simulation() {
     }
 
     for (let n = 2; n <= 12; n += 2) {
-      let lowSocData = result.filter((entry) => entry.L2 === String(n));
+      let lowSocData = data.filter((entry) => entry.L2 === String(n));
 
       let count_low_soc = 0;
 
@@ -118,7 +95,7 @@ export default function Simulation() {
     }
 
     for (let n = 2; n <= 12; n += 2) {
-      let utilizationData = result.filter((entry) => entry.L2 === String(n));
+      let utilizationData = data.filter((entry) => entry.L2 === String(n));
 
       let utilized = 0;
 
