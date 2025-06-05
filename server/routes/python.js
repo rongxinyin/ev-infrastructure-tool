@@ -214,30 +214,10 @@ router.post("/process-fleet-simulation", (req, res) => {
 router.post("/post-process", upload.single("csvFile"), (req, res) => {
   const csvData = req.file.buffer.toString();
   const directoryPath = path.join("./python-backend/scripts/post-process/temp");
-  const zipPath = path.join(directoryPath, "files.zip");
   const tempFilePath = path.join(
     directoryPath,
     "vehicle_status_normal_temp.csv"
   );
-  const deleteFiles = () => {
-    fs.readdir(directoryPath, (err, files) => {
-      if (err) {
-        console.error("Unable to scan directory:", err);
-        return;
-      }
-
-      files.forEach((file) => {
-        const filePath = path.join(directoryPath, file);
-        fs.unlink(filePath, (err) => {
-          if (err) {
-            console.error("Error deleting file:", err);
-          } else {
-            console.log(`Deleted file: ${filePath}`);
-          }
-        });
-      });
-    });
-  };
 
   // write the uploaded CSV data to a temp file
   fs.writeFileSync(tempFilePath, csvData);
@@ -250,46 +230,46 @@ router.post("/post-process", upload.single("csvFile"), (req, res) => {
     fs.unlink(tempFilePath, (err) => {
       if (err) {
         console.error("Error deleting temporary file:", err);
-      } else {
-        console.log(`Deleted temporary file: ${tempFilePath}`);
       }
     });
 
-    // create zip file
-    const output = fs.createWriteStream(zipPath);
-    const archive = archiver("zip", { zlib: { level: 0 } }); // level refers to compression level (0 for no compression, 9 for max compression)
+    // Read all CSV files and send them as JSON
+    const results = {};
+    const csvFiles = [
+      "pivot_cost.csv",
+      "pivot_waiting_for_station.csv",
+      "pivot_peak_demand.csv",
+      "pivot_utilization.csv",
+      "melted_results_adoption_rate.csv",
+    ];
 
-    output.on("close", () => {
-      res.download(zipPath, "files.zip", (err) => {
-        if (err) {
-          console.error(err);
-        }
+    let hasAnyValidData = false;
 
-        deleteFiles();
+    csvFiles.forEach((filename) => {
+      const filePath = path.join(directoryPath, filename);
+      try {
+        const fileContent = fs.readFileSync(filePath, "utf8");
+        results[filename.replace(".csv", "")] = fileContent;
+        hasAnyValidData = true;
+
+        // Clean up the file
+        fs.unlink(filePath, (err) => {
+          if (err) console.error(`Error deleting ${filename}:`, err);
+        });
+      } catch (error) {
+        console.warn(`Warning: Could not read ${filename}:`, error.message);
+        results[filename.replace(".csv", "")] = null;
+      }
+    });
+
+    if (!hasAnyValidData) {
+      res.status(500).send({
+        status: "error",
+        message: "No valid data files were generated",
       });
-    });
-
-    archive.on("error", (err) => {
-      console.error(err);
-      res
-        .status(500)
-        .send({ status: "error", message: "Error creating ZIP file" });
-    });
-
-    archive.pipe(output);
-
-    fs.readdirSync(directoryPath).forEach((file) => {
-      const filePath = path.join(directoryPath, file);
-      archive.file(filePath, { name: file });
-    });
-
-    archive.finalize();
-
-    // Handle request abort event
-    req.on("aborted", () => {
-      console.log("Request aborted by the client");
-      output.end();
-    });
+    } else {
+      res.json(results);
+    }
   });
 });
 

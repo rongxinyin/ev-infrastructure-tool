@@ -52,6 +52,14 @@ export default function Home() {
   const [popupTitle, setPopupTitle] = React.useState("");
   const [popupDialogue, setPopupDialogue] = React.useState("");
 
+  const [pivotCost, setPivotCost] = useState(null);
+  const [pivotWaitingForStation, setPivotWaitingForStation] = useState(null);
+  const [pivotPeakDemand, setPivotPeakDemand] = useState(null);
+  const [pivotUtilization, setPivotUtilization] = useState(null);
+  const [meltedResults, setMeltedResults] = useState(null);
+
+  const [uploadedFileContent, setUploadedFileContent] = useState(null);
+
   const handleClickOpenPopup = (title, dialogue) => {
     setPopupDialogue(dialogue);
     setPopupTitle(title);
@@ -232,6 +240,13 @@ export default function Home() {
     abortControllerRef.current = new AbortController();
     const { signal } = abortControllerRef.current;
 
+    // Read and store the uploaded file content
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      setUploadedFileContent(e.target.result);
+    };
+    reader.readAsText(selectedFile);
+
     const formData = new FormData();
     formData.append("csvFile", selectedFile);
     setShowProgressBar(true);
@@ -249,38 +264,65 @@ export default function Home() {
         throw new Error("Error uploading file");
       }
 
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
+      const results = await response.json();
 
-      const now = new Date();
+      // Store each CSV result, handling null values
+      let successCount = 0;
+      let totalFiles = 0;
 
-      const year = now.getFullYear();
-      const month = String(now.getMonth() + 1).padStart(2, "0");
-      const day = String(now.getDate()).padStart(2, "0");
-      const hours = String(now.getHours()).padStart(2, "0");
-      const minutes = String(now.getMinutes()).padStart(2, "0");
-      const seconds = String(now.getSeconds()).padStart(2, "0");
+      if (results.pivot_cost !== null) {
+        setPivotCost(results.pivot_cost);
+        successCount++;
+      }
+      totalFiles++;
 
-      const a = document.createElement("a");
-      a.href = url;
-      a.setAttribute(
-        "download",
-        `post-process${year}.${month}.${day}.${hours}.${minutes}.${seconds}.zip`
-      );
-      document.body.appendChild(a);
-      a.click();
+      if (results.pivot_waiting_for_station !== null) {
+        setPivotWaitingForStation(results.pivot_waiting_for_station);
+        successCount++;
+      }
+      totalFiles++;
+
+      if (results.pivot_peak_demand !== null) {
+        setPivotPeakDemand(results.pivot_peak_demand);
+        successCount++;
+      }
+      totalFiles++;
+
+      if (results.pivot_utilization !== null) {
+        setPivotUtilization(results.pivot_utilization);
+        successCount++;
+      }
+      totalFiles++;
+
+      if (results.melted_results_adoption_rate !== null) {
+        setMeltedResults(results.melted_results_adoption_rate);
+        successCount++;
+      }
+      totalFiles++;
+
       setShowProgressBar(false);
-      handleClickOpenPopup(
-        "Success",
-        "Post-processed data successfully downloaded"
-      );
 
-      a.parentNode.removeChild(a);
-      window.URL.revokeObjectURL(url);
+      // Show appropriate message based on how many files were processed
+      if (successCount === 0) {
+        handleClickOpenPopup(
+          "Error",
+          "No data files were successfully processed"
+        );
+      } else if (successCount < totalFiles) {
+        handleClickOpenPopup(
+          "Partial Success",
+          `Processed ${successCount} out of ${totalFiles} data files successfully`
+        );
+      } else {
+        handleClickOpenPopup(
+          "Success",
+          "All data files were successfully processed"
+        );
+      }
     } catch (error) {
       console.error(error);
       setShowProgressBar(false);
-      handleClickOpenPopup("Error", "Abort error");
+      handleClickOpenPopup("Error", "Error processing data");
     }
   };
 
@@ -422,7 +464,7 @@ export default function Home() {
             </DialogActions>
           </Dialog>
 
-          {showResults && <Results />}
+          {showResults && <Results uploadedFileContent={uploadedFileContent} />}
           {showSimulation && (
             <Simulation
               onFormSubmit={handleSimulationConfigFormSubmit}
